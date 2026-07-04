@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南式TOEIC鬼特訓 - Part 5 Intelligent Interactive System</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .shake {
+            animation: shake 0.4s ease-in-out;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        /* Balanced, Harmonious Daytime Accent Pulse */
+        .flame-active-pulse {
+            animation: blazeGlow 2.5s infinite ease-in-out;
+        }
+        @keyframes blazeGlow {
+            0%, 100% { 
+                box-shadow: 0 4px 15px -1px rgba(234, 88, 12, 0.15); 
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 10px 25px 1px rgba(245, 158, 11, 0.25); 
+                transform: scale(1.03);
+            }
+        }
+
+        /* Stable Tooltip to prevent Layout Shifts */
+        .tooltip-container {
+            position: relative;
+        }
+        .tooltip-reveal {
+            visibility: hidden;
+            opacity: 0;
+            transform: translate(-50%, 6px) scale(0.95);
+            transition: visibility 0s, opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tooltip-container:hover .tooltip-reveal, 
+        .tooltip-container:active .tooltip-reveal, 
+        .tooltip-container:focus .tooltip-reveal {
+            visibility: visible;
+            opacity: 1;
+            transform: translate(-50%, 0) scale(1);
+        }
+    </style>
+</head>
+<body class="bg-[#FAF9F5] text-slate-700 min-h-screen flex flex-col selection:bg-orange-100 selection:text-orange-900">
+
+    <header class="bg-white/80 backdrop-blur-md border-b border-stone-200/80 sticky top-0 z-50 shadow-sm shadow-stone-100/40">
+        <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="goHome()">
+                <!-- Soft Warm Sun-Flame Gradient Badge -->
+                <div class="bg-gradient-to-tr from-amber-500 to-orange-600 text-white p-2.5 rounded-xl flex items-center justify-center flame-active-pulse border border-orange-200">
+                    <i class="fa-solid fa-fire text-xl text-amber-100 animate-bounce"></i>
+                </div>
+                <div>
+                    <h1 class="text-sm md:text-base font-black text-slate-900 leading-tight tracking-tight flex items-center gap-1.5">
+                        <span>南式TOEIC鬼特訓</span>
+                        <span class="text-xs bg-orange-600 text-white px-2 py-0.5 rounded-full font-extrabold uppercase tracking-wide">Daylight</span>
+                    </h1>
+                    <p class="text-[10px] text-orange-600 font-extrabold uppercase tracking-widest font-mono">Part 5 Intelligent Interactive System</p>
+                </div>
+            </div>
+            
+            <!-- Real-time Progress Bar with Sunset Gradient -->
+            <div id="top-progress-container" class="hidden flex items-center space-x-3">
+                <span id="top-progress-text" class="text-xs font-bold text-slate-500">Progress: 0/18</span>
+                <div class="w-20 md:w-32 bg-stone-100 h-2.5 rounded-full overflow-hidden border border-stone-200/60 shadow-inner">
+                    <div id="top-progress-bar" class="bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 h-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-6 md:py-10 flex flex-col justify-center">
+
+        <!-- SCREEN 1: Pre-Challenge Vocabulary Preview -->
+        <div id="cover-screen" class="fade-in bg-white rounded-3xl p-6 md:p-8 border border-stone-200 shadow-md shadow-stone-100 max-w-4xl mx-auto w-full my-4 relative overflow-hidden">
+            <!-- Delicate amber atmospheric background light drops -->
+            <div class="absolute -top-16 -left-16 w-36 h-36 bg-orange-400/5 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-16 -right-16 w-36 h-36 bg-amber-500/5 rounded-full blur-3xl"></div>
+
+            <div class="text-center max-w-2xl mx-auto mb-8 relative z-10">
+                <span class="bg-gradient-to-r from-orange-50 to-amber-50 text-orange-700 text-xs font-extrabold px-4 py-1.5 rounded-full uppercase tracking-wider font-mono border border-orange-200/60 shadow-sm">
+                    Strategic Vocabulary Preview
+                </span>
+                <h2 class="text-2xl md:text-3.5xl font-black text-slate-900 mt-5 mb-3 leading-tight tracking-tight">
+                    Target & Context Vocabulary Prep
+                </h2>
+                <p class="text-sm text-slate-500 leading-relaxed font-medium">
+                    Before entering the high-intensity Part 5 strategic training console, familiarize yourself with these critical high-frequency target words and context modifiers. Tap any card below to prompt instant audio feedback.
+                </p>
+                <div class="inline-flex items-center space-x-2 bg-orange-50/50 text-orange-950 text-xs px-4 py-2.5 rounded-xl border border-orange-200/50 mt-5">
+                    <i class="fa-solid fa-circle-play text-orange-600 animate-pulse text-sm"></i>
+                    <span class="font-bold">Click or tap any vocabulary card below to activate the standard audio playback engine.</span>
+                </div>
+            </div>
+
+            <!-- Tab Controls -->
+            <div class="flex justify-center border border-stone-200/80 mb-6 p-1 bg-stone-50 rounded-2xl max-w-md mx-auto relative z-10">
+                <button id="btn-tab-core" onclick="switchPreviewTab('core')" class="flex-1 py-2.5 text-xs font-bold rounded-xl transition-all bg-white text-slate-900 shadow-sm border border-stone-200/60">
+                    Core Target Vocab (<span id="count-core-badge">10</span>)
+                </button>
+                <button id="btn-tab-helper" onclick="switchPreviewTab('helper')" class="flex-1 py-2.5 text-xs font-bold rounded-xl transition-all text-slate-500 hover:text-slate-800">
+                    Context Background Words (<span id="count-helper-badge">18</span>)
+                </button>
+            </div>
+
+            <!-- Cards Container -->
+            <div class="mb-8 relative z-10">
+                <div id="vocab-grid-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5"></div>
+            </div>
+
+            <!-- Start Training Entrance -->
+            <div class="border-t border-stone-100 pt-6 text-center relative z-10">
+                <button onclick="startQuiz()" class="inline-flex items-center justify-center space-x-3 bg-gradient-to-r from-orange-500 via-orange-600 to-rose-500 hover:from-orange-600 hover:to-rose-600 active:transform active:scale-95 transition-all text-white font-black py-4 px-10 rounded-2xl shadow-lg shadow-orange-500/10 w-full sm:w-auto border border-orange-400/20 text-base">
+                    <span>Enter Intense Training Console</span>
+                    <i class="fa-solid fa-fire text-amber-200 animate-bounce"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- SCREEN 2: Active Training Dashboard -->
+        <div id="quiz-container" class="hidden space-y-6 fade-in max-w-4xl mx-auto w-full">
+            
+            <!-- Question Track dots -->
+            <div class="bg-white border border-stone-200/80 rounded-2xl p-4 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="flex items-center space-x-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-orange-500 animate-ping"></span>
+                    <span class="text-xs font-black text-slate-600 uppercase tracking-wider">Session Status:</span>
+                </div>
+                <div id="status-dots" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <!-- Main Question Console -->
+            <div class="bg-white rounded-3xl border border-stone-200 shadow-md shadow-stone-100 overflow-hidden" id="main-question-card">
+                <div class="bg-stone-50/50 border-b border-stone-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3">
+                        <span id="question-index" class="text-xs font-extrabold uppercase tracking-wider text-orange-700 bg-orange-50 px-3.5 py-1.5 rounded-lg border border-orange-200/50 shadow-sm">Question 1</span>
+                        <span id="difficulty-badge" class="text-xs font-bold px-2.5 py-1 rounded-lg">Difficulty</span>
+                    </div>
+                    
+                    <div class="flex items-center space-x-3 self-end sm:self-auto">
+                        <!-- Playback speed settings -->
+                        <div class="flex items-center bg-white border border-stone-200 rounded-xl p-1 text-xs shadow-inner">
+                            <span class="text-slate-400 px-2"><i class="fa-solid fa-gauge-high"></i></span>
+                            <button onclick="setSpeed(0.5)" id="speed-0.5" class="px-2.5 py-1 rounded-lg text-slate-500 font-semibold transition-colors hover:text-slate-800">0.5x</button>
+                            <button onclick="setSpeed(0.75)" id="speed-0.75" class="px-2.5 py-1 rounded-lg text-slate-500 font-semibold transition-colors hover:text-slate-800">0.75x</button>
+                            <button onclick="setSpeed(1.0)" id="speed-1.0" class="px-2.5 py-1 rounded-lg bg-orange-600 text-white font-bold transition-colors shadow-sm">1.0x</button>
+                        </div>
+                        <button onclick="speakSentence()" class="bg-white hover:bg-orange-50 hover:text-orange-950 text-slate-600 px-4 py-2.5 rounded-xl text-xs font-bold flex items-center space-x-2 transition-colors border border-stone-200">
+                            <i class="fa-solid fa-volume-high text-orange-500 animate-pulse"></i>
+                            <span>Listen to Sentence</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-8 space-y-6">
+                    <!-- Blank fill sentence -->
+                    <div class="text-lg md:text-xl font-bold text-slate-800 leading-relaxed" id="question-text"></div>
+
+                    <!-- Stable Non-Jitter Tooltip Assistant -->
+                    <div class="bg-[#FAF9F5] border border-stone-200/80 rounded-2xl p-4 md:p-5 relative">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <div class="bg-orange-50 text-orange-700 p-1.5 rounded-lg flex items-center justify-center border border-orange-200/50">
+                                <i class="fa-solid fa-lightbulb text-xs"></i>
+                            </div>
+                            <h4 class="text-xs font-black text-slate-600 uppercase tracking-wider">Contextual Assistant (Hover/Tap for meanings, Click to pronounce)</h4>
+                        </div>
+                        <div id="vocab-container" class="flex flex-wrap gap-2.5"></div>
+                    </div>
+
+                    <!-- Multiple choices option panel -->
+                    <div class="space-y-3" id="options-container"></div>
+                </div>
+
+                <!-- Custom inline warning banner -->
+                <div id="inline-toast" class="hidden px-8 py-3 bg-orange-50 text-orange-950 text-sm font-bold border-t border-orange-100 flex items-center space-x-2">
+                    <i class="fa-solid fa-circle-exclamation text-orange-600 animate-bounce"></i>
+                    <span id="inline-toast-message">Please make a selection first!</span>
+                </div>
+
+                <!-- Controls -->
+                <div class="bg-stone-50/50 border-t border-stone-100 px-6 py-4 flex items-center justify-between">
+                    <button id="prev-btn" onclick="prevQuestion()" class="text-slate-500 hover:text-slate-800 font-bold flex items-center space-x-2 px-4 py-2.5 rounded-xl hover:bg-stone-100 transition-all">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Previous</span>
+                    </button>
+                    <button id="next-btn" onclick="nextQuestion()" class="bg-gradient-to-r from-orange-500 via-orange-600 to-rose-500 hover:from-orange-600 hover:to-rose-500 text-white font-black flex items-center space-x-2 px-7 py-2.5 rounded-xl transition-all shadow-md shadow-orange-500/10">
+                        <span id="next-btn-text">Next</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dual-Column Instant Analysis Board -->
+            <div id="analysis-panel" class="hidden bg-white rounded-3xl border border-stone-200 shadow-md p-6 space-y-5 fade-in">
+                <div class="flex items-start space-x-4">
+                    <div id="analysis-badge-icon" class="w-10 h-10 rounded-full flex items-center justify-center text-white mt-0.5 shrink-0"></div>
+                    <div class="w-full">
+                        <h3 id="analysis-status" class="text-base font-black">--</h3>
+                        <p id="analysis-translation" class="text-slate-600 mt-2 italic text-sm leading-relaxed bg-stone-50/50 p-4 rounded-xl border border-stone-150"></p>
+                    </div>
+                </div>
+
+                <div class="border-t border-stone-100 pt-4 grid grid-cols-1 md:grid-cols-2 gap-6 text-xs md:text-sm">
+                    <!-- Correct path -->
+                    <div>
+                        <span class="font-extrabold text-slate-800 block mb-2 flex items-center space-x-1.5">
+                            <i class="fa-solid fa-square-check text-emerald-600"></i>
+                            <span>Correct Option Rationale (正确项深度解析)</span>
+                        </span>
+                        <p id="analysis-correct-detail" class="text-slate-600 leading-relaxed bg-stone-50/50 p-4 rounded-xl border border-stone-150 font-medium"></p>
+                    </div>
+                    <!-- Error path -->
+                    <div>
+                        <span class="font-extrabold text-slate-800 block mb-2 flex items-center space-x-1.5">
+                            <i class="fa-solid fa-shuffle text-orange-600"></i>
+                            <span>Distractor Comparison Analysis (干扰项排查指南)</span>
+                        </span>
+                        <div id="analysis-wrong-detail" class="text-slate-600 space-y-2.5 bg-stone-50/50 p-4 rounded-xl border border-stone-150"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCREEN 3: Deep Performance Settlement Report -->
+        <div id="result-screen" class="hidden space-y-6 fade-in max-w-4xl mx-auto w-full">
+            <div class="bg-white rounded-3xl p-8 border border-stone-200 shadow-xl text-center max-w-xl mx-auto relative overflow-hidden">
+                <!-- Inner soft warm glowing sunset backdrop -->
+                <div class="absolute -top-10 -right-10 w-28 h-28 bg-orange-500/5 rounded-full blur-2xl"></div>
+
+                <div class="w-20 h-20 bg-gradient-to-tr from-amber-400 to-orange-500 text-white rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg shadow-orange-500/10 border border-orange-200">
+                    <i class="fa-solid fa-sun text-3xl text-amber-100 animate-pulse"></i>
+                </div>
+                <h2 class="text-2xl font-black text-slate-900 mb-1">Performance Analytics Generated</h2>
+                <p class="text-slate-400 text-xs uppercase tracking-wider mb-6 font-mono">TOEIC Part 5 Strategic Boot Camp Breakdown</p>
+
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="bg-stone-50/80 p-4 rounded-2xl border border-stone-150">
+                        <span class="text-slate-500 text-[10px] uppercase tracking-widest block mb-1 font-bold">Accuracy Rate</span>
+                        <span id="result-accuracy" class="text-3xl font-black text-orange-600">--%</span>
+                    </div>
+                    <div class="bg-stone-50/80 p-4 rounded-2xl border border-stone-150">
+                        <span class="text-slate-500 text-[10px] uppercase tracking-widest block mb-1 font-bold">Total Correct</span>
+                        <span id="result-score" class="text-3xl font-black text-slate-800">0 / 18</span>
+                    </div>
+                </div>
+
+                <div class="space-y-3.5 text-left mb-8 border-t border-b border-stone-150 py-6">
+                    <h3 class="text-xs font-bold text-slate-500 tracking-widest uppercase">Dimension Analysis (By Difficulty)</h3>
+                    <div>
+                        <div class="flex justify-between text-xs font-bold text-slate-600 mb-1.5">
+                            <span>Easy Level (★☆☆)</span>
+                            <span id="easy-ratio">0/0</span>
+                        </div>
+                        <div class="w-full bg-stone-100 h-2 rounded-full overflow-hidden">
+                            <div id="easy-bar" class="bg-emerald-500 h-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-bold text-slate-600 mb-1.5">
+                            <span>Medium Level (★★☆)</span>
+                            <span id="medium-ratio">0/0</span>
+                        </div>
+                        <div class="w-full bg-stone-100 h-2 rounded-full overflow-hidden">
+                            <div id="medium-bar" class="bg-amber-500 h-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-bold text-slate-600 mb-1.5">
+                            <span>Hard Level (★★★)</span>
+                            <span id="hard-ratio">0/0</span>
+                        </div>
+                        <div class="w-full bg-stone-100 h-2 rounded-full overflow-hidden">
+                            <div id="hard-bar" class="bg-rose-500 h-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button onclick="goHome()" class="flex-1 bg-stone-100 hover:bg-stone-200 text-slate-700 font-bold py-3.5 px-6 rounded-2xl border border-stone-200/80 transition-colors">
+                        <i class="fa-solid fa-house mr-1.5"></i>Review Wordlist
+                    </button>
+                    <button onclick="restartQuiz()" class="flex-1 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-3.5 px-6 rounded-2xl shadow-md transition-all active:scale-95">
+                        <i class="fa-solid fa-rotate-right mr-1.5"></i>Restart Challenge
+                    </button>
+                    <button id="retry-errors-btn" onclick="retryMissed()" class="flex-1 bg-rose-500 hover:bg-rose-600 text-white font-bold py-3.5 px-6 rounded-2xl shadow-md hidden transition-colors">
+                        <i class="fa-solid fa-fire text-amber-200 mr-1.5 animate-pulse"></i>Retry Missed Only
+                    </button>
+                </div>
+            </div>
+
+            <!-- Personalized Mistakes notebook ledger -->
+            <div id="error-notebook" class="bg-white rounded-3xl border border-stone-200 shadow-md p-6 md:p-8">
+                <div class="flex items-center space-x-3 mb-5 pb-4 border-b border-stone-100">
+                    <div class="w-8 h-8 rounded-lg bg-orange-50 text-orange-700 flex items-center justify-center border border-orange-100">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-black text-slate-900">Personalized Mistake Ledger (鬼特训错题本)</h3>
+                        <p class="text-xs text-slate-500">系统自动汇总本轮特训中的薄弱考点，攻克高频陷阱，死磕直至100%全对掌握！</p>
+                    </div>
+                </div>
+                <div id="error-words-list" class="space-y-4"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Area -->
+    <footer class="bg-[#FAF9F5] border-t border-stone-200/60 py-6 text-center text-xs text-slate-400 mt-12">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <p>© 2026 Nansei TOEIC Prep - Designed for Masterful Performance</p>
+        </div>
+    </footer>
+
+    <!-- JS Logic Core Engines -->
+    <script>
+        // Core target words with exact POS markings, lowercase cn/jp keys, English tips and simplified example sentences.
+        const vocabBank = [
+            { 
+                word: "repair", 
+                pos: "動/名", 
+                ipa: "/rɪˈpeə(r)/", 
+                cn: "修理，修补", 
+                jp: "修理する", 
+                family: "fix / patch",
+                tips: "repair + 物（修理）",
+                desc: "The technician will repair the broken machinery by tomorrow."
+            },
+            { 
+                word: "article", 
+                pos: "名", 
+                ipa: "/ˈɑːtɪkl/", 
+                cn: "文章，物品", 
+                jp: "記事、品物", 
+                family: "-",
+                tips: "article = 文章 / 可数名词",
+                desc: "The magazine published a fascinating article about renewable energy."
+            },
+            { 
+                word: "update", 
+                pos: "動/名", 
+                ipa: "/ˌʌpˈdeɪt/", 
+                cn: "更新，最新消息", 
+                jp: "更新する、最新情報", 
+                family: "up-to-date",
+                tips: "update + 名词 / provide an update",
+                desc: "Please update the client database before the weekly meeting."
+            },
+            { 
+                word: "advertise", 
+                pos: "動", 
+                ipa: "/ˈædvətaɪz/", 
+                cn: "做广告，宣传", 
+                jp: "宣伝する", 
+                family: "advertising / advertisement / advertiser",
+                tips: "advertise + 产品/服务",
+                desc: "We plan to advertise the new software across multiple social platforms."
+            },
+            { 
+                word: "equipment", 
+                pos: "名", 
+                ipa: "/ɪˈkwɪpmənt/", 
+                cn: "设备，装备", 
+                jp: "設備、機器", 
+                family: "equip",
+                tips: "不可数名词（equipment）",
+                desc: "All safety equipment must be inspected prior to use in the lab."
+            },
+            { 
+                word: "increase", 
+                pos: "動/名", 
+                ipa: "/ɪnˈkriːs/", 
+                cn: "增加，增长", 
+                jp: "増加する", 
+                family: "increased / increasingly / decrease",
+                tips: "increase + 名词 / increase in + 名词",
+                desc: "The company aims to increase its annual revenue by twenty percent."
+            },
+            { 
+                word: "opening", 
+                pos: "名/形", 
+                ipa: "/ˈəʊpənɪŋ/", 
+                cn: "空缺，开张；开篇的", 
+                jp: "空き、開店、冒頭の", 
+                family: "opened / opening",
+                tips: "opening + 名词（speech/job）",
+                desc: "We currently have a job opening in the marketing department."
+            },
+            { 
+                word: "ship", 
+                pos: "動/名", 
+                ipa: "/ʃɪp/", 
+                cn: "运输，运送；船", 
+                jp: "出荷する、船", 
+                family: "shipment / shipping",
+                tips: "ship + 货物 / receive a shipment",
+                desc: "The warehouse will ship your order within two business days."
+            },
+            { 
+                word: "expect", 
+                pos: "動", 
+                ipa: "/ɪkˈspekt/", 
+                cn: "预期，期待", 
+                jp: "期待する、予期する", 
+                family: "expectation / unexpected",
+                tips: "expect to do / expect + 名词",
+                desc: "Investors expect the startup to announce its merger very soon."
+            },
+            { 
+                word: "recently", 
+                pos: "副", 
+                ipa: "/ˈriːsntli/", 
+                cn: "最近，近来", 
+                jp: "最近", 
+                family: "recent",
+                tips: "recently + 过去时/现在完成时",
+                desc: "The board of directors recently approved the revised budget proposal."
+            }
+        ];
+
+        // Background context helper vocabulary (No clues to answer key)
+        const helperVocabBank = [
+            { word: "technician", pos: "名", ipa: "/tekˈnɪʃn/", cn: "技术员", jp: "技術者" },
+            { word: "machinery", pos: "名", ipa: "/məˈʃiːnəri/", cn: "机器，机械（总称）", jp: "機械類" },
+            { word: "renewable", pos: "形", ipa: "/rɪˈnjuːəbl/", cn: "可再生的", jp: "再生可能な" },
+            { word: "agency", pos: "名", ipa: "/ˈeɪdʒənsi/", cn: "代理机构", jp: "代理店" },
+            { word: "protective", pos: "形", ipa: "/prəˈtektɪv/", cn: "防护的", jp: "保護の" },
+            { word: "designated", pos: "形", ipa: "/ˈdezɪɡneɪtɪd/", cn: "指定的", jp: "指定された" },
+            { word: "strategy", pos: "名", ipa: "/ˈstrætədʒi/", cn: "策略，战略", jp: "戦略" },
+            { word: "resignation", pos: "名", ipa: "/ˌrezɪɡˈneɪʃn/", cn: "辞职", jp: "辞任" },
+            { word: "logistics", pos: "名", ipa: "/ləˈdʒɪstɪks/", cn: "物流", jp: "物流" },
+            { word: "fragile", pos: "形", ipa: "/ˈfrædʒaɪl/", cn: "易碎的", jp: "壊れやすい" },
+            { word: "expedited", pos: "形", ipa: "/ˈekspədaɪtɪd/", cn: "加急的", jp: "迅速な" },
+            { word: "analyst", pos: "名", ipa: "/ˈænəlɪst/", cn: "分析师", jp: "アナリスト" },
+            { word: "earnings", pos: "名", ipa: "/ˈɜːnɪŋz/", cn: "收益，利润", jp: "収益" },
+            { word: "compliance", pos: "名", ipa: "/kəmˈplaɪəns/", cn: "遵守，合规", jp: "コンプライアンス" },
+            { word: "clearance", pos: "名", ipa: "/ˈklɪərəns/", cn: "清关，许可", jp: "通関" },
+            { word: "postpone", pos: "動", ipa: "/pəˈspəʊn/", cn: "推迟，延期", jp: "延期する" },
+            { word: "flagship", pos: "名", ipa: "/ˈflæɡʃɪp/", cn: "旗舰，王牌", jp: "旗艦" },
+            { word: "packaging", pos: "名", ipa: "/ˈpækɪdʒɪŋ/", cn: "包装", jp: "包装" }
+        ];
+
+        // 18 High-quality Part 5 TOEIC training questions with 100% closed-loop distractors inside vocab/relations.
+        const questionsDatabase = [
+            {
+                id: "q_repair_1",
+                targetWord: "repair",
+                pos: "動/名",
+                difficulty: "★☆☆",
+                difficultyLevel: "easy",
+                sentence: "The hired technician will ______ the broken machinery in the factory by tomorrow morning.",
+                correct: "repair",
+                options: ["repair", "equip", "ship", "expect"],
+                chinese: "受雇的技术人员将在明天早上之前修理好工厂里损坏的机器。",
+                rationales: {
+                    "repair": "正确。及物动词，“repair + 物”，意为“修理，修补”，符合修理损坏机器的语义。",
+                    "equip": "错误。动词“装备”，不能直接搭配“损坏的机器”作宾语（无法“装备”已损坏的机器）。",
+                    "ship": "错误。动词“运输”，通常用于运输货物，对厂内损坏的机器进行“运输”在逻辑上不如“修理”合理。",
+                    "expect": "错误。动词“期望”，搭配 expectations 或 to do，不接实体机器作宾语。"
+                },
+                vocabHelper: [
+                    { word: "technician", ipa: "/tekˈnɪʃn/", cn: "技术员", jp: "技術者" },
+                    { word: "machinery", ipa: "/məˈʃiːnəri/", cn: "机器，机械（总称）", jp: "機械類" }
+                ]
+            },
+            {
+                id: "q_article_1",
+                targetWord: "article",
+                pos: "名",
+                difficulty: "★☆☆",
+                difficultyLevel: "easy",
+                sentence: "The famous business magazine published a fascinating ______ about the latest trends in renewable energy.",
+                correct: "article",
+                options: ["article", "update", "advertisement", "equipment"],
+                chinese: "这家著名的商业杂志发表了一篇关于可再生能源最新趋势的精彩文章。",
+                rationales: {
+                    "article": "正确。可数名词单数，publish an article 属于固定搭配，表示“发表文章”。",
+                    "update": "错误。名词“更新”，虽然也可以说发表更新，但在杂志语境中“一篇文章”更为地道。",
+                    "advertisement": "错误。名词“广告”，通常使用 place an advertisement（登广告），而非 publish。",
+                    "equipment": "错误。名词“设备”，不可数名词，前面不能加不定冠词 a。"
+                },
+                vocabHelper: [
+                    { word: "renewable", ipa: "/rɪˈnjuːəbl/", cn: "可再生的", jp: "再生可能な" }
+                ]
+            },
+            {
+                id: "q_update_1",
+                targetWord: "update",
+                pos: "動/名",
+                difficulty: "★☆☆",
+                difficultyLevel: "easy",
+                sentence: "The IT manager asked all employees to ______ their computer passwords before the end of the month.",
+                correct: "update",
+                options: ["update", "advertise", "repair", "increase"],
+                chinese: "IT经理要求所有员工在月底前更新他们的电脑密码。",
+                rationales: {
+                    "update": "正确。及物动词，“update + 名词”，表示更新系统或密码。",
+                    "advertise": "错误。动词“做广告”，不能做广告宣传密码。",
+                    "repair": "错误。动词“修理”，密码无法进行实体修理。",
+                    "increase": "错误。动词“增加”，不能“增加密码”，只能增加复杂度或数量。"
+                },
+                vocabHelper: []
+            },
+            {
+                id: "q_advertise_1",
+                targetWord: "advertise",
+                pos: "動",
+                difficulty: "★☆☆",
+                difficultyLevel: "easy",
+                sentence: "To attract more international clients, the agency decided to ______ its services on popular social media networks.",
+                correct: "advertise",
+                options: ["advertise", "expect", "ship", "update"],
+                chinese: "为了吸引更多的国际客户，该代理机构决定在受欢迎的社交媒体网络上宣传其服务。",
+                rationales: {
+                    "advertise": "正确。动词，“advertise + 产品/服务”，表示在媒体上进行宣传推广。",
+                    "expect": "错误。动词“预期”，不能搭配“在社交媒体上”。",
+                    "ship": "错误。动词“运输”，服务是无形产品，无法被物理“运输”。",
+                    "update": "错误。动词“更新”，通常是更新服务内容，而非“在社交网络上更新服务（宣传语境）”。"
+                },
+                vocabHelper: [
+                    { word: "agency", ipa: "/ˈeɪdʒənsi/", cn: "代理机构", jp: "代理店" }
+                ]
+            },
+            {
+                id: "q_equipment_1",
+                targetWord: "equipment",
+                pos: "名",
+                difficulty: "★☆☆",
+                difficultyLevel: "easy",
+                sentence: "Protective heavy ______ must be worn by all personnel entering the designated construction zone.",
+                correct: "equipment",
+                options: ["equipment", "article", "opening", "shipment"],
+                chinese: "所有进入指定施工区的人员都必须穿戴重型防护装备。",
+                rationales: {
+                    "equipment": "正确。不可数名词，“防护装备（protective equipment）”是工程和制造业的绝对高频短语。",
+                    "article": "错误。可数名词单数，且不表达“装备”的含义。",
+                    "opening": "错误。名词“空缺，开口”，不符合必须穿戴（worn）的语境。",
+                    "shipment": "错误。名词“一批货物”，不能被穿戴。"
+                },
+                vocabHelper: [
+                    { word: "protective", ipa: "/prəˈtektɪv/", cn: "防护的", jp: "保護の" },
+                    { word: "designated", ipa: "/ˈdezɪɡneɪtɪd/", cn: "指定的", jp: "指定された" }
+                ]
+            },
+            {
+                id: "q_increase_1",
+                targetWord: "increase",
+                pos: "動/名",
+                difficulty: "★☆☆",
+                difficultyLevel: "easy",
+                sentence: "The new marketing strategy helped the corporation ______ its annual sales revenue by over twenty percent.",
+                correct: "increase",
+                options: ["increase", "decrease", "ship", "recently"],
+                chinese: "新的营销策略帮助公司将其年销售收入提高了百分之二十以上。",
+                rationales: {
+                    "increase": "正确。动词，“increase + 名词”，表示增加收入（revenue）。",
+                    "decrease": "错误。动词“减少”，既然是“策略帮助（helped）”，通常是为了增加收入，逻辑上“减少”不符常规商务目标。",
+                    "ship": "错误。动词“运输”，不能运输销售收入。",
+                    "recently": "错误。副词“最近”，不能在 helped sb 之后充当动词原形（宾语补足语）。"
+                },
+                vocabHelper: [
+                    { word: "strategy", ipa: "/ˈstrætədʒi/", cn: "策略，战略", jp: "戦略" }
+                ]
+            },
+            {
+                id: "q_opening_1",
+                targetWord: "opening",
+                pos: "名/形",
+                difficulty: "★☆☆",
+                difficultyLevel: "easy",
+                sentence: "Because of the manager's sudden resignation, there is now an unexpected job ______ in the finance division.",
+                correct: "opening",
+                options: ["opening", "expectation", "update", "equipment"],
+                chinese: "由于经理突然辞职，财务部现在出现了一个出乎意料的职位空缺。",
+                rationales: {
+                    "opening": "正确。名词，“job opening”是托业极高频核心复合词，意为“职位空缺”。",
+                    "expectation": "错误。名词“期望”，不能用来指代因人员离职产生的岗位状态。",
+                    "update": "错误。名词“更新”，不搭配 job 构成合理语境。",
+                    "equipment": "错误。不可数名词，不能放在 an unexpected job 之后构成搭配。"
+                },
+                vocabHelper: [
+                    { word: "resignation", ipa: "/ˌrezɪɡˈneɪʃn/", cn: "辞职", jp: "辞任" }
+                ]
+            },
+            {
+                id: "q_ship_1",
+                targetWord: "ship",
+                pos: "動/名",
+                difficulty: "★☆☆",
+                difficultyLevel: "easy",
+                sentence: "The logistics company will ______ your fragile items using a secure and expedited delivery method.",
+                correct: "ship",
+                options: ["ship", "advertise", "expect", "update"],
+                chinese: "物流公司将使用安全快捷的配送方式来运输您的易碎物品。",
+                rationales: {
+                    "ship": "正确。及物动词，“ship + 货物”，意为“运输”。在 will 后作谓语动词。",
+                    "advertise": "错误。动词“宣传”，不能用来“宣传易碎物品”并使用配送方式（delivery method）。",
+                    "expect": "错误。动词“期望”，期望物品使用配送方式，不如“运输物品”逻辑直接通顺。",
+                    "update": "错误。动词“更新”，物理物品无法被更新。"
+                },
+                vocabHelper: [
+                    { word: "logistics", ipa: "/ləˈdʒɪstɪks/", cn: "物流", jp: "物流" },
+                    { word: "fragile", ipa: "/ˈfrædʒaɪl/", cn: "易碎的", jp: "壊れやすい" },
+                    { word: "expedited", ipa: "/ˈekspədaɪtɪd/", cn: "加急的", jp: "迅速な" }
+                ]
+            },
+            {
+                id: "q_expect_1",
+                targetWord: "expect",
+                pos: "動",
+                difficulty: "★☆☆",
+                difficultyLevel: "easy",
+                sentence: "Market analysts ______ the central bank to lower interest rates during the upcoming financial quarter.",
+                correct: "expect",
+                options: ["expect", "repair", "equip", "increase"],
+                chinese: "市场分析师预计央行将在即将到来的财政季度降低利率。",
+                rationales: {
+                    "expect": "正确。动词用法“expect sb to do sth”，意为“预期/预计某人做某事”。",
+                    "repair": "错误。动词“修理”，不能修理央行。",
+                    "equip": "错误。动词“装备”，equip sb with sth，不接 to do 结构。",
+                    "increase": "错误。动词“增加”，无法说“增加央行去做某事”。"
+                },
+                vocabHelper: [
+                    { word: "analyst", ipa: "/ˈænəlɪst/", cn: "分析师", jp: "アナリスト" }
+                ]
+            },
+            {
+                id: "q_recently_1",
+                targetWord: "recently",
+                pos: "副",
+                difficulty: "★☆☆",
+                difficultyLevel: "easy",
+                sentence: "The board of directors has ______ approved the revised budget proposal for the next fiscal year.",
+                correct: "recently",
+                options: ["recently", "increasingly", "unexpected", "recent"],
+                chinese: "董事会最近刚刚批准了下一个财政年度的修订预算提案。",
+                rationales: {
+                    "recently": "正确。副词，修饰现在完成时（has approved），是 recently 的最经典考试标志。",
+                    "increasingly": "错误。副词“日益，越来越”，通常修饰形容词，如 increasingly difficult，不修饰完成时的动作本身。",
+                    "unexpected": "错误。形容词“意外的”，不能放在助动词 has 和动词过去分词 approved 之间。",
+                    "recent": "错误。形容词“最近的”，不能修饰动词。"
+                },
+                vocabHelper: [
+                    { word: "earnings", ipa: "/ˈɜːnɪŋz/", cn: "收益", jp: "収益" } 
+                ]
+            },
+            // Part 2: Word Family Distractors / Close Relations (Medium to Hard)
+            {
+                id: "q_advertise_2",
+                targetWord: "advertising",
+                pos: "名/形",
+                difficulty: "★★☆",
+                difficultyLevel: "medium",
+                sentence: "The firm's total ______ budget was significantly reduced after the disappointing third-quarter earnings report.",
+                correct: "advertising",
+                options: ["advertising", "advertise", "advertiser", "article"],
+                chinese: "在令人失望的第三季度财报出炉后，该公司的总广告预算被大幅削减。",
+                rationales: {
+                    "advertising": "正确。动名词/名词作定语，“advertising budget”即为“广告预算”，是固定搭配的商务术语。",
+                    "advertise": "错误。动词原形，不能作定语修饰名词 budget。",
+                    "advertiser": "错误。名词“广告商”，advertiser budget（广告商预算）在逻辑上不如 advertising budget（广告[活动]预算）自然。",
+                    "article": "错误。名词“文章”，article budget 并非标准商业词汇。"
+                },
+                vocabHelper: [
+                    { word: "earnings", ipa: "/ˈɜːnɪŋz/", cn: "收益", jp: "収益" }
+                ]
+            },
+            {
+                id: "q_ship_2",
+                targetWord: "shipment",
+                pos: "名",
+                difficulty: "★★☆",
+                difficultyLevel: "medium",
+                sentence: "Please inspect the entire ______ of raw materials immediately upon its arrival at the warehouse dock.",
+                correct: "shipment",
+                options: ["shipment", "ship", "shipping", "equipment"],
+                chinese: "请在原材料运抵仓库码头后，立即检查整批货物。",
+                rationales: {
+                    "shipment": "正确。名词，“一批货物/装运的货物”，符合 inspect（检查）的物理对象。",
+                    "ship": "错误。动词原形或名词（船），在 the entire 后应接表示这批货物的名词 shipment。",
+                    "shipping": "错误。名词“运输（过程）”或动词ing，无法进行物理实体检查。",
+                    "equipment": "错误。名词“设备”，题干说的是 raw materials（原材料），与设备是两类不同的物资，语义不符。"
+                },
+                vocabHelper: []
+            },
+            {
+                id: "q_increase_2",
+                targetWord: "increasingly",
+                pos: "副",
+                difficulty: "★★★",
+                difficultyLevel: "hard",
+                sentence: "It has become ______ difficult for small businesses to compete with multinational e-commerce giants.",
+                correct: "increasingly",
+                options: ["increasingly", "increase", "increased", "recently"],
+                chinese: "小型企业要与跨国电子商务巨头竞争变得越来越困难。",
+                rationales: {
+                    "increasingly": "正确。副词，“越来越……，日益”，在此修饰形容词 difficult，表示程度的递进。",
+                    "increase": "错误。动词或名词，不能在系动词 become 之后修饰形容词 difficult。",
+                    "increased": "错误。过去分词/形容词“增加了的”，不能修饰形容词 difficult。",
+                    "recently": "错误。副词“最近”，虽然语法可行（最近变得困难），但“越来越困难（increasingly difficult）”是高度固定的连用词组。"
+                },
+                vocabHelper: []
+            },
+            {
+                id: "q_update_2",
+                targetWord: "up-to-date",
+                pos: "形",
+                difficulty: "★★☆",
+                difficultyLevel: "medium",
+                sentence: "To ensure compliance with local regulations, please keep all safety manuals ______.",
+                correct: "up-to-date",
+                options: ["up-to-date", "update", "recent", "opened"],
+                chinese: "为确保遵守当地法规，请使所有安全手册保持最新状态。",
+                rationales: {
+                    "up-to-date": "正确。形容词短语，“最新的”，用于“keep + 宾语 + 形容词补足语”结构中。",
+                    "update": "错误。动词原形或名词，不能作为 keep 的宾语补足语（除非是被动语态 kept updated，但此处无 ed）。",
+                    "recent": "错误。形容词“最近的”，通常作前置定语修饰名词（如 recent events），不作为状态补语表示“最新的”。",
+                    "opened": "错误。形容词/过去分词“开着的”，手册保持“打开状态”无法保证安全合规。"
+                },
+                vocabHelper: [
+                    { word: "compliance", ipa: "/kəmˈplaɪəns/", cn: "遵守，合规", jp: "コンプライアンス" }
+                ]
+            },
+            {
+                id: "q_expect_2",
+                targetWord: "unexpected",
+                pos: "形",
+                difficulty: "★★☆",
+                difficultyLevel: "medium",
+                sentence: "Due to an ______ delay in customs clearance, the delivery of the components will be postponed until Friday.",
+                correct: "unexpected",
+                options: ["unexpected", "expect", "expectation", "recent"],
+                chinese: "由于清关过程中出现意外延误，零部件的交付将推迟到周五。",
+                rationales: {
+                    "unexpected": "正确。形容词“意想不到的，意外的”，作前置定语修饰名词 delay。",
+                    "expect": "错误。动词，不能在不定冠词 an 之后修饰名词。",
+                    "expectation": "错误。名词“期望”，an expectation delay 不符合英语搭配习惯。",
+                    "recent": "错误。形容词“最近的”，虽然可以用，但搭配 an 时应为 a recent delay，故冠词 an 锁定了以元音开头的 unexpected。"
+                },
+                vocabHelper: [
+                    { word: "clearance", ipa: "/ˈklɪərəns/", cn: "清关，许可", jp: "通関" },
+                    { word: "postpone", ipa: "/pəˈspəʊn/", cn: "推迟，延期", jp: "延期する" }
+                ]
+            },
+            {
+                id: "q_advertise_3",
+                targetWord: "advertisement",
+                pos: "名",
+                difficulty: "★★☆",
+                difficultyLevel: "medium",
+                sentence: "We placed a full-page ______ in the national newspaper to announce the grand opening of our new flagship store.",
+                correct: "advertisement",
+                options: ["advertisement", "advertise", "advertising", "advertiser"],
+                chinese: "我们在全国性报纸上刊登了一整版的广告，宣布我们新的旗舰店隆重开业。",
+                rationales: {
+                    "advertisement": "正确。可数名词单数，“一则广告”，前面有不定冠词 a 修饰，指代具体的广告版面。",
+                    "advertise": "错误。动词，词性不符。",
+                    "advertising": "错误。不可数名词“广告业/广告活动总称”，不能用 a full-page 来修饰限定数量。",
+                    "advertiser": "错误。名词“广告商”，在报纸上投放“广告商”语义荒谬。"
+                },
+                vocabHelper: [
+                    { word: "flagship", ipa: "/ˈflæɡʃɪp/", cn: "旗舰，王牌", jp: "旗艦" }
+                ]
+            },
+            {
+                id: "q_recently_2",
+                targetWord: "recent",
+                pos: "形",
+                difficulty: "★★☆",
+                difficultyLevel: "medium",
+                sentence: "In ______ months, the demand for environmentally friendly packaging has surged dramatically.",
+                correct: "recent",
+                options: ["recent", "recently", "up-to-date", "unexpected"],
+                chinese: "最近几个月，对环保包装的需求急剧增加。",
+                rationales: {
+                    "recent": "正确。形容词作定语修饰名词 months。“In recent months”为经典时间状语搭配。",
+                    "recently": "错误。副词，不可直接修饰名词 months。",
+                    "up-to-date": "错误。形容词“最新的”，极少用于修饰时间段 months。",
+                    "unexpected": "错误。形容词“意外的”，在“意外的几个月里”，语义极不通顺。"
+                },
+                vocabHelper: [
+                    { word: "packaging", ipa: "/ˈpækɪdʒɪŋ/", cn: "包装", jp: "包装" }
+                ]
+            },
+            {
+                id: "q_equipment_2",
+                targetWord: "equip",
+                pos: "動",
+                difficulty: "★★★",
+                difficultyLevel: "hard",
+                sentence: "Management decided to ______ all conference rooms with the latest wireless presentation systems.",
+                correct: "equip",
+                options: ["equip", "equipment", "repair", "update"],
+                chinese: "管理层决定为所有会议室配备最新的无线演示系统。",
+                rationales: {
+                    "equip": "正确。及物动词，“equip sb/sth with sth”，意为“给……装备/配备……”。在 to 之后作不定式原形。",
+                    "equipment": "错误。名词，不能放在不定式 to 之后充当谓语动词。",
+                    "repair": "错误。动词“修理”，搭配介词 with 意为“用无线系统去修理会议室”，逻辑荒谬。",
+                    "update": "错误。动词“更新”，虽然可以说 update A with B，但在添置硬件设施时，equip（配备）是专属的准确用词。"
+                },
+                vocabHelper: []
+            }
+        ];
+
+        let activeQuestionsList = [];
+        let curIndex = 0;
+        let userAnswers = {};
+        let currentRate = 1.0;
+        let activeTab = 'core';
+
+        window.onload = function() {
+            initPreview();
+            initQuizEngine();
+        };
+
+        function initPreview() {
+            document.getElementById('count-core-badge').innerText = vocabBank.length;
+            document.getElementById('count-helper-badge').innerText = helperVocabBank.length;
+            switchPreviewTab('core');
+        }
+
+        function switchPreviewTab(tabType) {
+            activeTab = tabType;
+            const coreBtn = document.getElementById('btn-tab-core');
+            const helperBtn = document.getElementById('btn-tab-helper');
+            const container = document.getElementById('vocab-grid-container');
+            container.innerHTML = '';
+
+            if (tabType === 'core') {
+                coreBtn.className = "flex-1 py-2.5 text-xs font-bold rounded-xl transition-all bg-white text-slate-900 shadow-sm border border-stone-200/60";
+                helperBtn.className = "flex-1 py-2.5 text-xs font-bold rounded-xl transition-all text-slate-500 hover:text-slate-800";
+                
+                vocabBank.forEach(v => {
+                    const jpSpan = v.jp ? `<span class="bg-rose-50 text-rose-700 px-2 py-0.5 rounded text-[10px] font-bold border border-rose-100">jp</span> <span class="text-xs font-semibold text-rose-700 block">${v.jp}</span>` : '';
+                    container.innerHTML += `
+                        <div onclick="speakWord('${v.word}')" class="bg-white hover:bg-gradient-to-tr hover:from-orange-50/10 hover:to-amber-50/10 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col justify-between group">
+                            <div>
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-base font-black text-slate-900 group-hover:text-orange-600 transition-colors">${v.word}</span>
+                                    <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-stone-100 text-slate-500 uppercase tracking-wider">${v.pos}</span>
+                                </div>
+                                <div class="text-xs text-slate-400 font-mono mb-2">${v.ipa}</div>
+                                <div class="space-y-1 mb-2">
+                                    <div class="flex items-center space-x-1.5">
+                                        <span class="bg-orange-50 text-orange-700 px-2 py-0.5 rounded text-[10px] font-bold border border-orange-100">cn</span>
+                                        <span class="text-xs font-bold text-slate-700 block">${v.cn}</span>
+                                    </div>
+                                    <div class="flex items-center space-x-1.5 mt-1.5">
+                                        ${jpSpan}
+                                    </div>
+                                </div>
+                                <div class="text-[11px] text-slate-500 mt-2 border-t border-stone-100 pt-2">
+                                    <span class="font-bold text-slate-400 text-[9px] uppercase block mb-0.5 font-mono">Word Family:</span>
+                                    <span class="font-medium text-slate-600">${v.family}</span>
+                                </div>
+                            </div>
+                            <div class="border-t border-stone-100 pt-2 mt-2">
+                                <div class="bg-orange-50/40 p-2.5 rounded-lg border border-orange-100 text-[10px] text-orange-950 font-bold mb-2 leading-relaxed">
+                                    <span class="font-black uppercase text-[9px] text-orange-700 block mb-0.5"><i class="fa-solid fa-fire text-[8px] mr-1"></i>TIPS:</span>
+                                    ${v.tips}
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-relaxed font-medium italic">“ ${v.desc} ”</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                helperBtn.className = "flex-1 py-2.5 text-xs font-bold rounded-xl transition-all bg-white text-slate-900 shadow-sm border border-stone-200/60";
+                coreBtn.className = "flex-1 py-2.5 text-xs font-bold rounded-xl transition-all text-slate-500 hover:text-slate-800";
+                
+                helperVocabBank.forEach(v => {
+                    container.innerHTML += `
+                        <div onclick="speakWord('${v.word}')" class="bg-white hover:bg-stone-50 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col justify-between group">
+                            <div>
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-base font-black text-slate-900 transition-colors">${v.word}</span>
+                                    <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-stone-100 text-slate-500 uppercase tracking-wider">${v.pos}</span>
+                                </div>
+                                <div class="text-xs text-slate-400 font-mono mb-2">${v.ipa}</div>
+                                <div class="space-y-1.5">
+                                    <div class="flex items-center space-x-1.5">
+                                        <span class="bg-stone-100 text-slate-600 px-2 py-0.5 rounded text-[10px] font-bold border border-stone-200">cn</span>
+                                        <span class="text-xs font-bold text-slate-700 block">${v.cn}</span>
+                                    </div>
+                                    <div class="flex items-center space-x-1.5 mt-1.5">
+                                        <span class="bg-stone-100 text-slate-600 px-2 py-0.5 rounded text-[10px] font-bold border border-stone-200">jp</span>
+                                        <span class="text-xs font-semibold text-slate-700 block">${v.jp}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function initQuizEngine() {
+            activeQuestionsList = shuffleArray([...questionsDatabase]).map(q => {
+                return {
+                    ...q,
+                    shuffledOptions: shuffleArray([...q.options])
+                };
+            });
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function startQuiz() {
+            document.getElementById('cover-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('top-progress-container').classList.remove('hidden');
+            
+            curIndex = 0;
+            userAnswers = {};
+            renderStatusTracker();
+            loadQuestion(0);
+        }
+
+        function renderStatusTracker() {
+            const container = document.getElementById('status-dots');
+            container.innerHTML = '';
+            
+            activeQuestionsList.forEach((q, idx) => {
+                let btnClass = "w-8 h-8 rounded-xl text-xs font-bold flex items-center justify-center border transition-all cursor-pointer ";
+                if (idx === curIndex) {
+                    btnClass += "border-orange-500 ring-2 ring-orange-100 bg-orange-50 text-orange-950 font-extrabold";
+                } else if (userAnswers[idx] !== undefined) {
+                    if (userAnswers[idx] === q.correct) {
+                        btnClass += "bg-emerald-600 border-emerald-600 text-white shadow-sm";
+                    } else {
+                        btnClass += "bg-rose-500 border-rose-500 text-white shadow-sm";
+                    }
+                } else {
+                    btnClass += "bg-stone-100 border-stone-200/80 text-slate-500 hover:bg-stone-200/55";
+                }
+                
+                container.innerHTML += `<div class="${btnClass}" onclick="jumpToQuestion(${idx})">${idx + 1}</div>`;
+            });
+
+            const currentProgressText = `Progress: ${Object.keys(userAnswers).length} / ${activeQuestionsList.length}`;
+            document.getElementById('top-progress-text').innerText = currentProgressText;
+            const pct = (Object.keys(userAnswers).length / activeQuestionsList.length) * 100;
+            document.getElementById('top-progress-bar').style.width = pct + '%';
+        }
+
+        function jumpToQuestion(idx) {
+            if (userAnswers[curIndex] === undefined) {
+                triggerShake();
+                showToast("Please answer the current question first!");
+                return;
+            }
+            curIndex = idx;
+            loadQuestion(idx);
+        }
+
+        function loadQuestion(idx) {
+            hideToast();
+            const q = activeQuestionsList[idx];
+            
+            document.getElementById('question-index').innerText = `Question ${idx + 1} of ${activeQuestionsList.length}`;
+            document.getElementById('difficulty-badge').innerText = `Difficulty: ${q.difficulty}`;
+            
+            let displayBadgeClass = "text-xs font-bold px-2.5 py-1 rounded-lg ";
+            if (q.difficultyLevel === 'easy') displayBadgeClass += "bg-emerald-50 text-emerald-800 border border-emerald-200/60";
+            else if (q.difficultyLevel === 'medium') displayBadgeClass += "bg-amber-50 text-amber-800 border border-amber-200/60";
+            else displayBadgeClass += "bg-rose-50 text-rose-800 border border-rose-200/60";
+            document.getElementById('difficulty-badge').className = displayBadgeClass;
+
+            let filledSentence = q.sentence;
+            if (userAnswers[idx] !== undefined) {
+                const colorClass = (userAnswers[idx] === q.correct) ? "text-emerald-600 underline font-extrabold" : "text-rose-600 underline font-extrabold";
+                filledSentence = q.sentence.replace("______", `<span class="${colorClass}">${userAnswers[idx]}</span>`);
+            } else {
+                filledSentence = q.sentence.replace("______", `<span class="text-orange-600 font-extrabold px-2 bg-stone-100 border-b-2 border-orange-500 rounded-t">______</span>`);
+            }
+            document.getElementById('question-text').innerHTML = filledSentence;
+
+            const helperContainer = document.getElementById('vocab-container');
+            helperContainer.innerHTML = '';
+            
+            const strictlyFilteredHelpers = q.vocabHelper.filter(item => item.word.toLowerCase() !== q.correct.toLowerCase());
+            
+            if (strictlyFilteredHelpers.length === 0) {
+                helperContainer.innerHTML = `<span class="text-xs text-slate-400 italic">No extra context vocabulary needed for this challenge.</span>`;
+            } else {
+                strictlyFilteredHelpers.forEach(item => {
+                    const tooltipWrapper = document.createElement('div');
+                    tooltipWrapper.className = "tooltip-container relative inline-block";
+                    tooltipWrapper.onclick = (e) => { e.stopPropagation(); speakWord(item.word); };
+
+                    tooltipWrapper.innerHTML = `
+                        <button type="button" class="bg-white hover:bg-orange-50/55 text-slate-600 px-3 py-1.5 rounded-xl text-xs font-bold transition-all border border-stone-200 hover:border-orange-400 cursor-pointer shadow-sm flex items-center space-x-1.5 focus:outline-none">
+                            <span class="text-slate-800">${item.word}</span>
+                            <i class="fa-solid fa-volume-high text-[10px] text-slate-400"></i>
+                        </button>
+                        <div class="tooltip-reveal absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2.5 z-50 pointer-events-none w-max max-w-xs">
+                            <div class="bg-slate-900 text-white text-[11px] rounded-xl p-3 shadow-2xl flex flex-col space-y-1.5 border border-slate-800">
+                                <span class="font-mono text-amber-300 font-bold tracking-wide block text-center">${item.ipa}</span>
+                                <div class="flex flex-col space-y-1">
+                                    <div class="flex items-center space-x-1 justify-center">
+                                        <span class="bg-slate-800 text-orange-300 px-1.5 py-0.5 rounded text-[9px] font-bold border border-slate-700">cn</span>
+                                        <span class="text-slate-200 font-medium text-center">${item.cn}</span>
+                                    </div>
+                                    <div class="flex items-center space-x-1 justify-center mt-1">
+                                        <span class="bg-slate-800 text-orange-300 px-1.5 py-0.5 rounded text-[9px] font-bold border border-slate-700">jp</span>
+                                        <span class="text-slate-200 font-medium text-center">${item.jp}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-2.5 h-2.5 bg-slate-900 border-r border-b border-slate-800 transform rotate-45 -mt-1.5 mx-auto"></div>
+                        </div>
+                    `;
+                    helperContainer.appendChild(tooltipWrapper);
+                });
+            }
+
+            const optContainer = document.getElementById('options-container');
+            optContainer.innerHTML = '';
+            const labels = ["A", "B", "C", "D"];
+            
+            q.shuffledOptions.forEach((opt, oIdx) => {
+                let optClass = "w-full text-left p-4 rounded-xl border-2 font-bold text-sm flex items-center justify-between transition-all ";
+                let disabledStr = "";
+                let iconStr = `<span class="w-6 h-6 rounded-lg bg-stone-150 text-slate-500 font-bold text-xs flex items-center justify-center border border-stone-200 group-hover:bg-orange-50 group-hover:text-slate-800 transition-colors">${labels[oIdx]}</span>`;
+
+                if (userAnswers[idx] !== undefined) {
+                    disabledStr = "disabled";
+                    if (opt === q.correct) {
+                        optClass += "bg-emerald-50/60 border-emerald-500 text-emerald-800 font-black shadow-inner";
+                        iconStr = `<div class="w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-md"><i class="fa-solid fa-check text-xs"></i></div>`;
+                    } else if (userAnswers[idx] === opt) {
+                        optClass += "bg-rose-50/60 border-rose-400 text-rose-800 font-black shadow-inner";
+                        iconStr = `<div class="w-6 h-6 bg-rose-500 text-white rounded-full flex items-center justify-center shadow-md"><i class="fa-solid fa-xmark text-xs"></i></div>`;
+                    } else {
+                        optClass += "bg-stone-50/40 border-stone-150 text-slate-400";
+                    }
+                } else {
+                    optClass += "bg-white border-stone-200 text-slate-600 hover:border-orange-400 hover:bg-orange-50/30 group cursor-pointer shadow-sm";
+                }
+
+                optContainer.innerHTML += `
+                    <button onclick="submitAnswer('${opt}')" class="${optClass}" ${disabledStr}>
+                        <div class="flex items-center space-x-3">
+                            ${iconStr}
+                            <span>${opt}</span>
+                        </div>
+                    </button>
+                `;
+            });
+
+            document.getElementById('prev-btn').disabled = (idx === 0);
+            document.getElementById('prev-btn').className = (idx === 0) ? "text-stone-400 font-bold flex items-center space-x-2 px-4 py-2.5 cursor-not-allowed" : "text-slate-500 hover:text-slate-850 font-bold flex items-center space-x-2 px-4 py-2.5 rounded-xl hover:bg-stone-100 transition-all";
+
+            const nextBtnText = document.getElementById('next-btn-text');
+            if (idx === activeQuestionsList.length - 1) {
+                nextBtnText.innerText = "View Report";
+            } else {
+                nextBtnText.innerText = "Next";
+            }
+
+            const analysisPanel = document.getElementById('analysis-panel');
+            if (userAnswers[idx] !== undefined) {
+                analysisPanel.classList.remove('hidden');
+                const isCorrect = userAnswers[idx] === q.correct;
+                const badgeIcon = document.getElementById('analysis-badge-icon');
+                const statusTitle = document.getElementById('analysis-status');
+                
+                if (isCorrect) {
+                    badgeIcon.className = "w-10 h-10 rounded-full flex items-center justify-center text-white shrink-0 mt-0.5 bg-emerald-500 shadow-md";
+                    badgeIcon.innerHTML = `<i class="fa-solid fa-circle-check text-lg"></i>`;
+                    statusTitle.innerText = "Correct Choice Verified!";
+                    statusTitle.className = "text-base font-black text-emerald-600";
+                } else {
+                    badgeIcon.className = "w-10 h-10 rounded-full flex items-center justify-center text-white shrink-0 mt-0.5 bg-rose-500 shadow-md animate-bounce";
+                    badgeIcon.innerHTML = `<i class="fa-solid fa-sun text-lg text-yellow-200"></i>`;
+                    statusTitle.innerText = `Incorrect Choice. Verified Answer: [ ${q.correct} ]`;
+                    statusTitle.className = "text-base font-black text-rose-700";
+                }
+
+                document.getElementById('analysis-translation').innerHTML = `<strong>真题语境翻译：</strong> ${q.chinese}`;
+                document.getElementById('analysis-correct-detail').innerText = q.rationales[q.correct];
+
+                const wrongDetailContainer = document.getElementById('analysis-wrong-detail');
+                wrongDetailContainer.innerHTML = '';
+                
+                q.shuffledOptions.forEach(opt => {
+                    if (opt !== q.correct) {
+                        const wordObj = vocabBank.find(v => v.word === opt);
+                        const posTag = wordObj ? wordObj.pos : (q.pos.includes('/') ? "词性干扰" : q.pos);
+                        wrongDetailContainer.innerHTML += `
+                            <div class="p-2.5 rounded-lg border border-stone-200 bg-white shadow-sm">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="font-bold text-slate-800">${opt}</span>
+                                    <span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded bg-stone-100 text-slate-500 uppercase tracking-wider">${posTag}</span>
+                                </div>
+                                <p class="text-slate-600 leading-normal text-[11px]">${q.rationales[opt] || 'No extra contextual explanation.'}</p>
+                            </div>
+                        `;
+                    }
+                });
+            } else {
+                analysisPanel.classList.add('hidden');
+            }
+
+            renderStatusTracker();
+        }
+
+        function submitAnswer(chosenOpt) {
+            if (userAnswers[curIndex] !== undefined) return;
+            userAnswers[curIndex] = chosenOpt;
+            loadQuestion(curIndex);
+        }
+
+        function prevQuestion() {
+            if (curIndex > 0) {
+                curIndex--;
+                loadQuestion(curIndex);
+            }
+        }
+
+        function nextQuestion() {
+            if (userAnswers[curIndex] === undefined) {
+                triggerShake();
+                showToast("Please make a selection first!");
+                return;
+            }
+            if (curIndex < activeQuestionsList.length - 1) {
+                curIndex++;
+                loadQuestion(curIndex);
+            } else {
+                showResultsSummary();
+            }
+        }
+
+        function triggerShake() {
+            const card = document.getElementById('main-question-card');
+            card.classList.add('shake');
+            setTimeout(() => card.classList.remove('shake'), 400);
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('inline-toast');
+            document.getElementById('inline-toast-message').innerText = msg;
+            toast.classList.remove('hidden');
+        }
+
+        function hideToast() {
+            document.getElementById('inline-toast').classList.add('hidden');
+        }
+
+        function setSpeed(val) {
+            currentRate = val;
+            ["0.5", "0.75", "1.0"].forEach(s => {
+                const btn = document.getElementById(`speed-${s}`);
+                if (parseFloat(s) === val) {
+                    btn.className = "px-2.5 py-1 rounded-lg bg-orange-600 text-white font-bold transition-colors shadow-sm";
+                } else {
+                    btn.className = "px-2.5 py-1 rounded-lg text-slate-500 hover:bg-stone-100 font-semibold transition-colors";
+                }
+            });
+        }
+
+        function speakSentence() {
+            if (!('speechSynthesis' in window)) return;
+            try {
+                window.speechSynthesis.cancel();
+                const q = activeQuestionsList[curIndex];
+                const cleanText = q.sentence.replace("______", q.correct);
+                const msg = new SpeechSynthesisUtterance(cleanText);
+                msg.lang = 'en-US';
+                msg.rate = currentRate;
+                window.speechSynthesis.speak(msg);
+            } catch(e) {
+                console.error("TTS Speech engine failure", e);
+            }
+        }
+
+        function speakWord(wordStr) {
+            if (!('speechSynthesis' in window)) return;
+            try {
+                window.speechSynthesis.cancel();
+                const msg = new SpeechSynthesisUtterance(wordStr);
+                msg.lang = 'en-US';
+                msg.rate = currentRate;
+                window.speechSynthesis.speak(msg);
+            } catch(e) {
+                console.error("TTS Word engine failure", e);
+            }
+        }
+
+        function showResultsSummary() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('top-progress-container').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+
+            let correctCount = 0;
+            let missedQuestions = [];
+            let breakdown = { easy: { total: 0, correct: 0 }, medium: { total: 0, correct: 0 }, hard: { total: 0, correct: 0 } };
+
+            activeQuestionsList.forEach((q, idx) => {
+                const lvl = q.difficultyLevel;
+                breakdown[lvl].total++;
+                if (userAnswers[idx] === q.correct) {
+                    correctCount++;
+                    breakdown[lvl].correct++;
+                } else {
+                    missedQuestions.push(q);
+                }
+            });
+
+            const totalQuestions = activeQuestionsList.length;
+            const accuracyPct = Math.round((correctCount / totalQuestions) * 100);
+
+            document.getElementById('result-accuracy').innerText = `${accuracyPct}%`;
+            document.getElementById('result-score').innerText = `${correctCount} / ${totalQuestions}`;
+
+            ["easy", "medium", "hard"].forEach(lvl => {
+                const data = breakdown[lvl];
+                const bar = document.getElementById(`${lvl}-bar`);
+                const ratio = document.getElementById(`${lvl}-ratio`);
+                if (data.total === 0) {
+                    bar.style.width = '0%';
+                    ratio.innerText = '0/0 (0%)';
+                } else {
+                    const pct = Math.round((data.correct / data.total) * 100);
+                    bar.style.width = `${pct}%`;
+                    ratio.innerText = `${data.correct}/${data.total} (${pct}%)`;
+                }
+            });
+
+            const missedListContainer = document.getElementById('error-words-list');
+            missedListContainer.innerHTML = '';
+            const retryBtn = document.getElementById('retry-errors-btn');
+
+            if (missedQuestions.length > 0) {
+                retryBtn.classList.remove('hidden');
+                missedQuestions.forEach(q => {
+                    const originalIndex = activeQuestionsList.indexOf(q);
+                    const wrongAns = userAnswers[originalIndex];
+                    
+                    missedListContainer.innerHTML += `
+                        <div class="bg-[#FAF9F5] border border-stone-200/80 rounded-2xl p-4 space-y-2.5 shadow-sm">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold bg-rose-50 text-rose-800 px-2.5 py-1 rounded-lg border border-rose-200/60">Target: ${q.targetWord}</span>
+                                <span class="text-xs text-slate-500 font-medium font-mono">Difficulty: ${q.difficulty}</span>
+                            </div>
+                            <p class="text-sm font-semibold text-slate-800 leading-relaxed">${q.sentence.replace('______', `<span class="text-emerald-600 underline font-extrabold">${q.correct}</span>`)}</p>
+                            <div class="text-xs grid grid-cols-1 sm:grid-cols-2 gap-2 bg-white p-3 rounded-xl border border-stone-200/60">
+                                <div><span class="text-slate-400 font-medium">Your Choice:</span> <span class="text-rose-600 font-bold">${wrongAns}</span></div>
+                                <div><span class="text-slate-400 font-medium">Correct Answer:</span> <span class="text-emerald-600 font-bold">${q.correct}</span></div>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-normal bg-white p-3 rounded-xl border border-stone-200/60 font-medium"><strong class="text-orange-600">鬼特训详解:</strong> ${q.rationales[q.correct]}</p>
+                        </div>
+                    `;
+                });
+            } else {
+                retryBtn.classList.add('hidden');
+                missedListContainer.innerHTML = `
+                    <div class="text-center py-8 text-slate-400">
+                        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 border border-emerald-100 shadow-inner">
+                            <i class="fa-solid fa-trophy text-xl"></i>
+                        </div>
+                        <p class="text-sm font-bold text-slate-700">Perfect Masterclass Clearance!</p>
+                        <p class="text-xs text-slate-400 mt-1">Excellent work! You have perfectly cleared this strategic TOEIC vocabulary set!</p>
+                    </div>
+                `;
+            }
+        }
+
+        function restartQuiz() {
+            initQuizEngine();
+            startQuiz();
+        }
+
+        function retryMissed() {
+            let missedQuestions = [];
+            activeQuestionsList.forEach((q, idx) => {
+                if (userAnswers[idx] !== q.correct) {
+                    missedQuestions.push(q);
+                }
+            });
+
+            if (missedQuestions.length > 0) {
+                activeQuestionsList = shuffleArray([...missedQuestions]).map(q => {
+                    return {
+                        ...q,
+                        shuffledOptions: shuffleArray([...q.options])
+                    };
+                });
+                startQuiz();
+            }
+        }
+
+        function goHome() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('top-progress-container').classList.add('hidden');
+            document.getElementById('cover-screen').classList.remove('hidden');
+            initPreview();
+        }
+    </script>
+</body>
+</html>
