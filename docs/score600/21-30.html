@@ -120,10 +120,10 @@
             <!-- Tab Controls -->
             <div class="flex justify-center border border-stone-200/80 mb-6 p-1 bg-stone-50 rounded-2xl max-w-md mx-auto relative z-10">
                 <button id="btn-tab-core" onclick="switchPreviewTab('core')" class="flex-1 py-2.5 text-xs font-bold rounded-xl transition-all bg-white text-slate-900 shadow-sm border border-stone-200/60">
-                    Core Target Vocab (<span id="count-core-badge">10</span>)
+                    Core Target Vocab (<span id="count-core-badge">0</span>)
                 </button>
                 <button id="btn-tab-helper" onclick="switchPreviewTab('helper')" class="flex-1 py-2.5 text-xs font-bold rounded-xl transition-all text-slate-500 hover:text-slate-800">
-                    Context Background Words (<span id="count-helper-badge">18</span>)
+                    Context Background Words (<span id="count-helper-badge">0</span>)
                 </button>
             </div>
 
@@ -441,26 +441,52 @@
             }
         ];
 
-        // Background context helper vocabulary (No clues to answer key)
+        // All 44 contextual background words extracted across the entire set of 18 questions without hard limits.
         const helperVocabBank = [
             { word: "technician", pos: "名", ipa: "/tekˈnɪʃn/", cn: "技术员", jp: "技術者" },
             { word: "machinery", pos: "名", ipa: "/məˈʃiːnəri/", cn: "机器，机械（总称）", jp: "機械類" },
+            { word: "fascinating", pos: "形", ipa: "/ˈfæsɪneɪtɪŋ/", cn: "迷人的，极好的", jp: "魅力的な" },
             { word: "renewable", pos: "形", ipa: "/rɪˈnjuːəbl/", cn: "可再生的", jp: "再生可能な" },
             { word: "agency", pos: "名", ipa: "/ˈeɪdʒənsi/", cn: "代理机构", jp: "代理店" },
             { word: "protective", pos: "形", ipa: "/prəˈtektɪv/", cn: "防护的", jp: "保護の" },
+            { word: "personnel", pos: "名", ipa: "/ˌpɜːsəˈnel/", cn: "全体人员，人事部门", jp: "職員、人事部" },
             { word: "designated", pos: "形", ipa: "/ˈdezɪɡneɪtɪd/", cn: "指定的", jp: "指定された" },
             { word: "strategy", pos: "名", ipa: "/ˈstrætədʒi/", cn: "策略，战略", jp: "戦略" },
+            { word: "corporation", pos: "名", ipa: "/ˌkɔːpəˈreɪʃn/", cn: "公司，企业", jp: "企業、法人" },
+            { word: "revenue", pos: "名", ipa: "/ˈrevənjuː/", cn: "收入，收益", jp: "収益、収入" },
             { word: "resignation", pos: "名", ipa: "/ˌrezɪɡˈneɪʃn/", cn: "辞职", jp: "辞任" },
+            { word: "division", pos: "名", ipa: "/dɪˈvɪʒn/", cn: "部门", jp: "部門" },
             { word: "logistics", pos: "名", ipa: "/ləˈdʒɪstɪks/", cn: "物流", jp: "物流" },
             { word: "fragile", pos: "形", ipa: "/ˈfrædʒaɪl/", cn: "易碎的", jp: "壊れやすい" },
             { word: "expedited", pos: "形", ipa: "/ˈekspədaɪtɪd/", cn: "加急的", jp: "迅速な" },
             { word: "analyst", pos: "名", ipa: "/ˈænəlɪst/", cn: "分析师", jp: "アナリスト" },
+            { word: "quarter", pos: "名", ipa: "/ˈkwɔːtə(r)/", cn: "季度", jp: "四半期" },
+            { word: "approve", pos: "動", ipa: "/əˈpruːv/", cn: "批准，赞成", jp: "承認する" },
+            { word: "revised", pos: "形", ipa: "/rɪˈvaɪzd/", cn: "修订过的", jp: "改訂された" },
+            { word: "budget", pos: "名", ipa: "/ˈbʌdʒɪt/", cn: "预算", jp: "予算" },
+            { word: "proposal", pos: "名", ipa: "/prəˈpəʊzl/", cn: "提议，建议", jp: "提案" },
+            { word: "fiscal", pos: "形", ipa: "/ˈfɪskl/", cn: "财政的，会计的", jp: "会計の、財政の" },
+            { word: "significantly", pos: "副", ipa: "/sɪɡˈnɪfɪkəntli/", cn: "显著地", jp: "著しく" },
+            { word: "disappointing", pos: "形", ipa: "/ˌdɪsəˈpɔɪntɪŋ/", cn: "令人失望的", jp: "期待外れの" },
             { word: "earnings", pos: "名", ipa: "/ˈɜːnɪŋz/", cn: "收益，利润", jp: "収益" },
+            { word: "inspect", pos: "動", ipa: "/ɪnˈspekt/", cn: "检查，视察", jp: "検査する" },
+            { word: "entire", pos: "形", ipa: "/ɪnˈtaɪə(r)/", cn: "整个的，全部的", jp: "全体の" },
+            { word: "raw", pos: "形", ipa: "/rɔː/", cn: "未加工的，生的", jp: "生の、未加工の" },
+            { word: "immediately", pos: "副", ipa: "/ɪˈmiːdiətli/", cn: "立即，马上", jp: "直ちに" },
+            { word: "warehouse", pos: "名", ipa: "/ˈweəhaʊs/", cn: "仓库", jp: "倉庫" },
+            { word: "compete", pos: "動", ipa: "/kəmˈpiːt/", cn: "竞争", jp: "競争する" },
+            { word: "multinational", pos: "形", ipa: "/ˌmʌltiˈnæʃnəl/", cn: "跨国的", jp: "多国籍の" },
             { word: "compliance", pos: "名", ipa: "/kəmˈplaɪəns/", cn: "遵守，合规", jp: "コンプライアンス" },
+            { word: "regulation", pos: "名", ipa: "/ˌreɡjuˈleɪʃn/", cn: "规章，制度", jp: "規則、規制" },
+            { word: "manual", pos: "名", ipa: "/ˈmænjuəl/", cn: "手册，指南", jp: "マニュアル" },
             { word: "clearance", pos: "名", ipa: "/ˈklɪərəns/", cn: "清关，许可", jp: "通関" },
+            { word: "component", pos: "名", ipa: "/kəmˈpəʊnənt/", cn: "零件，组成部分", jp: "部品、成分" },
             { word: "postpone", pos: "動", ipa: "/pəˈspəʊn/", cn: "推迟，延期", jp: "延期する" },
+            { word: "announce", pos: "動", ipa: "/əˈnaʊns/", cn: "宣布，通知", jp: "発表する" },
             { word: "flagship", pos: "名", ipa: "/ˈflæɡʃɪp/", cn: "旗舰，王牌", jp: "旗艦" },
-            { word: "packaging", pos: "名", ipa: "/ˈpækɪdʒɪŋ/", cn: "包装", jp: "包装" }
+            { word: "packaging", pos: "名", ipa: "/ˈpækɪdʒɪŋ/", cn: "包装", jp: "包装" },
+            { word: "surge", pos: "動", ipa: "/sɜːdʒ/", cn: "激增，猛增", jp: "急増する" },
+            { word: "dramatically", pos: "副", ipa: "/drəˈmætɪkli/", cn: "戏剧性地，剧烈地", jp: "劇的に" }
         ];
 
         // 18 High-quality Part 5 TOEIC training questions with 100% closed-loop distractors inside vocab/relations.
@@ -503,6 +529,7 @@
                     "equipment": "错误。名词“设备”，不可数名词，前面不能加不定冠词 a。"
                 },
                 vocabHelper: [
+                    { word: "fascinating", ipa: "/ˈfæsɪneɪtɪŋ/", cn: "迷人的，极好的", jp: "魅力的な" },
                     { word: "renewable", ipa: "/rɪˈnjuːəbl/", cn: "可再生的", jp: "再生可能な" }
                 ]
             },
@@ -562,6 +589,7 @@
                 },
                 vocabHelper: [
                     { word: "protective", ipa: "/prəˈtektɪv/", cn: "防护的", jp: "保護の" },
+                    { word: "personnel", ipa: "/ˌpɜːsəˈnel/", cn: "全体人员，人事部门", jp: "職員、人事部" },
                     { word: "designated", ipa: "/ˈdezɪɡneɪtɪd/", cn: "指定的", jp: "指定された" }
                 ]
             },
@@ -582,7 +610,9 @@
                     "recently": "错误。副词“最近”，不能在 helped sb 之后充当动词原形（宾语补足语）。"
                 },
                 vocabHelper: [
-                    { word: "strategy", ipa: "/ˈstrætədʒi/", cn: "策略，战略", jp: "戦略" }
+                    { word: "strategy", ipa: "/ˈstrætədʒi/", cn: "策略，战略", jp: "戦略" },
+                    { word: "corporation", ipa: "/ˌkɔːpəˈreɪʃn/", cn: "公司，企业", jp: "企業、法人" },
+                    { word: "revenue", ipa: "/ˈrevənjuː/", cn: "收入，收益", jp: "収益、収入" }
                 ]
             },
             {
@@ -602,7 +632,8 @@
                     "equipment": "错误。不可数名词，不能放在 an unexpected job 之后构成搭配。"
                 },
                 vocabHelper: [
-                    { word: "resignation", ipa: "/ˌrezɪɡˈneɪʃn/", cn: "辞职", jp: "辞任" }
+                    { word: "resignation", ipa: "/ˌrezɪɡˈneɪʃn/", cn: "辞职", jp: "辞任" },
+                    { word: "division", ipa: "/dɪˈvɪʒn/", cn: "部门", jp: "部門" }
                 ]
             },
             {
@@ -644,7 +675,8 @@
                     "increase": "错误。动词“增加”，无法说“增加央行去做某事”。"
                 },
                 vocabHelper: [
-                    { word: "analyst", ipa: "/ˈænəlɪst/", cn: "分析师", jp: "アナリスト" }
+                    { word: "analyst", ipa: "/ˈænəlɪst/", cn: "分析师", jp: "アナリスト" },
+                    { word: "quarter", ipa: "/ˈkwɔːtə(r)/", cn: "季度", jp: "四半期" }
                 ]
             },
             {
@@ -664,7 +696,11 @@
                     "recent": "错误。形容词“最近的”，不能修饰动词。"
                 },
                 vocabHelper: [
-                    { word: "earnings", ipa: "/ˈɜːnɪŋz/", cn: "收益", jp: "収益" } 
+                    { word: "approve", ipa: "/əˈpruːv/", cn: "批准，赞成", jp: "承認する" },
+                    { word: "revised", ipa: "/rɪˈvaɪzd/", cn: "修订过的", jp: "改訂された" },
+                    { word: "budget", ipa: "/ˈbʌdʒɪt/", cn: "预算", jp: "予算" },
+                    { word: "proposal", ipa: "/prəˈpəʊzl/", cn: "提议，建议", jp: "提案" },
+                    { word: "fiscal", ipa: "/ˈfɪskl/", cn: "财政的，会计的", jp: "会計の、財政の" }
                 ]
             },
             // Part 2: Word Family Distractors / Close Relations (Medium to Hard)
@@ -685,7 +721,9 @@
                     "article": "错误。名词“文章”，article budget 并非标准商业词汇。"
                 },
                 vocabHelper: [
-                    { word: "earnings", ipa: "/ˈɜːnɪŋz/", cn: "收益", jp: "収益" }
+                    { word: "significantly", ipa: "/sɪɡˈnɪfɪkəntli/", cn: "显著地", jp: "著しく" },
+                    { word: "disappointing", ipa: "/ˌdɪsəˈpɔɪntɪŋ/", cn: "令人失望的", jp: "期待外れの" },
+                    { word: "earnings", ipa: "/ˈɜːnɪŋz/", cn: "收益，利润", jp: "収益" }
                 ]
             },
             {
@@ -704,7 +742,13 @@
                     "shipping": "错误。名词“运输（过程）”或动词ing，无法进行物理实体检查。",
                     "equipment": "错误。名词“设备”，题干说的是 raw materials（原材料），与设备是两类不同的物资，语义不符。"
                 },
-                vocabHelper: []
+                vocabHelper: [
+                    { word: "inspect", ipa: "/ɪnˈspekt/", cn: "检查，视察", jp: "検査する" },
+                    { word: "entire", ipa: "/ɪnˈtaɪə(r)/", cn: "整个的，全部的", jp: "全体の" },
+                    { word: "raw", ipa: "/rɔː/", cn: "未加工的，生的", jp: "生の、未加工の" },
+                    { word: "immediately", ipa: "/ɪˈmiːdiətli/", cn: "立即，马上", jp: "直ちに" },
+                    { word: "warehouse", ipa: "/ˈweəhaʊs/", cn: "仓库", jp: "倉庫" }
+                ]
             },
             {
                 id: "q_increase_2",
@@ -722,7 +766,10 @@
                     "increased": "错误。过去分词/形容词“增加了的”，不能修饰形容词 difficult。",
                     "recently": "错误。副词“最近”，虽然语法可行（最近变得困难），但“越来越困难（increasingly difficult）”是高度固定的连用词组。"
                 },
-                vocabHelper: []
+                vocabHelper: [
+                    { word: "compete", ipa: "/kəmˈpiːt/", cn: "竞争", jp: "競争する" },
+                    { word: "multinational", ipa: "/ˌmʌltiˈnæʃnəl/", cn: "跨国的", jp: "多国籍の" }
+                ]
             },
             {
                 id: "q_update_2",
@@ -741,7 +788,9 @@
                     "opened": "错误。形容词/过去分词“开着的”，手册保持“打开状态”无法保证安全合规。"
                 },
                 vocabHelper: [
-                    { word: "compliance", ipa: "/kəmˈplaɪəns/", cn: "遵守，合规", jp: "コンプライアンス" }
+                    { word: "compliance", ipa: "/kəmˈplaɪəns/", cn: "遵守，合规", jp: "コンプライアンス" },
+                    { word: "regulation", ipa: "/ˌreɡjuˈleɪʃn/", cn: "规章，制度", jp: "規則、規制" },
+                    { word: "manual", ipa: "/ˈmænjuəl/", cn: "手册，指南", jp: "マニュアル" }
                 ]
             },
             {
@@ -762,6 +811,7 @@
                 },
                 vocabHelper: [
                     { word: "clearance", ipa: "/ˈklɪərəns/", cn: "清关，许可", jp: "通関" },
+                    { word: "component", ipa: "/kəmˈpəʊnənt/", cn: "零件，组成部分", jp: "部品、成分" },
                     { word: "postpone", ipa: "/pəˈspəʊn/", cn: "推迟，延期", jp: "延期する" }
                 ]
             },
@@ -782,6 +832,7 @@
                     "advertiser": "错误。名词“广告商”，在报纸上投放“广告商”语义荒谬。"
                 },
                 vocabHelper: [
+                    { word: "announce", ipa: "/əˈnaʊns/", cn: "宣布，通知", jp: "発表する" },
                     { word: "flagship", ipa: "/ˈflæɡʃɪp/", cn: "旗舰，王牌", jp: "旗艦" }
                 ]
             },
@@ -802,7 +853,9 @@
                     "unexpected": "错误。形容词“意外的”，在“意外的几个月里”，语义极不通顺。"
                 },
                 vocabHelper: [
-                    { word: "packaging", ipa: "/ˈpækɪdʒɪŋ/", cn: "包装", jp: "包装" }
+                    { word: "packaging", ipa: "/ˈpækɪdʒɪŋ/", cn: "包装", jp: "包装" },
+                    { word: "surge", ipa: "/sɜːdʒ/", cn: "激增，猛增", jp: "急増する" },
+                    { word: "dramatically", ipa: "/drəˈmætɪkli/", cn: "戏剧性地，剧烈地", jp: "劇的に" }
                 ]
             },
             {
@@ -821,7 +874,11 @@
                     "repair": "错误。动词“修理”，搭配介词 with 意为“用无线系统去修理会议室”，逻辑荒谬。",
                     "update": "错误。动词“更新”，虽然可以说 update A with B，但在添置硬件设施时，equip（配备）是专属的准确用词。"
                 },
-                vocabHelper: []
+                vocabHelper: [
+                    { word: "management", pos: "名", ipa: "/ˈmænɪdʒmənt/", cn: "管理层", jp: "経営陣" },
+                    { word: "conference", pos: "名", ipa: "/ˈkɒnfərəns/", cn: "会议", jp: "会議" },
+                    { word: "presentation", pos: "名", ipa: "/ˌpreznˈteɪʃn/", cn: "演示，展示", jp: "プレゼンテーション" }
+                ]
             }
         ];
 
@@ -856,33 +913,45 @@
                 vocabBank.forEach(v => {
                     const jpSpan = v.jp ? `<span class="bg-rose-50 text-rose-700 px-2 py-0.5 rounded text-[10px] font-bold border border-rose-100">jp</span> <span class="text-xs font-semibold text-rose-700 block">${v.jp}</span>` : '';
                     container.innerHTML += `
-                        <div onclick="speakWord('${v.word}')" class="bg-white hover:bg-gradient-to-tr hover:from-orange-50/10 hover:to-amber-50/10 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col justify-between group">
+                        <div onmouseenter="speakWord('${v.word}')" onclick="toggleReveal(this)" class="bg-white hover:bg-stone-50 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col group">
+                            <!-- Always visible top section -->
                             <div>
                                 <div class="flex items-center justify-between mb-1.5">
                                     <span class="text-base font-black text-slate-900 group-hover:text-orange-600 transition-colors">${v.word}</span>
                                     <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-stone-100 text-slate-500 uppercase tracking-wider">${v.pos}</span>
                                 </div>
-                                <div class="text-xs text-slate-400 font-mono mb-2">${v.ipa}</div>
-                                <div class="space-y-1 mb-2">
-                                    <div class="flex items-center space-x-1.5">
-                                        <span class="bg-orange-50 text-orange-700 px-2 py-0.5 rounded text-[10px] font-bold border border-orange-100">cn</span>
-                                        <span class="text-xs font-bold text-slate-700 block">${v.cn}</span>
-                                    </div>
-                                    <div class="flex items-center space-x-1.5 mt-1.5">
-                                        ${jpSpan}
-                                    </div>
+                                <div class="text-xs text-slate-400 font-mono mb-3">${v.ipa}</div>
+                            </div>
+                            
+                            <!-- Reveal prompt -->
+                            <div class="reveal-prompt text-[10px] text-slate-400/80 italic text-center bg-stone-50 rounded-lg py-1.5 border border-stone-100 transition-all group-hover:bg-orange-50 group-hover:text-orange-600 group-hover:border-orange-100 mb-3">
+                                <i class="fa-solid fa-hand-pointer mr-1 animate-pulse"></i> Hover to listen, Click to reveal translation
+                            </div>
+
+                            <!-- Hidden translation section -->
+                            <div class="reveal-content hidden space-y-1 mb-3 bg-stone-50/50 p-2 rounded-xl border border-stone-100">
+                                <div class="flex items-center space-x-1.5">
+                                    <span class="bg-orange-50 text-orange-700 px-2 py-0.5 rounded text-[10px] font-bold border border-orange-100">cn</span>
+                                    <span class="text-xs font-bold text-slate-700 block">${v.cn}</span>
                                 </div>
-                                <div class="text-[11px] text-slate-500 mt-2 border-t border-stone-100 pt-2">
+                                <div class="flex items-center space-x-1.5 mt-1.5">
+                                    ${jpSpan}
+                                </div>
+                            </div>
+
+                            <!-- Always visible bottom section -->
+                            <div class="mt-auto">
+                                <div class="text-[11px] text-slate-500 border-t border-stone-100 pt-2">
                                     <span class="font-bold text-slate-400 text-[9px] uppercase block mb-0.5 font-mono">Word Family:</span>
                                     <span class="font-medium text-slate-600">${v.family}</span>
                                 </div>
-                            </div>
-                            <div class="border-t border-stone-100 pt-2 mt-2">
-                                <div class="bg-orange-50/40 p-2.5 rounded-lg border border-orange-100 text-[10px] text-orange-950 font-bold mb-2 leading-relaxed">
-                                    <span class="font-black uppercase text-[9px] text-orange-700 block mb-0.5"><i class="fa-solid fa-fire text-[8px] mr-1"></i>TIPS:</span>
-                                    ${v.tips}
+                                <div class="border-t border-stone-100 pt-2 mt-2">
+                                    <div class="bg-orange-50/40 p-2.5 rounded-lg border border-orange-100 text-[10px] text-orange-950 font-bold mb-2 leading-relaxed">
+                                        <span class="font-black uppercase text-[9px] text-orange-700 block mb-0.5"><i class="fa-solid fa-fire text-[8px] mr-1"></i>TIPS:</span>
+                                        ${v.tips}
+                                    </div>
+                                    <p class="text-[11px] text-slate-500 leading-relaxed font-medium italic">“ ${v.desc} ”</p>
                                 </div>
-                                <p class="text-[11px] text-slate-500 leading-relaxed font-medium italic">“ ${v.desc} ”</p>
                             </div>
                         </div>
                     `;
@@ -893,22 +962,27 @@
                 
                 helperVocabBank.forEach(v => {
                     container.innerHTML += `
-                        <div onclick="speakWord('${v.word}')" class="bg-white hover:bg-stone-50 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col justify-between group">
+                        <div onmouseenter="speakWord('${v.word}')" onclick="toggleReveal(this)" class="bg-white hover:bg-stone-50 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col group">
                             <div>
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-base font-black text-slate-900 transition-colors">${v.word}</span>
+                                    <span class="text-base font-black text-slate-900 group-hover:text-orange-600 transition-colors">${v.word}</span>
                                     <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-stone-100 text-slate-500 uppercase tracking-wider">${v.pos}</span>
                                 </div>
-                                <div class="text-xs text-slate-400 font-mono mb-2">${v.ipa}</div>
-                                <div class="space-y-1.5">
-                                    <div class="flex items-center space-x-1.5">
-                                        <span class="bg-stone-100 text-slate-600 px-2 py-0.5 rounded text-[10px] font-bold border border-stone-200">cn</span>
-                                        <span class="text-xs font-bold text-slate-700 block">${v.cn}</span>
-                                    </div>
-                                    <div class="flex items-center space-x-1.5 mt-1.5">
-                                        <span class="bg-stone-100 text-slate-600 px-2 py-0.5 rounded text-[10px] font-bold border border-stone-200">jp</span>
-                                        <span class="text-xs font-semibold text-slate-700 block">${v.jp}</span>
-                                    </div>
+                                <div class="text-xs text-slate-400 font-mono">${v.ipa}</div>
+                            </div>
+
+                            <div class="reveal-prompt text-[10px] text-slate-400/80 italic mt-3 text-center bg-stone-50 rounded-lg py-1.5 border border-stone-100 transition-all group-hover:bg-orange-50 group-hover:text-orange-600 group-hover:border-orange-100">
+                                <i class="fa-solid fa-hand-pointer mr-1 animate-pulse"></i> Hover to listen, Click to reveal
+                            </div>
+
+                            <div class="reveal-content hidden space-y-1.5 mt-3 pt-3 border-t border-stone-100">
+                                <div class="flex items-center space-x-1.5">
+                                    <span class="bg-stone-100 text-slate-600 px-2 py-0.5 rounded text-[10px] font-bold border border-stone-200">cn</span>
+                                    <span class="text-xs font-bold text-slate-700 block">${v.cn}</span>
+                                </div>
+                                <div class="flex items-center space-x-1.5 mt-1.5">
+                                    <span class="bg-stone-100 text-slate-600 px-2 py-0.5 rounded text-[10px] font-bold border border-stone-200">jp</span>
+                                    <span class="text-xs font-semibold text-slate-700 block">${v.jp}</span>
                                 </div>
                             </div>
                         </div>
@@ -1215,6 +1289,28 @@
                 window.speechSynthesis.speak(msg);
             } catch(e) {
                 console.error("TTS Word engine failure", e);
+            }
+        }
+
+        function toggleReveal(el) {
+            const transDiv = el.querySelector('.reveal-content');
+            const promptDiv = el.querySelector('.reveal-prompt');
+
+            if (!transDiv || !promptDiv) return;
+
+            // 判断当前是否处于折叠状态（包含 hidden 类）
+            const isHidden = transDiv.classList.contains('hidden');
+
+            if (isHidden) {
+                // 当前是折叠状态，执行展开：隐藏提示，显示内容
+                transDiv.classList.remove('hidden');
+                transDiv.classList.add('fade-in');
+                promptDiv.classList.add('hidden');
+            } else {
+                // 当前是展开状态，执行收起：显示提示，隐藏内容
+                transDiv.classList.add('hidden');
+                transDiv.classList.remove('fade-in');
+                promptDiv.classList.remove('hidden');
             }
         }
 
