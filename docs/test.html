@@ -4,15 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>南式TOEIC鬼特訓 - Part 5 Intelligent Interactive System</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- 1. 引入中央路径配置文件 -->
     <script src="config.js"></script>
     
-    <!-- 2. 智能URL参数动态吸纳器 -->
     <script>
         (function() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -39,7 +35,6 @@
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col antialiased">
 
-    <!-- TOP HEADER -->
     <header class="border-b border-[#EAE6D9] bg-[#FAF9F5]/90 backdrop-blur-md sticky top-0 z-40 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3" onclick="window.location.href='index.html'" style="cursor:pointer">
@@ -52,14 +47,13 @@
                 </div>
             </div>
 
-            <!-- Global TTS Controls -->
             <div class="flex items-center space-x-4 bg-[#F3EFE3] px-3 py-1.5 rounded-xl border border-[#E1DBC9]">
                 <div class="flex items-center space-x-1">
                     <i data-lucide="volume-2" class="w-4 h-4 text-amber-600"></i>
-                    <span class="text-xs font-semibold text-slate-700">TOEIC 主流四国口音引擎</span>
+                    <span class="text-xs font-semibold text-slate-700">美音 TTS 发音引擎</span>
                 </div>
-                <select id="voiceSelect" class="bg-transparent text-xs text-slate-700 font-bold focus:outline-none max-w-[160px] cursor-pointer">
-                    <option value="auto">自动选择主流口音</option>
+                <select id="voiceSelect" class="bg-transparent text-xs text-slate-700 font-medium focus:outline-none max-w-[120px] cursor-pointer">
+                    <option value="auto">默认美音</option>
                 </select>
                 <div class="h-3 w-[1px] bg-[#E1DBC9]"></div>
                 <div class="flex items-center space-x-1">
@@ -70,10 +64,8 @@
         </div>
     </header>
 
-    <!-- MAIN BODY -->
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col gap-8">
         
-        <!-- DASHBOARD HERO STATS -->
         <section class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div class="bg-white p-5 rounded-2xl border border-[#EAE6D9] shadow-sm flex items-center justify-between">
                 <div>
@@ -113,7 +105,6 @@
             </div>
         </section>
 
-        <!-- APP TABS NAVIGATION -->
         <div class="border-b border-[#EAE6D9] flex space-x-1">
             <button onclick="switchTab('vocab')" id="tab-vocab" class="tab-btn px-5 py-3 font-semibold text-sm border-b-2 border-amber-500 text-amber-600 focus:outline-none transition-all flex items-center space-x-2">
                 <i data-lucide="award" class="w-4 h-4"></i>
@@ -133,7 +124,6 @@
             </button>
         </div>
 
-        <!-- TAB 1: CORE VOCAB DICTIONARY -->
         <div id="panel-vocab" class="tab-panel block space-y-6">
             <div class="bg-gradient-to-r from-amber-500/10 to-amber-600/5 p-6 rounded-2xl border border-amber-200/50 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                 <div class="space-y-1">
@@ -143,7 +133,7 @@
                     </h3>
                     <p class="text-xs text-slate-600 leading-relaxed">
                         1. <strong>常显场景语境：</strong> 核心词汇的托业真题商务例句现在【始终保持显示】，帮助在脑海中建立语境反射。<br>
-                        2. <strong>独立例句发音：</strong> 直接【点击例句区块】可以单独触发多国原声例句朗读，绝对不会误触折叠卡片。<br>
+                        2. <strong>独立例句发音：</strong> 直接【点击例句区块】可以单独触发高清美音例句朗读，绝对不会误触折叠卡片。<br>
                         3. <strong>点击卡片其它区域：</strong> 自动发音单词并【向下展开/折叠】对应的中日文翻译、派生关系和核心考点。
                     </p>
                 </div>
@@ -176,13 +166,17 @@
             </div>
         </div>
 
-        <!-- TAB 2: SMART TEST ENGINE (PART 5) -->
         <div id="panel-test" class="tab-panel hidden grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div class="lg:col-span-7 space-y-6">
-                <!-- Mode Controller -->
                 <div class="bg-white p-4 rounded-2xl border border-[#EAE6D9] flex flex-wrap items-center justify-between gap-4">
-                    <div class="flex items-center space-x-2">
-                        <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md uppercase tracking-wider">练习模式: 全真随机乱序 (Auto Shuffle)</span>
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md uppercase tracking-wider">全真随机乱序</span>
+                        <select id="diffFilterSelect" onchange="changeDifficultyFilter(this.value)" class="bg-[#FAF9F5] text-xs text-slate-700 font-bold px-2 py-1 rounded-lg border border-[#E1DBC9] focus:outline-none cursor-pointer transition-colors hover:border-amber-400">
+                            <option value="all">🔍 全部难度题型</option>
+                            <option value="简单">🟢 简单题型 (基础词性)</option>
+                            <option value="中等">🟡 中等题型 (商务搭配)</option>
+                            <option value="困难">🔴 困难题型 (高阶辨析)</option>
+                        </select>
                     </div>
                     <div class="flex items-center space-x-2">
                         <button onclick="prevQuestion()" class="w-8 h-8 rounded-lg bg-[#F3EFE3] flex items-center justify-center text-slate-600 hover:bg-[#EAE6D9] transition-all">
@@ -195,7 +189,6 @@
                     </div>
                 </div>
 
-                <!-- Arena Card -->
                 <div class="bg-white rounded-3xl border border-[#EAE6D9] shadow-sm p-6 md:p-8 space-y-6 relative overflow-hidden">
                     <div class="flex items-center justify-between">
                         <span id="q-category" class="text-[10px] font-black uppercase tracking-wider bg-amber-100 text-amber-700 px-2.5 py-1 rounded-full flex items-center">
@@ -215,7 +208,6 @@
                         <h3 class="text-xs font-bold text-slate-400 tracking-wider uppercase">TOEIC PART 5 - INCOMPLETE SENTENCE</h3>
                         <div id="q-stem" class="text-lg md:text-xl font-medium text-slate-800 leading-relaxed tracking-normal"></div>
                         
-                        <!-- 行内智能提示卡片 CONTAINER (完美压制白框防溢出) -->
                         <div id="q-hint-container" class="hidden bg-slate-900 text-white text-xs p-3 rounded-xl relative transition-all duration-200 shadow-lg"></div>
                     </div>
 
@@ -233,7 +225,6 @@
                 </div>
             </div>
 
-            <!-- Right Side Parsing Box -->
             <div class="lg:col-span-5">
                 <div class="bg-white rounded-3xl border border-[#EAE6D9] shadow-sm p-6 min-h-[400px] flex flex-col justify-between" id="analysis-panel">
                     <div class="space-y-6">
@@ -297,7 +288,6 @@
             </div>
         </div>
 
-        <!-- TAB 3: PERSONAL MISTAKES BOOK -->
         <div id="panel-mistakes" class="tab-panel hidden space-y-6">
             <div class="bg-white p-6 rounded-3xl border border-[#EAE6D9] shadow-sm space-y-4">
                 <div class="flex items-center justify-between flex-wrap gap-4">
@@ -318,7 +308,6 @@
             </div>
         </div>
 
-        <!-- TAB 4: LAYERED PERFORMANCE REPORT -->
         <div id="panel-report" class="tab-panel hidden grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div class="lg:col-span-4 space-y-6">
                 <div class="bg-white p-6 rounded-3xl border border-[#EAE6D9] shadow-sm text-center space-y-4 flex flex-col justify-center items-center">
@@ -410,13 +399,13 @@
         </div>
     </div>
 
-    <!-- ENGINE RUNTIME INTERACTIVES -->
     <script>
         let currentQuestions = []; let currentIndex = 0; let selectedOption = null; let answeredList = {}; 
         let favoritesList = JSON.parse(localStorage.getItem('toeic_ghost_favorites')) || [];
         let isMistakeOnlySession = false; let hoverSpeechEnabled = false;
         let synth = window.speechSynthesis; let selectedVoice = null;
         let lastHintWord = ""; 
+        let currentDifficultyFilter = "all"; // 💡 新增：全局难度过滤器状态
 
         function refreshIcons() { if (typeof lucide !== 'undefined') lucide.createIcons(); }
 
@@ -424,74 +413,51 @@
             initVocabTabs(); initTTSVoices(); shuffleCurrentQuestions(); loadQuestion(); updateDashboardStats(); refreshIcons();
         });
 
+        // 💡 升级：全自动动态过滤器，洗牌时融入难度分类流，互不影响
         function shuffleCurrentQuestions() {
-            currentQuestions = [...questionsDatabase].sort(() => Math.random() - 0.5);
+            // 首先判定是在总题库还是在错题本中抽取数据
+            let source = isMistakeOnlySession 
+                ? questionsDatabase.filter(q => favoritesList.includes(q.id))
+                : questionsDatabase;
+
+            // 核心：若用户开启了特定的难度筛选，执行刚性切片
+            if (currentDifficultyFilter !== "all") {
+                source = source.filter(q => q.category === currentDifficultyFilter);
+            }
+
+            currentQuestions = [...source].sort(() => Math.random() - 0.5);
             currentQuestions.forEach(q => { q.shuffledOptions = [...q.options].sort(() => Math.random() - 0.5); });
         }
 
-        // 🌟 核心升级：TOEIC 四国口音高清晰度自适应动态分拣引擎
-        function getBestMainstreamVoice() {
-            if (!synth) return null;
-            const voices = synth.getVoices();
-            let enVoices = voices.filter(v => {
-                const lang = v.lang.toLowerCase(); const name = v.name.toLowerCase();
-                const isJapanese = lang.includes('ja') || lang.includes('jp') || name.includes('ichiro') || name.includes('ayumi') || name.includes('kyoko') || name.includes('otoya') || name.includes('haruka') || name.includes('sayaka');
-                return lang.includes('en') && !isJapanese;
-            });
-            enVoices.sort((a, b) => {
-                function calculateScore(name, lang) {
-                    let score = 0;
-                    if (lang.includes('us')) score += 60; // 托业美音基础权重
-                    if (lang.includes('gb') || lang.includes('uk')) score += 50; // 托业英音基础权重
-                    if (lang.includes('au') || lang.includes('ca')) score += 40; // 托业澳音/加音基础权重
-                    if (name.includes('natural')) score += 100;
-                    if (name.includes('neural')) score += 80;
-                    if (name.includes('google')) score += 60;
-                    return score;
-                }
-                return calculateScore(b.name, b.lang) - calculateScore(a.name, a.lang);
-            });
-            return enVoices[0] || null;
+        // 💡 新增：改变难度时的控制中枢函数
+        function changeDifficultyFilter(val) {
+            currentDifficultyFilter = val;
+            shuffleCurrentQuestions();
+            
+            // 兜底防御：例如在错题本模式下，当前难度切片可能没有题目，则弹出友好警告并自动退回
+            if (currentQuestions.length === 0) {
+                showCustomAlert("筛选提示", "当前筛选条件下没有搜寻到任何题目（例如错题本中没有该难度的错题）。", "warning");
+                currentDifficultyFilter = "all";
+                document.getElementById('diffFilterSelect').value = "all";
+                shuffleCurrentQuestions();
+            }
+            
+            currentIndex = 0;
+            loadQuestion();
+            updateDashboardStats();
         }
 
         function initTTSVoices() {
             if (!synth) return; const select = document.getElementById('voiceSelect');
             function populate() {
-                const voices = synth.getVoices(); select.innerHTML = '<option value="auto">自动选择主流英美音 (Auto)</option>';
-                let enVoices = voices.filter(v => {
-                    const lang = v.lang.toLowerCase(); const name = v.name.toLowerCase();
-                    const isJapanese = lang.includes('ja') || lang.includes('jp') || name.includes('ichiro') || name.includes('ayumi') || name.includes('kyoko') || name.includes('otoya') || name.includes('haruka') || name.includes('sayaka');
-                    return lang.includes('en') && !isJapanese;
-                });
-                
+                const voices = synth.getVoices(); select.innerHTML = '<option value="auto">标准默认美音 (Default English)</option>';
+                let enVoices = voices.filter(v => v.lang.toLowerCase().includes('en'));
                 enVoices.sort((a, b) => {
-                    function calculateScore(name, lang) {
-                        let score = 0;
-                        if (lang.includes('us')) score += 60;
-                        if (lang.includes('gb') || lang.includes('uk')) score += 50;
-                        if (name.includes('natural')) score += 100;
-                        if (name.includes('neural')) score += 80;
-                        return score;
-                    }
-                    return calculateScore(b.name, b.lang) - calculateScore(a.name, a.lang);
+                    const aUS = a.lang.toLowerCase().includes('us'); const bUS = b.lang.toLowerCase().includes('us');
+                    return bUS - aUS;
                 });
-
-                enVoices.forEach(v => {
-                    const opt = document.createElement('option'); opt.value = v.name;
-                    const lang = v.lang.toLowerCase();
-                    let accentTag = "[美音]";
-                    if (lang.includes('gb') || lang.includes('uk')) accentTag = "[英音]";
-                    else if (lang.includes('au')) accentTag = "[澳音]";
-                    else if (lang.includes('ca')) accentTag = "[加音]";
-                    else if (lang.includes('in')) accentTag = "[印音]";
-
-                    opt.textContent = `${accentTag} ${v.name}`; select.appendChild(opt);
-                });
-                
-                if (enVoices.length > 0) {
-                    const best = getBestMainstreamVoice();
-                    if (best) { selectedVoice = best; select.value = best.name; }
-                }
+                enVoices.forEach(v => { const opt = document.createElement('option'); opt.value = v.name; opt.textContent = `${v.name} (${v.lang})`; select.appendChild(opt); });
+                if (enVoices.length > 0) { selectedVoice = enVoices[0]; select.value = enVoices[0].name; }
             }
             populate(); if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = populate;
             select.addEventListener('change', () => { selectedVoice = synth.getVoices().find(v => v.name === select.value) || null; });
@@ -499,19 +465,13 @@
 
         function speakText(text) {
             if (!synth) return; synth.cancel();
-            if (!selectedVoice || selectedVoice.name === 'auto') { selectedVoice = getBestMainstreamVoice(); }
-            
             const cleaned = text.replace(/<[^>]*>/g, '').replace(/____+/g, 'blank');
             const utter = new SpeechSynthesisUtterance(cleaned);
-            
-            if (selectedVoice) { utter.voice = selectedVoice; utter.lang = selectedVoice.lang; } 
-            else { utter.lang = 'en-US'; }
-            
+            if (selectedVoice) { utter.voice = selectedVoice; utter.lang = selectedVoice.lang; } else { utter.lang = 'en-US'; }
             utter.rate = parseFloat(document.getElementById('voiceSpeed').value) || 1.0;
             synth.speak(utter);
         }
 
-        // 🌟 核心功能归位：Part 5 全题真题随心点读功能
         function speakQuestionText() {
             if (currentQuestions.length === 0) return;
             const q = currentQuestions[currentIndex];
@@ -703,7 +663,7 @@
         }
 
         function prevQuestion() { if (currentIndex > 0) { currentIndex--; loadQuestion(); } }
-        function nextQuestion() { if (currentIndex < currentQuestions.length - 1) { currentIndex++; loadQuestion(); } else { showCustomAlert("特训通关！", "当前特训任务已全部完成！现在带你前往难度达成看板。", "success"); switchTab('report'); } }
+        function nextQuestion() { if (currentIndex < currentQuestions.length - 1) { currentIndex++; loadQuestion(); } else { showCustomAlert("特训通关！", "当前难度/特训任务已全部完成！现在带你前往难度达成看板。", "success"); switchTab('report'); } }
 
         function toggleFavoriteCurrent() { const q = currentQuestions[currentIndex]; if (favoritesList.includes(q.id)) removeFavorite(q.id); else addFavorite(q.id); updateFavoriteButtonUI(q.id); updateDashboardStats(); }
         function addFavorite(id) { if (!favoritesList.includes(id)) { favoritesList.push(id); localStorage.setItem('toeic_ghost_favorites', JSON.stringify(favoritesList)); } }
@@ -728,8 +688,15 @@
         function startMistakeSession() {
             if (favoritesList.length === 0) return; isMistakeOnlySession = true;
             favoritesList.forEach(id => delete answeredList[id]);
-            currentQuestions = questionsDatabase.filter(q => favoritesList.includes(q.id)).sort(() => Math.random() - 0.5);
-            currentQuestions.forEach(q => q.shuffledOptions = [...q.options].sort(() => Math.random() - 0.5));
+            
+            shuffleCurrentQuestions();
+            // 💡 如果在错题模式下，当前选择的难度没有错题，自动重置回“全部难度”
+            if (currentQuestions.length === 0) {
+                currentDifficultyFilter = "all";
+                if(document.getElementById('diffFilterSelect')) document.getElementById('diffFilterSelect').value = "all";
+                shuffleCurrentQuestions();
+            }
+            
             currentIndex = 0; switchTab('test'); loadQuestion(); updateDashboardStats();
         }
 
@@ -777,18 +744,23 @@
         function restartFullSession() {
             showCustomConfirm("重置特训", "确定清空当前进度与错题本，彻底重新开始吗？", () => {
                 answeredList = {}; favoritesList = []; localStorage.removeItem('toeic_ghost_favorites');
-                isMistakeOnlySession = false; shuffleCurrentQuestions(); currentIndex = 0;
+                isMistakeOnlySession = false; 
+                currentDifficultyFilter = "all"; // 重置难度过滤器
+                if(document.getElementById('diffFilterSelect')) document.getElementById('diffFilterSelect').value = "all";
+                shuffleCurrentQuestions(); currentIndex = 0;
                 updateDashboardStats(); switchTab('test'); loadQuestion();
             });
         }
 
+        // 💡 智能化 HUD 仪表盘更新算法：自适应匹配当前筛选关卡的实际题目量与正确率
         function updateDashboardStats() {
-            const total = (typeof questionsDatabase !== 'undefined') ? questionsDatabase.length : 18; 
-            const answeredCount = Object.keys(answeredList).length;
-            const correctCount = Object.values(answeredList).filter(item => item.isCorrect).length;
+            const total = currentQuestions.length; 
+            let answeredInCurrent = 0;
+            currentQuestions.forEach(q => { if (answeredList[q.id]) answeredInCurrent++; });
+            const correctCount = currentQuestions.filter(q => answeredList[q.id] && answeredList[q.id].isCorrect).length;
             
-            document.getElementById('stat-progress-txt').textContent = `${answeredCount} / ${total}`;
-            document.getElementById('stat-accuracy').textContent = answeredCount > 0 ? `${Math.round((correctCount / answeredCount) * 100)}%` : "0%";
+            document.getElementById('stat-progress-txt').textContent = `${answeredInCurrent} / ${total}`;
+            document.getElementById('stat-accuracy').textContent = answeredInCurrent > 0 ? `${Math.round((correctCount / answeredInCurrent) * 100)}%` : "0%";
             document.getElementById('stat-mistakes').textContent = `${favoritesList.length} Items`;
         }
     </script>
