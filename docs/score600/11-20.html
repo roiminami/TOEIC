@@ -31,7 +31,7 @@
             40%, 80% { transform: translateX(6px); }
         }
 
-        /* Balanced, Harmonious Daytime Accent Pulse */
+        /* Daylight Accent Pulse */
         .flame-active-pulse {
             animation: blazeGlow 2.5s infinite ease-in-out;
         }
@@ -46,7 +46,7 @@
             }
         }
 
-        /* Stable Tooltip to prevent Layout Shifts */
+        /* Stable Tooltip to prevent Layout Shifts (Jitter-Free) */
         .tooltip-container {
             position: relative;
         }
@@ -83,7 +83,7 @@
                 </div>
             </div>
             
-            <!-- Real-time Progress Bar with Sunset Gradient -->
+            <!-- Real-time Progress Bar -->
             <div id="top-progress-container" class="hidden flex items-center space-x-3">
                 <span id="top-progress-text" class="text-xs font-bold text-slate-500">Progress: 0/18</span>
                 <div class="w-20 md:w-32 bg-stone-100 h-2.5 rounded-full overflow-hidden border border-stone-200/60 shadow-inner">
@@ -97,7 +97,7 @@
 
         <!-- SCREEN 1: Pre-Challenge Vocabulary Preview -->
         <div id="cover-screen" class="fade-in bg-white rounded-3xl p-6 md:p-8 border border-stone-200 shadow-md shadow-stone-100 max-w-4xl mx-auto w-full my-4 relative overflow-hidden">
-            <!-- Delicate amber atmospheric background light drops -->
+            <!-- Warm atmospheric background glow details -->
             <div class="absolute -top-16 -left-16 w-36 h-36 bg-orange-400/5 rounded-full blur-3xl"></div>
             <div class="absolute -bottom-16 -right-16 w-36 h-36 bg-amber-500/5 rounded-full blur-3xl"></div>
 
@@ -113,17 +113,17 @@
                 </p>
                 <div class="inline-flex items-center space-x-2 bg-orange-50/50 text-orange-950 text-xs px-4 py-2.5 rounded-xl border border-orange-200/50 mt-5">
                     <i class="fa-solid fa-circle-play text-orange-600 animate-pulse text-sm"></i>
-                    <span class="font-bold">Click or tap any vocabulary card below to activate the standard audio playback engine.</span>
+                    <span class="font-bold">Hover over any card to listen. Click the card to reveal the translation.</span>
                 </div>
             </div>
 
             <!-- Tab Controls -->
             <div class="flex justify-center border border-stone-200/80 mb-6 p-1 bg-stone-50 rounded-2xl max-w-md mx-auto relative z-10">
                 <button id="btn-tab-core" onclick="switchPreviewTab('core')" class="flex-1 py-2.5 text-xs font-bold rounded-xl transition-all bg-white text-slate-900 shadow-sm border border-stone-200/60">
-                    Core Target Vocab (<span id="count-core-badge">10</span>)
+                    Core Target Vocab (<span id="count-core-badge">0</span>)
                 </button>
                 <button id="btn-tab-helper" onclick="switchPreviewTab('helper')" class="flex-1 py-2.5 text-xs font-bold rounded-xl transition-all text-slate-500 hover:text-slate-800">
-                    Context Background Words (<span id="count-helper-badge">18</span>)
+                    Context Background Words (<span id="count-helper-badge">0</span>)
                 </button>
             </div>
 
@@ -207,7 +207,7 @@
                         <i class="fa-solid fa-arrow-left"></i>
                         <span>Previous</span>
                     </button>
-                    <button id="next-btn" onclick="nextQuestion()" class="bg-gradient-to-r from-orange-500 via-orange-600 to-rose-500 hover:from-orange-600 hover:to-rose-600 text-white font-black flex items-center space-x-2 px-7 py-2.5 rounded-xl transition-all shadow-md shadow-orange-500/10">
+                    <button id="next-btn" onclick="nextQuestion()" class="bg-gradient-to-r from-orange-500 via-orange-600 to-rose-500 hover:from-orange-600 hover:to-rose-500 text-white font-black flex items-center space-x-2 px-7 py-2.5 rounded-xl transition-all shadow-md shadow-orange-500/10">
                         <span id="next-btn-text">Next</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
@@ -239,7 +239,7 @@
                             <i class="fa-solid fa-shuffle text-orange-600"></i>
                             <span>Distractor Comparison Analysis (干扰项排查指南)</span>
                         </span>
-                        <div id="analysis-wrong-detail" class="text-slate-600 space-y-2.5 bg-stone-50/50 p-4 rounded-xl border border-stone-150"></div>
+                        <div id="analysis-wrong-detail" class="text-slate-600 space-y-2.5 bg-stone-50/50 p-4 rounded-xl border border-stone-150 font-medium"></div>
                     </div>
                 </div>
             </div>
@@ -248,7 +248,7 @@
         <!-- SCREEN 3: Deep Performance Settlement Report -->
         <div id="result-screen" class="hidden space-y-6 fade-in max-w-4xl mx-auto w-full">
             <div class="bg-white rounded-3xl p-8 border border-stone-200 shadow-xl text-center max-w-xl mx-auto relative overflow-hidden">
-                <!-- Inner soft warm glowing sunset backdrop -->
+                <!-- Inner glow -->
                 <div class="absolute -top-10 -right-10 w-28 h-28 bg-orange-500/5 rounded-full blur-2xl"></div>
 
                 <div class="w-20 h-20 bg-gradient-to-tr from-amber-400 to-orange-500 text-white rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg shadow-orange-500/10 border border-orange-200">
@@ -346,124 +346,142 @@
                 cn: "包含，包括", 
                 jp: "含む、含める", 
                 family: "including / exclude / exclusion",
-                tips: "include + 名词",
-                desc: "The contract package will include several non-disclosure agreements."
+                tips: "include + 名词（包含结构）",
+                desc: "The price does not include tax."
             },
             { 
                 word: "department", 
                 pos: "名", 
                 ipa: "/dɪˈpɑːtmənt/", 
-                cn: "部门，科室", 
-                jp: "部門、学科、課", 
+                cn: "部门，系", 
+                jp: "部署、部門", 
                 family: "departmental / division / section",
-                tips: "department + 名词（部门/科室）",
-                desc: "She works closely with the accounting department to review the quarterly budget."
+                tips: "department + 名词（sales/HR等部门）",
+                desc: "She works in the sales department."
             },
             { 
                 word: "contact", 
                 pos: "動/名", 
                 ipa: "/ˈkɒntækt/", 
-                cn: "联系，联络；联络人", 
-                jp: "連絡する、連絡（先）", 
+                cn: "接触，联系", 
+                jp: "連絡する、連絡先", 
                 family: "contacted / communication / connection",
-                tips: "contact + 人 / contact with + 人",
-                desc: "Please do not hesitate to contact our customer support team directly."
+                tips: "contact + 人/机构",
+                desc: "Please contact our office for help."
             },
             { 
                 word: "according to", 
                 pos: "前", 
                 ipa: "/əˈkɔːdɪŋ tuː/", 
                 cn: "根据，按照", 
-                jp: "〜に従って、〜によれば", 
+                jp: "〜によると、〜に従って", 
                 family: "accordingly / accordance",
-                tips: "according to + 信息来源",
-                desc: "According to the latest report, market demand is expected to climb next quarter."
+                tips: "according to + 信息来源（report / survey等）",
+                desc: "According to the report, sales rose."
             },
             { 
                 word: "client", 
                 pos: "名", 
                 ipa: "/ˈklaɪənt/", 
                 cn: "客户，委托人", 
-                jp: "依頼人、顧客、クライアント", 
+                jp: "顧客、クライアント", 
                 family: "clientele / customer / guest",
-                tips: "client = 商业客户",
-                desc: "Our primary objective is to maintain exceptional service standards for every client."
+                tips: "商业客户用 client（vs customer）",
+                desc: "The client called our office today."
             },
             { 
                 word: "review", 
                 pos: "動/名", 
                 ipa: "/rɪˈvjuː/", 
-                cn: "审查，检查，评论", 
-                jp: "見直す、再考する、評価", 
+                cn: "审查，复习，评论", 
+                jp: "再検討する、批評、レビュー", 
                 family: "reviewer / reviewing",
-                tips: "review + 名词",
-                desc: "The steering committee will thoroughly review the proposed joint venture guidelines next week."
+                tips: "review + 名词（文件/情况/表现等）",
+                desc: "Please review this report before Friday."
             },
             { 
                 word: "indicate", 
                 pos: "動", 
                 ipa: "/ˈɪndɪkeɪt/", 
-                cn: "表明，指出，显示", 
-                jp: "示す、指摘する、現れである", 
+                cn: "指出，指示，表明", 
+                jp: "示す、暗示する", 
                 family: "indication / indicator",
                 tips: "indicate that + 句子",
-                desc: "Preliminary metrics clearly indicate that the new promotional campaign has worked."
+                desc: "Reports indicate that sales are growing."
             },
             { 
                 word: "attend", 
                 pos: "動", 
                 ipa: "/əˈtend/", 
                 cn: "出席，参加", 
-                jp: "出席する、参加する、通う", 
+                jp: "出席する、参加する", 
                 family: "attendance / attendee / attendant",
-                tips: "attend + 活动",
-                desc: "Representatives from regional branches are scheduled to attend the annual assembly."
+                tips: "attend + meeting / event / school",
+                desc: "All staff must attend the meeting."
             },
             { 
                 word: "hire", 
                 pos: "動/名", 
                 ipa: "/ˈhaɪə(r)/", 
-                cn: "雇佣，租用；新雇员", 
-                jp: "雇う、雇用する、新採用者", 
+                cn: "雇用，招聘", 
+                jp: "雇う、採用する", 
                 family: "hired / hiring / new hire",
-                tips: "hire + 人",
-                desc: "The executive board agreed to hire a consultant to streamline operational workflows."
+                tips: "hire + 人（招聘）",
+                desc: "We plan to hire new workers soon."
             },
             { 
                 word: "local", 
                 pos: "形", 
                 ipa: "/ˈləʊkl/", 
                 cn: "当地的，本地的", 
-                jp: "地元の、各駅停车的", 
+                jp: "地元の、局所的な", 
                 family: "locally / locality",
-                tips: "local + 名词",
-                desc: "The restaurant sources fresh ingredients from local organic producers whenever possible."
+                tips: "local + 名词（local office / local branch）",
+                desc: "Please call the local branch office."
             }
         ];
 
-        // Highly targeted background context helper vocabulary (No clues to answer key)
+        // Fully updated contextual background words scanned from the new 18 questions database.
         const helperVocabBank = [
-            { word: "including", pos: "前", ipa: "/ɪnˈkluːdɪŋ/", cn: "包括…在内", jp: "〜を含めて" },
-            { word: "exclude", pos: "動", ipa: "/ɪkˈskluːd/", cn: "排除，不包括", jp: "除外する" },
-            { word: "exclusion", pos: "名", ipa: "/ɪkˈskluːʒn/", cn: "排除，除外", jp: "除外、排除" },
-            { word: "departmental", pos: "形", ipa: "/ˌdiːpɑːtˈmentl/", cn: "部门的，分科的", jp: "部門の、各部の" },
-            { word: "division", pos: "名", ipa: "/dɪˈvɪʒn/", cn: "部门，除法，分割", jp: "部門、事業部" },
-            { word: "section", pos: "名", ipa: "/ˈsekʃn/", cn: "部分，章节，部门", jp: "部分、区分、セクション" },
-            { word: "communication", pos: "名", ipa: "/kəˌmjuːnɪˈkeɪʃn/", cn: "沟通，交流", jp: "伝达、コミュニケーション" },
-            { word: "connection", pos: "名", ipa: "/kəˈnekʃn/", cn: "联系，连接", jp: "接続、関係、つながり" },
-            { word: "accordingly", pos: "副", ipa: "/əˈkɔːdɪŋli/", cn: "相应地，因此", jp: "それに応じて、したがって" },
-            { word: "accordance", pos: "名", ipa: "/əˈkɔːdns/", cn: "一致，和谐", jp: "一致、調和" },
-            { word: "clientele", pos: "名", ipa: "/ˌklaɪənˈtel/", cn: "（总称）顾客，客户", jp: "（集合的な）顧客、依頼人" },
-            { word: "reviewer", pos: "名", ipa: "/rɪˈvjuːə(r)/", cn: "评审者，评论家", jp: "評論家、査読者" },
-            { word: "indication", pos: "名", ipa: "/ˌɪndɪˈkeɪʃn/", cn: "表明，迹象，指示", jp: "表示、兆候、指示" },
-            { word: "indicator", pos: "名", ipa: "/ˈɪndɪkeɪtə(r)/", cn: "指标，指示器", jp: "指標、インジケータ" },
-            { word: "attendance", pos: "名", ipa: "/əˈtendəns/", cn: "出席人数，出席，伺候", jp: "出席、出席者数" },
-            { word: "attendee", pos: "名", ipa: "/əˈtendiː/", cn: "出席者，参加者", jp: "出席者、参加者" },
-            { word: "hiring", pos: "名/形", ipa: "/ˈhaɪərɪŋ/", cn: "招聘，雇佣", jp: "雇用、採用" },
-            { word: "locally", pos: "副", ipa: "/ˈləʊkəli/", cn: "在本地，地方性地", jp: "局所的に、地元で" }
+            { word: "workshop", pos: "名", ipa: "/ˈwɜːkʃɒp/", cn: "研讨会，工作坊", jp: "ワークショップ、研究会" },
+            { word: "separately", pos: "副", ipa: "/ˈseprətli/", cn: "分离地，单独地", jp: "別々に、単独で" },
+            { word: "participant", pos: "名", ipa: "/pɑːˈtɪsɪpənt/", cn: "参与者，参加者", jp: "参加者" },
+            { word: "register", pos: "動", ipa: "/ˈredʒɪstə(r)/", cn: "登记，注册", jp: "登録する、記録する" },
+            { word: "quarterly", pos: "形/副", ipa: "/ˈkwɔːtəli/", cn: "季度的，按季度地", jp: "四半期ごとの" },
+            { word: "expenses", pos: "名", ipa: "/ɪkˈspensɪz/", cn: "开支，费用", jp: "経費、費用" },
+            { word: "proposal", pos: "名", ipa: "/prəˈpəʊzl/", cn: "提案，提议", jp: "提案、計画" },
+            { word: "submit", pos: "動", ipa: "/səbˈmɪt/", cn: "递交，呈交", jp: "提出する、服従する" },
+            { word: "assistance", pos: "名", ipa: "/əˈsɪstəns/", cn: "帮助，援助", jp: "援助、支援" },
+            { word: "directly", pos: "副", ipa: "/daɪˈrektli/", cn: "直接地，径直", jp: "直接、ただちに" },
+            { word: "research", pos: "名/動", ipa: "/rɪˈsɜːtʃ/", cn: "研究，调查", jp: "研究、調査" },
+            { word: "consumer", pos: "名", ipa: "/kənˈsjuːmə(r)/", cn: "消费者", jp: "消費者" },
+            { word: "requirement", pos: "名", ipa: "/rɪˈkwaɪəmənt/", cn: "要求，必要条件", jp: "要件、必要条件" },
+            { word: "adjust", pos: "動", ipa: "/əˈdʒʌst/", cn: "调整，校准", jp: "調整する、合わせる" },
+            { word: "prominent", pos: "形", ipa: "/ˈprɒmɪnənt/", cn: "突出的，杰出的", jp: "卓越した、目立つ" },
+            { word: "consultant", pos: "名", ipa: "/kənˈsʌltənt/", cn: "顾问，咨询家", jp: "コンサルタント、顧問" },
+            { word: "renovate", pos: "動", ipa: "/ˈrenəveɪt/", cn: "翻新，修复", jp: "改修する、リフォームする" },
+            { word: "upscale", pos: "形", ipa: "/ˌʌpˈskeɪl/", cn: "高档的，高消费的", jp: "高級な、富裕層向けの" },
+            { word: "committee", pos: "名", ipa: "/kəˈmɪti/", cn: "委员会", jp: "委員会" },
+            { word: "thoroughly", pos: "副", ipa: "/ˈθʌrəli/", cn: "彻底地", jp: "徹底的に、十分に" },
+            { word: "manuscript", pos: "名", ipa: "/ˈmænjuskrɪpt/", cn: "手稿，底稿", jp: "原稿、写本" },
+            { word: "qualified", pos: "形", ipa: "/ˈkwɒlɪfaɪd/", cn: "合格的，有资质的", jp: "適格な、資格のある" },
+            { word: "figure", pos: "名/動", ipa: "/ˈfɪɡə(r)/", cn: "数字，人物", jp: "数字、人物" },
+            { word: "eco-friendly", pos: "形", ipa: "/ˌiːkəʊˈfrendli/", cn: "环保的，对环境友好的", jp: "環境に優しい" },
+            { word: "economist", pos: "名", ipa: "/ɪˈkɒnəmɪst/", cn: "经济学家", jp: "経済学者" },
+            { word: "reliable", pos: "形", ipa: "/rɪˈlaɪəbl/", cn: "可靠的，可信赖的", jp: "信頼できる、確かな" },
+            { word: "strategic", pos: "形", ipa: "/strəˈtiːdʒɪk/", cn: "战略性的", jp: "戦略的な" },
+            { word: "seminar", pos: "名", ipa: "/ˈsemɪnɑː(r)/", cn: "专题研讨会", jp: "セミナー、研修会" },
+            { word: "turnout", pos: "名", ipa: "/ˈtɜːnaʊt/", cn: "出席人数，到场率", jp: "参加者数、人出" },
+            { word: "launch", pos: "名/動", ipa: "/lɔːntʃ/", cn: "发布，推出", jp: "発売、開始、立ち上げる" },
+            { word: "complimentary", pos: "形", ipa: "/ˌkɒmplɪˈmentəri/", cn: "免费赠送的，恭维的", jp: "無料の、優待の" },
+            { word: "trade", pos: "名/動", ipa: "/treɪd/", cn: "贸易，行业", jp: "貿易、取引" },
+            { word: "temporary", pos: "形", ipa: "/ˈtemprəri/", cn: "临时的，暂时的", jp: "一時的な、臨時の" },
+            { word: "facility", pos: "名", ipa: "/fəˈsɪləti/", cn: "设施，物理场所", jp: "施設、設備" },
+            { word: "ingredient", pos: "名", ipa: "/ɪnˈɡriːdiənt/", cn: "食材，原料", jp: "材料、食材" },
+            { word: "organic", pos: "形", ipa: "/ɔːˈɡænɪk/", cn: "有机的", jp: "オーガニックの、有機的な" }
         ];
 
-        // 18 High-quality Part 5 TOEIC training questions with 100% closed-loop distractors inside vocab/relations.
+        // 18 Professional Part 5 Questions targeting the replacement words and their relations.
         const questionsDatabase = [
             {
                 id: "q_include_1",
@@ -471,18 +489,40 @@
                 pos: "動",
                 difficulty: "★☆☆",
                 difficultyLevel: "easy",
-                sentence: "The revised price estimates from the contractor will ______ the costs of both structural reinforcements and landscaping.",
+                sentence: "The workshop registration fee does not ______ the cost of lunch, which must be purchased separately.",
                 correct: "include",
-                options: ["include", "excluding", "client", "department"],
-                chinese: "承包商提供的经修正的报价单将包含结构加固和景观美化的费用。",
+                options: ["include", "exclude", "indicate", "review"],
+                chinese: "研讨会的注册费用不包含午餐费用，午餐必须单独购买。",
                 rationales: {
-                    "include": "正确。情态动词 will 之后需要填入动词原形，根据句意，“包括”加固和美化费用最符合上下文逻辑。",
-                    "excluding": "错误。现在分词形式，不能接在情态动词 will 后面作为句子的主要谓语动词。",
-                    "client": "错误。名词“客户”，无法在 will 之后作为谓语动词使用。",
-                    "department": "错误。名词“部门”，词性冲突，逻辑也不通。"
+                    "include": "正确。及物动词，符合上下文逻辑（费用不包含午餐），且后接名词短语 the cost of lunch 充当宾语，符合“include + 名词”结构。",
+                    "exclude": "错误。及物动词“排除，不包括”，虽然词性一致，但与 does not 连用（does not exclude 意为“不排除/包含在内”）在商务午餐购买逻辑上不通顺。",
+                    "indicate": "错误。动词“表明，指出”，不能与 lunch 构成合理的语义搭配。",
+                    "review": "错误。动词“审查，评估”，费用审查午餐费用不合常理。"
                 },
                 vocabHelper: [
-                    { word: "excluding", ipa: "/ɪkˈskluːdɪŋ/", cn: "除…之外", jp: "〜を除いて" }
+                    { word: "workshop", ipa: "/ˈwɜːkʃɒp/", cn: "研讨会", jp: "研讨会" },
+                    { word: "separately", ipa: "/ˈseprətli/", cn: "单独地", jp: "单独地" }
+                ]
+            },
+            {
+                id: "q_including_1",
+                targetWord: "including",
+                pos: "前",
+                difficulty: "★★☆",
+                difficultyLevel: "medium",
+                sentence: "All conference participants, ______ the prominent guest speakers, are requested to register at the lobby desk.",
+                correct: "including",
+                options: ["including", "exclude", "indicated", "hired"],
+                chinese: "所有会议参与者，包括杰出的特邀嘉宾，都被要求在服务大厅前台进行登记。",
+                rationales: {
+                    "including": "正确。介词，意为“包括……在内”，常用来引出名词短语作插入语，修饰前面的 participants。",
+                    "exclude": "错误。动词原形，不能直接作为后置修饰语，且此句需要一个介词词性的词汇。",
+                    "indicated": "错误。过去分词，不能在句子中起到“包含……”的介词逻辑关系。",
+                    "hired": "错误。过去分词“被雇用的”，与句意及成分结构完全无关。"
+                },
+                vocabHelper: [
+                    { word: "participant", ipa: "/pɑːˈtɪsɪpənt/", cn: "参与者", jp: "参加者" },
+                    { word: "register", ipa: "/ˈredʒɪstə(r)/", cn: "登记", jp: "登録する" }
                 ]
             },
             {
@@ -491,18 +531,40 @@
                 pos: "名",
                 difficulty: "★☆☆",
                 difficultyLevel: "easy",
-                sentence: "Members of the marketing ______ are strongly encouraged to collaborate with developers on the next product prototype.",
+                sentence: "The newly hired accountant announced that the accounting ______ is currently reviewing the quarterly expenses.",
                 correct: "department",
-                options: ["department", "departmental", "locally", "attend"],
-                chinese: "强烈建议市场部的成员与开发人员就下一个产品原型展开合作。",
+                options: ["department", "division", "section", "clientele"],
+                chinese: "新雇用的会计师宣布，会计部门目前正在审查季度支出费用。",
                 rationales: {
-                    "department": "正确。名词作定语或构成复合名词，“marketing department”（市场部），符合商务组织语境。",
-                    "departmental": "错误。形容词“部门的”，不能单独作介词 of 的宾语或与 marketing 结合构成核心名词位置。",
-                    "locally": "错误。副词词性，不可担任介词宾语的核心位置。",
-                    "attend": "错误。动词“出席”，词性完全错误，无法放在介词 of 的宾语位置。"
+                    "department": "正确。名词，“accounting department”是高频固定的托业职场词组，意为“会计部门”。",
+                    "division": "错误。虽然 division 也有部门的意思，但“accounting department”在托业中是更标准、高频的企业日常科室组合。",
+                    "section": "错误。一般用于文章的“章节”或商场的“区域”，不作为正规企业财务部门的首选称呼。",
+                    "clientele": "错误。集体名词，意为“客户群”，与 accounting 组合无任何合理含义。"
                 },
                 vocabHelper: [
-                    { word: "departmental", ipa: "/ˌdiːpɑːtˈmentl/", cn: "部门的，分科的", jp: "部門の" }
+                    { word: "quarterly", ipa: "/ˈkwɔːtəli/", cn: "季度的", jp: "四半期ごとの" },
+                    { word: "expenses", ipa: "/ɪkˈspensɪz/", cn: "费用", jp: "経費" }
+                ]
+            },
+            {
+                id: "q_departmental_1",
+                targetWord: "departmental",
+                pos: "形",
+                difficulty: "★★☆",
+                difficultyLevel: "medium",
+                sentence: "Due to temporary budget adjustments, all ______ supervisors must submit their cost-saving proposals by Friday afternoon.",
+                correct: "departmental",
+                options: ["departmental", "local", "hired", "including"],
+                chinese: "由于临时的预算调整，所有部门主管必须在周五下午之前提交他们的省钱提案。",
+                rationales: {
+                    "departmental": "正确。形容词作定语，修饰名词 supervisors，意为“部门的，部门内部的”，完美契合企业中“部门主管”的表述。",
+                    "local": "错误。形容词“当地的”，虽语法成立，但在企业内部汇报结构中，“departmental supervisors（部门主管）”比 local 更加严谨和契合 budget adjustments 场景。",
+                    "hired": "错误。形容词/分词“被雇佣的”，一般不作 supervisors 前置限定语。",
+                    "including": "错误。介词，不能修饰主语名词词组。"
+                },
+                vocabHelper: [
+                    { word: "proposal", ipa: "/prəˈpəʊzl/", cn: "提案", jp: "提案" },
+                    { word: "submit", ipa: "/səbˈmɪt/", cn: "提交", jp: "提出する" }
                 ]
             },
             {
@@ -511,38 +573,61 @@
                 pos: "動",
                 difficulty: "★☆☆",
                 difficultyLevel: "easy",
-                sentence: "If you have any further questions about the billing dispute, please do not hesitate to ______ our accounting supervisor.",
+                sentence: "If you require technical assistance regarding the system, please ______ the IT support center directly.",
                 correct: "contact",
-                options: ["contact", "connection", "accordingly", "indicate"],
-                chinese: "如果您对账单争议有任何进一步的问题，请毫不犹豫地联系我们的会计主管。",
+                options: ["contact", "attend", "review", "hire"],
+                chinese: "如果您需要关于该系统的技术协助，请直接联系 IT 支持中心。",
                 rationales: {
-                    "contact": "正确。及物动词，“contact sb”（联系某人），在 to 后面充当不定式动词原形。",
-                    "connection": "错误。名词“联系”，不符合不定式后接动词原形带宾语的要求。",
-                    "accordingly": "错误。副词“相应地”，词性不符，无法接宾语。",
-                    "indicate": "错误。动词“表明，指出”，虽然是动词原形，但“表明会计主管”在语义上不通顺。"
+                    "contact": "正确。及物动词，在祈使句中位于 please 之后，表示“联系（人或机构）”，直接后接宾语 IT support center。",
+                    "attend": "错误。动词“出席，参加”，不能搭配技术支持中心（IT center）表示寻求协助。",
+                    "review": "错误。动词“审查，复习”，不符合请顾客/员工直接联系 IT 支持的日常场景。",
+                    "hire": "错误。动词“雇佣”，不符合普通用户由于技术问题联系 IT 部门的逻辑。"
                 },
                 vocabHelper: [
-                    { word: "connection", ipa: "/kəˈnekʃn/", cn: "联系，连接", jp: "接続、関係" }
+                    { word: "assistance", ipa: "/əˈsɪstəns/", cn: "协助", jp: "支援" },
+                    { word: "directly", ipa: "/daɪˈrektli/", cn: "直接地", jp: "直接" }
                 ]
             },
             {
-                id: "q_accordingto_1",
+                id: "q_according_to_1",
                 targetWord: "according to",
                 pos: "前",
                 difficulty: "★☆☆",
                 difficultyLevel: "easy",
-                sentence: "______ the press release distributed earlier this morning, the joint venture is expected to close within thirty days.",
+                sentence: "______ the latest market research report, consumer interest in organic products has grown significantly.",
                 correct: "according to",
-                options: ["according to", "accordance", "include", "locally"],
-                chinese: "根据今天早上分发的新闻稿，该合资项目预计将在30天内完成交割。",
+                options: ["according to", "accordingly", "accordance", "locally"],
+                chinese: "根据最新的市场调研报告，消费者对有机产品的兴趣已显著增加。",
                 rationales: {
-                    "according to": "正确。介词短语，“according to + 名词（信息来源）”表示“根据……”，在此作句首时间/出处状语。",
-                    "accordance": "错误。名词，在没有 in 和 with 搭配的情况下，不能直接置于句首引出名词短语作状语。",
-                    "include": "错误。动词原形，不能充当句首引导名词性短语的介词功能。",
-                    "locally": "错误。副词，不具备接名词短语并引导状语从句的介词性质。"
+                    "according to": "正确。介词短语，后接信息来源“the latest market research report”，构成条件/依据状语，意为“根据……”。",
+                    "accordingly": "错误。副词，表示“相应地，因此”，不能引出后面的名词短语。",
+                    "accordance": "错误。名词，一般与 in 连用构成 “in accordance with（按照……）”，不能单独引导短语。",
+                    "locally": "错误。副词“本地地”，无法引导名词短语充当时间或数据出处来源。"
                 },
                 vocabHelper: [
-                    { word: "accordance", ipa: "/əˈkɔːdns/", cn: "一致，和谐", jp: "一致、調和" }
+                    { word: "research", ipa: "/rɪˈsɜːtʃ/", cn: "研究", jp: "調査" },
+                    { word: "consumer", ipa: "/kənˈsjuːmə(r)/", cn: "消费者", jp: "消費者" }
+                ]
+            },
+            {
+                id: "q_accordingly_1",
+                targetWord: "accordingly",
+                pos: "副",
+                difficulty: "★★☆",
+                difficultyLevel: "medium",
+                sentence: "The project requirements have been updated, and we expect everyone to adjust their schedules ______.",
+                correct: "accordingly",
+                options: ["accordingly", "according to", "locally", "departmental"],
+                chinese: "项目要求已经更新，我们期望每个人都能相应地调整自己的日程安排。",
+                rationales: {
+                    "accordingly": "正确。副词，意为“相应地”，修饰动词 adjust 并在句末作状语，表示配合已更新的要求做出对应的调整。",
+                    "according to": "错误。介词短语，后须跟名词短语作宾语，不能单独作状语放句尾。",
+                    "locally": "错误。副词“在本地”，与根据项目变更调整日程的逻辑毫无关联。",
+                    "departmental": "错误。形容词，不能修饰动词作句尾状语。"
+                },
+                vocabHelper: [
+                    { word: "requirement", ipa: "/rɪˈkwaɪəmənt/", cn: "要求", jp: "要件" },
+                    { word: "adjust", ipa: "/əˈdʒʌst/", cn: "调整", jp: "調整する" }
                 ]
             },
             {
@@ -551,18 +636,40 @@
                 pos: "名",
                 difficulty: "★☆☆",
                 difficultyLevel: "easy",
-                sentence: "The consultant assured the regional manager that each key ______ would receive customized performance dashboards.",
+                sentence: "The senior consultant scheduled an urgent afternoon meeting with our most prominent ______ to review the contract.",
                 correct: "client",
-                options: ["client", "clientele", "hire", "reviewer"],
-                chinese: "顾问向区域经理保证，每一位关键客户都将收到定制的绩效仪表板。",
+                options: ["client", "clientele", "reviewer", "attendee"],
+                chinese: "高级顾问安排了一个紧急的下午会议，与我们最显要的客户共同审查合同。",
                 rationales: {
-                    "client": "正确。可数名词单数，“each + 可数名词单数”，表示“每一位客户”。",
-                    "clientele": "错误。集合名词，通常不用于 each 之后作为单数个体名词使用。",
-                    "hire": "错误。作名词指新员工，但在这里“定制绩效仪表板”的服务对象是外部“客户”（client）而非雇员。",
-                    "reviewer": "错误。名词“评审者”，与商务服务的核心对象逻辑不符。"
+                    "client": "正确。可数名词单数，表示商务合同中合作的“客户，委托人”，符合 consultant（顾问）和 contract（合同）的场景搭配。",
+                    "clientele": "错误。集体名词，意为“（总称）委托人，常客”，通常前面不加冠词 most 或修饰单数个体。",
+                    "reviewer": "错误。名词“审查者，书评家”，与顾问及合同签约方的对应不符。",
+                    "attendee": "错误(). 名词“出席者”，不如“client（客户）”在商业咨询合同语境中准确。"
                 },
                 vocabHelper: [
-                    { word: "clientele", ipa: "/ˌklaɪənˈtel/", cn: "（总称）顾客，客户", jp: "（集合的な）顧客" }
+                    { word: "prominent", ipa: "/ˈpɒmɪnənt/", cn: "杰出的", jp: "卓越した" },
+                    { word: "consultant", ipa: "/kənˈsʌltənt/", cn: "顾问", jp: "コンサルタント" }
+                ]
+            },
+            {
+                id: "q_clientele_1",
+                targetWord: "clientele",
+                pos: "名",
+                difficulty: "★★★",
+                difficultyLevel: "hard",
+                sentence: "The newly renovated boutique hotel has quickly attracted an upscale ______ consisting of corporate executives.",
+                correct: "clientele",
+                options: ["clientele", "client", "attendance", "division"],
+                chinese: "这家新翻修的精品酒店很快吸引了一批由企业高管组成的高端客户群。",
+                rationales: {
+                    "clientele": "正确。集合名词，特指商店、酒店、律师楼等的“客源，全体客户群”，通常后可接形容词 upscale 连用表示客户群体档次。",
+                    "client": "错误。可数名词单数，前面需加冠词或改为复数形式（clients）才能修饰 executives 的集合；且 clientele 更符合“客源群”的高端商业叙事。",
+                    "attendance": "错误。名词“出席，出席人数”，不能由 “consisting of corporate executives” 来作同位语或修饰语解释。",
+                    "division": "错误。名词“部门，分部”，语义不符。"
+                },
+                vocabHelper: [
+                    { word: "renovate", ipa: "/ˈrenəveɪt/", cn: "翻新", jp: "改修する" },
+                    { word: "upscale", ipa: "/ˌʌpˈskeɪl/", cn: "高档的", jp: "高級な" }
                 ]
             },
             {
@@ -571,18 +678,40 @@
                 pos: "動",
                 difficulty: "★☆☆",
                 difficultyLevel: "easy",
-                sentence: "Senior board executives are scheduled to meet tomorrow morning to ______ the proposed revisions to the company handbook.",
+                sentence: "The planning committee will ______ the project proposal thoroughly before granting financial approval.",
                 correct: "review",
-                options: ["review", "reviewer", "departmental", "indicate"],
-                chinese: "高级董事会高管计划于明天上午会面，以审查对公司手册提出的修改建议。",
+                options: ["review", "indicate", "attend", "contact"],
+                chinese: "规划委员会将在批准拨款之前，彻底审查该项目提案。",
                 rationales: {
-                    "review": "正确。及物动词，“review the proposed revisions”意为“审查修改建议”，在 to 后作不定式目的状语。",
-                    "reviewer": "错误。名词“审查者”，无法放在 to 不定式之后充当谓语动词。",
-                    "departmental": "错误。形容词，无法作不定式动作的核心动词。",
-                    "indicate": "错误. 动词“显示、表明”，无法与“公司手册的修改建议”合理搭配作及物动作。"
+                    "review": "正确。动词，“review the project proposal”指审查项目提案，符合托业最核心的高频商业活动配对。",
+                    "indicate": "错误。动词“表明，指示”，无法作委员会审查项目 proposal 的主要发出动作。",
+                    "attend": "错误。动词“参加”，不能 attend 抽象的书面提案（proposal）。",
+                    "contact": "错误。动词“联系”，不能与 proposal 组合，应为 contact + 机构或人。"
                 },
                 vocabHelper: [
-                    { word: "reviewer", ipa: "/rɪˈvjuːə(r)/", cn: "评审者，评论家", jp: "評論家、査読者" }
+                    { word: "committee", ipa: "/kəˈmɪti/", cn: "委员会", jp: "委員会" },
+                    { word: "thoroughly", ipa: "/ˈθʌrəli/", cn: "彻底地", jp: "徹底的に" }
+                ]
+            },
+            {
+                id: "q_reviewer_1",
+                targetWord: "reviewer",
+                pos: "名",
+                difficulty: "★★☆",
+                difficultyLevel: "medium",
+                sentence: "Each academic manuscript is forwarded to a qualified ______ to guarantee high publication standards.",
+                correct: "reviewer",
+                options: ["reviewer", "clientele", "attendee", "hired"],
+                chinese: "每一篇学术手稿都会被转交给一位资深的审稿人，以确保达到极高的发表标准。",
+                rationales: {
+                    "reviewer": "正确。名词，特指对学术、书籍、项目方案进行专门审核评价的“评审人、审阅者”，符合 forwarding manuscript（转发手稿）的语境。",
+                    "clientele": "错误。集合名词“客户群”，不符合个人学术手稿评审者的角色。",
+                    "attendee": "错误。名词“出席者”，不具备对手稿学术评审的专业职能对应。",
+                    "hired": "错误。动词分词，在此处名词位置不能作 forwarded to 的宾语中心词。"
+                },
+                vocabHelper: [
+                    { word: "manuscript", ipa: "/ˈmænjuskrɪpt/", cn: "手稿", jp: "原稿" },
+                    { word: "qualified", ipa: "/ˈkwɒlɪfaɪd/", cn: "合格的", jp: "適格な" }
                 ]
             },
             {
@@ -591,18 +720,40 @@
                 pos: "動",
                 difficulty: "★☆☆",
                 difficultyLevel: "easy",
-                sentence: "Early customer satisfaction surveys ______ that a vast majority of users prefer the simplified digital checkout workflow.",
+                sentence: "Recent quarterly figures ______ that our new line of eco-friendly appliances is highly profitable.",
                 correct: "indicate",
-                options: ["indicate", "indication", "attendee", "locally"],
-                chinese: "早期的客户满意度调查表明，绝大多数用户更喜欢简化后的数字化结账流程。",
+                options: ["indicate", "indicator", "indication", "exclude"],
+                chinese: "最近的季度数据显示，我们的新型环保家电系列产品具有很高的利润空间。",
                 rationales: {
-                    "indicate": "正确。动词作谓语，主语是复数名词 surveys，因此需要填入复数动词原形 indicate，后接宾语从句。",
-                    "indication": "错误。名词“暗示，迹象”，不能引导 that 宾语从句作整句的主谓结构谓语。",
-                    "attendee": "错误。名词“出席者”，无法充当调查 surveys 之后的谓语动词。",
-                    "locally": "错误。副词，不可充当句子的谓语核心。"
+                    "indicate": "正确。及物动词原形，其后接 that 引导的宾语从句。主语为复数名词 figures，谓语动词用原形 indicate，意为“表明，指出”。",
+                    "indicator": "错误。名词“指示物，指标”，不能引导 that 宾语从句作谓语。",
+                    "indication": "错误。名词“暗示，表明迹象”，词性不符。",
+                    "exclude": "错误。及物动词“排除，不包括”，不符合“数据表明某事发生”的因果说明搭配。"
                 },
                 vocabHelper: [
-                    { word: "indication", ipa: "/ˌɪndɪˈkeɪʃn/", cn: "表明，迹象，指示", jp: "表示、兆候、指示" }
+                    { word: "figure", ipa: "/ˈfɪɡə(r)/", cn: "数据/图形", jp: "数字、データ" },
+                    { word: "eco-friendly", ipa: "/ˌiːkəʊˈfrendli/", cn: "环保的", jp: "環境に優しい" }
+                ]
+            },
+            {
+                id: "q_indicator_1",
+                targetWord: "indicator",
+                pos: "名",
+                difficulty: "★★★",
+                difficultyLevel: "hard",
+                sentence: "Economists believe that a rising local stock index is a reliable ______ of overall economic health.",
+                correct: "indicator",
+                options: ["indicator", "indication", "indicate", "division"],
+                chinese: "经济学家认为，不断上涨的本地股票指数是整体经济健康状况的可靠风向标（指标）。",
+                rationales: {
+                    "indicator": "正确。名词，“reliable indicator”是经济和商业数据报告中的标准术语，表示可供判断某种情况的“特征、指标或风向标”。",
+                    "indication": "错误。名词“暗示，显示迹象（一般更主观或微观）”，不如 indicator 在用于宏观数据、指数指标时那般精确和常态化。",
+                    "indicate": "错误。动词原形，不能被冠词 a 及形容词 reliable 修饰。",
+                    "division": "错误。名词“部门，除法”，在此语境完全说不通。"
+                },
+                vocabHelper: [
+                    { word: "economist", ipa: "/ɪˈkɒnəmɪst/", cn: "经济学家", jp: "経済学者" },
+                    { word: "reliable", ipa: "/rɪˈlaɪəbl/", cn: "可靠的", jp: "信頼できる" }
                 ]
             },
             {
@@ -611,18 +762,61 @@
                 pos: "動",
                 difficulty: "★☆☆",
                 difficultyLevel: "easy",
-                sentence: "Because of conflict in scheduling, the lead product engineer will not be able to ______ the upcoming seminar.",
+                sentence: "All newly hired supervisors are requested to ______ the strategic planning seminar next Monday.",
                 correct: "attend",
-                options: ["attend", "attendance", "client", "contact"],
-                chinese: "由于日程安排冲突，首席产品工程师将无法参加即将举行的研讨会。",
+                options: ["attend", "contact", "hire", "review"],
+                chinese: "所有新聘的主管都被要求参加下周一的战略规划研讨会。",
                 rationales: {
-                    "attend": "正确。及物动词，“attend the upcoming seminar”（参加即将举行的研讨会），在 be able to 之后接动词原形。",
-                    "attendance": "错误。名词“出席，出席率”，无法作不定式后的主要动作动词。",
-                    "client": "错误。名词“客户”，词性不符且语义不通。",
-                    "contact": "错误。及物动词“联系”，与“即将举行的研讨会”搭配在逻辑上不贴合。“联系研讨会”不符合英语表达习俗。"
+                    "attend": "正确。及 toughness 及物动词，“attend the seminar”表示出席/参加研讨会，动词后直跟目的地或活动名称。",
+                    "contact": "错误。动词“联系”，无法与“strategic planning seminar（研讨会活动）”构成直接联系动作。",
+                    "hire": "错误。动词“招聘”，逻辑混乱，不能招聘一个研讨会。",
+                    "review": "错误。动词“审查”，虽然语法可行，但日常管理上通常是 request members to attend an external or internal seminar（出席研讨会）而非对其进行评定审查。"
                 },
                 vocabHelper: [
-                    { word: "attendance", ipa: "/əˈtendəns/", cn: "出席人数，出席", jp: "出席、出席者数" }
+                    { word: "strategic", ipa: "/strəˈtiːdʒɪk/", cn: "战略性的", jp: "戦略的な" },
+                    { word: "seminar", ipa: "/ˈsemɪnɑː(r)/", cn: "研讨会", jp: "セミナー" }
+                ]
+            },
+            {
+                id: "q_attendance_1",
+                targetWord: "attendance",
+                pos: "名",
+                difficulty: "★★☆",
+                difficultyLevel: "medium",
+                sentence: "The outstanding turnout at the local branch's product launch set a new ______ record for the firm.",
+                correct: "attendance",
+                options: ["attendance", "attendee", "attendant", "division"],
+                chinese: "本地分公司产品发布会的极佳出席人数，创下了该公司新的出席人数记录。",
+                rationales: {
+                    "attendance": "正确。名词，“attendance record”指“出席记录、参与总人数记录”，为固定复合名词结构。",
+                    "attendee": "错误。名词“出席者，参加者”，一般不直接用来修饰 record 指代累计数值。设 record 应该是人数总量（attendance）而非单一出席人。",
+                    "attendant": "错误。名词“服务员，侍从”，不符合发布会签到总人次的描述逻辑。",
+                    "division": "错误。名词“部门，分部”，无法构成 division record 表达出席人数的上涨。"
+                },
+                vocabHelper: [
+                    { word: "turnout", ipa: "/ˈtɜːnaʊt/", cn: "出席人数", jp: "参加者数" },
+                    { word: "launch", ipa: "/lɔːntʃ/", cn: "发布", jp: "発売、開始" }
+                ]
+            },
+            {
+                id: "q_attendee_1",
+                targetWord: "attendee",
+                pos: "名",
+                difficulty: "/★★☆",
+                difficultyLevel: "medium",
+                sentence: "At the end of the seminar, each ______ was given a complimentary package containing locally sourced items.",
+                correct: "attendee",
+                options: ["attendee", "attendance", "attendant", "reviewer"],
+                chinese: "研讨会结束时，每位参会者都获得了一份免费的礼包，内含当地采购的特色物品。",
+                rationales: {
+                    "attendee": "正确。可数名词单数，在 each 后面修饰指代“每一个参会人、参会代表”，符合研讨会分发纪念品的场景。",
+                    "attendance": "错误。抽象不可数名词“出席，出席率”，不能搭配 each 表达给每位“人”发礼品。",
+                    "attendant": "错误。名词，一般特指“乘务员、看管员、侍从”（如 flight attendant），不作为研讨会、展会的代表或听众（attendee）的首选词。",
+                    "reviewer": "错误。名词“审查人”，并非普通的参会听众（attendee）概念。"
+                },
+                vocabHelper: [
+                    { word: "complimentary", ipa: "/ˌkɒmplɪˈmentəri/", cn: "免费的", jp: "無料の" },
+                    { word: "trade", ipa: "/treɪd/", cn: "贸易/行业", jp: "貿易" }
                 ]
             },
             {
@@ -631,18 +825,19 @@
                 pos: "動",
                 difficulty: "★☆☆",
                 difficultyLevel: "easy",
-                sentence: "To manage the sudden influx of customer inquiries, the administrative division plans to ______ additional temporary staff.",
+                sentence: "To support the expanding logistics facility, the local management intends to ______ ten additional workers.",
                 correct: "hire",
-                options: ["hire", "hiring", "accordingly", "indicate"],
-                chinese: "为了应对突然涌入的客户咨询，行政部门计划聘用额外的临时员工。",
+                options: ["hire", "hired", "hiring", "attend"],
+                chinese: "为了支持不断扩大的物流设施，当地管理层计划雇用十名额外的工人。",
                 rationales: {
-                    "hire": "正确。及物动词，“hire + 人”，意为“雇佣，聘用”，在 plans to 之后充当动词原形宾语。",
-                    "hiring": "错误。动名词或现在分词，不能直接接在 to 不定式符号后面充当原形谓语。",
-                    "accordingly": "错误。副词，不符合及物动作带宾语的语法位置要求。",
-                    "indicate": "错误。动词“表明”，与“额外的临时员工”无法构成合理的及物动宾关系。"
+                    "hire": "正确。动词原形，在 intends to 后作为不定式动词原形，意为“雇佣，招聘（hire workers）”。",
+                    "hired": "错误。动词过去式或过去分词，不能在 intends to 后使用原形以外的形式。",
+                    "hiring": "错误。动名词或现在分词，形式不符。",
+                    "attend": "错误。及物动词“参加，出席”，不能与 additional workers 构成语义合法的动宾关系。"
                 },
                 vocabHelper: [
-                    { word: "hiring", ipa: "/ˈhaɪərɪŋ/", cn: "招聘，雇佣", jp: "雇用、採用" }
+                    { word: "temporary", ipa: "/ˈtemprəri/", cn: "临时的", jp: "一時的な" },
+                    { word: "facility", ipa: "/fəˈsɪləti/", cn: "设施", jp: "施設、設備" }
                 ]
             },
             {
@@ -651,180 +846,19 @@
                 pos: "形",
                 difficulty: "★☆☆",
                 difficultyLevel: "easy",
-                sentence: "The corporate headquarters was relocatated to enhance partnerships with ______ suppliers and minimize logistics fees.",
+                sentence: "The newly opened restaurant sources all its ingredients from ______ organic farms to ensure absolute freshness.",
                 correct: "local",
-                options: ["local", "locally", "reviewer", "attendance"],
-                chinese: "公司总部进行了搬迁，以加强与当地供应商的伙伴关系并最大程度减少物流费用。",
+                options: ["local", "locally", "locality", "departmental"],
+                chinese: "新开业的餐厅所有原料都采购自当地的有机农场，以确保绝对的新鲜度。",
                 rationales: {
-                    "local": "正确。形容词作定语，修饰复数名词 suppliers，构成“local suppliers”（当地供应商）。",
-                    "locally": "错误。副词，不能直接修饰名词 suppliers。",
-                    "reviewer": "错误。名词“评审者”，与 suppliers 连用不能表达“当地”的地理方位定语含义。",
-                    "attendance": "错误。名词“出席”，不符合修饰名词 suppliers 充当定语的修饰逻辑。"
+                    "local": "正确。形容词作定语修饰名词短语 organic farms，意为“当地的，本地的”。",
+                    "locally": "错误。副词“在本地”，副词一般不能直接修饰名词 farms。如果是 locally sourced 则正确，修饰 farms 单独使用词性不符。",
+                    "locality": "错误。名词“地区，方位”，不能直接作定语修饰 nouns。",
+                    "departmental": "错误。形容词“部门的”，农场属于地理区域概念，不能用 departmental 修饰。"
                 },
                 vocabHelper: [
-                    { word: "locally", ipa: "/ˈləʊkəli/", cn: "在本地，地方性地", jp: "地元で" }
-                ]
-            },
-            // Part 2: Word Family Distractors / Close Relations (Harder Levels)
-            {
-                id: "q_include_2",
-                targetWord: "including",
-                pos: "前",
-                difficulty: "★★☆",
-                difficultyLevel: "medium",
-                sentence: "All conference packages, ______ the premium executive pass, must be paid in full prior to the registration deadline.",
-                correct: "including",
-                options: ["including", "include", "exclusion", "exclude"],
-                chinese: "所有会议套餐，包括高级行政通行证在内，都必须在注册截止日期前足额支付。",
-                rationales: {
-                    "including": "正确。介词，意为“包括……在内”，常用来引出伴随的例子或说明范围，放在名词短语前面充当插入语或修饰语成分。",
-                    "include": "错误。动词原形，在此位置没有连词的情况下无法直接作为插入语连接两个完整的名词结构。",
-                    "exclusion": "错误。名词“排除，除外”，其不能直接作为前置修饰语连接后面的 premium executive pass 表达“包含”。",
-                    "exclude": "错误。动词原形，缺乏引导短语的介词语法特征。"
-                },
-                vocabHelper: [
-                    { word: "exclusion", ipa: "/ɪkˈskluːʒn/", cn: "排除，除外", jp: "除外、排除" }
-                ]
-            },
-            {
-                id: "q_department_2",
-                targetWord: "departmental",
-                pos: "形",
-                difficulty: "★★☆",
-                difficultyLevel: "medium",
-                sentence: "The internal audit discovered several ______ discrepancies that required immediate correction by the branch managers.",
-                correct: "departmental",
-                options: ["departmental", "department", "locally", "clientele"],
-                chinese: "内部审计发现了几个部门内部的差异，这需要分支机构经理立即进行修正。",
-                rationales: {
-                    "departmental": "正确。形容词作定语修饰名词 discrepancies，意为“部门的，部门内部的”。",
-                    "department": "错误。虽然名词可以修饰名词，但在这里 departmental 作为形容词直接修饰“差异”，描述“部门内部特有属性的”差异，比单纯用 department 更加符合托业语法首选惯例。",
-                    "locally": "错误。副词，不能修饰名词 discrepancies。",
-                    "clientele": "错误。名词“客户群”，无法修饰差异 discrepancies 表达合理的商务语义。"
-                },
-                vocabHelper: [
-                    { word: "clientele", ipa: "/ˌklaɪənˈtel/", cn: "（总称）顾客，客户", jp: "（集合的な）顧客" }
-                ]
-            },
-            {
-                id: "q_contact_2",
-                targetWord: "contacted",
-                pos: "動",
-                difficulty: "★★☆",
-                difficultyLevel: "medium",
-                sentence: "Once the technician has ______ the primary vendor, the system restoration timeline will be shared with the team.",
-                correct: "contacted",
-                options: ["contacted", "connection", "contact", "including"],
-                chinese: "一旦技术人员与主要供应商取得联系，系统恢复的时间表就会与团队共享。",
-                rationales: {
-                    "contacted": "正确。过去分词形式，与助动词 has 构成现在完成时谓语结构（has contacted）。",
-                    "connection": "错误。名词，不能作为现在完成时助动词 has 之后的过去分词。",
-                    "contact": "错误。动词原形，在 has 之后应该使用过去分词形式 contacted 而非原形或单三。",
-                    "including": "错误。介词，不能在 has 后面充当主要谓语动词的过去分词。"
-                },
-                vocabHelper: [
-                    { word: "connection", ipa: "/kəˈnekʃn/", cn: "联系，连接", jp: "接続、関係" }
-                ]
-            },
-            {
-                id: "q_accordingto_2",
-                targetWord: "accordance",
-                pos: "名",
-                difficulty: "★★★",
-                difficultyLevel: "hard",
-                sentence: "The construction work on the new facility was conducted in strict ______ with the safety protocols approved by the municipality.",
-                correct: "accordance",
-                options: ["accordance", "according to", "accordingly", "include"],
-                chinese: "新设施的建设工作是严格按照市政府批准的安全协议进行的。",
-                rationales: {
-                    "accordance": "正确。考查固定介词搭配“in strict accordance with”，意为“严格按照，与……保持一致”。",
-                    "according to": "错误。虽然意为“按照”，但不与前面的 in 以及后面的 with 组合。“in according to with”属于严重的语法结构冗余与错误。",
-                    "accordingly": "错误。副词“相应地”，不能和 in ... with 组合在名词位置上使用。",
-                    "include": "错误。动词原形，不可置于介词 in 之后充当宾语名词。"
-                },
-                vocabHelper: [
-                    { word: "accordingly", ipa: "/əˈkɔːdɪŋli/", cn: "相应地，因此", jp: "それに応じて" }
-                ]
-            },
-            {
-                id: "q_client_2",
-                targetWord: "clientele",
-                pos: "名",
-                difficulty: "★★★",
-                difficultyLevel: "hard",
-                sentence: "The boutique hotel has successfully expanded its affluent ______ by launching an exclusive loyalty incentive scheme.",
-                correct: "clientele",
-                options: ["clientele", "client", "reviewer", "attendance"],
-                chinese: "这家精品酒店通过推出独家的常客奖励计划，成功扩大了其富裕的客户群。",
-                rationales: {
-                    "clientele": "正确。集合名词，意为“（总称）顾客，客户群”，常用于形容词（如 affluent）修饰之后，表示一个整体客户类别。",
-                    "client": "错误。可数名词单数，前面有形容词修饰且作为整体客户概念时，不使用单数形式 client（若用单数，前面需要加不定冠词 a 或复数 clients）。",
-                    "reviewer": "错误。名词“评审人”，偏离精品酒店扩大“高净值客户群”的酒店经营场景。",
-                    "attendance": "错误。名词“出席，出席率”，不能用“富裕的出席率”来形容。"
-                },
-                vocabHelper: [
-                    { word: "attendance", ipa: "/əˈtendəns/", cn: "出席人数，出席", jp: "出席、出席者数" }
-                ]
-            },
-            {
-                id: "q_review_2",
-                targetWord: "reviewer",
-                pos: "名",
-                difficulty: "★★☆",
-                difficultyLevel: "medium",
-                sentence: "The software manuscript was sent back to the editorial board after an anonymous ______ pointed out technical flaws.",
-                correct: "reviewer",
-                options: ["reviewer", "review", "indicator", "locally"],
-                chinese: "在一份匿名的审稿人指出技术缺陷后，软件手稿被退回给了编辑委员会。",
-                rationales: {
-                    "reviewer": "正确。名词，“评审人、审查者”，在句中作主语，契合“指出技术缺陷（pointed out technical flaws）”的行为发出者。",
-                    "review": "错误。名词“审查”或动词，由于后面有 pointed out 动词，此空缺必须是动作的发出者（人），而不是动作本身（review）。",
-                    "indicator": "错误。名词“指标，指示器”，无生命名词无法做出“审查手稿并指出缺陷”的主动行为。",
-                    "locally": "错误。副词，不可充当主语核心名词。"
-                },
-                vocabHelper: [
-                    { word: "indicator", ipa: "/ˈɪndɪkeɪtə(r)/", cn: "指标，指示器", jp: "指標" }
-                ]
-            },
-            {
-                id: "q_indicate_2",
-                targetWord: "indicator",
-                pos: "名",
-                difficulty: "★★★",
-                difficultyLevel: "hard",
-                sentence: "Analysts state that the sustained rise in commercial real estate sales is a reliable ______ of long-term economic growth.",
-                correct: "indicator",
-                options: ["indicator", "indicate", "indication", "attendant"],
-                concrete_distractor: "indication",
-                chinese: "分析人士指出，商业地产销售的持续增长是长期经济增长的可靠指标。",
-                rationales: {
-                    "indicator": "正确。名词“指标，标志”，指具体能够作为参考的晴雨表或指向数据，a reliable indicator 属于经典的托业高频经济搭配。",
-                    "indicate": "错误。动词原形，不能在不定冠词 a 和形容词 reliable 之后担任名词中心语。",
-                    "indication": "错误。名词“暗示，迹象”，通常指某种迹象、暗示，不用于描述“实物指标、硬性经济度量数据（如地产销售增长率）”作为可靠指标的场景。",
-                    "attendant": "错误。名词“服务员，随从”，不能作为反映长期经济增长的可靠工具指标。"
-                },
-                vocabHelper: [
-                    { word: "attendant", ipa: "/əˈtendənt/", cn: "服务员，伴随者", jp: "接客係、付き添い人" }
-                ]
-            },
-            {
-                id: "q_attend_2",
-                targetWord: "attendee",
-                pos: "名",
-                difficulty: "★★☆",
-                difficultyLevel: "medium",
-                sentence: "Each registered ______ is requested to wear a digital name badge throughout the duration of the annual symposium.",
-                correct: "attendee",
-                options: ["attendee", "attend", "attendance", "reviewer"],
-                chinese: "每位注册的参会人员都被要求在年度专题讨论会期间佩戴数字化姓名徽章。",
-                rationales: {
-                    "attendee": "正确。名词，“出席者，参加者”，在“each registered ______”中指代参会的人，且为单数可数名词。",
-                    "attend": "错误。动词原形，不能作名词在 adjective 之后作主语核心。",
-                    "attendance": "错误。名词“出席人数，出席状况（抽象概念）”，不能用 registered 修饰其去“佩戴姓名徽章”（抽象概念无法佩戴姓名徽章）。",
-                    "reviewer": "错误。名词“审查者”，研讨会的主要参与主体和 registered 搭配的最优词是“attendee（出席者）”。"
-                },
-                vocabHelper: [
-                    { word: "reviewer", ipa: "/rɪˈvjuːə(r)/", cn: "评审者，评论家", jp: "評論家、査読者" }
+                    { word: "ingredient", ipa: "/ɪnˈɡriːdiənt/", cn: "食材/配方", jp: "材料" },
+                    { word: "organic", ipa: "/ɔːˈɡænɪk/", cn: "有机的", jp: "有機の" }
                 ]
             }
         ];
@@ -860,33 +894,45 @@
                 vocabBank.forEach(v => {
                     const jpSpan = v.jp ? `<span class="bg-rose-50 text-rose-700 px-2 py-0.5 rounded text-[10px] font-bold border border-rose-100">jp</span> <span class="text-xs font-semibold text-rose-700 block">${v.jp}</span>` : '';
                     container.innerHTML += `
-                        <div onclick="speakWord('${v.word}')" class="bg-white hover:bg-gradient-to-tr hover:from-orange-50/10 hover:to-amber-50/10 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col justify-between group">
+                        <div onmouseenter="speakWord('${v.word}')" onclick="toggleReveal(this, '${v.word}')" class="bg-white hover:bg-stone-50 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col group">
+                            <!-- Header section -->
                             <div>
                                 <div class="flex items-center justify-between mb-1.5">
                                     <span class="text-base font-black text-slate-900 group-hover:text-orange-600 transition-colors">${v.word}</span>
                                     <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-stone-100 text-slate-500 uppercase tracking-wider">${v.pos}</span>
                                 </div>
-                                <div class="text-xs text-slate-400 font-mono mb-2">${v.ipa}</div>
-                                <div class="space-y-1 mb-2">
-                                    <div class="flex items-center space-x-1.5">
-                                        <span class="bg-orange-50 text-orange-700 px-2 py-0.5 rounded text-[10px] font-bold border border-orange-100">cn</span>
-                                        <span class="text-xs font-bold text-slate-700 block">${v.cn}</span>
-                                    </div>
-                                    <div class="flex items-center space-x-1.5 mt-1.5">
-                                        ${jpSpan}
-                                    </div>
+                                <div class="text-xs text-slate-400 font-mono mb-3">${v.ipa}</div>
+                            </div>
+                            
+                            <!-- Reveal interactive prompt -->
+                            <div class="reveal-prompt text-[10px] text-slate-400/80 italic text-center bg-stone-50 rounded-lg py-1.5 border border-stone-100 transition-all group-hover:bg-orange-50 group-hover:text-orange-600 group-hover:border-orange-100 mb-3">
+                                <i class="fa-solid fa-hand-pointer mr-1 animate-pulse"></i> Click to reveal translation
+                            </div>
+
+                            <!-- Hidden translation section -->
+                            <div class="reveal-content hidden space-y-1 mb-3 bg-stone-50/50 p-2 rounded-xl border border-stone-100">
+                                <div class="flex items-center space-x-1.5">
+                                    <span class="bg-orange-50 text-orange-700 px-2 py-0.5 rounded text-[10px] font-bold border border-orange-100">cn</span>
+                                    <span class="text-xs font-bold text-slate-700 block">${v.cn}</span>
                                 </div>
-                                <div class="text-[11px] text-slate-500 mt-2 border-t border-stone-100 pt-2">
+                                <div class="flex items-center space-x-1.5 mt-1.5">
+                                    ${jpSpan}
+                                </div>
+                            </div>
+
+                            <!-- Word Family & Usage Details -->
+                            <div class="mt-auto">
+                                <div class="text-[11px] text-slate-500 border-t border-stone-100 pt-2">
                                     <span class="font-bold text-slate-400 text-[9px] uppercase block mb-0.5 font-mono">Word Family:</span>
                                     <span class="font-medium text-slate-600">${v.family}</span>
                                 </div>
-                            </div>
-                            <div class="border-t border-stone-100 pt-2 mt-2">
-                                <div class="bg-orange-50/40 p-2.5 rounded-lg border border-orange-100 text-[10px] text-orange-950 font-bold mb-2 leading-relaxed">
-                                    <span class="font-black uppercase text-[9px] text-orange-700 block mb-0.5"><i class="fa-solid fa-fire text-[8px] mr-1"></i>TIPS:</span>
-                                    ${v.tips}
+                                <div class="border-t border-stone-100 pt-2 mt-2">
+                                    <div class="bg-orange-50/40 p-2.5 rounded-lg border border-orange-100 text-[10px] text-orange-950 font-bold mb-2 leading-relaxed">
+                                        <span class="font-black uppercase text-[9px] text-orange-700 block mb-0.5"><i class="fa-solid fa-fire text-[8px] mr-1"></i>TIPS:</span>
+                                        ${v.tips}
+                                    </div>
+                                    <p class="text-[11px] text-slate-500 leading-relaxed font-medium italic">“ ${v.desc} ”</p>
                                 </div>
-                                <p class="text-[11px] text-slate-500 leading-relaxed font-medium italic">“ ${v.desc} ”</p>
                             </div>
                         </div>
                     `;
@@ -897,22 +943,27 @@
                 
                 helperVocabBank.forEach(v => {
                     container.innerHTML += `
-                        <div onclick="speakWord('${v.word}')" class="bg-white hover:bg-stone-50 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col justify-between group">
+                        <div onmouseenter="speakWord('${v.word}')" onclick="toggleReveal(this, '${v.word}')" class="bg-white hover:bg-stone-50 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col group">
                             <div>
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-base font-black text-slate-900 transition-colors">${v.word}</span>
+                                    <span class="text-base font-black text-slate-900 group-hover:text-orange-600 transition-colors">${v.word}</span>
                                     <span class="text-[10px] font-extrabold px-2 py-0.5 rounded bg-stone-100 text-slate-500 uppercase tracking-wider">${v.pos}</span>
                                 </div>
-                                <div class="text-xs text-slate-400 font-mono mb-2">${v.ipa}</div>
-                                <div class="space-y-1.5">
-                                    <div class="flex items-center space-x-1.5">
-                                        <span class="bg-stone-100 text-slate-600 px-2 py-0.5 rounded text-[10px] font-bold border border-stone-200">cn</span>
-                                        <span class="text-xs font-bold text-slate-700 block">${v.cn}</span>
-                                    </div>
-                                    <div class="flex items-center space-x-1.5 mt-1.5">
-                                        <span class="bg-stone-100 text-slate-600 px-2 py-0.5 rounded text-[10px] font-bold border border-stone-200">jp</span>
-                                        <span class="text-xs font-semibold text-slate-700 block">${v.jp}</span>
-                                    </div>
+                                <div class="text-xs text-slate-400 font-mono">${v.ipa}</div>
+                            </div>
+
+                            <div class="reveal-prompt text-[10px] text-slate-400/80 italic mt-3 text-center bg-stone-50 rounded-lg py-1.5 border border-stone-100 transition-all group-hover:bg-orange-50 group-hover:text-orange-600 group-hover:border-orange-100">
+                                <i class="fa-solid fa-hand-pointer mr-1 animate-pulse"></i> Click to reveal translation
+                            </div>
+
+                            <div class="reveal-content hidden space-y-1.5 mt-3 pt-3 border-t border-stone-100">
+                                <div class="flex items-center space-x-1.5">
+                                    <span class="bg-stone-100 text-slate-600 px-2 py-0.5 rounded text-[10px] font-bold border border-stone-200">cn</span>
+                                    <span class="text-xs font-bold text-slate-700 block">${v.cn}</span>
+                                </div>
+                                <div class="flex items-center space-x-1.5 mt-1.5">
+                                    <span class="bg-stone-100 text-slate-600 px-2 py-0.5 rounded text-[10px] font-bold border border-stone-200">jp</span>
+                                    <span class="text-xs font-semibold text-slate-700 block">${v.jp}</span>
                                 </div>
                             </div>
                         </div>
@@ -962,7 +1013,7 @@
                     if (userAnswers[idx] === q.correct) {
                         btnClass += "bg-emerald-600 border-emerald-600 text-white shadow-sm";
                     } else {
-                        btnClass += "bg-rose-500 border-rose-550 text-white shadow-sm";
+                        btnClass += "bg-rose-500 border-rose-500 text-white shadow-sm";
                     }
                 } else {
                     btnClass += "bg-stone-100 border-stone-200/80 text-slate-500 hover:bg-stone-200/55";
@@ -1012,12 +1063,22 @@
             const helperContainer = document.getElementById('vocab-container');
             helperContainer.innerHTML = '';
             
-            const strictlyFilteredHelpers = q.vocabHelper.filter(item => item.word.toLowerCase() !== q.correct.toLowerCase());
+            // strictly prevent answer leaks in the helper vocabulary list.
+            const strictlyFilteredHelpers = q.vocabHelper.filter(item => {
+                const targetMatch = q.targetWord.toLowerCase();
+                const correctMatch = q.correct.toLowerCase();
+                const helperMatch = item.word.toLowerCase();
+                return helperMatch !== targetMatch && helperMatch !== correctMatch;
+            });
             
             if (strictlyFilteredHelpers.length === 0) {
                 helperContainer.innerHTML = `<span class="text-xs text-slate-400 italic">No extra context vocabulary needed for this challenge.</span>`;
             } else {
                 strictlyFilteredHelpers.forEach(item => {
+                    const globalWordObj = helperVocabBank.find(v => v.word.toLowerCase() === item.word.toLowerCase());
+                    const cnMean = globalWordObj ? globalWordObj.cn : item.cn || "N/A";
+                    const jpMean = globalWordObj ? globalWordObj.jp : item.jp || "N/A";
+
                     const tooltipWrapper = document.createElement('div');
                     tooltipWrapper.className = "tooltip-container relative inline-block";
                     tooltipWrapper.onclick = (e) => { e.stopPropagation(); speakWord(item.word); };
@@ -1029,15 +1090,15 @@
                         </button>
                         <div class="tooltip-reveal absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2.5 z-50 pointer-events-none w-max max-w-xs">
                             <div class="bg-slate-900 text-white text-[11px] rounded-xl p-3 shadow-2xl flex flex-col space-y-1.5 border border-slate-800">
-                                <span class="font-mono text-amber-300 font-bold tracking-wide block text-center">${item.ipa}</span>
+                                <span class="font-mono text-amber-300 font-bold tracking-wide block text-center">${item.ipa || ''}</span>
                                 <div class="flex flex-col space-y-1">
                                     <div class="flex items-center space-x-1 justify-center">
                                         <span class="bg-slate-800 text-orange-300 px-1.5 py-0.5 rounded text-[9px] font-bold border border-slate-700">cn</span>
-                                        <span class="text-slate-200 font-medium text-center">${item.cn}</span>
+                                        <span class="text-slate-200 font-medium text-center">${cnMean}</span>
                                     </div>
                                     <div class="flex items-center space-x-1 justify-center mt-1">
                                         <span class="bg-slate-800 text-orange-300 px-1.5 py-0.5 rounded text-[9px] font-bold border border-slate-700">jp</span>
-                                        <span class="text-slate-200 font-medium text-center">${item.jp}</span>
+                                        <span class="text-slate-200 font-medium text-center">${jpMean}</span>
                                     </div>
                                 </div>
                             </div>
@@ -1105,8 +1166,8 @@
                     statusTitle.innerText = "Correct Choice Verified!";
                     statusTitle.className = "text-base font-black text-emerald-600";
                 } else {
-                    badgeIcon.className = "w-10 h-10 rounded-full flex items-center justify-center text-white shrink-0 mt-0.5 bg-rose-500 shadow-md animate-bounce";
-                    badgeIcon.innerHTML = `<i class="fa-solid fa-sun text-lg text-yellow-200"></i>`;
+                    badgeIcon.className = "w-10 h-10 rounded-full flex items-center justify-center text-white shrink-0 mt-0.5 bg-rose-500 shadow-md";
+                    badgeIcon.innerHTML = `<i class="fa-solid fa-sun text-lg text-yellow-200 animate-pulse"></i>`;
                     statusTitle.innerText = `Incorrect Choice. Verified Answer: [ ${q.correct} ]`;
                     statusTitle.className = "text-base font-black text-rose-700";
                 }
@@ -1120,7 +1181,7 @@
                 q.shuffledOptions.forEach(opt => {
                     if (opt !== q.correct) {
                         const wordObj = vocabBank.find(v => v.word === opt);
-                        const posTag = wordObj ? wordObj.pos : q.pos;
+                        const posTag = wordObj ? wordObj.pos : (q.pos.includes('/') ? "词性干扰" : q.pos);
                         wrongDetailContainer.innerHTML += `
                             <div class="p-2.5 rounded-lg border border-stone-200 bg-white shadow-sm">
                                 <div class="flex items-center justify-between mb-1">
@@ -1219,6 +1280,31 @@
                 window.speechSynthesis.speak(msg);
             } catch(e) {
                 console.error("TTS Word engine failure", e);
+            }
+        }
+
+        function toggleReveal(el, word) {
+            // Speak standard pronunciation
+            speakWord(word);
+
+            // Find translation elements
+            const transDiv = el.querySelector('.reveal-content');
+            const promptDiv = el.querySelector('.reveal-prompt');
+            
+            if (!transDiv || !promptDiv) return;
+
+            const isHidden = transDiv.classList.contains('hidden');
+
+            if (isHidden) {
+                // Reveal translations & hide the hint prompt
+                transDiv.classList.remove('hidden');
+                transDiv.classList.add('fade-in');
+                promptDiv.classList.add('hidden');
+            } else {
+                // Hide translations & show the hint prompt
+                transDiv.classList.add('hidden');
+                transDiv.classList.remove('fade-in');
+                promptDiv.classList.remove('hidden');
             }
         }
 

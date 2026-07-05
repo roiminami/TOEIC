@@ -913,7 +913,7 @@
                 vocabBank.forEach(v => {
                     const jpSpan = v.jp ? `<span class="bg-rose-50 text-rose-700 px-2 py-0.5 rounded text-[10px] font-bold border border-rose-100">jp</span> <span class="text-xs font-semibold text-rose-700 block">${v.jp}</span>` : '';
                     container.innerHTML += `
-                        <div onmouseenter="speakWord('${v.word}')" onclick="toggleReveal(this)" class="bg-white hover:bg-stone-50 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col group">
+                        <div onmouseenter="speakWord('${v.word}')" onclick="toggleReveal(this, '${v.word}')" class="bg-white hover:bg-stone-50 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col group">
                             <!-- Always visible top section -->
                             <div>
                                 <div class="flex items-center justify-between mb-1.5">
@@ -962,7 +962,7 @@
                 
                 helperVocabBank.forEach(v => {
                     container.innerHTML += `
-                        <div onmouseenter="speakWord('${v.word}')" onclick="toggleReveal(this)" class="bg-white hover:bg-stone-50 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col group">
+                        <div onmouseenter="speakWord('${v.word}')" onclick="toggleReveal(this, '${v.word}')" class="bg-white hover:bg-stone-50 border border-stone-200 hover:border-orange-300 rounded-2xl p-4 transition-all duration-300 cursor-pointer shadow-sm flex flex-col group">
                             <div>
                                 <div class="flex items-center justify-between mb-1">
                                     <span class="text-base font-black text-slate-900 group-hover:text-orange-600 transition-colors">${v.word}</span>
@@ -1292,22 +1292,26 @@
             }
         }
 
-        function toggleReveal(el) {
+        function toggleReveal(el, word) {
+            // 1. 先朗读单词
+            speakWord(word);
+
+            // 2. 找到隐藏的内容和提示文字
             const transDiv = el.querySelector('.reveal-content');
             const promptDiv = el.querySelector('.reveal-prompt');
-
+            
             if (!transDiv || !promptDiv) return;
 
-            // 判断当前是否处于折叠状态（包含 hidden 类）
+            // 3. 判断当前是展开还是收起
             const isHidden = transDiv.classList.contains('hidden');
 
             if (isHidden) {
-                // 当前是折叠状态，执行展开：隐藏提示，显示内容
+                // 当前是收起状态，点击后：展开内容，隐藏提示语
                 transDiv.classList.remove('hidden');
                 transDiv.classList.add('fade-in');
                 promptDiv.classList.add('hidden');
             } else {
-                // 当前是展开状态，执行收起：显示提示，隐藏内容
+                // 当前是展开状态，点击后：收起内容，显示提示语
                 transDiv.classList.add('hidden');
                 transDiv.classList.remove('fade-in');
                 promptDiv.classList.remove('hidden');
