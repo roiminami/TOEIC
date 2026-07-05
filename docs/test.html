@@ -56,10 +56,10 @@
             <div class="flex items-center space-x-4 bg-[#F3EFE3] px-3 py-1.5 rounded-xl border border-[#E1DBC9]">
                 <div class="flex items-center space-x-1">
                     <i data-lucide="volume-2" class="w-4 h-4 text-amber-600"></i>
-                    <span class="text-xs font-semibold text-slate-700">TOEIC 多国口音引擎</span>
+                    <span class="text-xs font-semibold text-slate-700">TOEIC 主流四国口音引擎</span>
                 </div>
-                <select id="voiceSelect" class="bg-transparent text-xs text-slate-700 font-semibold focus:outline-none max-w-[160px] cursor-pointer">
-                    <option value="auto">自动选择主流英美音</option>
+                <select id="voiceSelect" class="bg-transparent text-xs text-slate-700 font-bold focus:outline-none max-w-[160px] cursor-pointer">
+                    <option value="auto">自动选择主流口音</option>
                 </select>
                 <div class="h-3 w-[1px] bg-[#E1DBC9]"></div>
                 <div class="flex items-center space-x-1">
@@ -143,7 +143,7 @@
                     </h3>
                     <p class="text-xs text-slate-600 leading-relaxed">
                         1. <strong>常显场景语境：</strong> 核心词汇的托业真题商务例句现在【始终保持显示】，帮助在脑海中建立语境反射。<br>
-                        2. <strong>独立例句发音：</strong> 直接【点击例句区块】可以单独触发多国口音朗读，绝对不会误触折叠卡片。<br>
+                        2. <strong>独立例句发音：</strong> 直接【点击例句区块】可以单独触发多国原声例句朗读，绝对不会误触折叠卡片。<br>
                         3. <strong>点击卡片其它区域：</strong> 自动发音单词并【向下展开/折叠】对应的中日文翻译、派生关系和核心考点。
                     </p>
                 </div>
@@ -214,6 +214,9 @@
                     <div class="space-y-4">
                         <h3 class="text-xs font-bold text-slate-400 tracking-wider uppercase">TOEIC PART 5 - INCOMPLETE SENTENCE</h3>
                         <div id="q-stem" class="text-lg md:text-xl font-medium text-slate-800 leading-relaxed tracking-normal"></div>
+                        
+                        <!-- 行内智能提示卡片 CONTAINER (完美压制白框防溢出) -->
+                        <div id="q-hint-container" class="hidden bg-slate-900 text-white text-xs p-3 rounded-xl relative transition-all duration-200 shadow-lg"></div>
                     </div>
 
                     <div class="grid grid-cols-1 gap-3 pt-4" id="q-options-container"></div>
@@ -413,6 +416,7 @@
         let favoritesList = JSON.parse(localStorage.getItem('toeic_ghost_favorites')) || [];
         let isMistakeOnlySession = false; let hoverSpeechEnabled = false;
         let synth = window.speechSynthesis; let selectedVoice = null;
+        let lastHintWord = ""; 
 
         function refreshIcons() { if (typeof lucide !== 'undefined') lucide.createIcons(); }
 
@@ -425,7 +429,7 @@
             currentQuestions.forEach(q => { q.shuffledOptions = [...q.options].sort(() => Math.random() - 0.5); });
         }
 
-        // 💡 智能化多口音深度评分分拣模型（自动贴签 [美音]/[英音]/[澳音]/[加音] 并剔除日系发音）
+        // 🌟 核心升级：TOEIC 四国口音高清晰度自适应动态分拣引擎
         function getBestMainstreamVoice() {
             if (!synth) return null;
             const voices = synth.getVoices();
@@ -507,6 +511,14 @@
             synth.speak(utter);
         }
 
+        // 🌟 核心功能归位：Part 5 全题真题随心点读功能
+        function speakQuestionText() {
+            if (currentQuestions.length === 0) return;
+            const q = currentQuestions[currentIndex];
+            let rawText = q.stem.replace(/________+/g, q.correct);
+            speakText(rawText);
+        }
+
         function switchTab(tabId) {
             document.querySelectorAll('.tab-btn').forEach(btn => { btn.classList.remove('border-amber-500', 'text-amber-600'); btn.classList.add('border-transparent', 'text-slate-500'); });
             document.getElementById(`tab-${tabId}`).classList.add('border-amber-500', 'text-amber-600');
@@ -567,14 +579,30 @@
             });
         }
 
-        function toggleInlineTooltip(event, element, word) {
-            event.stopPropagation(); const tooltip = element.querySelector('.inline-tooltip'); if (!tooltip) return;
-            const isVisible = !tooltip.classList.contains('invisible');
-            document.querySelectorAll('.inline-tooltip').forEach(t => t.classList.add('invisible', 'opacity-0'));
-            if (isVisible) { tooltip.classList.add('invisible', 'opacity-0'); } else { tooltip.classList.remove('invisible', 'opacity-0'); speakText(word); }
+        function toggleStemWordHint(event, word, pos, ipa, cn, jp) {
+            if (event) event.stopPropagation();
+            const container = document.getElementById('q-hint-container');
+            if (!container.classList.contains('hidden') && lastHintWord === word) {
+                container.classList.add('hidden'); lastHintWord = ""; if (synth) synth.cancel(); return;
+            }
+            lastHintWord = word;
+            container.innerHTML = `
+                <div class="flex justify-between items-center border-b border-slate-700 pb-1.5 mb-1.5">
+                    <div>
+                        <span class="text-amber-400 font-bold text-sm tracking-wide">${word}</span>
+                        <span class="text-[10px] text-slate-400 ml-1.5 bg-slate-800 px-1.5 py-0.5 rounded font-sans">[${pos}]</span>
+                        <span class="text-[11px] text-slate-300 font-mono ml-2">${ipa}</span>
+                    </div>
+                    <button onclick="document.getElementById('q-hint-container').classList.add('hidden'); lastHintWord='';" class="text-slate-400 hover:text-white transition-colors">
+                        <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] leading-relaxed">
+                    <div><span class="text-slate-400 font-bold uppercase text-[9px] block">中文参考 (CN)</span><span class="text-slate-200 font-medium">${cn}</span></div>
+                    <div><span class="text-slate-400 font-bold uppercase text-[9px] block">日本語訳 (JP)</span><span class="text-slate-200 font-medium">${jp}</span></div>
+                </div>`;
+            container.classList.remove('hidden'); speakText(word); refreshIcons();
         }
-
-        document.addEventListener('click', () => { document.querySelectorAll('.inline-tooltip').forEach(t => t.classList.add('invisible', 'opacity-0')); });
 
         function showCustomAlert(title, message, iconType = 'info') {
             const modal = document.getElementById('custom-modal'); document.getElementById('modal-title').textContent = title; document.getElementById('modal-message').textContent = message;
@@ -582,8 +610,6 @@
             document.getElementById('modal-icon-container').innerHTML = iconType==='success'?'<i data-lucide=\"check-circle\" class=\"text-emerald-600\"></i>':'<i data-lucide=\"info\"></i>';
             document.getElementById('modal-confirm-btn').onclick = () => modal.classList.add('hidden'); modal.classList.remove('hidden'); refreshIcons();
         }
-
-        document.addEventListener('click', () => { document.querySelectorAll('.inline-tooltip').forEach(t => t.classList.add('invisible', 'opacity-0')); });
 
         function showCustomConfirm(title, message, onConfirm) {
             const modal = document.getElementById('custom-modal'); document.getElementById('modal-title').textContent = title; document.getElementById('modal-message').textContent = message;
@@ -596,7 +622,8 @@
         function loadQuestion() {
             if (currentQuestions.length === 0) return; const q = currentQuestions[currentIndex]; selectedOption = null;
             document.getElementById('question-index-indicator').textContent = `${currentIndex + 1} / ${currentQuestions.length}`;
-            
+            document.getElementById('q-hint-container').classList.add('hidden'); lastHintWord = "";
+
             let diffColor = "bg-emerald-100 text-emerald-800";
             if (q.category === "中等") diffColor = "bg-amber-100 text-amber-800";
             if (q.category === "困难") diffColor = "bg-rose-100 text-rose-800";
@@ -608,7 +635,8 @@
             helperVocabBank.forEach(hv => {
                 if (hv.word !== q.correct.toLowerCase()) {
                     const regex = new RegExp(`\\b${hv.word}\\b`, 'gi');
-                    stemHTML = stemHTML.replace(regex, (m) => `<span class="text-rose-700 font-bold border-b-2 border-rose-400 cursor-pointer relative inline-block" onclick="toggleInlineTooltip(event, this, '${hv.word}')">${m}<span class="inline-tooltip absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-48 bg-slate-900 text-white text-[11px] p-2.5 rounded-xl shadow-xl opacity-0 invisible transition-all z-50 normal-case font-normal"><span class="font-bold text-amber-400 block">${hv.word} [${hv.pos}]</span><span class="block border-t border-slate-700 mt-1 pt-1 text-slate-200">中: ${hv.cn}</span><span class="block text-slate-400">日: ${hv.jp}</span></span></span>`);
+                    const escapedCn = hv.cn.replace(/'/g, "\\'"); const escapedJp = hv.jp.replace(/'/g, "\\'");
+                    stemHTML = stemHTML.replace(regex, (m) => `<span class="text-rose-700 font-bold border-b-2 border-rose-400 cursor-pointer inline-block" onclick="toggleStemWordHint(event, '${hv.word}', '${hv.pos}', '${hv.ipa}', '${escapedCn}', '${escapedJp}')">${m}</span>`);
                 }
             });
             document.getElementById('q-stem').innerHTML = stemHTML;
@@ -755,8 +783,10 @@
         }
 
         function updateDashboardStats() {
-            const total = questionsDatabase.length; const answeredCount = Object.keys(answeredList).length;
+            const total = (typeof questionsDatabase !== 'undefined') ? questionsDatabase.length : 18; 
+            const answeredCount = Object.keys(answeredList).length;
             const correctCount = Object.values(answeredList).filter(item => item.isCorrect).length;
+            
             document.getElementById('stat-progress-txt').textContent = `${answeredCount} / ${total}`;
             document.getElementById('stat-accuracy').textContent = answeredCount > 0 ? `${Math.round((correctCount / answeredCount) * 100)}%` : "0%";
             document.getElementById('stat-mistakes').textContent = `${favoritesList.length} Items`;
