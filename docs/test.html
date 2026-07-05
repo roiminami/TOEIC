@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>南式TOEIC鬼特訓 - Part 5 Intelligent Interactive System</title>
+    <title>南式TOEIC鬼特訓 - Intelligent Interactive System</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -121,7 +121,7 @@
             </button>
             <button onclick="switchTab('test')" id="tab-test" class="tab-btn px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-800 focus:outline-none transition-all flex items-center space-x-2">
                 <i data-lucide="compass" class="w-4 h-4"></i>
-                <span>② 智能测试引擎 (Part 5 Test)</span>
+                <span>② 智能测试引擎 (Test)</span>
             </button>
             <button onclick="switchTab('mistakes')" id="tab-mistakes" class="tab-btn px-5 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-800 focus:outline-none transition-all flex items-center space-x-2">
                 <i data-lucide="shield-alert" class="w-4 h-4"></i>
@@ -176,7 +176,7 @@
             </div>
         </div>
 
-        <!-- TAB 2: SMART TEST ENGINE (PART 5) -->
+        <!-- TAB 2: SMART TEST ENGINE -->
         <div id="panel-test" class="tab-panel hidden grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div class="lg:col-span-7 space-y-6">
                 <!-- Mode Controller -->
@@ -185,9 +185,9 @@
                         <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md uppercase tracking-wider">练习模式: 全真随机乱序</span>
                         <select id="diffFilterSelect" onchange="changeDifficultyFilter(this.value)" class="bg-[#FAF9F5] text-xs text-slate-700 font-bold px-2 py-1 rounded-lg border border-[#E1DBC9] focus:outline-none cursor-pointer transition-colors hover:border-amber-400">
                             <option value="all">🔍 全部难度题型</option>
-                            <option value="简单">🟢 简单题型 (基础词性)</option>
-                            <option value="中等">🟡 中等题型 (商务搭配)</option>
-                            <option value="困难">🔴 困难题型 (高阶辨析)</option>
+                            <option value="简单">🟢 简单题型 </option>
+                            <option value="中等">🟡 中等题型 </option>
+                            <option value="困难">🔴 困难题型 </option>
                         </select>
                     </div>
                     <div class="flex items-center space-x-2">
@@ -218,7 +218,7 @@
                     </div>
 
                     <div class="space-y-4">
-                        <h3 class="text-xs font-bold text-slate-400 tracking-wider uppercase">TOEIC PART 5 - INCOMPLETE SENTENCE</h3>
+                        <h3 class="text-xs font-bold text-slate-400 tracking-wider uppercase">TOEIC - INCOMPLETE SENTENCE</h3>
                         <div id="q-stem" class="text-lg md:text-xl font-medium text-slate-800 leading-relaxed tracking-normal"></div>
                         
                         <!-- 行内智能提示卡片 Container (安全防御，绝对不超框) -->
@@ -254,7 +254,7 @@
                             </div>
                             <h4 class="text-sm font-bold text-slate-700">请先提交本题答案</h4>
                             <p class="text-xs text-slate-400 max-w-[240px] mx-auto leading-relaxed">
-                                完成此Part 5题目后，本侧将立刻解锁高频核心短语、同义关系树、考点中日翻译。
+                                完成此题目后，本侧将立刻解锁高频核心短语、同义关系树、考点中日翻译。
                             </p>
                         </div>
 
@@ -783,7 +783,7 @@
             document.getElementById('report-circle-stroke').style.strokeDashoffset = offset;
 
             let rank = "TOEIC 备考见习生 (Novice)";
-            let advice = "南老师建议：打牢基础词汇句式是攻克 Part 5 高阶题的根本。";
+            let advice = "南老师建议：打牢基础词汇句式是攻克 TOEIC 高阶题的根本。";
             if (score >= 90) { rank = "托业鬼武者 (Guru Elite)"; advice = "惊艳的表现！您对本阶段的核心词汇及语法衍生已达到手到擒来的地步。"; }
             else if (score >= 70) { rank = "商战先锋 (Professional)"; advice = "商务底蕴扎实，但部分困难题型仍存细节盲区，请配合双栏深度精解和错题集重点消灭。"; }
 
