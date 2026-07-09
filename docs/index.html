@@ -16,7 +16,7 @@
     <script src="books.js"></script>
 
     <style>
-        /* ⚡ 核心修复：强制主页面底层为深色背景，从根本上杜绝白闪 */
+        /* 给底层铺上深色，防止白闪 */
         html, body {
             background-color: #020617;
         }
@@ -42,8 +42,8 @@
 </head>
 <body class="text-slate-200 min-h-screen flex flex-col antialiased relative">
 
-    <!-- ⚡ 核心修复：给 iframe 加上了 bg-[#0a0a12] 深色底，让其加载时不会露出默认的白色 -->
-    <iframe src="Cyberpunk/wallpaper.html" class="fixed inset-0 w-full h-full border-none -z-50 pointer-events-none bg-[#0a0a12]"></iframe>
+    <!-- ⚡ 核心修复：将层级改为 z-0，使其在 body 背景之上、内容之下渲染，背景顺利复原 -->
+    <iframe src="Cyberpunk/wallpaper.html" class="fixed inset-0 w-full h-full border-none z-0 pointer-events-none bg-[#0a0a12]"></iframe>
 
     <header class="border-b border-slate-800/50 bg-slate-950/35 backdrop-blur-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -120,7 +120,6 @@
     </footer>
 
     <script>
-        // 🔒 核心 JavaScript 逻辑 100% 完整保留，未做任何改动
         let localConfigRegistry = [];
         let currentBookFilter = 'all'; 
 
