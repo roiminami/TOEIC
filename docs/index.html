@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>南式TOEIC鬼特訓 - Central Console</title>
     
+    <link rel="preload" href="Cyberpunk/img/main.jpg" as="image">
+    <link rel="preload" href="Cyberpunk/img/background.jpg" as="image">
+    <link rel="preload" href="Cyberpunk/img/drop-alpha.png" as="image">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght=400;500;600;700&family=Noto+Sans+JP:wght=400;500;700&family=Noto+Sans+SC:wght=400;500;700&display=swap" rel="stylesheet">
@@ -41,7 +45,8 @@
 </head>
 <body class="text-slate-200 min-h-screen flex flex-col antialiased relative">
 
-    <iframe src="Cyberpunk/wallpaper.html" class="fixed inset-0 w-full h-full border-none z-0 pointer-events-none bg-[#0a0a12]"></iframe>
+    <iframe id="bg-iframe-1" src="Cyberpunk/wallpaper.html" class="fixed inset-0 w-full h-full border-none pointer-events-none transition-opacity duration-500 ease-in-out" style="z-index: -50; opacity: 1;"></iframe>
+    <iframe id="bg-iframe-2" src="" class="fixed inset-0 w-full h-full border-none pointer-events-none transition-opacity duration-500 ease-in-out" style="z-index: -51; opacity: 0;"></iframe>
 
     <header class="border-b border-slate-800/50 bg-slate-950/35 backdrop-blur-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -64,9 +69,7 @@
     </header>
 
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6 relative z-10">
-        
         <div class="lg:col-span-6 xl:col-span-5 flex flex-col gap-4">
-            
             <section class="relative">
                 <div class="relative flex items-center">
                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -82,9 +85,7 @@
                     <div id="search-lock-badge" class="absolute right-3 flex items-center pointer-events-none transition-all duration-300 opacity-0 scale-75"></div>
                 </div>
             </section>
-
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 max-h-[62vh] overflow-y-auto pr-1" id="modulesGridContainer"></div>
-
             <div id="search-empty-state" class="hidden text-center py-12 bg-slate-900/40 backdrop-blur-sm rounded-2xl border border-slate-700/40 border-dashed space-y-2">
                 <div class="w-10 h-10 bg-slate-800/50 text-slate-500 rounded-full flex items-center justify-center mx-auto">
                     <i data-lucide="alert-circle" class="w-5 h-5"></i>
@@ -92,7 +93,6 @@
                 <h4 class="text-xs font-bold text-slate-300">未找到相关特训单元</h4>
                 <p class="text-[11px] text-slate-500">该书籍中未检索到此序列单元。</p>
             </div>
-
             <section class="p-3.5 bg-slate-900/40 backdrop-blur-sm rounded-2xl border border-slate-700/40 shadow-md flex flex-col gap-2">
                 <div class="flex items-center space-x-2 text-xs text-slate-400 font-medium">
                     <i data-lucide="refresh-cw" class="w-3.5 h-3.5 text-slate-500 animate-spin" style="animation-duration: 8s;"></i>
@@ -106,11 +106,8 @@
                     </a>
                 </div>
             </section>
-            
         </div>
-
         <div class="lg:col-span-6 xl:col-span-7 hidden lg:block pointer-events-none"></div>
-        
     </main>
 
     <footer class="border-t border-slate-900/60 bg-slate-950/20 py-3 text-center text-[10px] text-slate-500 tracking-wide font-mono relative z-10">
@@ -121,6 +118,43 @@
         let localConfigRegistry = [];
         let currentBookFilter = 'all'; 
 
+        // ⚡ 核心优化3：主页面双缓冲无缝调度逻辑
+        let activeIframe = document.getElementById('bg-iframe-1');
+        let bufferIframe = document.getElementById('bg-iframe-2');
+        let resizeTimer;
+
+        // 监听视口缩放，由主页面指挥后台缓冲区进行悄悄重载
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                // 让处于后台隐藏状态的 iframe 悄悄执行重载以适配新分辨率
+                bufferIframe.src = "Cyberpunk/wallpaper.html";
+            }, 400);
+        });
+
+        // 当缓冲区图层完全渲染完毕后，瞬间和前台图层对调，实现0闪烁
+        function handleBufferLoad(e) {
+            const iframe = e.target;
+            if (!iframe.src || iframe.src === window.location.href) return;
+
+            // 交换层级与透明度
+            activeIframe.style.opacity = '0';
+            activeIframe.style.zIndex = '-51';
+
+            iframe.style.opacity = '1';
+            iframe.style.zIndex = '-50';
+
+            // 交换变量指针引用
+            let temp = activeIframe;
+            activeIframe = iframe;
+            bufferIframe = temp;
+        }
+
+        document.getElementById('bg-iframe-1').addEventListener('load', handleBufferLoad);
+        document.getElementById('bg-iframe-2').addEventListener('load', handleBufferLoad);
+
+
+        /* ------------------ 以下为原有核心渲染及检索逻辑 ------------------ */
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof toeicModulesConfig === 'undefined') {
                 console.error("Router Core Error: 'toeicModulesConfig' missing.");
@@ -151,15 +185,11 @@
                 const cardAnchor = document.createElement('a');
                 cardAnchor.href = `test.html?unit=${encodeURIComponent(mod.unit)}`;
                 
-                const bookMeta = (typeof my3DBooksDataset !== 'undefined') 
-                    ? my3DBooksDataset.find(b => b.bookId === mod.book) 
-                    : null;
-
+                const bookMeta = (typeof my3DBooksDataset !== 'undefined') ? my3DBooksDataset.find(b => b.bookId === mod.book) : null;
                 const themeClass = bookMeta?.cardTheme || "border-slate-700/40 hover:border-slate-500 hover:bg-slate-800/30";
                 const dotColor = bookMeta?.dotColor || "bg-slate-500 shadow-slate-500/50";
 
                 cardAnchor.className = `bg-slate-950/40 backdrop-blur-sm p-3 rounded-xl border ${themeClass} shadow-md active:scale-[0.98] transition-all flex items-center justify-between group`;
-                
                 cardAnchor.innerHTML = `
                     <div class="flex flex-col min-w-0 pr-1">
                         <div class="flex items-center space-x-1.5">
@@ -180,11 +210,8 @@
 
         function filterToeicModules() {
             const query = document.getElementById('searchConsoleInput').value.trim();
-            
             const filtered = localConfigRegistry.filter(mod => {
-                if (currentBookFilter !== 'all' && mod.book !== currentBookFilter) {
-                    return false;
-                }
+                if (currentBookFilter !== 'all' && mod.book !== currentBookFilter) return false;
                 if (!query) return true;
                 if (/^\d+$/.test(query) && mod.unit.includes('-')) {
                     const targetNum = parseInt(query, 10);
