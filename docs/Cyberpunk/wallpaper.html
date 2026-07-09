@@ -9,24 +9,18 @@
 	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="css/demo.css" />
     <style>
-		html, body {
+		/* ⚡ 彻底根除闪烁：将原本动态加载的 main.jpg 直接作为 CSS 强固背景铺底 */
+		html, body, .slideshow, .container {
 			margin: 0;
 			padding: 0;
 			width: 100%;
 			height: 100%;
 			overflow: hidden;
-			background-color: #0a0a12; 
+			background: url('img/main.jpg') no-repeat center center;
+			background-size: cover !important;
 		}
 
-		.slideshow, .container {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100vw !important;
-			height: 100vh !important;
-			overflow: hidden;
-		}
-
+		/* 锁死画布与图片尺寸 */
 		#container, #myCanvas, #imgif, .img {
 			position: absolute;
 			top: 0;
@@ -39,9 +33,6 @@
 </head>
 
 <body class="demo-1">
-
-	<div id="loadingMask" style="position: fixed; inset: 0; background-color: #0a0a12; z-index: 999999; transition: opacity 0.4s ease-out; pointer-events: none;"></div>
-
 	<div class="slideshow">
 		<canvas id="container" style="position:absolute"></canvas>
 		<div class="slide" id="main" data-weather="rain"></div>
@@ -51,7 +42,7 @@
 	</div>
 	
 	<div class="container">		   
-		<img class="img" id="imgif" alt="logo" src="img/main.png" />
+		<img class="img" id="imgif" alt="logo" src="img/main.jpg" />
 		<canvas class="img" id='myCanvas'></canvas>			
 		<p class="nosupport">Sorry, but your browser does not support WebGL!</p>
 	</div>
@@ -60,18 +51,6 @@
 	<script src="js/index.js"></script>
 
 	<script>
-		// ⚡ 监听整个页面所有资源（大图、水滴纹理、WebGL上下文）彻底就绪的事件
-		window.addEventListener('load', () => {
-			// 给 WebGL 渲染出第一帧留出 250 毫秒的黄金缓冲期
-			setTimeout(() => {
-				const mask = document.getElementById('loadingMask');
-				if (mask) {
-					mask.style.opacity = '0'; // 优雅淡出
-					setTimeout(() => mask.remove(), 400); // 动画结束后销毁，释放内存
-				}
-			}, 250);
-		});
-
 		let resizeTimer;
 		window.addEventListener('resize', () => {
 			clearTimeout(resizeTimer);
