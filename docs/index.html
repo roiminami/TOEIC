@@ -16,12 +16,35 @@
     <script src="books.js"></script>
 
     <style>
-        /* 给底层铺上深色，防止白闪 */
+        /* 给底层铺上深色，保证最基础的视觉舒适度 */
         html, body {
             background-color: #020617;
         }
         body {
             font-family: 'Inter', 'Noto Sans SC', 'Noto Sans JP', sans-serif;
+        }
+
+        /* ⚡ 赛博朋克“窗外拟真闪电”核心动画 */
+        .lightning-ambient {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;          /* 关键：放在壁纸之上，但绝不遮挡字和卡片(z-10) */
+            mix-blend-mode: screen; /* 让闪电光线与雨水背景完美融合 */
+            opacity: 0;
+            animation: cyberpunk-thunder 12s infinite; /* 每隔12s风暴轰鸣一次 */
+        }
+
+        @keyframes cyberpunk-thunder {
+            0%, 90%, 100% { opacity: 0; }
+            91% { opacity: 0.25; background-color: #ffffff; } /* 闪电第一击：前奏短闪 */
+            91.5% { opacity: 0.05; }
+            92% { opacity: 0.65; background-color: #e0f2fe; } /* 闪电第二击：主闪，带一丝高冷赛博蓝 */
+            92.8% { opacity: 0.15; }
+            93.5% { opacity: 0.4; background-color: #f0fdfa; }  /* 余光残影 */
+            96% { opacity: 0; }                               /* 随雨幕平滑隐去 */
         }
 
         /* 为大容量单元容器定制的隐藏式微距滚动条 */
@@ -42,8 +65,9 @@
 </head>
 <body class="text-slate-200 min-h-screen flex flex-col antialiased relative">
 
-    <!-- ⚡ 核心修复：将层级改为 z-0，使其在 body 背景之上、内容之下渲染，背景顺利复原 -->
     <iframe src="Cyberpunk/wallpaper.html" class="fixed inset-0 w-full h-full border-none z-0 pointer-events-none bg-[#0a0a12]"></iframe>
+
+    <div class="lightning-ambient"></div>
 
     <header class="border-b border-slate-800/50 bg-slate-950/35 backdrop-blur-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
