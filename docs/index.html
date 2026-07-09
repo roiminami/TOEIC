@@ -23,32 +23,31 @@
             font-family: 'Inter', 'Noto Sans SC', 'Noto Sans JP', sans-serif;
         }
 
-        /* ⚡ 纯代码闪电氛围图层（无图片） */
+        /* ⚡ 纯代码闪电氛围图层 */
         .lightning-ambient {
             position: fixed;
             inset: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 0;             /* 夹在壁纸与控制台内容之间，不遮挡文字 */
-            mix-blend-mode: screen; /* 完美融入后面的动态雨水壁纸 */
+            z-index: 0;             
+            mix-blend-mode: screen; 
             opacity: 0;
         }
 
-        /* ⚡ 当被 JS 注入 .strike 类时，执行纯色卡块的微秒级闪烁 */
         .lightning-ambient.strike {
             animation: cyberpunk-pure-thunder 1.6s ease-out forwards;
         }
 
         @keyframes cyberpunk-pure-thunder {
             0% { opacity: 0; background-color: transparent; }
-            4% { opacity: 0.35; background-color: #ffffff; }  /* 闪电第一击：前奏短闪 */
+            4% { opacity: 0.35; background-color: #ffffff; }  
             6% { opacity: 0.0; }
-            9% { opacity: 0.75; background-color: #e0f2fe; }  /* 闪电第二击：主闪（赛博高冷蓝） */
+            9% { opacity: 0.75; background-color: #e0f2fe; }  
             13% { opacity: 0.15; }
-            17% { opacity: 0.45; background-color: #f0fdfa; } /* 闪电第三击：电弧余晖（青白光） */
+            17% { opacity: 0.45; background-color: #f0fdfa; } 
             25% { opacity: 0.1; }
-            100% { opacity: 0; background-color: transparent; } /* 随雨幕隐入黑暗 */
+            100% { opacity: 0; background-color: transparent; } 
         }
 
         /* 为大容量单元容器定制的隐藏式微距滚动条 */
@@ -69,8 +68,15 @@
 </head>
 <body class="text-slate-200 min-h-screen flex flex-col antialiased relative">
 
-    <iframe src="Cyberpunk/wallpaper.html" class="fixed inset-0 w-full h-full border-none z-0 pointer-events-none bg-[#0a0a12]"></iframe>
+    <!-- ⚡ 核心修复：初始状态设为 opacity: 0 隐形。只有当 onload（壁纸图片完全加载完）时，才触发淡入动画显示出来，彻底消灭刷新闪烁 -->
+    <iframe 
+        src="Cyberpunk/wallpaper.html" 
+        class="fixed inset-0 w-full h-full border-none z-0 pointer-events-none bg-[#0a0a12] transition-opacity duration-700 ease-in-out" 
+        style="opacity: 0;"
+        onload="this.style.opacity=1"
+    ></iframe>
 
+    <!-- 纯代码闪电图层 -->
     <div class="lightning-ambient"></div>
 
     <header class="border-b border-slate-800/50 bg-slate-950/35 backdrop-blur-sm sticky top-0 z-40">
@@ -151,32 +157,29 @@
         let localConfigRegistry = [];
         let currentBookFilter = 'all'; 
 
-        // 🔊 远雷轰鸣声（高保真素材）
+        // 🔊 远雷轰鸣声
         const thunderAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/1657/1657-84.wav');
-        thunderAudio.volume = 0.45; // 音量控制
+        thunderAudio.volume = 0.45;
 
         function triggerLightningAndThunder() {
             const ambient = document.querySelector('.lightning-ambient');
             if (!ambient) return;
 
-            // 1. 挂载单次纯 CSS 颜色交织闪烁动画
             ambient.classList.add('strike');
 
-            // 2. 播放同步雷声（受浏览器安全限制，刷新页面后需在网页任意地方点一下来授权声音播放）
             thunderAudio.currentTime = 0;
             thunderAudio.play().catch(() => {
                 console.log("⚡ 雷鸣蓄势待发，点击任意空白处赋予系统音频播放权限。");
             });
 
-            // 3. 1.6秒动画播完后移除类，等待下一次循环
             setTimeout(() => {
                 ambient.classList.remove('strike');
             }, 1600);
         }
 
-        // ⚡ 赛博雨夜气候环境控制器
-        setTimeout(triggerLightningAndThunder, 5000);   // 页面打开5秒后劈下第一道雷
-        setInterval(triggerLightningAndThunder, 15000); // 随后每隔 15 秒打一次雷
+        // ⚡ 气象控制器调配
+        setTimeout(triggerLightningAndThunder, 5000);   
+        setInterval(triggerLightningAndThunder, 15000); 
 
 
         /* ------------------ 以下为原有核心渲染及检索逻辑，100%完整 ------------------ */
