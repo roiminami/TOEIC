@@ -16,7 +16,6 @@
     <script src="books.js"></script>
 
     <style>
-        /* 给底层铺上深色，保证最基础的视觉舒适度 */
         html, body {
             background-color: #020617;
         }
@@ -24,27 +23,32 @@
             font-family: 'Inter', 'Noto Sans SC', 'Noto Sans JP', sans-serif;
         }
 
-        /* ⚡ 赛博朋克“窗外拟真闪电”核心动画 */
+        /* ⚡ 闪电氛围图层基类 */
         .lightning-ambient {
             position: fixed;
             inset: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 0;          /* 关键：放在壁纸之上，但绝不遮挡字和卡片(z-10) */
-            mix-blend-mode: screen; /* 让闪电光线与雨水背景完美融合 */
+            z-index: 0;             /* 夹在壁纸(z-0先渲染)与内容(z-10)之间 */
+            mix-blend-mode: screen; /* 完美融合雨水背景 */
             opacity: 0;
-            animation: cyberpunk-thunder 12s infinite; /* 每隔12s风暴轰鸣一次 */
         }
 
-        @keyframes cyberpunk-thunder {
-            0%, 90%, 100% { opacity: 0; }
-            91% { opacity: 0.25; background-color: #ffffff; } /* 闪电第一击：前奏短闪 */
-            91.5% { opacity: 0.05; }
-            92% { opacity: 0.65; background-color: #e0f2fe; } /* 闪电第二击：主闪，带一丝高冷赛博蓝 */
-            92.8% { opacity: 0.15; }
-            93.5% { opacity: 0.4; background-color: #f0fdfa; }  /* 余光残影 */
-            96% { opacity: 0; }                               /* 随雨幕平滑隐去 */
+        /* ⚡ 当被 JS 注入 .strike 类时，执行单次 1.5 秒的拟真闪电 */
+        .lightning-ambient.strike {
+            animation: cyberpunk-thunder-strike 1.5s ease-out forwards;
+        }
+
+        @keyframes cyberpunk-thunder-strike {
+            0% { opacity: 0; }
+            5% { opacity: 0.35; background-color: #ffffff; }  /* 预击穿闪烁 */
+            7% { opacity: 0.05; }
+            10% { opacity: 0.75; background-color: #e0f2fe; } /* 主闪：高冷赛博蓝 */
+            14% { opacity: 0.15; }
+            18% { opacity: 0.45; background-color: #f0fdfa; } /* 余晖 */
+            30% { opacity: 0.1; }
+            100% { opacity: 0; }                             /* 隐入黑暗 */
         }
 
         /* 为大容量单元容器定制的隐藏式微距滚动条 */
@@ -147,6 +151,39 @@
         let localConfigRegistry = [];
         let currentBookFilter = 'all'; 
 
+        // ⚡ 智能雷声控制系统
+        // 目前使用的是公共免版权高保真远雷声 URL。如果后续想彻底离线使用，可以下载个 mp3 改为 'audio/thunder.mp3'
+        const thunderAudio = new Audio('https://assets.mixkit.co/active_storage/sfx/1657/1657-84.wav');
+        thunderAudio.volume = 0.4; // 声音大小（0.0 到 1.0 之间）
+
+        function triggerLightningAndThunder() {
+            const ambient = document.querySelector('.lightning-ambient');
+            if (!ambient) return;
+
+            // 1. 挂载闪电动画类
+            ambient.classList.add('strike');
+
+            // 2. 播放雷声（带安全捕获，防止用户未点击页面时报错）
+            thunderAudio.currentTime = 0;
+            thunderAudio.play().catch(() => {
+                console.log("⚡ [Ambient] 雷声已被安全静音，在页面任意处点击一下即可解锁完整声效。");
+            });
+
+            // 3. 动画结束后（1.5秒）移除类，等待下一次复用
+            setTimeout(() => {
+                ambient.classList.remove('strike');
+            }, 1500);
+        }
+
+        // ⚡ 风暴频率调度器
+        // 第一次闪电：页面加载后 6 秒轰鸣
+        setTimeout(triggerLightningAndThunder, 6000);
+
+        // 之后进入无限风暴气象循环：每隔 16 秒自动闪雷一次
+        setInterval(triggerLightningAndThunder, 16000);
+
+
+        /* ------------------ 以下为原有核心渲染及检索逻辑，100%未动 ------------------ */
         document.addEventListener('DOMContentLoaded', () => {
             if (typeof toeicModulesConfig === 'undefined') {
                 console.error("Router Core Error: 'toeicModulesConfig' missing.");
@@ -211,41 +248,31 @@
                 if (currentBookFilter !== 'all' && mod.book !== currentBookFilter) {
                     return false;
                 }
-                
                 if (!query) return true;
-                
                 if (/^\d+$/.test(query) && mod.unit.includes('-')) {
                     const targetNum = parseInt(query, 10);
                     const rangeParts = mod.unit.split('-');
-                    
                     const start = parseInt(rangeParts[0].replace(/\D/g, ''), 10);
                     const end = parseInt(rangeParts[1].replace(/\D/g, ''), 10);
-                    
                     return targetNum >= start && targetNum <= end;
                 }
-                
                 return mod.title.includes(query) || mod.unit.includes(query);
             });
-            
             renderConsoleGrid(filtered);
         }
 
         window.setBookFilter = function(bookId) {
             currentBookFilter = bookId;
-            
             const badge = document.getElementById('search-lock-badge');
             const inputEl = document.getElementById('searchConsoleInput');
-            
             const dataset = (typeof my3DBooksDataset !== 'undefined') ? my3DBooksDataset : [];
             const bookMeta = dataset.find(b => b.bookId === bookId);
-            
             if (bookMeta) {
                 badge.innerHTML = `<span class="text-[10px] font-black px-2 py-0.5 rounded-md ${bookMeta.lockBadgeStyle}">🔒 SCOPE: ${bookMeta.scopeCode}</span>`;
                 badge.classList.remove('opacity-0', 'scale-75');
                 badge.classList.add('opacity-100', 'scale-100');
                 inputEl.placeholder = "已锁定区间范围 | 输入要定位的序号...";
             }
-            
             filterToeicModules();
         };
 
@@ -253,13 +280,11 @@
             if (!e.target.closest('.book-3d-space')) {
                 currentBookFilter = 'all';
                 document.getElementById('searchConsoleInput').value = ''; 
-                
                 const badge = document.getElementById('search-lock-badge');
                 const inputEl = document.getElementById('searchConsoleInput');
                 badge.classList.remove('opacity-100', 'scale-100');
                 badge.classList.add('opacity-0', 'scale-75');
                 inputEl.placeholder = "快速检索：输入单词序号（如 '13'）直达目标单元...";
-                
                 filterToeicModules();
                 if (typeof window.resetBookVisuals === 'function') { window.resetBookVisuals(); }
             }
