@@ -142,7 +142,7 @@
                     class="w-full h-auto block select-none"
                     draggable="false"
                 >
-                </div>
+            </div>
 
             <section class="bg-amber-50/40 border border-amber-200/60 rounded-2xl p-4 shadow-sm grid grid-cols-1 sm:grid-cols-12 gap-4 max-w-2xl w-full">
                 <div class="sm:col-span-5 flex flex-col justify-between border-b sm:border-b-0 sm:border-r border-amber-200/60 pb-3 sm:pb-0 pr-0 sm:pr-4 gap-3">
@@ -228,7 +228,7 @@
             document.getElementById('stat-total-units-left').textContent = `/ ${totalCount}`;
             document.getElementById('stat-total-units-right').textContent = `/ ${totalCount}`;
             
-            // 🌟 核心算法升级：动态提取真正的 Max ID 乘 18 算力规则
+            // 🌟 动态乘积修正算法：提取配置单物理最大 ID 乘 18 道真题
             const maxId = localConfigRegistry.length > 0 ? Math.max(...localConfigRegistry.map(mod => mod.id)) : 0;
             const totalQuestions = maxId * 18;
             document.getElementById('stat-total-questions-header').textContent = totalQuestions.toLocaleString();
@@ -310,11 +310,13 @@
 
                 cardAnchor.className = `${themeClass} p-3 sm:p-4 rounded-xl border bg-white active:scale-[0.98] transition-all flex items-center justify-between group cursor-pointer`;
                 
+                // 🌟 核心升级点：在徽章同行优雅追加透出 mod.unit 标识
                 cardAnchor.innerHTML = `
                     <div class="flex flex-col min-w-0 pr-1 py-0.5">
-                        <div class="flex items-center space-x-1.5">
+                        <div class="flex items-center space-x-1.5 flex-wrap gap-y-0.5">
                             ${stateBadgeHtml}
                             <span class="w-1.5 h-1.5 rounded-full ${dotColor}"></span>
+                            <span class="text-[9px] font-mono font-bold text-slate-400 bg-slate-100/80 px-1 rounded border border-slate-200/60 uppercase tracking-tighter">${mod.unit}</span>
                         </div>
                         <span class="text-sm font-black text-slate-700 group-hover:text-amber-600 transition-colors truncate mt-1.5 tracking-tight">${mod.title}</span>
                     </div>
@@ -328,6 +330,7 @@
             if (typeof lucide !== 'undefined') { lucide.createIcons(); }
         }
 
+        // 🌟 核心升级点：重构智能数字区间拦截与完全等值数字过滤器（完美打捞8，彻底熔断18和11-20）
         function filterToeicModules() {
             const query = document.getElementById('searchConsoleInput').value.trim();
             const filtered = localConfigRegistry.filter(mod => {
@@ -344,13 +347,38 @@
                 
                 if (/^\d+$/.test(query)) {
                     const targetNum = parseInt(query, 10);
-                    const titleRange = mod.title.match(/(\d+)\s*-\s*(\d+)/);
-                    if (titleRange) {
-                        const start = parseInt(titleRange[1], 10);
-                        const end = parseInt(titleRange[2], 10);
+                    
+                    // 轨道一：扫描标题或unit中所有带连字符的区间并精准核验范围包含性 (防 11-20 被打捞)
+                    const rangeRegex = /(\d+)\s*[-–—]\s*(\d+)/g;
+                    let match;
+                    
+                    while ((match = rangeRegex.exec(mod.title)) !== null) {
+                        const start = parseInt(match[1], 10);
+                        const end = parseInt(match[2], 10);
                         if (targetNum >= start && targetNum <= end) return true;
                     }
+                    
+                    rangeRegex.lastIndex = 0;
+                    while ((match = rangeRegex.exec(mod.unit)) !== null) {
+                        const start = parseInt(match[1], 10);
+                        const end = parseInt(match[2], 10);
+                        if (targetNum >= start && targetNum <= end) return true;
+                    }
+                    
+                    // 轨道二：扫描独立的纯单数，执行全等而非子串匹配 (防 18 模糊匹配到 8)
+                    const singleNumRegex = /\d+/g;
+                    let numMatch;
+                    while ((numMatch = singleNumRegex.exec(mod.title)) !== null) {
+                        if (parseInt(numMatch[0], 10) === targetNum) return true;
+                    }
+                    singleNumRegex.lastIndex = 0;
+                    while ((numMatch = singleNumRegex.exec(mod.unit)) !== null) {
+                        if (parseInt(numMatch[0], 10) === targetNum) return true;
+                    }
+                    
+                    return false; 
                 }
+                
                 return mod.title.includes(query) || mod.unit.includes(query);
             });
             renderConsoleGrid(filtered);
