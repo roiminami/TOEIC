@@ -612,6 +612,14 @@
         function refreshIcons() { if (typeof lucide !== 'undefined') lucide.createIcons(); }
 
         window.addEventListener('DOMContentLoaded', () => {
+        // 🌟 【核心修复 4】监听用户在全网页的第一次任意点击，在第一时间将语音通道激活
+            document.addEventListener('click', function unfreezeSpeechEngine() {
+                if (typeof speechSynthesis !== 'undefined') {
+                    speechSynthesis.resume();
+                }
+                // 触发一次后立刻销毁自身监听，绝不占用后续一丝一毫的运行内存
+                document.removeEventListener('click', unfreezeSpeechEngine);
+            }, { capture: true, once: true });
             initVocabTabs(); initTTSVoices(); shuffleCurrentQuestions(); loadQuestion(); updateDashboardStats(); initDictNotebook(); refreshIcons();
             
             document.addEventListener('dblclick', (e) => {
@@ -738,17 +746,35 @@
             select.addEventListener('change', () => { selectedVoice = synth.getVoices().find(v => v.name === select.value) || null; });
         }
 
+// 🌟 【核心修复 1】在函数外部声明一个全局变量，当做“防走丢绳”死死拽住当前的语音对象
+let globalUtteranceActiveHolder = null;
+
         function speakText(text) {
             if (!synth) return; 
+            
+            // 🌟 【核心修复 2】不管三七二十一，强行唤醒可能处于假死/挂起状态的浏览器语音引擎
+            synth.resume();
+            
             if (synth.speaking) {
-                    synth.cancel();
-                }
+                synth.cancel();
+            }
+            
             if (!selectedVoice || selectedVoice.name === 'auto') { selectedVoice = getBestMainstreamVoice(); }
             const cleaned = text.replace(/<[^>]*>/g, '').replace(/____+/g, 'blank');
-            const utter = new SpeechSynthesisUtterance(cleaned);
-            if (selectedVoice) { utter.voice = selectedVoice; utter.lang = selectedVoice.lang; } else { utter.lang = 'en-US'; }
-            utter.rate = parseFloat(document.getElementById('voiceSpeed').value) || 1.0;
-            synth.speak(utter);
+            
+            // 🌟 【核心修复 3】把局部变量换成全局变量挂载！彻底断绝垃圾回收（GC）在第一声发出前吞音的念头
+            globalUtteranceActiveHolder = new SpeechSynthesisUtterance(cleaned);
+            
+            if (selectedVoice) { 
+                globalUtteranceActiveHolder.voice = selectedVoice; 
+                globalUtteranceActiveHolder.lang = selectedVoice.lang; 
+            } else { 
+                globalUtteranceActiveHolder.lang = 'en-US'; 
+            }
+            globalUtteranceActiveHolder.rate = parseFloat(document.getElementById('voiceSpeed').value) || 1.0;
+            
+            // 播放
+            synth.speak(globalUtteranceActiveHolder);
         }
 
         function speakQuestionText() {
