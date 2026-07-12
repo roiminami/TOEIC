@@ -58,10 +58,8 @@
 
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10 items-start">
         
-        <!-- 左侧核心控制面板区 (占 5 栏) -->
         <div class="lg:col-span-5 flex flex-col gap-4 w-full">
             
-            <!-- ⚡ 黑金置顶痛点宣传卡片（真题数量已重构为动态绑定数据槽） -->
             <section class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-850 text-amber-400 p-3.5 rounded-2xl border border-slate-800 shadow-lg flex items-start space-x-3 shrink-0">
                 <div class="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 animate-pulse shadow-inner">
                     <i data-lucide="sparkles" class="w-4.5 h-4.5 text-amber-400"></i>
@@ -77,9 +75,7 @@
                 </div>
             </section>
             
-            <!-- 🌟 学习报告数据三子星区[cite: 2] -->
             <section id="statsDashboardSection" class="grid grid-cols-3 gap-2 bg-white p-3 rounded-2xl border border-[#EAE6D9] shadow-xs shrink-0">
-                <!-- 🎯 卡片一：已完成特训 -->
                 <div class="bg-[#FAF9F5] p-3 rounded-xl border border-[#EAE6D9]/70 flex flex-col justify-between shadow-xs relative overflow-hidden group">
                     <div>
                         <span class="text-[10px] font-black text-slate-900 tracking-tight block">已完成特训</span>
@@ -91,7 +87,6 @@
                     </div>
                     <div class="absolute bottom-0 left-0 right-0 h-1 bg-slate-300/40"></div>
                 </div>
-                <!-- 🎯 卡片二：已完美通关 -->
                 <div class="bg-amber-50/30 p-3 rounded-xl border border-amber-200/50 flex flex-col justify-between shadow-xs relative overflow-hidden group">
                     <div>
                         <span class="text-[10px] font-black text-amber-900 tracking-tight block">已完美通关</span>
@@ -103,7 +98,6 @@
                     </div>
                     <div class="absolute bottom-0 left-0 right-0 h-1 bg-amber-400/50"></div>
                 </div>
-                <!-- 🎯 卡片三：累计答对题数 -->
                 <div class="bg-emerald-50/20 p-3 rounded-xl border border-emerald-200/40 flex flex-col justify-between shadow-xs relative overflow-hidden group">
                     <div>
                         <span class="text-[10px] font-black text-emerald-950 tracking-tight block">累计答对题数</span>
@@ -117,7 +111,6 @@
                 </div>
             </section>
 
-            <!-- 检索输入框 -->
             <section class="relative shrink-0">
                 <div class="relative flex items-center">
                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -134,18 +127,14 @@
                 </div>
             </section>
 
-            <!-- 关卡卡片网格容器 -->
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 overflow-y-auto pr-1 pb-2 transition-all duration-300 max-h-[calc(100vh-22rem)] min-h-[320px]" id="modulesGridContainer"></div>
 
-            <!-- 智能动态零留痕历史空状态唤醒面板 -->
             <div id="search-empty-state" class="hidden text-center bg-white rounded-2xl border border-[#EAE6D9] border-dashed space-y-3 shadow-sm transition-all flex flex-col justify-center items-center p-6 min-h-[260px]"></div>
             
         </div>
 
-        <!-- 右侧桌面场景与右下角名片区 (占 7 栏) -->
         <div class="lg:col-span-7 w-full flex flex-col gap-4 items-center lg:items-start h-full justify-start">
             
-            <!-- ① 3D书桌虚拟书架资产 (🌟 彻底移除 hidden lg:block，手机端无缝展出，保障图书精准落座书架) -->
             <div id="deskAssetWrapper" class="w-full max-w-2xl bg-white rounded-[24px] border border-[#EAE6D9] shadow-sm overflow-hidden relative">
                 <img 
                     src="table.png" 
@@ -153,11 +142,9 @@
                     class="w-full h-auto block select-none"
                     draggable="false"
                 >
-            </div>
+                </div>
 
-            <!-- ② 📢 黄金右下角：南南伴你学！学搭俱乐部硬核名片 -->
             <section class="bg-amber-50/40 border border-amber-200/60 rounded-2xl p-4 shadow-sm grid grid-cols-1 sm:grid-cols-12 gap-4 max-w-2xl w-full">
-                <!-- 左半部 -->
                 <div class="sm:col-span-5 flex flex-col justify-between border-b sm:border-b-0 sm:border-r border-amber-200/60 pb-3 sm:pb-0 pr-0 sm:pr-4 gap-3">
                     <div class="space-y-1.5">
                         <div class="flex items-center space-x-2">
@@ -182,7 +169,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 右半部 -->
                 <div class="sm:col-span-7 flex flex-col justify-between space-y-2.5 pl-0 sm:pl-1">
                     <p class="text-[11px] text-slate-600 leading-relaxed font-medium">
                         👥 成员主要来自<strong>小红书</strong>，专注高效执行力与持续成长。理性互助，抱团在 <span class="text-amber-700 font-bold">IT / 英语 / 会计 / 投资</span> 等硬核跨界领域全速推进！
@@ -200,7 +186,7 @@
     </main>
 
     <footer class="border-t border-[#EAE6D9] bg-[#F3EFE3]/30 py-3 text-center text-[10px] text-slate-400 tracking-wide font-mono relative z-10 shrink-0">
-        Southern Ghost TOEIC Platform Engine • Powered by minami
+        Southern Ghost TOEIC Platform Engine • Powered by config.js URL Router
     </footer>
 
     <script>
@@ -216,7 +202,6 @@
             window.setBookFilter('progress');
         });
 
-        // 🌟 动态去重中心：完美融合 Max ID 乘 18 算力核心
         function calculateAndRenderStats() {
             let perfectUnitsCount = 0;
             let attemptedUnitsCount = 0;
@@ -243,7 +228,7 @@
             document.getElementById('stat-total-units-left').textContent = `/ ${totalCount}`;
             document.getElementById('stat-total-units-right').textContent = `/ ${totalCount}`;
             
-            // 🌟 核心升级算法：提取配置单中真正最大的单元 id 乘 18 道真题
+            // 🌟 核心算法升级：动态提取真正的 Max ID 乘 18 算力规则
             const maxId = localConfigRegistry.length > 0 ? Math.max(...localConfigRegistry.map(mod => mod.id)) : 0;
             const totalQuestions = maxId * 18;
             document.getElementById('stat-total-questions-header').textContent = totalQuestions.toLocaleString();
