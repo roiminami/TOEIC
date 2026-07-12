@@ -1216,31 +1216,42 @@
 
         function executePracticeSuccess() {
             const pInput = document.getElementById('dict-practice-input'); const pInput2 = document.getElementById('dict-practice-input_tab2');
-            dictNotebook[activePracticeWord].count += 1;  dictNotebook[activePracticeWord].ts = Date.now(); localStorage.setItem('toeic_dict_notebook', JSON.stringify(dictNotebook));
             
+            // 🌟 【保命改动 1】抢在任何 localStorage 拦截器和 DOM 清空引发的 CPU 阻塞之前，最优先朗读！
             const wordToSpeak = activePracticeWord;
-                setTimeout(() => {
-                    speakText(wordToSpeak);
-                }, 50);
-            
-            if (pInput) pInput.value = ""; if (pInput2) pInput2.value = "";
-            const testPanel = document.getElementById('panel-test'); const dictPanel = document.getElementById('panel-dict');
-            if (testPanel && !testPanel.classList.contains('hidden') && pInput2) { pInput2.focus(); } 
-            else if (dictPanel && !dictPanel.classList.contains('hidden') && pInput) { pInput.focus(); }
-            
-            renderDictNotebook(); showWordPracticeCard(activePracticeWord, false);
-            
-            const feedback = document.getElementById('practice-feedback'); const feedback2 = document.getElementById('practice-feedback_tab2');
-            let rankTitle = "初见";
-            if (dictNotebook[activePracticeWord].count >= 15) rankTitle = "钻石";
-            else if (dictNotebook[activePracticeWord].count >= 10) rankTitle = "黄金";
-            else if (dictNotebook[activePracticeWord].count >= 6) rankTitle = "白银";
-            else if (dictNotebook[activePracticeWord].count >= 3) rankTitle = "青铜";
-            
-            const successMsg = `💚 正确！已累计拼写强化至 ${dictNotebook[activePracticeWord].count} 次 (${rankTitle})。`;
-            const successClass = "text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 p-2 rounded-xl mt-1 block cursor-pointer break-words";
-            if (feedback) { feedback.classList.remove('hidden'); feedback.className = successClass; feedback.textContent = successMsg; }
-            if (feedback2) { feedback2.classList.remove('hidden'); feedback2.className = successClass; feedback2.textContent = successMsg; }
+            speakText(wordToSpeak);
+
+            // 🌟 【保命改动 2】把所有会触发网络同步、DOM 重绘的重度逻辑，全部扔进 setTimeout 异步队列
+            // 这样可以确保浏览器的语音引擎已经安全拿到了播放凭证并开始解码，后面再怎么卡都不会影响发音
+            setTimeout(() => {
+                dictNotebook[wordToSpeak].count += 1; 
+                localStorage.setItem('toeic_dict_notebook', JSON.stringify(dictNotebook));
+
+                if (pInput) pInput.value = ""; 
+                if (pInput2) pInput2.value = "";
+                
+                const testPanel = document.getElementById('panel-test'); 
+                const dictPanel = document.getElementById('panel-dict');
+                if (testPanel && !testPanel.classList.contains('hidden') && pInput2) { pInput2.focus(); } 
+                else if (dictPanel && !dictPanel.classList.contains('hidden') && pInput) { pInput.focus(); }
+                
+                renderDictNotebook(); 
+                showWordPracticeCard(wordToSpeak, false);
+                
+                const feedback = document.getElementById('practice-feedback'); 
+                const feedback2 = document.getElementById('practice-feedback_tab2');
+                
+                let rankTitle = "初见";
+                if (dictNotebook[wordToSpeak].count >= 15) rankTitle = "钻石";
+                else if (dictNotebook[wordToSpeak].count >= 10) rankTitle = "黄金";
+                else if (dictNotebook[wordToSpeak].count >= 6) rankTitle = "白银";
+                else if (dictNotebook[wordToSpeak].count >= 3) rankTitle = "青铜";
+                
+                const successMsg = `💚 正确！已累计拼写强化至 ${dictNotebook[wordToSpeak].count} 次 (${rankTitle})。`;
+                const successClass = "text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 p-2 rounded-xl mt-1 block cursor-pointer break-words";
+                if (feedback) { feedback.classList.remove('hidden'); feedback.className = successClass; feedback.textContent = successMsg; }
+                if (feedback2) { feedback2.classList.remove('hidden'); feedback2.className = successClass; feedback2.textContent = successMsg; }
+            }, 20);
         }
 
         function startWordExam(word) {
