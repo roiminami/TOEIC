@@ -56,13 +56,12 @@
         </div>
     </header>
 
-    <!-- 🌟 核心修正一：移除裁剪，让大舞台高度自由拉展，保护右侧图片完整呈展 -->
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 lg:grid-cols-12 gap-8 relative z-10 items-start">
         
         <!-- 左侧核心控制面板区 (占 5 栏) -->
         <div class="lg:col-span-5 flex flex-col gap-4 w-full">
             
-            <!-- ⚡ 黑金置顶痛点宣传卡片 -->
+            <!-- ⚡ 黑金置顶痛点宣传卡片（真题数量已重构为动态绑定数据槽） -->
             <section class="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-850 text-amber-400 p-3.5 rounded-2xl border border-slate-800 shadow-lg flex items-start space-x-3 shrink-0">
                 <div class="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0 mt-0.5 animate-pulse shadow-inner">
                     <i data-lucide="sparkles" class="w-4.5 h-4.5 text-amber-400"></i>
@@ -73,7 +72,7 @@
                         <h5 class="font-black text-white text-[11px] sm:text-xs tracking-tight">更适合在日中国宝宝体质的 TOEIC 突击神器</h5>
                     </div>
                     <p class="text-[11px] text-slate-300 font-medium leading-relaxed">
-                        鉴于 TOEIC 盛行于日韩，在日中国人常面临中文高质备考资源匮乏的困境。为此，本系统已完整收录含有 <strong class="text-amber-400 font-black underline decoration-amber-400/50 decoration-2 underline-offset-2">AI 智能考点分析</strong> 的全真题目 <span class="text-white font-black font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded border border-slate-700">288</span> 道，<span class="text-white font-bold">群主持续搜集中！</span>直击华人思维盲区。
+                        鉴于 TOEIC 盛行于日韩，在日中国人常面临中文高质备考资源匮乏的困境。为此，本系统已完整收录含有 <strong class="text-amber-400 font-black underline decoration-amber-400/50 decoration-2 underline-offset-2">AI 智能考点分析</strong> 的全真题目 <span id="stat-total-questions-header" class="text-white font-black font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded border border-slate-700">--</span> 道，<span class="text-white font-bold">群主持续搜集中！</span>直击华人思维盲区。
                     </p>
                 </div>
             </section>
@@ -135,7 +134,7 @@
                 </div>
             </section>
 
-            <!-- 🌟 核心修正二：利用精准视口动态计算 max-h 锁定边界，既能保护滑动拉下拉满，又不会撑坏右侧图片！ -->
+            <!-- 关卡卡片网格容器 -->
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 overflow-y-auto pr-1 pb-2 transition-all duration-300 max-h-[calc(100vh-22rem)] min-h-[320px]" id="modulesGridContainer"></div>
 
             <!-- 智能动态零留痕历史空状态唤醒面板 -->
@@ -143,11 +142,11 @@
             
         </div>
 
-        <!-- 右侧桌面场景与右下角名片区 (占 7 栏，最大宽度 2xl 纵向自然平铺展现) -->
+        <!-- 右侧桌面场景与右下角名片区 (占 7 栏) -->
         <div class="lg:col-span-7 w-full flex flex-col gap-4 items-center lg:items-start h-full justify-start">
             
-            <!-- ① 3D书桌虚拟书架资产 (100% 完整复原，绝不裁剪) -->
-            <div id="deskAssetWrapper" class="w-full max-w-2xl bg-white rounded-[24px] border border-[#EAE6D9] shadow-sm overflow-hidden relative hidden lg:block">
+            <!-- ① 3D书桌虚拟书架资产 (🌟 彻底移除 hidden lg:block，手机端无缝展出，保障图书精准落座书架) -->
+            <div id="deskAssetWrapper" class="w-full max-w-2xl bg-white rounded-[24px] border border-[#EAE6D9] shadow-sm overflow-hidden relative">
                 <img 
                     src="table.png" 
                     alt="TOEIC Data Table Dashboard" 
@@ -201,7 +200,7 @@
     </main>
 
     <footer class="border-t border-[#EAE6D9] bg-[#F3EFE3]/30 py-3 text-center text-[10px] text-slate-400 tracking-wide font-mono relative z-10 shrink-0">
-        Southern Ghost TOEIC Platform Engine • Powered by config.js URL Router
+        Southern Ghost TOEIC Platform Engine • Powered by minami
     </footer>
 
     <script>
@@ -217,6 +216,7 @@
             window.setBookFilter('progress');
         });
 
+        // 🌟 动态去重中心：完美融合 Max ID 乘 18 算力核心
         function calculateAndRenderStats() {
             let perfectUnitsCount = 0;
             let attemptedUnitsCount = 0;
@@ -242,6 +242,11 @@
             const totalCount = localConfigRegistry.length;
             document.getElementById('stat-total-units-left').textContent = `/ ${totalCount}`;
             document.getElementById('stat-total-units-right').textContent = `/ ${totalCount}`;
+            
+            // 🌟 核心升级算法：提取配置单中真正最大的单元 id 乘 18 道真题
+            const maxId = localConfigRegistry.length > 0 ? Math.max(...localConfigRegistry.map(mod => mod.id)) : 0;
+            const totalQuestions = maxId * 18;
+            document.getElementById('stat-total-questions-header').textContent = totalQuestions.toLocaleString();
         }
 
         function renderConsoleGrid(modulesList) {
@@ -264,7 +269,7 @@
                         </div>
                         <h4 class="text-xs font-black text-slate-800 tracking-tight mt-3">还没有生成过特训历史</h4>
                         <p class="text-[11px] text-slate-500 px-6 leading-relaxed font-medium mt-1">
-                            你目前尚未开启任何单元的魔鬼特训！空谈误国，实干兴邦。快去<strong class="text-amber-700">双击桌面空白处</strong>切换到全量大纲，或者点击右侧立体书库挑选一本特训书籍，开启你的首关全胜挑战吧！🔥
+                            你目前尚未开启 any 单元的魔鬼特训！空谈误国，实干兴邦。快去<strong class="text-amber-700">双击桌面空白处</strong>切换到全量大纲，或者点击右侧立体书库挑选一本特训书籍，开启你的首关全胜挑战吧！🔥
                         </p>
                     `;
                 } else {
