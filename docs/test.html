@@ -74,7 +74,13 @@
                     <div class="h-3 w-[1px] bg-[#E1DBC9] hidden sm:block"></div>
                     <div class="flex items-center space-x-1">
                         <span class="text-[10px] text-slate-500">速度:</span>
-                        <input type="range" id="voiceSpeed" min="0.6" max="1.4" step="0.1" value="1.0" class="w-12 h-1 accent-amber-500 cursor-pointer">
+                        <select id="voiceSpeed" class="bg-transparent text-xs text-slate-700 font-bold focus:outline-none cursor-pointer bg-[#F3EFE3] px-1 py-0.5 rounded border border-[#E1DBC9]">
+                            <option value="0.5">0.5x</option>
+                            <option value="0.8">0.8x</option>
+                            <option value="1.0" selected>1.0x</option>
+                            <option value="1.2">1.2x</option>
+                            <option value="1.5">1.5x</option>
+                        </select>
                     </div>
                 </div>
 
