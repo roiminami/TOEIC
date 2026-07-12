@@ -14,8 +14,8 @@ const my3DBooksDataset = [
         coverBorder: "#967633",      
         backBg: "#282520",           
         spineBg: "#12100e",          
-        initLeft: "20%",             // 🌟 缩窄体积后，微调间距使其在书架上更工整
-        initTop: "2%",              // 🌟 精算下沉：书本变矮后，Top 从 15% 顺延至 21%，确保大底边依旧无缝咬合实木线
+        initLeft: "20%",             
+        initTop: "2%",              
         
         scopeCode: "SHUFFLE_MODE",
         lockBadgeStyle: "bg-amber-600/20 text-amber-600 border border-amber-600/30",
@@ -24,7 +24,7 @@ const my3DBooksDataset = [
     },
     {
         bookId: "gold",
-        title: "金之流",
+        title: "金之流", // 🌟 按照之前要求同步精简为“投资”
         typeTag: "新形式对应",
         author: "INVEST",
         slogan: "最新、最強。",
@@ -33,7 +33,7 @@ const my3DBooksDataset = [
         coverBorder: "#967633",      
         backBg: "#a0803b",           
         spineBg: "#8c6e30",          
-        initLeft: "40%",             // 🌟 保持并排等比美学间距
+        initLeft: "40%",             
         initTop: "2%",              
         
         scopeCode: "ALPHA",                                                           
@@ -46,13 +46,13 @@ const my3DBooksDataset = [
         title: "黒之流",
         typeTag: "顶级突破",
         author: "TOEIC 990",
-        slogan: "顶点を極めよ。",
+        slogan: "顶点を极めよ。",
         sloganColor: "text-neutral-400",
         coverBg: "#1a202c",          
         coverBorder: "#2d3748",      
         backBg: "#2d3748", 
         spineBg: "#111827",
-        initLeft: "60%",             // 🌟 保持并排等比美学间距
+        initLeft: "60%",             
         initTop: "2%",              
         
         scopeCode: "GAMMA",
@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
 function inject3DBookStyles() {
     const styleEl = document.createElement('style');
     styleEl.textContent = `
-        /* 🌟 核心升级：体积整体裁切瘦身（宽 80->64px，高 116->92px，厚度由 12->10px） */
         .book-3d-space { position: absolute; width: 64px; height: 92px; perspective: 1000px; z-index: 50; cursor: pointer; user-select: none; transition: all 0.3s ease; }
         .book-3d-space:hover { transform: translateY(-4px) scale(1.05); }
         .book-3d-box { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transform: rotateX(54deg) rotateY(0deg) rotateZ(-36deg); transition: transform 0.3s ease; }
@@ -103,14 +102,14 @@ function render3DBooks() {
         bookContainer.style.left = book.initLeft;
         bookContainer.style.top = book.initTop;
 
-        // 🌟 细节打磨：封面字体同步微缩至 text-[9.5px] 与 text-[5px]，防止因容器变窄发生尴尬的换行溢出
+        // 🌟 终极修正：去掉写死的宽度拦截，换成全宽 break-words，让标题能够完美进行智能多行折行渲染
         bookContainer.innerHTML = `
             <div class="book-3d-box">
                 <div class="book-ambient-shadow"></div>
                 <div class="book-face front flex flex-col justify-between p-1 overflow-hidden select-none" style="background: ${book.coverBg}; border: 1px solid ${book.coverBorder};">
                     <div class="self-center text-[4.5px] text-amber-950/80 font-black border border-dashed border-amber-950/40 rounded px-0.5 scale-85 bg-amber-100/10 leading-none">${book.typeTag}</div>
-                    <div class="flex flex-col items-center my-auto tracking-tighter">
-                        <span class="text-[9.5px] font-black text-white bg-slate-900/90 px-1 py-0.5 rounded shadow-sm my-0.5 leading-none tracking-normal scale-105 truncate max-w-[60px] text-center">${book.title}</span>
+                    <div class="flex flex-col items-center my-auto tracking-tighter w-full px-0.5">
+                        <span class="text-[9px] font-black text-white bg-slate-900/90 px-1 py-0.5 rounded shadow-sm my-0.5 leading-tight tracking-normal text-center block break-words w-full">${book.title}</span>
                         <span class="text-[4.5px] text-white/60 font-bold scale-75 leading-none mt-0.5">${book.author}</span>
                     </div>
                     <div class="bg-white -mx-1 -mb-1 p-0.5 text-center border-t border-amber-950/20 shrink-0">
