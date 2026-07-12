@@ -18,29 +18,12 @@
     <style>
         html, body { background-color: #FAF9F5; }
         body { font-family: 'Inter', 'Noto Sans SC', 'Noto Sans JP', sans-serif; }
-        /* 左侧特训单元专用隐藏式微距滚动条 */
-        #modulesGridContainer::-webkit-scrollbar {
-            width: 4px;
-        }
-        #modulesGridContainer::-webkit-scrollbar-track {
-            background: #FAF9F5;
-        }
-        #modulesGridContainer::-webkit-scrollbar-thumb {
-            background: #E6E1D3; 
-            border-radius: 99px;
-        }
-        #modulesGridContainer::-webkit-scrollbar-thumb:hover {
-            background: #D1C9B7; 
-        }
-        
-        .scale-anchor-container {
-            transform-origin: top center;
-        }
-        @media (min-width: 1024px) {
-            .scale-anchor-container {
-                transform: none !important;
-            }
-        }
+        #modulesGridContainer::-webkit-scrollbar { width: 4px; }
+        #modulesGridContainer::-webkit-scrollbar-track { background: #FAF9F5; }
+        #modulesGridContainer::-webkit-scrollbar-thumb { background: #E6E1D3; border-radius: 99px; }
+        #modulesGridContainer::-webkit-scrollbar-thumb:hover { background: #D1C9B7; }
+        .scale-anchor-container { transform-origin: top center; }
+        @media (min-width: 1024px) { .scale-anchor-container { transform: none !important; } }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="auth.js"></script>
@@ -111,7 +94,7 @@
                         <h5 class="font-black text-white text-[11px] sm:text-xs tracking-tight">更适合在日中国宝宝体质的 TOEIC 突击神器</h5>
                     </div>
                     <p class="text-[11px] text-slate-300 font-medium leading-relaxed">
-                        鉴于 TOEIC 盛行于日韩，在日中国人常面临中文高质备考 resource 匮乏的困境。为此，本系统已完整收录含有 <strong class="text-amber-400 font-black underline decoration-amber-400/50 decoration-2 underline-offset-2">AI 智能考点分析</strong> 的全真题目 <span id="stat-total-questions-header" class="text-white font-black font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded border border-slate-700">--</span> 道，<span class="text-white font-bold">群主持续搜集中！</span>直击华人思维盲区。
+                        鉴于 TOEIC 盛行于日韩，在日中国人常面临中文高质备考 resource 匮乏的困境。为此，本系统已完整收录含有 <strong class="text-amber-400 font-black underline decoration-amber-400/50 decoration-2 underline-offset-2">AI 智能考点 analysis</strong> 的全真题目 <span id="stat-total-questions-header" class="text-white font-black font-mono text-xs bg-slate-800 px-1.5 py-0.5 rounded border border-slate-700">--</span> 道，<span class="text-white font-bold">群主持续搜集中！</span>直击华人思维盲区。
                     </p>
                 </div>
             </section>
@@ -150,7 +133,7 @@
                     </div>
                     <div class="absolute bottom-0 left-0 right-0 h-1 bg-emerald-400/50"></div>
                 </div>
-                </section>
+            </section>
 
             <section class="relative shrink-0">
                 <div class="relative flex items-center">
@@ -178,12 +161,7 @@
             
             <div class="w-full flex justify-center items-start overflow-visible h-[240px] sm:h-[320px] lg:h-auto">
                 <div id="deskAssetWrapper" class="scale-anchor-container w-[640px] h-[380px] bg-white rounded-[24px] border border-[#EAE6D9] shadow-sm relative overflow-hidden shrink-0 select-none">
-                    <img 
-                        src="table.png" 
-                        alt="TOEIC Data Table Dashboard" 
-                        class="w-full h-full object-cover block"
-                        draggable="false"
-                    >
+                    <img src="table.png" alt="TOEIC Data Table Dashboard" class="w-full h-full object-cover block" draggable="false">
                 </div>
             </div>
 
@@ -233,7 +211,7 @@
     </footer>
 
     <div id="login-modal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4">
-        <div class="bg-[#FAF9F5] border border-[#EAE6D9] p-6 rounded-2xl w-full max-w-sm shadow-2xl text-slate-800">
+        <div class="bg-[#FAF9F5] border border-[#EAE6D9] p-6 rounded-2xl w-full max-w-sm shadow-2xl text-slate-800 relative">
             <h3 class="text-base font-bold mb-1 text-center text-slate-900 flex items-center justify-center gap-1.5">
                 🔑 <span id="auth-modal-title">Create Account (注册新账号)</span>
             </h3>
@@ -242,15 +220,21 @@
                 <span class="text-amber-700 font-medium">请先注册以激活云端同步，防止刷题进度丢失。</span>
             </p>
             
-            <input type="email" id="modal-email" placeholder="Email Address (邮箱地址)" class="w-full p-2.5 bg-white border border-[#E1DBC9] rounded-xl mb-3 text-xs focus:outline-none focus:border-amber-500 text-slate-800 font-medium">
-            <input type="password" id="modal-password" placeholder="Password (常用密码 8-18位字母+数字)" class="w-full p-2.5 bg-white border border-[#E1DBC9] rounded-xl mb-4 text-xs focus:outline-none focus:border-amber-500 text-slate-800 font-medium">
+            <input type="email" id="modal-email" placeholder="Email Address (邮箱地址)" class="w-full p-2.5 bg-white border border-[#E1DBC9] rounded-xl mb-2 text-xs focus:outline-none focus:border-amber-500 text-slate-800 font-medium">
             
-            <button id="auth-submit-btn" onclick="submitAuth('register')" class="w-full bg-slate-900 text-white py-2.5 rounded-xl font-bold hover:bg-amber-600 transition text-xs cursor-pointer shadow-sm">
+            <div class="w-full relative mb-4">
+                <input type="password" id="modal-password" placeholder="Password (常用密码 8-18位字母+数字)" class="w-full p-2.5 bg-white border border-[#E1DBC9] rounded-xl text-xs focus:outline-none focus:border-amber-500 text-slate-800 font-medium">
+                <button id="auth-forgot-btn" onclick="switchToForgotMode()" class="hidden absolute right-3 top-2.5 text-[10px] text-slate-400 hover:text-amber-700 font-semibold tracking-tight transition-colors">
+                    Forgot? / 忘记密码
+                </button>
+            </div>
+            
+            <button id="auth-submit-btn" onclick="submitAuth('register')" class="w-full bg-slate-900 text-white py-2.5 rounded-xl font-bold hover:bg-amber-600 transition text-xs cursor-pointer shadow-sm text-center">
                 Get Started & Sign Up (立即注册并开始)
             </button>
             
             <div class="mt-4 pt-3 border-t border-slate-200/60 flex flex-col items-center gap-2">
-                <p class="text-[11px] text-slate-500">
+                <p class="text-[11px] text-slate-500 text-center">
                     <span id="auth-switch-text">Already have an account? (已有账号？)</span>
                     <button id="auth-switch-btn" onclick="toggleAuthMode()" class="text-amber-700 font-bold hover:underline ml-1 cursor-pointer">Sign In (去登录)</button>
                 </p>
@@ -272,7 +256,6 @@
             
             handleMobileScale();
             window.addEventListener('resize', handleMobileScale);
-            
             window.setBookFilter('progress');
         });
 
@@ -300,9 +283,7 @@
                 if (total > 0) {
                     attemptedUnitsCount++;
                     globalTotalCorrect += correct;
-                    if (correct === total) {
-                        perfectUnitsCount++;
-                    }
+                    if (correct === total) perfectUnitsCount++;
                 }
             });
 
@@ -339,7 +320,7 @@
                         </div>
                         <h4 class="text-xs font-black text-slate-800 tracking-tight mt-3">还没有生成过特训历史</h4>
                         <p class="text-[11px] text-slate-500 px-6 leading-relaxed font-medium mt-1">
-                            你目前尚未开启 any 单元的魔鬼特训！空谈误国，实干兴邦。快去<strong class="text-amber-700">双击单本书籍</strong>或者空白处解锁全量章节，开启你的首关全胜挑战吧！🔥
+                            你目前尚未开启 any 单元的魔鬼特训！快去<strong class="text-amber-700">双击单本书籍</strong>或者空白处解锁全量章节吧！🔥
                         </p>
                     `;
                 } else {
@@ -360,7 +341,6 @@
 
             modulesList.forEach(mod => {
                 const cardAnchor = document.createElement('a');
-                
                 const total = parseInt(localStorage.getItem(`toeic_total_${mod.unit}`) || '0', 10);
                 const correct = parseInt(localStorage.getItem(`toeic_correct_${mod.unit}`) || '0', 10);
                 
@@ -368,8 +348,7 @@
                 cardAnchor.onclick = (e) => {
                     e.preventDefault();
                     if (typeof window.checkAuthPermission === 'function') {
-                        const canAccess = window.checkAuthPermission(mod.unit);
-                        if (canAccess) {
+                        if (window.checkAuthPermission(mod.unit)) {
                             window.location.href = `test.html?unit=${encodeURIComponent(mod.unit)}`;
                         }
                     } else {
@@ -378,11 +357,7 @@
                 };
                 
                 let stateBadgeHtml = "";
-                let isPerfect = false;
-
-                if (correct === total && total > 0) {
-                    isPerfect = true;
-                }
+                let isPerfect = (correct === total && total > 0);
 
                 let scoreText = "";
                 let scoreBg = "";
@@ -410,7 +385,6 @@
                 const dotColor = isPerfect ? "bg-amber-500 shadow-amber-500/50" : (total > 0 ? "bg-emerald-500" : (bookMeta?.dotColor || "bg-slate-400 shadow-slate-400/50"));
 
                 cardAnchor.className = `${themeClass} p-3 sm:p-4 rounded-xl border bg-white active:scale-[0.98] transition-all flex items-center justify-between group cursor-pointer`;
-                
                 cardAnchor.innerHTML = `
                     <div class="flex flex-col min-w-0 pr-1 py-0.5 w-full">
                         <div class="flex items-center space-x-1 flex-wrap gap-y-0.5">
@@ -434,14 +408,8 @@
             const query = document.getElementById('searchConsoleInput').value.trim();
             const filtered = localConfigRegistry.filter(mod => {
                 const total = parseInt(localStorage.getItem(`toeic_total_${mod.unit}`) || '0', 10);
-                
-                if (currentBookFilter === 'progress' && total === 0) {
-                    return false;
-                }
-                
-                if (currentBookFilter !== 'all' && currentBookFilter !== 'progress' && mod.book !== currentBookFilter) {
-                    return false;
-                }
+                if (currentBookFilter === 'progress' && total === 0) return false;
+                if (currentBookFilter !== 'all' && currentBookFilter !== 'progress' && mod.book !== currentBookFilter) return false;
                 if (!query) return true;
                 
                 if (/^\d+$/.test(query)) {
@@ -450,16 +418,11 @@
                     let match;
                     
                     while ((match = rangeRegex.exec(mod.title)) !== null) {
-                        const start = parseInt(match[1], 10);
-                        const end = parseInt(match[2], 10);
-                        if (targetNum >= start && targetNum <= end) return true;
+                        if (targetNum >= parseInt(match[1], 10) && targetNum <= parseInt(match[2], 10)) return true;
                     }
-                    
                     rangeRegex.lastIndex = 0;
                     while ((match = rangeRegex.exec(mod.unit)) !== null) {
-                        const start = parseInt(match[1], 10);
-                        const end = parseInt(match[2], 10);
-                        if (targetNum >= start && targetNum <= end) return true;
+                        if (targetNum >= parseInt(match[1], 10) && targetNum <= parseInt(match[2], 10)) return true;
                     }
                     
                     const singleNumRegex = /\d+/g;
@@ -471,10 +434,8 @@
                     while ((numMatch = singleNumRegex.exec(mod.unit)) !== null) {
                         if (parseInt(numMatch[0], 10) === targetNum) return true;
                     }
-                    
                     return false; 
                 }
-                
                 return mod.title.includes(query) || mod.unit.includes(query);
             });
             renderConsoleGrid(filtered);
@@ -517,7 +478,7 @@
             if (!e.target.closest('.book-3d-space')) {
                 window.setBookFilter('all');
                 document.getElementById('searchConsoleInput').value = ''; 
-                if (typeof window.resetBookVisuals === 'function') { window.resetBookVisuals(); }
+                if (typeof window.resetBookVisuals === 'function') window.resetBookVisuals();
             }
         });
     </script>

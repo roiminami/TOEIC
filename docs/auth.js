@@ -1,4 +1,4 @@
-// auth.js - 南式TOEIC鬼特訓 克隆云端同步核心脚本
+// auth.js - 南式TOEIC鬼特訓 克隆云端同步核心脚本 (终极完美弹窗UX闭环版)
 
 // ⚠️ 【第一步】请在这里填入你真实的 Supabase 项目地址和 Anon 公钥
 const SUPABASE_URL = 'https://kejeprpbzznttoqsujkk.supabase.co';
@@ -21,12 +21,11 @@ try {
 let currentUser = null;
 let isSyncingFromServer = false;
 
-// --- 🌟 核心升级：获取本地所有的 TOEIC 数据（包含生词本和所有单元进度） ---
+// --- 获取本地所有的 TOEIC 数据 ---
 function getAllLocalToeicData() {
     const payload = {};
     for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        // 把所有以 toeic_ 开头的本地缓存全部打包 (包括生词本、进度、正确数、总数)
         if (key && key.startsWith('toeic_')) {
             try {
                 payload[key] = localStorage.getItem(key);
@@ -38,7 +37,7 @@ function getAllLocalToeicData() {
     return payload;
 }
 
-// --- 本地存储全局实时拦截（只要有任意做题进度或生词本改变，立刻触发秒同步） ---
+// --- 本地存储全局实时拦截 ---
 const originalSetItem = localStorage.setItem;
 localStorage.setItem = function(key, value) {
     originalSetItem.apply(this, arguments);
@@ -55,9 +54,17 @@ localStorage.removeItem = function(key) {
     }
 };
 
-// 页面加载完毕后，监听登录状态
+// 页面加载完毕后，监听登录状态及重置密码回调
 document.addEventListener('DOMContentLoaded', async () => {
     if (!supabaseClient) return;
+
+    // 检测用户是否通过“忘记密码”邮件链接跳回
+    if (window.location.hash && window.location.hash.includes('type=recovery')) {
+        setTimeout(() => {
+            window.openLoginModal();
+            switchToUpdatePasswordMode();
+        }, 500);
+    }
 
     try {
         const { data: { session } } = await supabaseClient.auth.getSession();
@@ -91,7 +98,11 @@ async function handleSignUp(email, password) {
     if (error) {
         alert("注册失败: " + error.message);
     } else {
-        alert("注册成功！请前往邮箱查收验证邮件。");
+        // 🌟 UX升级：就地转化为收件箱提示，防止二次连击
+        showAuthSuccessState(
+            "📩 验证邮件已发送！",
+            `我们已向 <strong class="text-slate-900 font-mono">${email}</strong> 发送了一封激活邮件。<br>请前往您的收件箱点击验证链接，激活后即可畅快刷题。`
+        );
     }
 }
 
@@ -114,7 +125,6 @@ async function handleLogout() {
         await supabaseClient.auth.signOut();
         isSyncingFromServer = true;
         
-        // 退出登录时，清空本地所有 toeic 相关缓存
         const keysToRemove = [];
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
@@ -130,7 +140,41 @@ async function handleLogout() {
     }
 }
 
-// 📥 从云端数据库加载【全部数据】并平铺注入本地
+// 处理忘记密码
+async function handleForgotPassword(email) {
+    if (!supabaseClient) return alert("数据库未连接");
+    if (!email) return alert("⚠️ 请先输入您需要找回密码的邮箱！");
+
+    const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
+        redirectTo: window.location.origin + window.location.pathname, 
+    });
+
+    if (error) {
+        alert("❌ 发送失败: " + error.message);
+    } else {
+        // 🌟 UX升级：就地转化为收件箱提示，杜绝连击爆接口
+        showAuthSuccessState(
+            "🚀 重置密码邮件已发送！",
+            `系统已向 <strong class="text-slate-900 font-mono">${email}</strong> 发送了重置凭证。<br>请在 10 分钟内前往邮箱查看并点击安全链接修改您的密码。`
+        );
+    }
+}
+
+// 处理重置密码
+async function handleUpdatePassword(newPassword) {
+    if (!supabaseClient) return alert("数据库未连接");
+    const { error } = await supabaseClient.auth.updateUser({ password: newPassword });
+
+    if (error) {
+        alert("❌ 修改失败: " + error.message);
+    } else {
+        alert("🎉 密码修改成功！新密码已生效，系统已自动为您登录。");
+        window.history.replaceState({}, document.title, window.location.pathname);
+        closeLoginModal();
+    }
+}
+
+// 从云端数据库加载全部数据
 async function downloadDataFromCloud() {
     if (!currentUser || !supabaseClient) return;
 
@@ -145,52 +189,33 @@ async function downloadDataFromCloud() {
         return;
     }
 
-    // 🌟 核心升级：完美复原云端保存的所有进度字典
     if (data && data.dict_notebook) {
         isSyncingFromServer = true;
-        const cloudData = data.dict_notebook; // 此时这个字段存放的是整个本地数据的打包集合
-        
+        const cloudData = data.dict_notebook;
         for (const key in cloudData) {
             if (Object.prototype.hasOwnProperty.call(cloudData, key)) {
                 localStorage.setItem(key, cloudData[key]);
             }
         }
         isSyncingFromServer = false;
-        
-        // 刷新 index.html 的数据看板和关卡网格
-        if (typeof calculateAndRenderStats === 'function') {
-            calculateAndRenderStats();
-        }
-        if (typeof filterToeicModules === 'function') {
-            filterToeicModules();
-        }
-        // 兼容 test.html 页面如果存在渲染函数的话
-        if (typeof renderDictNotebook === 'function') {
-            renderDictNotebook();
-        }
+        if (typeof calculateAndRenderStats === 'function') calculateAndRenderStats();
+        if (typeof filterToeicModules === 'function') filterToeicModules();
+        if (typeof renderDictNotebook === 'function') renderDictNotebook();
     }
 }
 
-// 📤 将本地所有的 toeic_ 数据整体打包上传至云端
+// 打包上传云端
 async function uploadDataToCloud() {
     if (!currentUser || !supabaseClient) return;
-
-    // 抓取当前本地全部最新的数据包
     const allToeicData = getAllLocalToeicData();
-
     const { error } = await supabaseClient
         .from('user_progress')
         .upsert({
             user_id: currentUser.id,
-            dict_notebook: allToeicData, // 直接将整个打包对象塞入数据库字段
+            dict_notebook: allToeicData,
             updated_at: new Date()
         });
-
-    if (error) {
-        console.error("全量同步至云端失败:", error.message);
-    } else {
-        console.log("✨ 全量进度与生词本数据已完成云端实时秒同步");
-    }
+    if (error) console.error("全量同步至云端失败:", error.message);
 }
 
 // 切换顶栏 UI 状态
@@ -213,103 +238,48 @@ function updateUserUI(email) {
     }
 }
 
+// 🌟 动态重置并恢复弹窗 DOM 状态架构
+function resetAuthModalDOM() {
+    const emailInput = document.getElementById('modal-email');
+    const passInput = document.getElementById('modal-password');
+    const forgotBtn = document.getElementById('auth-forgot-btn');
+    const submitBtn = document.getElementById('auth-submit-btn');
+    const switchText = document.getElementById('auth-switch-text');
+    
+    if (emailInput) emailInput.classList.remove('hidden');
+    if (passInput) passInput.classList.remove('hidden');
+    if (forgotBtn) forgotBtn.classList.remove('hidden');
+    if (submitBtn) {
+        submitBtn.classList.remove('hidden');
+        submitBtn.className = "w-full bg-slate-900 text-white py-2.5 rounded-xl font-bold hover:bg-amber-600 transition text-xs cursor-pointer shadow-sm";
+    }
+    if (switchText && switchText.parentElement) switchText.parentElement.classList.remove('hidden');
+}
+
 // 全局弹窗开关控制
 window.openLoginModal = function() { 
+    resetAuthModalDOM();
+    currentAuthMode = 'register'; 
+    window.toggleAuthMode();
     const modal = document.getElementById('login-modal');
-    if (modal) {
-        modal.classList.remove('hidden'); 
-    } else {
-        console.error("未在 HTML 底部找到 id='login-modal' 的弹窗模块！");
-    }
+    if (modal) modal.classList.remove('hidden');
 };
 
-window.openRegisterModal = function() { window.openLoginModal(); };
-window.closeLoginModal = function() { const modal = document.getElementById('login-modal'); if (modal) modal.classList.add('hidden'); };
-
-// 提交登录/注册按钮表单
-// 🌟 智能密码强度校验中心（8-18位字母+数字组合，中英双语版）
-window.submitAuth = function(type) {
-    const email = document.getElementById('modal-email').value.trim();
-    const pass = document.getElementById('modal-password').value;
-
-    // 1. 基础空值检查 / Basic check
-    if (!email || !pass) {
-        return alert("⚠️ Please enter both email and password! / 请输入邮箱和密码！");
-    }
-
-    // 2. 长度把关：太短太难都不好，卡死 8-18 位 / Length boundary (8-18 chars)
-    if (pass.length < 8) {
-        return alert("❌ Password too short! 6 characters is unsafe. / 密码太短啦！6位很容易被破解，请至少设置 8 位。");
-    }
-    if (pass.length > 18) {
-        return alert("❌ Password too long! / 密码太长啦！建议控制在 18 位以内，免得以后忘记。");
-    }
-
-    // 3. 智能组合过滤（注册时严格把关 / Sign-up validation）
-    if (type === 'register') {
-        const hasNumber = /\d/.test(pass);
-        const hasLetter = /[a-zA-Z]/.test(pass);
-        const isAllSame = /^(.)\1+$/.test(pass); // 检查是否全是同一个字符，如 88888888
-
-        // 拦截全数字、全字母或全相同字符
-        if (isAllSame || !hasNumber || !hasLetter) {
-            return alert(
-                "⚠️ Simple passwords are risky! / 密码太简单有风险！\n\n" +
-                "Please use a combination of both [Letters + Numbers] (8-18 chars).\n" +
-                "请使用「字母 + 数字」的常用组合，长度为 8 到 18 位。\n\n" +
-                "💡 Examples / 例如: toeic2026, hunter888\n" +
-                "No special symbols needed, just make it memorable! / 无需复杂符号，常用好记即可！"
-            );
-        }
-    }
-
-    // 4. 校验通过，提交云端 / Verified, submit to cloud
-    if (type === 'login') handleSignIn(email, pass);
-    if (type === 'register') handleSignUp(email, pass);
+window.openRegisterModal = function() { 
+    resetAuthModalDOM();
+    currentAuthMode = 'login'; 
+    window.toggleAuthMode();
+    const modal = document.getElementById('login-modal');
+    if (modal) modal.classList.remove('hidden');
 };
 
-// 🌟 【全新功能：未登录免费体验3个单元的权限拦截中心】
-window.checkAuthPermission = function(targetUnit) {
-    // 1. 如果用户已经登录，毫无疑问拥有全量访问权限，直接放行
-    if (currentUser) {
-        return true;
-    }
-
-    // 2. 如果未登录，遍历本地缓存，计算用户目前“已经体验过”的单元总数
-    const attemptedUnits = new Set();
-    
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        // 如果本地存有某个单元的总题数进度，且大于0，说明这个单元已经被点开并做过题了
-        if (key && key.startsWith('toeic_total_')) {
-            const unitName = key.replace('toeic_total_', '');
-            const totalValue = parseInt(localStorage.getItem(key) || '0', 10);
-            if (totalValue > 0) {
-                attemptedUnits.add(unitName);
-            }
-        }
-    }
-
-    // 3. 检查当前点击的单元，是不是属于“已经体验过”的列表
-    if (attemptedUnits.has(targetUnit)) {
-        // 如果是已经开始过的单元，允许进去继续复习，不重复扣额度
-        return true;
-    }
-
-    // 4. 如果点击的是一个全新单元，判断体验过的单元是否已经达到了 3 个
-    if (attemptedUnits.size >= 3) {
-        // 超过额度，无情拦截并呼出登录弹窗
-        alert(`💡 体验额度已满：\n您当前未登录，本地已留下了 ${attemptedUnits.size} 个单元的特训记录。请注册并登录账号，解锁全量 ${localConfigRegistry.length || '多'} 个隐藏特训章节，并激活多端云同步！`);
-        window.openLoginModal();
-        return false; // 拦截，不让进去
-    }
-
-    // 5. 没超 3 个，允许开辟新体验单元
-    return true;
+window.closeLoginModal = function() { 
+    const modal = document.getElementById('login-modal'); 
+    if (modal) modal.classList.add('hidden'); 
 };
 
-// 🌟 动态切换登录/注册模式状态机
-let currentAuthMode = 'register'; // 默认引导注册
+// 🌟 动态切换登录/注册模式状态机 (全面对齐版)
+let currentAuthMode = 'register'; 
 
 window.toggleAuthMode = function() {
     const title = document.getElementById('auth-modal-title');
@@ -318,37 +288,192 @@ window.toggleAuthMode = function() {
     const switchText = document.getElementById('auth-switch-text');
     const switchBtn = document.getElementById('auth-switch-btn');
     
-    if (currentAuthMode === 'register') {
+    const emailInput = document.getElementById('modal-email');
+    const passInput = document.getElementById('modal-password');
+    const forgotBtn = document.getElementById('auth-forgot-btn');
+    
+    if (currentAuthMode === 'register' || currentAuthMode === 'forgot') {
         currentAuthMode = 'login';
         title.textContent = 'Sign In (登录账号)';
         desc.innerHTML = `Welcome back! Sign in to restore your cloud progress.<br><span class="text-amber-700 font-medium">欢迎回来！输入邮箱和密码即可同步恢复所有进度。</span>`;
+        if (emailInput) emailInput.classList.remove('hidden');
+        if (passInput) { passInput.classList.remove('hidden'); passInput.placeholder = "Password (密码)"; }
+        if (forgotBtn) forgotBtn.classList.remove('hidden');
+
         submitBtn.textContent = 'Sign In (立即登录)';
         submitBtn.setAttribute('onclick', "submitAuth('login')");
         switchText.textContent = "New here? (新同学请先)";
         switchBtn.textContent = 'Sign Up (去注册)';
+        if (switchBtn) switchBtn.classList.remove('hidden');
     } else {
         currentAuthMode = 'register';
         title.textContent = 'Create Account (注册新账号)';
-        desc.innerHTML = `Sign up first to activate your cloud sync space and protect your local training data.<br><span class="text-amber-700 font-medium">请先注册以激活云端同步，防止刷题进度丢失。</span>`;
+        desc.innerHTML = `Sign up first to activate your cloud sync space.<br><span class="text-amber-700 font-medium">请先注册以激活云端同步，防止刷题进度丢失。</span>`;
+        if (emailInput) emailInput.classList.remove('hidden');
+        if (passInput) { passInput.classList.remove('hidden'); passInput.placeholder = "Password (常用密码 8-18位字母+数字)"; }
+        if (forgotBtn) forgotBtn.classList.add('hidden');
+
         submitBtn.textContent = 'Get Started & Sign Up (立即注册并开始)';
         submitBtn.setAttribute('onclick', "submitAuth('register')");
         switchText.textContent = "Already have an account? (已有账号？)";
         switchBtn.textContent = 'Sign In (去登录)';
+        if (switchBtn) switchBtn.classList.remove('hidden');
     }
 };
 
-// 修正原有的打开弹窗函数，确保每次点顶栏的按钮时，弹窗能正确初始化它该有的状态
-const originalOpenLoginModal = window.openLoginModal;
-window.openLoginModal = function() {
-    // 如果点击的是 Sign In，强制调整为登录状态
-    if (currentAuthMode !== 'login') window.toggleAuthMode();
-    const modal = document.getElementById('login-modal');
-    if (modal) modal.classList.remove('hidden');
+// 🌟 切换至找回密码界面
+window.switchToForgotMode = function() {
+    currentAuthMode = 'forgot';
+    const title = document.getElementById('auth-modal-title');
+    const desc = document.getElementById('auth-modal-desc');
+    const submitBtn = document.getElementById('auth-submit-btn');
+    const switchText = document.getElementById('auth-switch-text');
+    const switchBtn = document.getElementById('auth-switch-btn');
+    
+    const emailInput = document.getElementById('modal-email');
+    const passInput = document.getElementById('modal-password');
+    const forgotBtn = document.getElementById('auth-forgot-btn');
+
+    title.textContent = 'Reset Password (找回密码)';
+    desc.innerHTML = `Enter your email to receive a password reset link.<br><span class="text-amber-700 font-medium">请输入您的注册邮箱，系统将发送一封重置密码邮件。</span>`;
+    
+    if (emailInput) emailInput.classList.remove('hidden');
+    if (passInput) passInput.classList.add('hidden'); 
+    if (forgotBtn) forgotBtn.classList.add('hidden');
+
+    submitBtn.textContent = 'Send Reset Email (发送重置邮件)';
+    submitBtn.setAttribute('onclick', "submitAuth('forgot')");
+    switchText.textContent = "Remembered it? (想起密码了？)";
+    switchBtn.textContent = 'Back to Sign In (返回登录)';
+    if (switchBtn) switchBtn.classList.remove('hidden');
 };
 
-window.openRegisterModal = function() {
-    // 如果点击的是 Sign Up，强制调整为注册状态
-    if (currentAuthMode !== 'register') window.toggleAuthMode();
-    const modal = document.getElementById('login-modal');
-    if (modal) modal.classList.remove('hidden');
+// 🌟 切换至输入新密码界面
+function switchToUpdatePasswordMode() {
+    currentAuthMode = 'reset_new';
+    const title = document.getElementById('auth-modal-title');
+    const desc = document.getElementById('auth-modal-desc');
+    const submitBtn = document.getElementById('auth-submit-btn');
+    const switchText = document.getElementById('auth-switch-text');
+    const switchBtn = document.getElementById('auth-switch-btn');
+    
+    const emailInput = document.getElementById('modal-email');
+    const passInput = document.getElementById('modal-password');
+    const forgotBtn = document.getElementById('auth-forgot-btn');
+
+    title.textContent = 'Setup New Password (设置新密码)';
+    desc.innerHTML = `Please enter your secure new password.<br><span class="text-emerald-700 font-medium">安全验证通过！请直接输入您的新密码。</span>`;
+    
+    if (emailInput) emailInput.classList.add('hidden'); 
+    if (passInput) {
+        passInput.classList.remove('hidden');
+        passInput.value = "";
+        passInput.placeholder = "Enter New Password (新密码 8-18位字母+数字)";
+    }
+    if (forgotBtn) forgotBtn.classList.add('hidden');
+    
+    submitBtn.textContent = 'Save & Sign In (保存新密码并登录)';
+    submitBtn.setAttribute('onclick', "submitAuth('reset_new')");
+    
+    if (switchText) switchText.textContent = "Security Session Active (安全重置通道已激活)";
+    if (switchBtn) switchBtn.classList.add('hidden');
+}
+
+// 🌟 UX就地状态重组核心：隐藏输入框，转产为纯提示面板
+function showAuthSuccessState(title, htmlMessage) {
+    document.getElementById('modal-email').classList.add('hidden');
+    document.getElementById('modal-password').classList.add('hidden');
+    if (document.getElementById('auth-forgot-btn')) document.getElementById('auth-forgot-btn').classList.add('hidden');
+    
+    const titleEl = document.getElementById('auth-modal-title');
+    const descEl = document.getElementById('auth-modal-desc');
+    const submitBtn = document.getElementById('auth-submit-btn');
+    const switchText = document.getElementById('auth-switch-text');
+    
+    if (titleEl) titleEl.textContent = title;
+    if (descEl) {
+        descEl.innerHTML = `
+            <div class="bg-emerald-50 border border-emerald-200 text-emerald-900 rounded-xl p-3.5 my-2 text-left space-y-2">
+                <div class="flex items-center space-x-1.5 font-bold text-xs text-emerald-800">
+                    <span>📬 Action Required / 需检查邮箱</span>
+                </div>
+                <p class="text-[11px] leading-relaxed font-medium">${htmlMessage}</p>
+            </div>
+            <p class="text-[10px] text-slate-400 text-center mt-2">处理完毕后关闭本窗即可。</p>
+        `;
+    }
+    
+    if (submitBtn) {
+        submitBtn.textContent = '我知道了 (Close Alert)';
+        submitBtn.className = "w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl font-bold transition text-xs cursor-pointer shadow-sm text-center block";
+        submitBtn.setAttribute('onclick', 'closeLoginModal()');
+    }
+    
+    if (switchText && switchText.parentElement) switchText.parentElement.classList.add('hidden');
+}
+
+// 提交表单校验中心
+window.submitAuth = function(type) {
+    const email = document.getElementById('modal-email').value.trim();
+    const pass = document.getElementById('modal-password').value;
+
+    if (type === 'forgot') {
+        if (!email) return alert("⚠️ 请输入邮箱地址！");
+        return handleForgotPassword(email);
+    }
+
+    if (!email || !pass) {
+        if (type !== 'reset_new') return alert("⚠️ 请输入邮箱和密码！");
+    }
+    if (type === 'reset_new' && !pass) {
+        return alert("⚠️ 请输入新密码！");
+    }
+
+    if (type !== 'forgot') {
+        if (pass.length < 8) return alert("❌ 密码太短啦！请至少设置 8 位。");
+        if (pass.length > 18) return alert("❌ 密码太长啦！请控制在 18 位以内。");
+    }
+
+    if (type === 'register' || type === 'reset_new') {
+        const hasNumber = /\d/.test(pass);
+        const hasLetter = /[a-zA-Z]/.test(pass);
+        const isAllSame = /^(.)\1+$/.test(pass);
+
+        if (isAllSame || !hasNumber || !hasLetter) {
+            return alert(
+                "⚠️ 密码太简单有风险！\n\n" +
+                "请使用「字母 + 数字」的常用组合，长度为 8 到 18 位。\n" +
+                "💡 例如: toeic2026, hunter888"
+            );
+        }
+    }
+
+    if (type === 'login') handleSignIn(email, pass);
+    if (type === 'register') handleSignUp(email, pass);
+    if (type === 'reset_new') handleUpdatePassword(pass);
+};
+
+// 未登录免费体验3个单元的权限拦截中心
+window.checkAuthPermission = function(targetUnit) {
+    if (currentUser) return true;
+
+    const attemptedUnits = new Set();
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && key.startsWith('toeic_total_')) {
+            const unitName = key.replace('toeic_total_', '');
+            const totalValue = parseInt(localStorage.getItem(key) || '0', 10);
+            if (totalValue > 0) attemptedUnits.add(unitName);
+        }
+    }
+
+    if (attemptedUnits.has(targetUnit)) return true;
+
+    if (attemptedUnits.size >= 3) {
+        alert(`💡 体验额度已满：\n您当前未登录，本地已留下了 ${attemptedUnits.size} 个单元的特训记录。请注册并登录账号，解锁全量隐藏特训章节，并激活多端云同步！`);
+        window.openLoginModal();
+        return false; 
+    }
+
+    return true;
 };
