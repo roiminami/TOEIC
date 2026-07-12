@@ -136,6 +136,9 @@
             </section>
 
             <section class="relative shrink-0">
+                <input type="text" style="position: absolute; top: -9999px; left: -9999px;" autocomplete="username" tabindex="-1" />
+                <input type="password" style="position: absolute; top: -9999px; left: -9999px;" autocomplete="current-password" tabindex="-1" />
+                
                 <div class="relative flex items-center">
                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                         <i data-lucide="search" class="w-5 h-5"></i>
@@ -144,6 +147,7 @@
                         type="text" 
                         id="searchConsoleInput" 
                         oninput="filterToeicModules()" 
+                        autocomplete="new-password"
                         placeholder="快速检索：输入单词序号直达单元..." 
                         class="w-full pl-11 pr-32 py-3 bg-white rounded-xl border border-[#E1DBC9] text-base text-slate-800 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 placeholder-slate-400 transition-all shadow-sm"
                     >
