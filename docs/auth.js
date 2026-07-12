@@ -174,7 +174,7 @@ async function handleUpdatePassword(newPassword) {
     }
 }
 
-// 从云端数据库加载全部数据
+// 从云端数据库加载全部数据并执行增量合并
 async function downloadDataFromCloud() {
     if (!currentUser || !supabaseClient) return;
 
@@ -190,18 +190,93 @@ async function downloadDataFromCloud() {
     }
 
     if (data && data.dict_notebook) {
-        isSyncingFromServer = true;
+        // 激活同步锁，防止本地合并引发的 setItem 再次触发上传造成死循环
+        isSyncingFromServer = true; 
+        
         const cloudData = data.dict_notebook;
-        for (const key in cloudData) {
-            if (Object.prototype.hasOwnProperty.call(cloudData, key)) {
-                localStorage.setItem(key, cloudData[key]);
-            }
-        }
+        mergeLocalAndCloudData(cloudData);
+        
         isSyncingFromServer = false;
+
+        // 触发各页面的 UI 刷新组件
         if (typeof calculateAndRenderStats === 'function') calculateAndRenderStats();
         if (typeof filterToeicModules === 'function') filterToeicModules();
         if (typeof renderDictNotebook === 'function') renderDictNotebook();
     }
+}
+
+// 核心智能合并算法
+function mergeLocalAndCloudData(cloudData) {
+    // 1. 收集本地所有现存的 key 空间，并与云端 key 空间取并集
+    const allKeys = new Set([...Object.keys(localStorage).filter(k => k.startsWith('toeic_')), ...Object.keys(cloudData)]);
+
+    allKeys.forEach(key => {
+        const localRaw = localStorage.getItem(key);
+        const cloudRaw = cloudData[key];
+
+        // 情况 A: 只有云端有，本地没有 -> 直接同步到本地
+        if (localRaw === null && cloudRaw !== undefined) {
+            localStorage.setItem(key, cloudRaw);
+            return;
+        }
+        // 情况 B: 只有本地有，云端没有 -> 保留本地，等待后续自动触发上传
+        if (localRaw !== null && cloudRaw === undefined) {
+            return;
+        }
+
+        // 情况 C: 两边都有冲突 -> 开始进行多维度特征合并
+        if (key === 'toeic_dict_notebook') {
+            // 🌟 【核心】生词本增量合并
+            const localDict = JSON.parse(localRaw || '{}');
+            const cloudDict = JSON.parse(cloudRaw || '{}');
+            const mergedDict = {};
+
+            const allWords = new Set([...Object.keys(localDict), ...Object.keys(cloudDict)]);
+            allWords.forEach(word => {
+                const localWord = localDict[word];
+                const cloudWord = cloudDict[word];
+
+                if (!localWord) { mergedDict[word] = cloudWord; }
+                else if (!cloudWord) { mergedDict[word] = localWord; }
+                else {
+                    // 两边都有这个单词，根据时间戳进行 Last-Write-Wins 合并
+                    const localTs = localWord.ts || 0;
+                    const cloudTs = cloudWord.ts || 0;
+                    
+                    if (cloudTs >= localTs) {
+                        mergedDict[word] = cloudWord;
+                        // 特殊人文关怀：如果本地有笔记，云端没有，尝试保留本地笔记防止误删
+                        if (localWord.note && !cloudWord.note) mergedDict[word].note = localWord.note;
+                    } else {
+                        mergedDict[word] = localWord;
+                        if (cloudWord.note && !localWord.note) mergedDict[word].note = cloudWord.note;
+                    }
+                    // 拼写练习次数累加，streak 取最大值
+                    mergedDict[word].count = Math.max(localWord.count || 0, cloudWord.count || 0);
+                    mergedDict[word].streak = Math.max(localWord.streak || 0, cloudWord.streak || 0);
+                }
+            });
+            localStorage.setItem(key, JSON.stringify(mergedDict));
+
+        } else if (key.startsWith('toeic_ghost_favorites_')) {
+            // 🌟 错题本合并 -> 数组取并集（去重）
+            try {
+                const localFavs = JSON.parse(localRaw || '[]');
+                const cloudFavs = JSON.parse(cloudRaw || '[]');
+                const mergedFavs = Array.from(new Set([...localFavs, ...cloudFavs]));
+                localStorage.setItem(key, JSON.stringify(mergedFavs));
+            } catch(e) { localStorage.setItem(key, localRaw); }
+
+        } else if (key.startsWith('toeic_total_') || key.startsWith('toeic_correct_')) {
+            // 🌟 刷题进度与正确题数合并 -> 取高分/最大值
+            const localNum = parseInt(localRaw, 10) || 0;
+            const cloudNum = parseInt(cloudRaw, 10) || 0;
+            localStorage.setItem(key, Math.max(localNum, cloudNum).toString());
+        } else {
+            // 其他未知兜底配置 -> 默认保留本地
+            if (localRaw !== null) localStorage.setItem(key, localRaw);
+        }
+    });
 }
 
 // 打包上传云端

@@ -1123,6 +1123,7 @@
                     if (dictNotebook[word].streak === undefined) dictNotebook[word].streak = 0;
                     dictNotebook[word].pos = posStr; dictNotebook[word].ipa = ipa; dictNotebook[word].def = translation;
                     dictNotebook[word].exEn = exEn; dictNotebook[word].exCn = exCn;
+                    dictNotebook[word].ts = Date.now(); // 👈 加上这一行
                 }
                 localStorage.setItem('toeic_dict_notebook', JSON.stringify(dictNotebook));
                 renderDictNotebook(); speakText(word); showWordPracticeCard(word, isNewWord);
@@ -1164,7 +1165,7 @@
 
         function saveWordNote(word, val) {
             if (dictNotebook[word]) {
-                dictNotebook[word].note = val; localStorage.setItem('toeic_dict_notebook', JSON.stringify(dictNotebook));
+                dictNotebook[word].note = val; dictNotebook[word].ts = Date.now();  localStorage.setItem('toeic_dict_notebook', JSON.stringify(dictNotebook));
                 const targetId = event.target.id === 'dict-note-input' ? 'dict-note-input_tab2' : 'dict-note-input';
                 const otherInput = document.getElementById(targetId); if (otherInput) otherInput.value = val;
             }
@@ -1201,7 +1202,7 @@
 
         function executePracticeSuccess() {
             const pInput = document.getElementById('dict-practice-input'); const pInput2 = document.getElementById('dict-practice-input_tab2');
-            dictNotebook[activePracticeWord].count += 1; localStorage.setItem('toeic_dict_notebook', JSON.stringify(dictNotebook));
+            dictNotebook[activePracticeWord].count += 1;  dictNotebook[activePracticeWord].ts = Date.now(); localStorage.setItem('toeic_dict_notebook', JSON.stringify(dictNotebook));
             speakText(activePracticeWord);
             
             if (pInput) pInput.value = ""; if (pInput2) pInput2.value = "";
