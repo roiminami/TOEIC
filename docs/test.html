@@ -14,9 +14,11 @@
     <script>
         // 🌟 提取全局单元参数，用于隔离不同单元的错题本数据
         window.unitParam = '1-10';
+        window.bookParam = ''; // 🛠️ 新增全局书本参数挂载点
         (function() {
             const urlParams = new URLSearchParams(window.location.search);
             window.unitParam = urlParams.get('unit') || '1-10'; // 默认保底 1-10
+            window.bookParam = urlParams.get('book') || '';    // 🛠️ 捕获从主页传过来的书本ID
             // 📂 按照要求：修改静态文件寻址空间，解析路径自动切换为子类文件夹：data/g121-130.js
             const dataJsName = "data/" + window.unitParam + ".js";
             // 同步阻塞加载，保障底层全套算法变量完美就绪
@@ -52,7 +54,8 @@
 
     <header class="border-b border-[#EAE6D9] bg-[#FAF9F5]/90 backdrop-blur-md sticky top-0 z-40 transition-colors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-16 py-3 sm:py-0 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-3 w-full md:w-auto justify-start" onclick="window.location.href='index.html'" style="cursor:pointer">
+            <!-- 🛠️ 修改点击事件为 returnToConsole() -->
+            <div class="flex items-center space-x-3 w-full md:w-auto justify-start" onclick="returnToConsole()" style="cursor:pointer">
                 <div class="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-white font-black text-lg shadow-md shadow-amber-500/20">
                     南
                 </div>
@@ -807,7 +810,7 @@ let globalUtteranceActiveHolder = null;
                 if (accEasy === 100 && accMedium === 100 && accHard === 100) {
                     setTimeout(() => {
                         showCustomConfirm("🏆 难度特训奖励通报", `🔥 战力全开！全部题型均已到达 100% 满分掌控！恭喜斩获全胜殿堂级【鬼特训终极大奖励】！🎁\n⏱️ 当前总耗时：${timeStr}\n\n是否需要现在立刻返回中央控制台 (Index)？`, () => {
-                            window.location.href = 'index.html';
+                            returnToConsole();
                         });
                     }, 600);
                 }
@@ -897,7 +900,7 @@ let globalUtteranceActiveHolder = null;
 
         function initDictNotebook() { renderDictNotebook(); }
 
-        function checkAnswer() {
+function checkAnswer() {
             const q = currentQuestions[currentIndex]; if (answeredList[q.id]) { nextQuestion(); return; }
             if (!selectedOption) { showCustomAlert("提示", "请先选择一个答案选项！", "warning"); return; }
             const isCorrect = (selectedOption === q.correct);
@@ -905,7 +908,11 @@ let globalUtteranceActiveHolder = null;
             
             let answeredInCurrentUnit = 0;
             currentQuestions.forEach(q => { if (answeredList[q.id]) answeredInCurrentUnit++; });
-            const correctCountInUnit = currentQuestions.filter(q => answeredList[q.id] && answeredList[q.id].isCorrect).length;
+            
+            // 🛠️ 终极底层修复：
+            // 将原先的 currentQuestions 变更为 questionsDatabase。
+            // 确保即便用户在刷题时开启了“简单/中等/困难”单项筛选，存档时依然统计全量题目的对错，从而完美保存 100% 正确数据！
+            const correctCountInUnit = questionsDatabase.filter(q => answeredList[q.id] && answeredList[q.id].isCorrect).length;
             
             if (answeredInCurrentUnit > 0) {
                 localStorage.setItem(`toeic_total_${window.unitParam}`, questionsDatabase.length);
@@ -1433,6 +1440,11 @@ let globalUtteranceActiveHolder = null;
                 renderDictNotebook(); completePractice();
             });
         }
+        // 🛠️ 新增返回控制台通用路由函数
+        function returnToConsole() {
+            window.location.href = 'index.html' + (window.bookParam ? '?book=' + encodeURIComponent(window.bookParam) : '');
+        }
+
     </script>
 
     <div id="login-modal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4">

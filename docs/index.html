@@ -259,7 +259,15 @@
             
             handleMobileScale();
             window.addEventListener('resize', handleMobileScale);
-            window.setBookFilter('progress');
+            
+            // 🛠️ 核心修改：检测 URL 中是否带有返回的书本参数，如果有则直接锁定，否则走默认的 progress
+            const urlParams = new URLSearchParams(window.location.search);
+            const returnBook = urlParams.get('book');
+            if (returnBook) {
+                window.setBookFilter(returnBook);
+            } else {
+                window.setBookFilter('progress');
+            }
         });
 
         function handleMobileScale() {
@@ -303,7 +311,7 @@
             document.getElementById('stat-total-questions-header').textContent = totalQuestions.toLocaleString();
         }
 
-        function renderConsoleGrid(modulesList) {
+function renderConsoleGrid(modulesList) {
             const container = document.getElementById('modulesGridContainer');
             const emptyState = document.getElementById('search-empty-state');
             const counterText = document.getElementById('global-counter-txt');
@@ -348,19 +356,21 @@
                 const correct = parseInt(localStorage.getItem(`toeic_correct_${mod.unit}`) || '0', 10);
                 
                 cardAnchor.href = "javascript:void(0);";
+                // 🛠️ 修改后的点击跳转逻辑：带上当前的 mod.book
                 cardAnchor.onclick = (e) => {
                     e.preventDefault();
                     if (typeof window.checkAuthPermission === 'function') {
                         if (window.checkAuthPermission(mod.unit)) {
-                            window.location.href = `test.html?unit=${encodeURIComponent(mod.unit)}`;
+                            window.location.href = `test.html?unit=${encodeURIComponent(mod.unit)}&book=${encodeURIComponent(mod.book)}`;
                         }
                     } else {
-                        window.location.href = `test.html?unit=${encodeURIComponent(mod.unit)}`;
+                        window.location.href = `test.html?unit=${encodeURIComponent(mod.unit)}&book=${encodeURIComponent(mod.book)}`;
                     }
                 };
                 
                 let stateBadgeHtml = "";
-                let isPerfect = (correct === total && total > 0);
+                // 稳健修复：使用 >= 规避未来可能出现的多端同步数据错位风险
+                let isPerfect = (total > 0 && correct >= total);
 
                 let scoreText = "";
                 let scoreBg = "";
@@ -378,7 +388,8 @@
                         stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide bg-rose-50 text-rose-600 px-1.5 py-0.5 rounded border border-rose-200/60">${scoreText}·补${cnNum}</span>`;
                     }
                 } else if (isPerfect) {
-                    stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide bg-amber-50 text-amber-700 px-1.5 py-0.5 rounded border border-amber-300 shadow-sm flex items-center space-x-0.5"><span>✨</span> <span>已通关</span></span>`;
+                    // 🔥 这里修改为了“已通过”金牌徽章
+                    stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded border border-amber-400 shadow-sm flex items-center space-x-0.5"><span>🏆</span> <span>已通过</span></span>`;
                 } else {
                     stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded border border-emerald-300 flex items-center space-x-0.5"><span>✓</span> <span>已特训</span></span>`;
                 }
