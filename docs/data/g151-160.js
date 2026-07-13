@@ -1,108 +1,108 @@
 // ============================================================================
-// [DATABASE] SOUTHERN GHOST TOEIC CORE DATA BUNDLE (datag151-160.js Expansion)
+// [DATABASE] SOUTHERN GHOST TOEIC CORE DATA BUNDLE (datag81-90.js Expansion)
 // ============================================================================
 
 // 1. 核心考点词表 (Core Target Vocabulary)
 const vocabBank = [
     {
-        word: "quarter",
-        pos: "名",
-        ipa: "/ˈkwɔːrtər/",
-        cn: "季度，四分之一",
-        jp: "四半期、4分の1",
-        family: "quarterly / quarters / quartered",
-        tips: "财务报告与业绩评估场景的绝对高频词。商业上常指三个月组成的季度（如 fiscal quarter 财政季度）。其形容词/副词形式 quarterly（每季度的/每季度地）在阅读第五部分属于词性题核心考点。",
-        desc: "Sales rose this quarter."
+        word: "original",
+        pos: "形/名",
+        ipa: "/əˈrɪdʒənl/",
+        cn: "原来的，起初的；原件，原作",
+        jp: "最初の、独自の；原図、原本",
+        family: "originality / originally / originate",
+        tips: "托业阅读及行政办公高频词。常考短语 return the original document（归还原件）或 keep the original receipt（保留原始收据）。其副词形式 originally（起初、本来）也是日程变更场景的常客。",
+        desc: "Please keep the original copy."
     },
     {
-        word: "respond",
+        word: "selection",
+        pos: "名",
+        ipa: "/sɪˈlekʃn/",
+        cn: "选择，挑选；选集，品类",
+        jp: "選択、選出、品揃え",
+        family: "select / selective / selectively / selector",
+        tips: "商务采购与零售场景核心名词。极其常考的固定搭配为 a wide selection of...（琳琅满目的/供广泛选择的……），在阅读中常与 a wide variety of 或 an assortment of 进行同义替换。",
+        desc: "We have a wide selection."
+    },
+    {
+        word: "attract",
         pos: "動",
-        ipa: "/rɪˈspɑːnd/",
-        cn: "回复，响应，做出回应",
-        jp: "返信する、対応する、反応する",
-        family: "response / responsive / respondent / responsiveness",
-        tips: "日常办公与客户服务场景的核心动词。标准用法为不及物动词搭配介词 to（respond to an email/complaint）。名词形式 response（回复/回应）在听力与阅读中极常见。",
-        desc: "Please respond to me."
+        ipa: "/əˈtrækt/",
+        cn: "吸引，引起……的注意",
+        jp: "惹きつける、引きつける、魅了する",
+        family: "attraction / attractive / attractively",
+        tips: "市场营销与广告场景的核心动词。常见考点搭配包括 attract customers（吸引客户）、attract investment（吸引投资）。名物形式 attraction 可指“吸引人的展项或景点”。",
+        desc: "The new ad will attract clients."
     },
     {
-        word: "manufacturer",
-        pos: "名",
-        ipa: "/ˌmænjuˈfæktʃərər/",
-        cn: "制造商，制造厂",
-        jp: "製造業者、メーカー",
-        family: "manufacture / manufacturing / manufactured",
-        tips: "生产制造与供应链管理场景的基础名词。专指生产货物的企业或厂家。其动词形式 manufacture（制造）和动名词形式 manufacturing（制造业/生产的）也经常在商务公文中交互考查。",
-        desc: "He is a manufacturer."
-    },
-    {
-        word: "cause",
+        word: "handle",
         pos: "動/名",
-        ipa: "/kɔːz/",
-        cn: "导致，引起；原因，起因",
-        jp: "引き起こす、原因となる；原因、理由",
-        family: "causal / causation / caused / causing",
-        tips: "故障分析与危机公关中的高频动词。作动词时常接具体问题作宾语（如 cause a delay/disruption 导致延迟/中断）。作名词时常与 root 连用（root cause 根本原因）。",
-        desc: "Smoking can cause fires."
+        ipa: "/ˈhændl/",
+        cn: "处理，应付；对待；把手",
+        jp: "処理する、扱う；取っ手",
+        family: "handled / handler / handling",
+        tips: "日常行政与客户服务核心词。在题目中常与 deal with、manage 或 resolve 进行同义替换，如 handle customer complaints（处理客户投诉）。动名词形式 handling 常见于 shipping and handling（运费与装卸费）。",
+        desc: "She will handle the complaints."
     },
     {
-        word: "device",
+        word: "memo",
         pos: "名",
-        ipa: "/dɪˈvaɪs/",
-        cn: "设备，装置，仪器",
-        jp: "装置、機器、デバイス",
-        family: "devices / devise",
-        tips: "办公自动化与技术支持场景的核心可数名词。通常指电子或机械设备（如 mobile device 移动设备，electronic device 电子装置）。注意不要与发音相似的动词 devise（设计/发明）混淆。",
-        desc: "This device is useful."
+        ipa: "/ˈmemoʊ/",
+        cn: "备忘录，（公司内部的）通知",
+        jp: "社内連絡票、メモ、通達",
+        family: "memos / memorandum",
+        tips: "办公自动化与内部通信的核心词。常考短语 send a memo to staff（向员工发备忘录）、as stated in the memo（如备忘录所述），是托业 Part 7 短信/信函题型中的高阶高频文体。",
+        desc: "I read the internal memo."
     },
     {
-        word: "warehouse",
-        pos: "名/動",
-        ipa: "/ˈwerhaʊs/",
-        cn: "仓库，货栈；存入仓库",
-        jp: "倉庫、物流センター；倉庫に保管する",
-        family: "warehouses / warehousing",
-        tips: "仓储物流与库存盘点场景的绝对高频名词。常指存放待出货商品的建筑实体。常见词组如 warehouse manager（仓库主管）或 inventory in the warehouse（仓库库存）。",
-        desc: "Goods are in the warehouse."
-    },
-    {
-        word: "contain",
+        word: "attach",
         pos: "動",
-        ipa: "/kənˈteɪn/",
-        cn: "包含，容纳",
-        jp: "含む、収容する",
-        family: "container / containment / contained",
-        tips: "产品说明、货物装箱及法律合同场景的高频及物动词。意为内部装有或包含某些成分、条款或货物。其名词形式 container（集装箱/容器）在物流场景中极常用。",
-        desc: "Boxes contain books."
+        ipa: "/əˈtætʃ/",
+        cn: "附加，连接；随附（文件等）",
+        jp: "添付する、取り付ける",
+        family: "attachment / attached / detachable",
+        tips: "商务邮件及日常行政场景核心动词。核心搭配 attach a file to the email（在邮件中随附文件）。其过去分词作定语的结构 Please find the attached report（请查收随附的报告）是听力与阅读的必考句型。",
+        desc: "Please attach your resume here."
     },
     {
-        word: "individual",
-        pos: "名/形",
-        ipa: "/ˌɪndɪˈvɪdʒuəl/",
-        cn: "个人，个体；单独的，个人的",
-        jp: "個人；個人の、個々の",
-        family: "individually / individuality / individualism",
-        tips: "人事管理与税务保单场景的核心双重词性词汇。作形容词时用于强调每一个独立的个体（如 individual performance 个人表现）；作名词指单独的人或员工。",
-        desc: "Every individual can vote."
+        word: "correct",
+        pos: "形/動",
+        ipa: "/kəˈrekt/",
+        cn: "正确的，恰当的；修改，纠正",
+        jp: "正しい、適切な；訂正する、修正する",
+        family: "correction / correctly / corrective / incorrect",
+        tips: "兼具形容词与动词词性。作动词时指 correct errors（纠正错误）；作形容词时指 correct information（正确的信息）。名词形式 correction 常考短语 make corrections（做出修改）。",
+        desc: "This answer is correct."
     },
     {
-        word: "permit",
-        pos: "名/動",
-        ipa: "/ˈpɜːrmɪt/ (名) /pərˈmɪt/ (動)",
-        cn: "许可证，执照；允许，准许",
-        jp: "許可証、免許証；許可する",
-        family: "permission / permissive / permissible / permitted",
-        tips: "行政审批与施工安全场景的常考词。作名词时是可数名词，指具体的实体证件（如 parking permit 停车许可证，building permit 建筑许可证）。其派生名词 permission 则是不可数名词，表示抽象的许可准许。",
-        desc: "You need a permit."
+        word: "council",
+        pos: "名",
+        ipa: "/ˈkaʊnsl/",
+        cn: "委员会，理事会，地方议会",
+        jp: "委員会、評議会、地方自治体",
+        family: "councilor / councils",
+        tips: "公共行政、社区事务或企业高层管理场景词汇。常考短语有 city council（市议会）、local council（地方委员会）。注意不要与发音相似的 counsel（法律顾问/建议）相混淆。",
+        desc: "The city council met today."
     },
     {
-        word: "transfer",
-        pos: "動/名",
-        ipa: "/trænsˈfɜːr/ (動) /ˈtrænsfɜːr/ (名)",
-        cn: "转移，转调，转账；调动，转让",
-        jp: "転勤させる、移す、振り込む；転勤、移動、振込",
-        family: "transference / transferable / transferred / transferring",
-        tips: "人事变动与财务结算场景的核心高频词。作动词或名词皆可指员工部门调动（transfer to another department）或资金转账（wire transfer 电子汇款）。",
-        desc: "Please transfer the funds."
+        word: "suppose",
+        pos: "動",
+        ipa: "/səˈpoʊz/",
+        cn: "假设，猜想；认为，料想",
+        jp: "仮定する、思う、推測する",
+        family: "supposed / supposedly / supposition",
+        tips: "常考其经典的被动结构 be supposed to do something，意为“应该做某事/按计划应当做某事”，常用于表达商务规定或原本的日程计划。副词 supposedly 意为“据称/据推测”。",
+        desc: "You are supposed to help."
+    },
+    {
+        word: "regular",
+        pos: "形/名",
+        ipa: "/ˈreɡjələr/",
+        cn: "定期的，常规的，频繁的；常客",
+        jp: "定期的な、通常の、規則正しい；常連客",
+        family: "regularly / regularity / regulate / regulation",
+        tips: "企业运营与行政管理高频形容词。常考搭配 regular updates（定期更新）。其极其核心的派生介词短语为 on a regular basis（定期地），在阅读中等同于副词 regularly。",
+        desc: "We have regular staff meetings."
     }
 ];
 
@@ -110,272 +110,273 @@ const vocabBank = [
 const questionsDatabase = [
     {
         id: 1,
-        target: "quarter",
+        target: "original",
         category: "简单",
-        stem: "The company's profits increased significantly during the third ________ of the fiscal year.",
-        options: ["quarter", "warehouse", "device", "subsidy"],
-        correct: "quarter",
+        stem: "Please make sure to return the ________ contract to the legal department after signing it.",
+        options: ["original", "selection", "attract", "handle"],
+        correct: "original",
         explanations: {
-            guide: "名词词义辨析。空格前有定冠词 the 和序数词 third（第三），且处于表示时间区段的介词短语中，需填入符合商业财年划分的单数可数名词。",
-            family: "quarter (n.季度) | warehouse (n.仓库) | device (n.设备) | subsidy (n.补贴)。",
-            details: "在财政年度（fiscal year）的语境下，结合 third（第三）可知此处指代的是“第三季度（third quarter）”。其他选项无法与序数词搭配表达特定财务周期。",
-            cn: "公司利润在财政年度的第三季度有了显著增长。",
-            jp: "会社の利益は、会計年度の第3四半期（quarter）に大幅に増加しました。"
+            guide: "形容词修饰名词的语法辨析。空格后有名词 contract（合同），前面需要一个形容词进行修饰，结合商务语境选择 original（原件的/最初的）。",
+            family: "original (adj.原始的/原件的) | selection (n.选择) | attract (v.吸引) | handle (v.处理)。",
+            details: "return the original contract 意为“归还合同原件”，在签署法律文件和规范商务流程中属于标准化要求。其他选项与合同搭配均不符合语境。",
+            cn: "签署后，请务必将合同原件交还给法律部。",
+            jp: "署名後、契約書の原本（original）を法務部に必ず返却してください。"
         }
     },
     {
         id: 2,
-        target: "respond",
+        target: "selection",
         category: "简单",
-        stem: "Employees are strictly required to ________ to urgent client emails within two hours.",
-        options: ["respond", "cause", "contain", "proceed"],
-        correct: "respond",
+        stem: "The downtown department store boasts a wide ________ of office supplies and electronic appliances.",
+        options: ["selection", "memo", "council", "regular"],
+        correct: "selection",
         explanations: {
-            guide: "不及物动词与介词固定搭配辨析。分析句型结构，空格位于不定式符号 to 之后，需要填入一个能与后方介词 to 完美搭配的不及物动词原形。",
-            family: "respond (v.回复/回应) | cause (v.导致) | contain (v.包含) | proceed (v.前进/继续)。",
-            details: "能与介词 to 连用并针对“紧急客户邮件（urgent client emails）”发起动作的只能是 respond，构成 respond to...（回复……）的办公高频搭配。",
-            cn: "员工被严格要求在两小时内回复紧急客户邮件。",
-            jp: "従業員は、緊急のクライアントメールに対して2時間以内に返信（respond）することを厳格に求められています。"
+            guide: "固定量词短语搭配能力考核。空格前有 a wide，后有介词 of，此处需要填入名词 selection 构成核心固定搭配。",
+            family: "selection (n.选择/品类) | memo (n.备忘录) | council (n.委员会) | regular (adj.定期的)。",
+            details: "a wide selection of... 是托业考试零售与采购场景下的经典高频表达，意为“琳琅满目的/供广泛选择的”，在此指种类繁多的办公用品和电子电器。",
+            cn: "市中心的这家百货商店拥有琳琅满目的办公用品和电子家电。",
+            jp: "ダウンタウンのデパートは、オフィス用品や電化製品の豊富な品揃え（selection）を誇っています。"
         }
     },
     {
         id: 3,
-        target: "manufacturer",
+        target: "attract",
         category: "简单",
-        stem: "The leading automobile ________ announced plans to build a new factory in Ohio next year.",
-        options: ["manufacturer", "individual", "warehouse", "permit"],
-        correct: "manufacturer",
+        stem: "The marketing team launched a new social media campaign to ________ more young customers.",
+        options: ["attract", "attach", "suppose", "correct"],
+        correct: "attract",
         explanations: {
-            guide: "名词词义辨析。空格前面有行业定语 automobile（汽车），后续动作是宣布计划建造新工厂（build a new factory），判定缺少主语核心身份名词。",
-            family: "manufacturer (n.制造商) | individual (n.个人) | warehouse (n.仓库) | permit (n.许可证)。",
-            details: "制造新工厂并以“汽车（automobile）”作为前置修饰的商业主体必定是“汽车制造商（automobile manufacturer）”。",
-            cn: "这家领先的汽车制造商宣布了明年在俄亥俄州建造一座新工厂的计划。",
-            jp: "大手の自動車製造業者（manufacturer）は、来年オハイオ州に新しい工場を建設する計画を発表しました。"
+            guide: "动词不定式后的核心动词语义辨析。to 后面需要接动词原形表目的，结合后面的宾语 more young customers（更多年轻客户），选用及物动词 attract。",
+            family: "attract (v.吸引) | attach (v.附上) | suppose (v.假设) | correct (v.纠正)。",
+            details: "attract customers 意为“吸引客户”，是市场营销、广告宣传场景下绝对的常考核心搭配。其余选项在此语境下逻辑不通。",
+            cn: "营销团队推出了一个新的社交媒体活动，以吸引更多年轻客户。",
+            jp: "マーケティングチームは、より多くの若い顧客を惹きつける（attract）ために、新しいSNSキャンペーンを開始しました。"
         }
     },
     {
         id: 4,
-        target: "device",
+        target: "handle",
         category: "简单",
-        stem: "Please remember to disconnect your electronic ________ before leaving the communal laboratory.",
-        options: ["device", "quarter", "cause", "transfer"],
-        correct: "device",
+        stem: "Experienced customer service representatives can ________ difficult complaints with professional tact.",
+        options: ["handle", "original", "council", "memo"],
+        correct: "handle",
         explanations: {
-            guide: "名词词义辨析。空格作为及物动词 disconnect（断开/切断电源）的直接宾语，前有形容词 electronic（电子的）修饰。",
-            family: "device (n.设备/装置) | quarter (n.季度) | cause (n.原因) | transfer (n.转移)。",
-            details: "在实验室（laboratory）环境离开前需要断开电源的物件通常是“电子设备（electronic device）”。其他词汇词义与句意完全不兼容。",
-            cn: "在离开公共实验室之前，请记得切断您的电子设备的电源。",
-            jp: "共同ラボを離れる前に、電子機器（device）の接続を切ることを忘れないでください。"
+            guide: "情态动词后的动词原形及语意辨析。can 后面需要接动词原形作为句子的核心谓语，结合宾语 complaints（投诉），选择 handle（处理）。",
+            family: "handle (v.处理) | original (adj.原始的) | council (n.委员会) | memo (n.备忘录)。",
+            details: "handle complaints 意为“处理投诉”，是托业客服及日常行政场景下极具代表性的行业组合形式。其余选项词性不符或语意不通。",
+            cn: "经验丰富的客服代表可以用专业的技巧处理棘手的投诉。",
+            jp: "経験豊富なカスタマーサービス担当者は、プロフェッショナルな機転で難しい苦情を処理する（handle）ことができます。"
         }
     },
     {
         id: 5,
-        target: "warehouse",
+        target: "memo",
         category: "简单",
-        stem: "Extra security cameras were recently installed outside the main ________ to protect the inventory.",
-        options: ["warehouse", "permit", "individual", "cause"],
-        correct: "warehouse",
+        stem: "All employees are required to read the internal ________ regarding the updated parking regulations.",
+        options: ["memo", "selection", "correct", "regular"],
+        correct: "memo",
         explanations: {
-            guide: "特定商业场景名词辨析。空格前有定冠词 the 和形容词 main（主要的）修饰，后接不定式短语“为了保护库存（protect the inventory）”，提示此处为存储货物的地点名词。",
-            family: "warehouse (n.仓库) | permit (n.许可证) | individual (n.个人) | cause (n.原因)。",
-            details: "既然安装摄像头是为了保护“库存货物（inventory）”，那么该建筑实体必然是“仓库（warehouse）”。",
-            cn: "最近，主仓库外安装了额外的监控摄像头，以保护库存安全。",
-            jp: "在庫（inventory）を保護するため、最近、メインの倉庫（warehouse）の外側に立ち入り监控カメラが追加设置されました。"
+            guide: "修饰语后的名词中心语辨析。the internal（内部的）后面缺少一个名词作动词 read 的宾语，结合后文发布规定的语境，选 memo。",
+            family: "memo (n.备忘录/内部通知) | selection (n.选择) | correct (adj.正确的) | regular (adj.定期的)。",
+            details: "internal memo 意为“内部备忘录/内部通知”，是企业内部下达规章制度或知会员工最常用的公文形式。因此填入名词 memo 最为恰当。",
+            cn: "所有员工都需要阅读关于更新后停车规定的内部备忘录。",
+            jp: "すべての従業員は、更新された駐車規則に関する社内連絡票（memo）を読む必要があります。"
         }
     },
     {
         id: 6,
-        target: "contain",
+        target: "attach",
         category: "简单",
-        stem: "The large shipping crates ________ confidential documents that must be sorted immediately.",
-        options: ["contain", "respond", "transfer", "cause"],
-        correct: "contain",
+        stem: "Please ________ a digital copy of your receipt to the online reimbursement form before submitting it.",
+        options: ["attach", "attract", "handle", "suppose"],
+        correct: "attach",
         explanations: {
-            guide: "及物动词词义辨析。分析句子结构，主语是复数名词 shipping crates（装运箱），后接复数名词机密文件作宾语，中间缺少谓语动词原形。",
-            family: "contain (v.包含/装有) | respond (v.回复) | transfer (v.转移) | cause (v.导致)。",
-            details: "装运箱（crates）与文件（documents）之间的物理关系最契合的是“包含/内部装有（contain）”。",
-            cn: "这些大型装运箱里装有必须立即分类的机密文件。",
-            jp: "その大きな輸送用木箱には、すぐに分類しなければならない機密書類が含まれて（contain / 入って）います。"
+            guide: "祈使句核心动词及介词短语的固定搭配。Please 后面需要接动词原形，并且能与后文的介词 to 联用表示“将……附在……上”。",
+            family: "attach (v.附上) | attract (v.吸引) | handle (v.处理) | suppose (v.假设)。",
+            details: "attach A to B 意为“把A附到B上”，此处指将收据的数字化副本附到线上报销单上。这属于企业财务报销及办公自动化的标志性句型。",
+            cn: "在提交之前，请将收据的电子版附在线上报销单上。",
+            jp: "提出する前に、オンライン経費精算書に領収書のデジタルコピーを添付（attach）してください。"
         }
     },
     {
         id: 7,
-        target: "cause",
+        target: "council",
         category: "中等",
-        stem: "An unexpected technical fault on the main grid ________ a severe disruption in daily operations.",
-        options: ["caused", "responded", "permitted", "transferred"],
-        correct: "caused",
+        stem: "The local ________ approved the zoning plan to build a new tech park in the northern territory.",
+        options: ["council", "subsidy", "dispute", "tournament"],
+        correct: "council",
         explanations: {
-            guide: "及物动词词义与时态辨析。主语是技术故障（technical fault），宾语是严重运营中断（severe disruption），此句缺少过去时态的谓语动词来表达因果关系。",
-            family: "caused (v.过去式/导致) | responded (v.过去式/回复) | permitted (v.过去式/允许) | transferred (v.过去式/转移)。",
-            details: "主语“技术故障”是因，宾语“运营中断”是果，表示“导致/引起”需选用 caused。respond 是不及物动词，其他动词不符合语义逻辑。",
-            cn: "主电网上一场意料之外的技术故障导致了日常运营的严重中断。",
-            jp: "メイングリッドでの予期せぬ技術的障害が、日常業務に深刻な混乱を引き起こ（caused）しました。"
+            guide: "主语名词语义及高阶商务场景辨析。句子的谓语是 approved（批准），宾语是 zoning plan（分区规划），能够行使此行政权力的主体应是 council。",
+            family: "council (n.委员会/地方议会) | subsidy (n.补贴) | dispute (n.纠纷) | tournament (n.锦标赛)。",
+            details: "local council 意为“地方委员会/地方议会”。批准城市分区或公共开发规划符合行政公文场景的商业逻辑。distractor 均无法与批准规划构成合逻辑的主谓关系。",
+            cn: "地方委员会批准了在北部地区建设新科技园的分区规划。",
+            jp: "地方自治体（council）は、北部地域に新しいテックパークを建設する区画整理計画を承認しました。"
         }
     },
     {
         id: 8,
-        target: "individual",
+        target: "suppose",
         category: "中等",
-        stem: "Supervisors will meet with each ________ employee to discuss the quarterly performance incentives.",
-        options: ["individual", "thorough", "diverse", "inclusive"],
-        correct: "individual",
+        stem: "The delivery crew was ________ to install the new office appliances yesterday, but the shipment was delayed.",
+        options: ["supposed", "suppose", "supposedly", "supposition"],
+        correct: "supposed",
         explanations: {
-            guide: "限定词修饰语与形容词辨析。空格位于限定词 each（每个）之后和单数可数名词 employee（员工）之前，需要填入起修饰作用的形容词。",
-            family: "individual (adj.单独的/个体的) | thorough (adj.彻底的) | diverse (adj.多样化的) | inclusive (adj.包容的)。",
-            details: "each individual employee 是商务职场沟通中的典型惯用短语，意为“每一位单独的员工/每位员工个体”。其他形容词不能与单数可数名词搭配出此语义。",
-            cn: "主管将与每位员工单独面谈，讨论季度绩效奖励事宜。",
-            jp: "スーパーバイザーは、四半期の業績インセンティブについて話し合うため、個々の（individual）従業員と面談する予定です。"
+            guide: "固定被动结构及语态用法。空格前面有助动词 was，后面有不定式符号 to install，构成了 be supposed to do something 的固定词组。",
+            family: "supposed (adj./v-ed应有的) | suppose (v.假设) | supposedly (adv.据称) | supposition (n.假定)。",
+            details: "be supposed to do 意为“本应该/按计划应当做某事”，通常在后文接 but 引导的转折句，表达原定的运营或物流计划未能按时达成。",
+            cn: "配送人员本应该在昨天安装新的办公设备，但货物被延迟了。",
+            jp: "配送スタッフは昨日、新しいオフィス機器を設置することになっていました（supposed）が、発送が遅れました。"
         }
     },
     {
         id: 9,
-        target: "permit",
+        target: "regular",
         category: "中等",
-        stem: "Contractors must display a valid construction ________ before commencing any structural alterations.",
-        options: ["permit", "quarter", "device", "registration"],
-        correct: "permit",
+        stem: "The system administrators back up the server databases on a ________ basis to prevent data loss.",
+        options: ["regular", "regularly", "regularity", "regulate"],
+        correct: "regular",
+        exregular: "regular",
         explanations: {
-            guide: "特定商务行政场景名词辨析。动词为 display（出示/悬挂），前置定语为 construction（施工），需要填入表示官方证明文件的可数名词。",
-            family: "permit (n.许可证/执照) | quarter (n.季度) | device (n.设备) | registration (n.登记/注册)。",
-            details: "进行建筑结构改造（structural alterations）前，承包商必须出示合法的“施工许可证（construction permit）”。registration 侧重注册行为，通常不与施工进行这种实物执照搭配。",
-            cn: "承包商在开始任何结构改造之前，必须出示有效的施工许可证。",
-            jp: "請負業者は、構造変更工事を開始する前に、有効な建築許可証（permit）を提示しなければなりません。"
+            guide: "介词短语中的专属形容词修饰。on a ... basis 是托业中极其高频的核心短语，中间必须填入形容词来修饰名词 basis。",
+            family: "regular (adj.定期的) | regularly (adv.定期地) | regularity (n.规则性) | regulate (v.管制)。",
+            details: "on a regular basis 意为“定期地/常规地”，其含义完全等同于副词 regularly，常用于描述IT维护、定期会议或常态化企业审计工作。",
+            cn: "系统管理员定期备份服务器数据库，以防止数据丢失。",
+            jp: "システム管理者は、データ損失を防ぐために定期的な（regular）ベースでサーバーデータベースをバックアップしています。"
         }
     },
     {
         id: 10,
-        target: "transfer",
+        target: "original",
         category: "中等",
-        stem: "The logistics manager requested a ________ to the company's new satellite office in Chicago.",
-        options: ["transfer", "manufacturer", "warehouse", "cause"],
-        correct: "transfer",
+        stem: "The regional convention was ________ scheduled for Ohio, but it was moved to Chicago due to venue issues.",
+        options: ["originally", "original", "originality", "originate"],
+        correct: "originally",
         explanations: {
-            guide: "职场行政场景名词辨析。空格前有不定冠词 a，后面接介词短语 to the satellite office（去卫星办公室），表明此动作为地点的变换。",
-            family: "transfer (n.调动/转移) | manufacturer (n.制造商) | warehouse (n.仓库) | cause (n.原因)。",
-            details: "由于目的地是公司在芝加哥设立的“分部/卫星办公室”，经理申请的必然是内部岗位的“调动/转调（transfer）”。",
-            cn: "物流经理申请调往公司在芝加哥新设立的卫星办公室。",
-            jp: "物流マネージャーは、シカゴにある会社の新しいサテライトオフィスへの転勤（transfer）を申請しました。"
+            guide: "副词修饰过去分词作状语。空格位于助动词 was 和过去分词 scheduled 之间，修饰整个被动谓语动词，需要填入副词形式。",
+            family: "originally (adv.起初/本来) | original (adj.原始的) | originality (n.独创性) | originate (v.发源)。",
+            details: "originally scheduled for... 意为“原定于……”，属于托业听力第三、四部分和阅读中关于会议变更、日程调整等经典商业变动考点。",
+            cn: "区域大会最初计划在俄亥俄州举行，但由于场地问题被改到了芝加哥。",
+            jp: "地方大会は当初（originally）、オハイオ州で予定されていましたが、会場の問題でシカゴに変更されました。"
         }
     },
     {
         id: 11,
-        target: "device",
+        target: "attach",
         category: "中等",
-        stem: "The maintenance crew is responsible for testing all fire safety ________ throughout the facility.",
-        options: ["devices", "quarters", "manufacturers", "sources"],
-        correct: "devices",
+        stem: "Please review the ________ documents for detailed specifications regarding the structural reinforcement.",
+        options: ["attached", "attach", "attachment", "detachable"],
+        correct: "attached",
         explanations: {
-            guide: "复合名词复数形辨析。空格前有限定词 all，修饰语为 fire safety（消防安全），需填入复数可数名词作 testing 的宾语。",
-            family: "devices (n.复数设备) | quarters (n.复数季度) | manufacturers (n.复数制造商) | sources (n.复数来源)。",
-            details: "消防安全设施（如灭火器、烟雾报警器等）在商业楼宇行政管理中被统称为“消防安全设备/装置（fire safety devices）”。",
-            cn: "维护团队负责对整个设施内的所有消防安全装置进行测试。",
-            jp: "メンテナンスチームは、施設内のすべての消防安全設備（devices）のテストを担当しています。"
+            guide: "过去分词作前置定语修饰名词。空格位于定冠词 the 和复数名词 documents 之间，需要填入具有被动/完成含义的过去分词作形容词用。",
+            family: "attached (adj./v-ed随附的) | attach (v.附上) | attachment (n.附件) | detachable (adj.可拆卸的)。",
+            details: "the attached documents 意为“随附的文件/附件”，是商务信函、技术说明书和电子邮件通知中最标准的行业行话表达。",
+            cn: "请审阅随附的文件，以获取有关结构加固的详细规格。",
+            jp: "構造補強に関する詳細な仕様については、添付された（attached）書類をご確認ください。"
         }
     },
     {
         id: 12,
-        target: "warehouse",
+        target: "correct",
         category: "中等",
-        stem: "The retail chain utilizes a massive ________ network to streamline its nationwide product distribution.",
-        options: ["warehouse", "individual", "previous", "structural"],
-        correct: "warehouse",
+        stem: "The accountant processed the transaction ________, ensuring that the itemized expenses matched the invoice.",
+        options: ["correctly", "correct", "correction", "corrective"],
+        correct: "correctly",
         explanations: {
-            guide: "名词作定语（复合名词）辨析。空格用于修饰后面的名词 network（网络），且与产品分销（product distribution）的供应链逻辑挂钩。",
-            family: "warehouse (n.仓库) | individual (adj.个人的) | previous (adj.先前的) | structural (adj.结构的)。",
-            details: "为了使全国范围内的商品配送顺畅，零售连锁店需要利用庞大的“仓储网络（warehouse network）”。此处名词 warehouse 充当前置定语修饰 network。",
-            cn: "该零售连锁店利用庞大的仓储网络来优化其全国范围内的产品分销渠道。",
-            jp: "その小売チェーンは、全国的な製品配送を効率化するために、大規模な倉庫（warehouse）ネットワークを活用しています。"
+            guide: "副词修饰动词短语的用法。空格位于一个完整的主谓宾结构（processed the transaction）之后，用来修饰动作的完成状态，需用副词形式。",
+            family: "correctly (adv.正确地) | correct (adj./v.正确的/纠正) | correction (n.修改) | corrective (adj.纠正的)。",
+            details: "process correctly 意为“正确无误地处理”。在财务会计和税务场景中，强调录入、比对和核算逐项费用的准确性。",
+            cn: "会计正确地处理了这笔交易，确保逐项列出的费用与发票一致。",
+            jp: "会計士は取引を正しく（correctly）処理し、品目別の経費が請求書と一致していることを確認しました。"
         }
     },
     {
         id: 13,
-        target: "quarter",
+        target: "selection",
         category: "困难",
-        stem: "The executive board reviews the ________ financial summaries to determine the discretionary spending limits.",
-        options: ["quarterly", "quarter", "quarters", "quartering"],
-        correct: "quarterly",
+        stem: "The hiring committee needs to be highly ________ when appointing new executives to managerial positions.",
+        options: ["selective", "selection", "selectively", "select"],
+        correct: "selective",
         explanations: {
-            guide: "词性判定与特定商业短语修饰语。空格位于定冠词 the 和名词短语 financial summaries 之间，需要填入形容词作定语。",
-            family: "quarterly (adj.每季度的) | quarter (n.季度) | quarters (n.复数季度) | quartering (n.四等分)。",
-            details: "board 审阅的往往是具有周期性的财务摘要。quarterly 在此作为形容词，构成 quarterly financial summaries（季度财务摘要），符合企业定期复盘的固定商业公文搭配。",
-            cn: "执行董事会审阅季度财务摘要，以确定自主支配开支的限额。",
-            jp: "執行役員会は、裁量的支出の制限を決定するために、四半期ごと（quarterly）の財務サマリーを評価します。"
+            guide: "系动词及副词修饰下的形容词表语。空格位于状态结构 needs to be 和程度副词 highly（高度地）之后，要求填入一个形容词构成系表结构。",
+            family: "selective (adj.有选择性的/严格筛选的) | selection (n.选择) | selectively (adv.有选择地) | select (v.挑选)。",
+            details: "be highly selective 意为“极具筛选性/要求极高的”。在高阶人力资源（appointing executives）场景中，常用来表达对高级管理职位的选拔标准极严。",
+            cn: "在任命新的管理层高管时，招聘委员会需要具有高度的筛选性（严格把关）。",
+            jp: "管理職の役員を任命する際、採用委員会は非常に慎重に選考する（selective）必要があります。"
         }
     },
     {
         id: 14,
-        target: "respond",
+        target: "handle",
         category: "困难",
-        stem: "The tech support team received public praise for its prompt and helpful ________ to system glitches.",
-        options: ["responses", "respond", "responsive", "responsively"],
-        correct: "responses",
+        stem: "The warehouse manager implemented strict safety guidelines for the ________ of hazardous chemicals.",
+        options: ["handling", "handle", "handled", "handler"],
+        correct: "handling",
         explanations: {
-            guide: "词性判定与单复数语境。空格前有物主代词 its 以及两个并列形容词 prompt（迅速的）和 helpful（有帮助的），此处缺少名词作介词 for 的核心宾语。",
-            family: "responses (n.复数回复/回应) | respond (v.回复) | responsive (adj.反应敏锐的) | responsively (adv.响应地)。",
-            details: "分析结构可知此处应填名词。结合后方介词 to system glitches（对系统故障），表示做出的具体回应行为，应选名词复数形式 responses。这构成了对各类故障的多次“回应”。",
-            cn: "技术支持团队因其对系统故障做出的迅速且有建设性的回应而赢得了公开赞誉。",
-            jp: "テクニカルサポートチームは、システムの不具合に対する迅速かつ有益な対応（responses）で公に称賛されました。"
+            guide: "介词和冠词结构中的名词成分。空格位于 the 和介词 for 之后、of 之前，构成 local noun 动作过程结构，需填入动名词或特殊名词形式。",
+            family: "handling (n.装卸/搬运/处理) | handle (v.处理) | handled (v-ed已处理) | handler (n.搬运工)。",
+            details: "the handling of... 意为“对……的装卸/搬运/处理”，属于仓储物流、生产安全和工业运营场景的高级行业术语，特指对特定物品的操作过程。",
+            cn: "仓库经理对危险化学品的搬运和处理实施了严格的安全指南。",
+            jp: "倉庫マネージャーは、危険化学物質の取り扱い（handling）に関する厳格な安全ガイドラインを導入しました。"
         }
     },
     {
         id: 15,
-        target: "manufacturer",
+        target: "correct",
         category: "困难",
-        stem: "Optimizing the automotive ________ process allowed the firm to reduce production expenses significantly.",
-        options: ["manufacturing", "manufacture", "manufacturer", "manufactured"],
-        correct: "manufacturing",
+        stem: "The editor noted several layout errors and asked the graphic designer to make the necessary ________.",
+        options: ["corrections", "correct", "correctly", "corrective"],
+        correct: "corrections",
         explanations: {
-            guide: "名词词族及复合名词定语辨析。空格位于形容词 automotive（汽车的）和核心名词 process（流程/工序）之间，需填入充当定语的名词性成分。",
-            family: "manufacturing (n.制造业/生产过程) | manufacture (v.制造) | manufacturer (n.制造商) | manufactured (adj.制造的)。",
-            details: "此处表示“优化制造/生产流程（manufacturing process）”。虽然 manufacture 也有名词意，但专指具体的工业生产品门类时，表示“生产制造过程”标准术语一律使用动名词形态的 manufacturing。",
-            cn: "优化汽车制造流程使该公司大幅降低了生产费用。",
-            jp: "自動車製造（manufacturing）プロセスの最適化により、同社は生産コストを大幅に削減することができました。"
+            guide: "固定动宾搭配及名词单复数判断。空格位于形容词 necessary（必要的）后，作为动词 make 的宾语，结合前文的 several layout errors（多处错误），应填入名词复数。",
+            family: "corrections (n.复数修改/更正) | correct (v./adj.纠正/正确的) | correctly (adv.正确地) | corrective (adj.矫正的)。",
+            details: "make corrections 属于固定搭配，意为“做出修改/做出更正”。本题契合出版印务、文案审核和平面设计修订的高级商务场景。",
+            cn: "编辑注意到了几处排版错误，并要求平面设计师做出必要的修改。",
+            jp: "編集者はいくつかのレイアウトミスを指摘し、グラフィックデザイナーに必要な修正（corrections）を行うよう求めました。"
         }
     },
     {
         id: 16,
-        target: "individual",
+        target: "attract",
         category: "困难",
-        stem: "Year-end bonuses will be distributed ________ based on each manager's total focus log metrics.",
-        options: ["individually", "individual", "individuality", "individualized"],
-        correct: "individually",
+        stem: "The historical museum boasts various interactive ________ that attract thousands of visitors during the ancient festival.",
+        options: ["attractions", "attract", "attractive", "attractively"],
+        correct: "attractions",
         explanations: {
-            guide: "谓语动词后的副词修饰语判定。句子主谓结构完整（bonuses will be distributed），空格用于修饰被动语态动词短语的分配方式，需填入状态副词。",
-            family: "individually (adv.单独地/逐个地) | individual (adj./n.个人的) | individuality (n.个性) | individualized (adj.个性化的)。",
-            details: "根据后文“基于每位经理的总专注日志指标（based on each manager's...）”，奖金将被“单独地/分别地（individually）”发放到个人。其他词性不能充当状语来修饰动词 distributed。",
-            cn: "年终奖金将根据每位经理的专注日志总指标进行单独核算与发放。",
-            jp: "年末ボーナスは、各マネージャーの集中ログの総メトリクスに基づいて、個別に（individually）支給されます。"
+            guide: "修饰语后的复数名词主导辨析。空格位于形容词 interactive（互动的）后面，作为及物动词 boasts 的宾语，再根据从句的动词 attract（未加s）判定此处需填入名词复数。",
+            family: "attractions (n.复数具有吸引力的展项/景点) | attract (v.吸引) | attractive (adj.有吸引力的) | attractively (adv.有吸引力地)。",
+            details: "interactive attractions 意为“互动式展项/互动式亮点”。在文旅项目、展会推广或城市公共宣传的语境中，指吸引游客的特定设施或活动。",
+            cn: "这家历史博物馆拥有各种互动式吸引人的展项，在古老节日期间吸引了数千名游客。",
+            jp: "その歴史博物館は、古代の祭りの期間中に何千人もの観光客を惹きつける、さまざまな体験型アトラクション（attractions）を誇っています。"
         }
     },
     {
         id: 17,
-        target: "permit",
+        target: "regular",
         category: "困难",
-        stem: "The structural renovation cannot proceed until written ________ is granted by the local council.",
-        options: ["permission", "permit", "permissible", "permitting"],
-        correct: "permission",
+        stem: "All employees must comply with the strict environmental ________ outlined in the company handbook.",
+        options: ["regulations", "regular", "regularly", "regularity"],
+        correct: "regulations",
         explanations: {
-            guide: "近义名词及可数/不可数限制判定。空格在形容词 written（书面的）之后，充当 until 引导的条件从句中的主语，且谓语动词为单数形式的 is granted。",
-            family: "permission (n.不可数/允许) | permit (n.可数/许可证) | permissible (adj.可允许的) | permitting (n.起主导作用的)。",
-            details: "written permission 意为“书面许可（抽象概念，不可数）”，而 written permit 指“书面许可证（实体物，可数）”。因为空格前没有任何冠词（如 a written permit），且谓语是单数 is，故必须填入不可数名词 permission。这是托业考试辨析可数与不可数的经典杀手题。",
-            cn: "在获得地方委员会的书面许可之前，结构翻修工程无法进行。",
-            jp: "地方議会（local council）による書面での許可（permission）が下りるまで、構造改修工事を進めることはできません。"
+            guide: "特定动词短语要求的宾语名词语义辨析。comply with 意为“遵守（规章/法律等）”，其后必须要接指代政策或法规的名词复数形式。",
+            family: "regulations (n.复数规章/规定) | regular (adj.定期的) | regularly (adv.定期地) | regularity (n.规则性)。",
+            details: "environmental regulations 意为“环保规定”。comply with regulations 是整个托业考试中在企业合规性、社会责任等议题中权重极高的标志性组合。",
+            cn: "所有员工必须遵守公司手册中列出的严格的环境保护规定。",
+            jp: "すべての従業員は、会社案内書に記載されている厳格な環境規則（regulations）を遵守しなければなりません。"
         }
     },
     {
         id: 18,
-        target: "transfer",
+        target: "suppose",
         category: "困难",
-        stem: "The software license is officially confirmed to be fully ________ to any corporate subsidiary.",
-        options: ["transferable", "transfer", "transferred", "transference"],
-        correct: "transferable",
+        stem: "The tech startup launched its operations in Europe, ________ under the assumption that local subsidies would remain stable.",
+        options: ["supposedly", "suppose", "supposed", "supposition"],
+        correct: "supposedly",
         explanations: {
-            guide: "主系表结构中的表语形容词判定。空格位于系动词 be 和程度副词 fully 之后，用于修饰主语 software license（软件授权），需填入形容词后缀的派生词。",
-            family: "transferable (adj.可转让的/可转移的) | transfer (v./n.转让) | transferred (v.过去式) | transference (n.移情/转让)。",
-            details: "软件授权（license）具备的属性是“可转让给任何子公司（fully transferable to any corporate subsidiary）”。-able 后缀代表具备某种能力，完美充当句子的表语。",
-            cn: "该软件许可完全可以转让给任何企业子公司。",
-            jp: "そのソフトウェアライセンスがどの子会社（subsidiary）に対しても完全に譲渡可能（transferable）であることを正式に発表しました。"
+            guide: "独立结构/插入语中的副词用法。空格位于逗号之后，修饰后文整个介词短语 under the assumption...，作评注性状语，需填入副词形式。",
+            family: "supposedly (adv.据说/据推测) | suppose (v.假设) | supposed (adj.所谓的) | supposition (n.假定)。",
+            details: "supposedly under the assumption 意为“据称是在……的假设下”。这属于高阶商务阅读长难句中，用于分析某一商业决策或市场行为背后推测性原因的句型。",
+            cn: "这家科技初创公司在欧洲展开了业务，据称是在当地补贴将保持稳定的假设下进行的。",
+            jp: "そのITスタートアップは、地元の補助金が安定したままであるという仮定の下で、おそらく（supposedly）欧州での事業を開始しました。"
         }
     }
 ];
