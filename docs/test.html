@@ -1008,36 +1008,49 @@ function checkAnswer() {
                     showCustomAlert("专项重考完毕", favoritesList.length === 0 ? `🔥 恭喜通过！` : `本次重考完毕，部分顽固题目依旧未消除。`, "info");
                     isMistakeOnlySession = false;
                 } else {
-                    // 弹出特训完成提示弹窗
-                    showCustomAlert("特训通关！", "当前特训任务已全部完成！现在带你前往难度达成看板。", "success"); 
-                    
-                    // 🌟 核心拦截修改：劫持弹窗中“确定”按钮的点击事件
-                    const modal = document.getElementById('custom-modal');
-                    const confirmBtn = document.getElementById('modal-confirm-btn');
-                    if (confirmBtn) {
-                        confirmBtn.onclick = () => {
-                            modal.classList.add('hidden'); // 执行原有的隐藏弹窗动作
-                            
-                            // 🛠️ 【核心修改点】只有全量完成特训并点击确认后，才正式计入“已特训”与正确数
-                            localStorage.setItem(`toeic_total_${window.unitParam}`, questionsDatabase.length);
-                            const correctCountInUnit = questionsDatabase.filter(q => answeredList[q.id] && answeredList[q.id].isCorrect).length;
-                            localStorage.setItem(`toeic_correct_${window.unitParam}`, correctCountInUnit);
-                            // 🛠️ 【新功能】本轮既然已经完美通关，全自动清空掉当前的临时做题进度缓存
-                            localStorage.removeItem('toeic_answered_list_' + window.unitParam);
-                            
-                            // 如果本轮进来时被确认为了“复习”，只有在点击确定关闭时，复习次数才加 1
-                            if (isReviewSession) {
-                                let reviewKey = 'toeic_review_count_' + (window.unitParam || '1-10');
-                                let currentReviews = parseInt(localStorage.getItem(reviewKey) || '0', 10);
-                                localStorage.setItem(reviewKey, currentReviews + 1);
-                            }
-                        };
+                    // 🌟 【核心改动】提前计算本轮特训是否达成 100% 全对满分
+                    const totalQ = questionsDatabase.length;
+                    const correctQ = questionsDatabase.filter(q => answeredList[q.id] && answeredList[q.id].isCorrect).length;
+                    const isPerfectScore = (correctQ === totalQ);
+
+                    if (isPerfectScore) {
+                        // 🎯 满分直通车：不需要弹出普通的“特训通关！”，直接在后台静默完成高光存档
+                        localStorage.setItem(`toeic_total_${window.unitParam}`, totalQ);
+                        localStorage.setItem(`toeic_correct_${window.unitParam}`, correctQ);
+                        localStorage.removeItem('toeic_answered_list_' + window.unitParam);
+                        
+                        // 累加历史复习次数
+                        if (isReviewSession) {
+                            let reviewKey = 'toeic_review_count_' + (window.unitParam || '1-10');
+                            let currentReviews = parseInt(localStorage.getItem(reviewKey) || '0', 10);
+                            localStorage.setItem(reviewKey, currentReviews + 1);
+                        }
+                    } else {
+                        // 🟢 非满分情况：依然弹出普通的通关提示，点击确定时再进行普通存档
+                        showCustomAlert("特训通关！", "当前特训任务已全部完成！现在带你前往难度达成看板。", "success"); 
+                        
+                        const modal = document.getElementById('custom-modal');
+                        const confirmBtn = document.getElementById('modal-confirm-btn');
+                        if (confirmBtn) {
+                            confirmBtn.onclick = () => {
+                                modal.classList.add('hidden');
+                                localStorage.setItem(`toeic_total_${window.unitParam}`, totalQ);
+                                localStorage.setItem(`toeic_correct_${window.unitParam}`, correctQ);
+                                localStorage.removeItem('toeic_answered_list_' + window.unitParam);
+                                
+                                if (isReviewSession) {
+                                    let reviewKey = 'toeic_review_count_' + (window.unitParam || '1-10');
+                                    let currentReviews = parseInt(localStorage.getItem(reviewKey) || '0', 10);
+                                    localStorage.setItem(reviewKey, currentReviews + 1);
+                                }
+                            };
+                        }
                     }
                 }
+                // 不管哪种情况，最后都平滑切到看板页
                 switchTab('report'); 
             }
         }
-
         function toggleFavoriteCurrent() { const q = currentQuestions[currentIndex]; if (favoritesList.includes(q.id)) removeFavorite(q.id); else addFavorite(q.id); updateFavoriteButtonUI(q.id); updateDashboardStats(); }
         function addFavorite(id) { if (!favoritesList.includes(id)) { favoritesList.push(id); localStorage.setItem(favoritesKey, JSON.stringify(favoritesList)); } }
         function removeFavorite(id) { favoritesList = favoritesList.filter(item => item !== id); localStorage.setItem(favoritesKey, JSON.stringify(favoritesList)); }
