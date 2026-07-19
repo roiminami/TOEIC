@@ -455,14 +455,23 @@
                         <p class="text-xs text-slate-400" id="report-summary-txt">加油！完成全部 18 道真题后方能展示客观的多维难度分析面板。</p>
                     </div>
                     <div class="w-full space-y-2 pt-2 border-t border-[#F3EFE3]">
+                        <!-- 修改文本提示 -->
                         <button onclick="restartFullSession()" class="w-full py-2.5 bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center space-x-1.5 cursor-pointer">
                             <i data-lucide="refresh-cw" class="w-4 h-4"></i>
-                            <span>重新开始完整特训 (清空错题本)</span>
+                            <span>重新开始完整特训 (保留复习次数)</span>
                         </button>
+                        
                         <button id="btn-retest-mistakes-report" onclick="startMistakeSession()" class="w-full py-2.5 bg-slate-900 hover:bg-amber-600 active:scale-95 text-white font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center space-x-1.5 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
                             <i data-lucide="book-open" class="w-4 h-4"></i>
                             <span>对错题进行专项重考 (考对一个删一个)</span>
                         </button>
+
+                        <!-- 🛠️ 【新功能】全新加入的独立清空复习次数功能按钮 -->
+                        <button onclick="clearReviewCountSession()" class="w-full py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-600 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center space-x-1.5 cursor-pointer">
+                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            <span>清空本单元历史复习次数</span>
+                        </button>
+                        
                         <button onclick="exportNotebookToExcel()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center space-x-1.5 cursor-pointer">
                             <i data-lucide="download" class="w-4 h-4"></i>
                             <span>导出生词本 EXCEL</span>
@@ -619,6 +628,17 @@
         function refreshIcons() { if (typeof lucide !== 'undefined') lucide.createIcons(); }
 
         window.addEventListener('DOMContentLoaded', () => {
+        // 🛠️ 【新功能】页面启动时，优先尝试同步加载本单元未写完的临时做题进度
+        const savedAnswers = localStorage.getItem('toeic_answered_list_' + window.unitParam);
+        if (savedAnswers) {
+            try {
+                answeredList = JSON.parse(savedAnswers);
+            } catch(e) {
+                answeredList = {};
+            }
+        } else {
+            answeredList = {};
+        }
         // 🌟 新增判定：如果当前单元在本地已经存有答题进度，说明本次进来属于“复习”
             isReviewSession = parseInt(localStorage.getItem(`toeic_total_${window.unitParam}`) || '0', 10) > 0;
         // 🌟 【核心修复 4】监听用户在全网页的第一次任意点击，在第一时间将语音通道激活
@@ -911,6 +931,8 @@ function checkAnswer() {
             if (!selectedOption) { showCustomAlert("提示", "请先选择一个答案选项！", "warning"); return; }
             const isCorrect = (selectedOption === q.correct);
             answeredList[q.id] = { chosen: selectedOption, isCorrect: isCorrect };
+            // 🛠️ 【新功能】每做完一题，立刻同步更新未完成的做题进度到本地临时缓存中
+            localStorage.setItem('toeic_answered_list_' + window.unitParam, JSON.stringify(answeredList));
             
             let answeredInCurrentUnit = 0;
             currentQuestions.forEach(q => { if (answeredList[q.id]) answeredInCurrentUnit++; });
@@ -1000,6 +1022,8 @@ function checkAnswer() {
                             localStorage.setItem(`toeic_total_${window.unitParam}`, questionsDatabase.length);
                             const correctCountInUnit = questionsDatabase.filter(q => answeredList[q.id] && answeredList[q.id].isCorrect).length;
                             localStorage.setItem(`toeic_correct_${window.unitParam}`, correctCountInUnit);
+                            // 🛠️ 【新功能】本轮既然已经完美通关，全自动清空掉当前的临时做题进度缓存
+                            localStorage.removeItem('toeic_answered_list_' + window.unitParam);
                             
                             // 如果本轮进来时被确认为了“复习”，只有在点击确定关闭时，复习次数才加 1
                             if (isReviewSession) {
@@ -1086,17 +1110,34 @@ function checkAnswer() {
         }
 
         function restartFullSession() {
-            showCustomConfirm("重置特训", "确定清空当前进度与错题本，彻底重新开始吗？", () => {
+            // 🛠️ 【优化修改】明确提示用户：此重置将保留您的珍贵历史复习次数
+            showCustomConfirm("重置特训", "确定清空当前做题进度与错题本，重新开始吗？\n(您的历史复习次数将完好保留 🏆)", () => {
                 if (retestTimerInterval) clearInterval(retestTimerInterval);
-                answeredList = {}; favoritesList = []; localStorage.removeItem(favoritesKey);
+                answeredList = {}; 
+                favoritesList = []; 
+                localStorage.removeItem(favoritesKey);
                 
-                // 🌟 同步补上：当彻底重置此单元时，将其历史复习次数也一并抹去
-                localStorage.removeItem('toeic_review_count_' + (window.unitParam || '1-10'));
+                // 抹除当前单元的主通关记录与临时做题缓存，使其在主页重新恢复为“未开启”状态
+                localStorage.removeItem('toeic_total_' + window.unitParam);
+                localStorage.removeItem('toeic_correct_' + window.unitParam);
+                localStorage.removeItem('toeic_answered_list_' + window.unitParam);
+                
+                // 🌟 核心：这里不再移除 toeic_review_count_，完美保留复习次数！
                 
                 isReviewSession = false; currentDifficultyFilter = "all"; 
                 if(document.getElementById('diffFilterSelect')) document.getElementById('diffFilterSelect').value = "all";
                 shuffleCurrentQuestions(); currentIndex = 0;
                 updateDashboardStats(); switchTab('test'); loadQuestion();
+            });
+        }
+
+        // 🛠️ 【新功能】独立清空当前单元历史复习次数的专项按钮函数
+        function clearReviewCountSession() {
+            showCustomConfirm("清空复习次数", "确定要彻底清空本单元的所有历史复习次数吗？\n(此操作不可撤销 ⚠️)", () => {
+                localStorage.removeItem('toeic_review_count_' + (window.unitParam || '1-10'));
+                updateDashboardStats();
+                renderPerformanceReport();
+                showCustomAlert("操作成功", "本单元的历史复习次数已成功归零！", "success");
             });
         }
 
