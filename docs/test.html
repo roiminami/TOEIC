@@ -1151,24 +1151,35 @@ function checkAnswer() {
             document.getElementById('stat-accuracy').textContent = answeredInCurrent > 0 ? `${Math.round((correctCount / answeredInCurrent) * 100)}%` : "0%";
             document.getElementById('stat-mistakes').textContent = `${favoritesList.length} Items`;
 
-            // 🌟 新增：动态渲染当前做题单元的历史成就与复习次数勋章
+            // 🛠️ 【核心全线修复】重构当前单元状态勋章的动态判定算法
             const uBadge = document.getElementById('unit-status-badge');
             if (uBadge) {
+                // 1. 读取历史持久化存档
                 const hTotal = parseInt(localStorage.getItem(`toeic_total_${window.unitParam}`) || '0', 10);
                 const hCorrect = parseInt(localStorage.getItem(`toeic_correct_${window.unitParam}`) || '0', 10);
                 const hReviews = parseInt(localStorage.getItem(`toeic_review_count_${window.unitParam}`) || '0', 10);
                 
                 let reviewText = hReviews > 0 ? ` · 复习 ${hReviews} 次` : "";
                 
-                if (hTotal === 0) {
-                    uBadge.className = "text-xs font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md uppercase tracking-wider";
-                    uBadge.innerHTML = "🎯 未开启特训";
-                } else if (hCorrect >= hTotal) {
+                // 2. 实时计算当前这一轮的实际全量答题表现
+                const liveTotalCount = questionsDatabase.length;
+                const liveCorrectCount = questionsDatabase.filter(q => answeredList[q.id] && answeredList[q.id].isCorrect).length;
+                const liveAnsweredCount = Object.keys(answeredList).length;
+
+                // 3. 智能双轨合并决策：如果历史已经是满分，或者当前这轮全对/全部顺利做完且满分，则判定为“已通关”
+                let isPerfectNow = (hTotal > 0 && hCorrect >= hTotal) || 
+                                (liveCorrectCount === liveTotalCount) || 
+                                (liveAnsweredCount === liveTotalCount && liveCorrectCount === liveAnsweredCount);
+
+                if (isPerfectNow) {
                     uBadge.className = "text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-1 rounded-md uppercase tracking-wider border border-amber-300 shadow-xs";
                     uBadge.innerHTML = `🏆 已通关${reviewText}`;
-                } else {
+                } else if (hTotal > 0 || liveAnsweredCount > 0) {
                     uBadge.className = "text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-md uppercase tracking-wider border border-emerald-300 shadow-xs";
                     uBadge.innerHTML = `✓ 已特训${reviewText}`;
+                } else {
+                    uBadge.className = "text-xs font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md uppercase tracking-wider";
+                    uBadge.innerHTML = "🎯 未开启特训";
                 }
             }
         }
