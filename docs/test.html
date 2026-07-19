@@ -920,11 +920,6 @@ function checkAnswer() {
             // 确保即便用户在刷题时开启了“简单/中等/困难”单项筛选，存档时依然统计全量题目的对错，从而完美保存 100% 正确数据！
             const correctCountInUnit = questionsDatabase.filter(q => answeredList[q.id] && answeredList[q.id].isCorrect).length;
             
-            if (answeredInCurrentUnit > 0) {
-                localStorage.setItem(`toeic_total_${window.unitParam}`, questionsDatabase.length);
-                localStorage.setItem(`toeic_correct_${window.unitParam}`, correctCountInUnit);
-            }
-            
             if (!isCorrect) { addFavorite(q.id); } 
             else if (isMistakeOnlySession) {
                 removeFavorite(q.id);
@@ -1001,6 +996,11 @@ function checkAnswer() {
                         confirmBtn.onclick = () => {
                             modal.classList.add('hidden'); // 执行原有的隐藏弹窗动作
                             
+                            // 🛠️ 【核心修改点】只有全量完成特训并点击确认后，才正式计入“已特训”与正确数
+                            localStorage.setItem(`toeic_total_${window.unitParam}`, questionsDatabase.length);
+                            const correctCountInUnit = questionsDatabase.filter(q => answeredList[q.id] && answeredList[q.id].isCorrect).length;
+                            localStorage.setItem(`toeic_correct_${window.unitParam}`, correctCountInUnit);
+                            
                             // 如果本轮进来时被确认为了“复习”，只有在点击确定关闭时，复习次数才加 1
                             if (isReviewSession) {
                                 let reviewKey = 'toeic_review_count_' + (window.unitParam || '1-10');
@@ -1011,7 +1011,7 @@ function checkAnswer() {
                     }
                 }
                 switchTab('report'); 
-            } 
+            }
         }
 
         function toggleFavoriteCurrent() { const q = currentQuestions[currentIndex]; if (favoritesList.includes(q.id)) removeFavorite(q.id); else addFavorite(q.id); updateFavoriteButtonUI(q.id); updateDashboardStats(); }
