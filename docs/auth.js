@@ -202,6 +202,7 @@ async function downloadDataFromCloud() {
         if (typeof calculateAndRenderStats === 'function') calculateAndRenderStats();
         if (typeof filterToeicModules === 'function') filterToeicModules();
         if (typeof renderDictNotebook === 'function') renderDictNotebook();
+        if (typeof updateDashboardStats === 'function') updateDashboardStats();
     }
 }
 
@@ -267,8 +268,8 @@ function mergeLocalAndCloudData(cloudData) {
                 localStorage.setItem(key, JSON.stringify(mergedFavs));
             } catch(e) { localStorage.setItem(key, localRaw); }
 
-        } else if (key.startsWith('toeic_total_') || key.startsWith('toeic_correct_')) {
-            // 🌟 刷题进度与正确题数合并 -> 取高分/最大值
+        } else if (key.startsWith('toeic_total_') || key.startsWith('toeic_correct_') || key.startsWith('toeic_review_count_')) {
+            // 🌟 【核心升级】刷题进度、正确题数以及全新的“累计复习次数”合并 -> 取两端最大值，防止跨设备数据覆盖 regression
             const localNum = parseInt(localRaw, 10) || 0;
             const cloudNum = parseInt(cloudRaw, 10) || 0;
             localStorage.setItem(key, Math.max(localNum, cloudNum).toString());
@@ -386,7 +387,7 @@ window.toggleAuthMode = function() {
         desc.innerHTML = `Sign up first to activate your cloud sync space.<br><span class="text-amber-700 font-medium">请先注册以激活云端同步，防止刷题进度丢失。</span>`;
         if (emailInput) emailInput.classList.remove('hidden');
         if (passInput) { passInput.classList.remove('hidden'); passInput.placeholder = "Password (常用密码 8-18位字母+数字)"; }
-        if (forgotBtn) forgotBtn.classList.add('hidden');
+        if (forgotBtn) forgotBtn.add('hidden');
 
         submitBtn.textContent = 'Get Started & Sign Up (立即注册并开始)';
         submitBtn.setAttribute('onclick', "submitAuth('register')");

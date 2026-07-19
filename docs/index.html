@@ -311,7 +311,7 @@
             document.getElementById('stat-total-questions-header').textContent = totalQuestions.toLocaleString();
         }
 
-function renderConsoleGrid(modulesList) {
+        function renderConsoleGrid(modulesList) {
             const container = document.getElementById('modulesGridContainer');
             const emptyState = document.getElementById('search-empty-state');
             const counterText = document.getElementById('global-counter-txt');
@@ -355,8 +355,10 @@ function renderConsoleGrid(modulesList) {
                 const total = parseInt(localStorage.getItem(`toeic_total_${mod.unit}`) || '0', 10);
                 const correct = parseInt(localStorage.getItem(`toeic_correct_${mod.unit}`) || '0', 10);
                 
+                // 🌟 1. 安全读取在测试页成功存下的复习次数
+                const reviews = parseInt(localStorage.getItem(`toeic_review_count_${mod.unit}`) || '0', 10);
+                
                 cardAnchor.href = "javascript:void(0);";
-                // 🛠️ 修改后的点击跳转逻辑：带上当前的 mod.book
                 cardAnchor.onclick = (e) => {
                     e.preventDefault();
                     if (typeof window.checkAuthPermission === 'function') {
@@ -369,7 +371,6 @@ function renderConsoleGrid(modulesList) {
                 };
                 
                 let stateBadgeHtml = "";
-                // 稳健修复：使用 >= 规避未来可能出现的多端同步数据错位风险
                 let isPerfect = (total > 0 && correct >= total);
 
                 let scoreText = "";
@@ -379,6 +380,10 @@ function renderConsoleGrid(modulesList) {
                 else if (mod.section === 'score860') { scoreText = "860分"; scoreBg = "bg-orange-50 text-amber-700 border-amber-200"; }
                 else if (mod.section === 'score990') { scoreText = "990分"; scoreBg = "bg-purple-50 text-purple-700 border-purple-200"; }
                 
+                // 🌟 2. 提取复习文本小后缀
+                let reviewText = reviews > 0 ? ` · 复习 ${reviews} 次` : "";
+
+                // 🌟 3. 三态独立平级判定
                 if (total === 0) {
                     if (mod.type === 'standard') {
                         stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide ${scoreBg} px-1.5 py-0.5 rounded border">${scoreText}</span>`;
@@ -388,10 +393,9 @@ function renderConsoleGrid(modulesList) {
                         stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide bg-rose-50 text-rose-600 px-1.5 py-0.5 rounded border border-rose-200/60">${scoreText}·补${cnNum}</span>`;
                     }
                 } else if (isPerfect) {
-                    // 🔥 这里修改为了“已通过”金牌徽章
-                    stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded border border-amber-400 shadow-sm flex items-center space-x-0.5"><span>🏆</span> <span>已通过</span></span>`;
+                    stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded border border-amber-400 shadow-sm flex items-center space-x-0.5"><span>🏆</span> <span>已通过${reviewText}</span></span>`;
                 } else {
-                    stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded border border-emerald-300 flex items-center space-x-0.5"><span>✓</span> <span>已特训</span></span>`;
+                    stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide bg-emerald-100 text-emerald-800 px-1.5 py-0.5 rounded border border-emerald-300 flex items-center space-x-0.5"><span>✓</span> <span>已特训${reviewText}</span></span>`;
                 }
 
                 const bookMeta = (typeof my3DBooksDataset !== 'undefined') ? my3DBooksDataset.find(b => b.bookId === mod.book) : null;
@@ -417,7 +421,6 @@ function renderConsoleGrid(modulesList) {
 
             if (typeof lucide !== 'undefined') { lucide.createIcons(); }
         }
-
         function filterToeicModules() {
             const query = document.getElementById('searchConsoleInput').value.trim();
             const filtered = localConfigRegistry.filter(mod => {

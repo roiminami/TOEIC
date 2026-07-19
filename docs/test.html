@@ -212,6 +212,8 @@
                             <i data-lucide="timer" class="w-3.5 h-3.5"></i> 专项重考中
                         </span>
                         <span id="practice-mode-badge" class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-md uppercase tracking-wider">练习模式: 全真随机乱序</span>
+                        <!-- 🌟 在这里紧接着塞入下面这行新标签 -->
+                        <span id="unit-status-badge" class="text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider"></span>
                         <select id="diffFilterSelect" onchange="changeDifficultyFilter(this.value)" class="bg-[#FAF9F5] text-xs text-slate-700 font-bold px-2 py-1 rounded-lg border border-[#E1DBC9] focus:outline-none cursor-pointer transition-colors hover:border-amber-400">
                             <option value="all">🔍 全部难度题型</option>
                             <option value="简单">🟢 简单题型 </option>
@@ -534,6 +536,8 @@
         
         let favoritesKey = 'toeic_ghost_favorites_' + (window.unitParam || '1-10');
         let favoritesList = JSON.parse(localStorage.getItem(favoritesKey)) || [];
+        // 🌟 新增下面这一行全局变量：用于标记本轮刷题是否为复习
+        let isReviewSession = false;
         
         let isMistakeOnlySession = false; let hoverSpeechEnabled = false;
         let synth = window.speechSynthesis; let selectedVoice = null;
@@ -615,6 +619,8 @@
         function refreshIcons() { if (typeof lucide !== 'undefined') lucide.createIcons(); }
 
         window.addEventListener('DOMContentLoaded', () => {
+        // 🌟 新增判定：如果当前单元在本地已经存有答题进度，说明本次进来属于“复习”
+            isReviewSession = parseInt(localStorage.getItem(`toeic_total_${window.unitParam}`) || '0', 10) > 0;
         // 🌟 【核心修复 4】监听用户在全网页的第一次任意点击，在第一时间将语音通道激活
             document.addEventListener('click', function unfreezeSpeechEngine() {
                 if (typeof speechSynthesis !== 'undefined') {
@@ -976,6 +982,7 @@ function checkAnswer() {
         }
 
         function prevQuestion() { if (currentIndex > 0) { currentIndex--; loadQuestion(); } }
+        
         function nextQuestion() { 
             if (currentIndex < currentQuestions.length - 1) { currentIndex++; loadQuestion(); } 
             else { 
@@ -984,7 +991,24 @@ function checkAnswer() {
                     showCustomAlert("专项重考完毕", favoritesList.length === 0 ? `🔥 恭喜通过！` : `本次重考完毕，部分顽固题目依旧未消除。`, "info");
                     isMistakeOnlySession = false;
                 } else {
+                    // 弹出特训完成提示弹窗
                     showCustomAlert("特训通关！", "当前特训任务已全部完成！现在带你前往难度达成看板。", "success"); 
+                    
+                    // 🌟 核心拦截修改：劫持弹窗中“确定”按钮的点击事件
+                    const modal = document.getElementById('custom-modal');
+                    const confirmBtn = document.getElementById('modal-confirm-btn');
+                    if (confirmBtn) {
+                        confirmBtn.onclick = () => {
+                            modal.classList.add('hidden'); // 执行原有的隐藏弹窗动作
+                            
+                            // 如果本轮进来时被确认为了“复习”，只有在点击确定关闭时，复习次数才加 1
+                            if (isReviewSession) {
+                                let reviewKey = 'toeic_review_count_' + (window.unitParam || '1-10');
+                                let currentReviews = parseInt(localStorage.getItem(reviewKey) || '0', 10);
+                                localStorage.setItem(reviewKey, currentReviews + 1);
+                            }
+                        };
+                    }
                 }
                 switchTab('report'); 
             } 
@@ -1065,7 +1089,11 @@ function checkAnswer() {
             showCustomConfirm("重置特训", "确定清空当前进度与错题本，彻底重新开始吗？", () => {
                 if (retestTimerInterval) clearInterval(retestTimerInterval);
                 answeredList = {}; favoritesList = []; localStorage.removeItem(favoritesKey);
-                isMistakeOnlySession = false; currentDifficultyFilter = "all"; 
+                
+                // 🌟 同步补上：当彻底重置此单元时，将其历史复习次数也一并抹去
+                localStorage.removeItem('toeic_review_count_' + (window.unitParam || '1-10'));
+                
+                isReviewSession = false; currentDifficultyFilter = "all"; 
                 if(document.getElementById('diffFilterSelect')) document.getElementById('diffFilterSelect').value = "all";
                 shuffleCurrentQuestions(); currentIndex = 0;
                 updateDashboardStats(); switchTab('test'); loadQuestion();
@@ -1081,6 +1109,27 @@ function checkAnswer() {
             document.getElementById('stat-progress-txt').textContent = `${totalAnswered} / ${total}`;
             document.getElementById('stat-accuracy').textContent = answeredInCurrent > 0 ? `${Math.round((correctCount / answeredInCurrent) * 100)}%` : "0%";
             document.getElementById('stat-mistakes').textContent = `${favoritesList.length} Items`;
+
+            // 🌟 新增：动态渲染当前做题单元的历史成就与复习次数勋章
+            const uBadge = document.getElementById('unit-status-badge');
+            if (uBadge) {
+                const hTotal = parseInt(localStorage.getItem(`toeic_total_${window.unitParam}`) || '0', 10);
+                const hCorrect = parseInt(localStorage.getItem(`toeic_correct_${window.unitParam}`) || '0', 10);
+                const hReviews = parseInt(localStorage.getItem(`toeic_review_count_${window.unitParam}`) || '0', 10);
+                
+                let reviewText = hReviews > 0 ? ` · 复习 ${hReviews} 次` : "";
+                
+                if (hTotal === 0) {
+                    uBadge.className = "text-xs font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md uppercase tracking-wider";
+                    uBadge.innerHTML = "🎯 未开启特训";
+                } else if (hCorrect >= hTotal) {
+                    uBadge.className = "text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-1 rounded-md uppercase tracking-wider border border-amber-300 shadow-xs";
+                    uBadge.innerHTML = `🏆 已通关${reviewText}`;
+                } else {
+                    uBadge.className = "text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-md uppercase tracking-wider border border-emerald-300 shadow-xs";
+                    uBadge.innerHTML = `✓ 已特训${reviewText}`;
+                }
+            }
         }
 
         async function queryOnlineDict() {
