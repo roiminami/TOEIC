@@ -48,10 +48,8 @@ const toeicModulesConfig = [
     { id: 40,  title: "第 391 - 400 词",  unit: "g391-400",    book: "gold", section: "score600", type: "standard" },
     
     // 🧩 600分专属支线
-    { id: 101, title: "600-补①：1 - 100 词", unit: "g-600-supp1-1-10", book: "gold", section: "score600", type: "supplement1" },
-    { id: 102, title: "600-补②：1 - 100 词", unit: "g-600-supp2-1-100", book: "gold", section: "score600", type: "supplement2" },
-    { id: 103, title: "600-补③：1 - 100 词", unit: "g-600-supp3-1-100", book: "gold", section: "score600", type: "supplement3" },
-    { id: 104, title: "600-补④：1 - 100 词", unit: "g-600-supp4-1-100", book: "gold", section: "score600", type: "supplement4" },
+    { id: 101, title: "600-补①：1 - 10 词", unit: "g-600-supp1-1-10", book: "gold", section: "score600", type: "supplement1" },
+    { id: 102, title: "600-补①：11 - 20 词", unit: "g-600-supp1-11-20", book: "gold", section: "score600", type: "supplement1" },
 
     // ========================================================================
     // 🚀 SCORE 730 分段家族（主线 401 - 700 词 + 专属支线）
