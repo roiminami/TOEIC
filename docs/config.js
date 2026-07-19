@@ -50,6 +50,7 @@ const toeicModulesConfig = [
     // 🧩 600分专属支线
     { id: 101, title: "600-补①：1 - 10 词", unit: "g-600-supp1-1-10", book: "gold", section: "score600", type: "supplement1" },
     { id: 102, title: "600-补①：11 - 20 词", unit: "g-600-supp1-11-20", book: "gold", section: "score600", type: "supplement1" },
+    { id: 103, title: "600-补①：21 - 30 词 和 1 - 6词", unit: "g-600-supp1-21-24-1-6", book: "gold", section: "score600", type: "supplement1" },
 
     // ========================================================================
     // 🚀 SCORE 730 分段家族（主线 401 - 700 词 + 专属支线）
