@@ -89,9 +89,10 @@
 
                 <div id="auth-section" class="flex items-center space-x-2 text-xs shrink-0">
                     <div id="auth-logged-out" class="flex items-center space-x-1">
-                        <button onclick="openRegisterModal()" class="bg-slate-900 hover:bg-amber-600 text-white font-bold px-3.5 py-1.5 rounded-lg active:scale-95 transition-all cursor-pointer text-[11px] tracking-wide shadow-xs flex items-center space-x-1">
+                        <!-- 将函数改为 openLoginModal，文案也可以微调更符合登录导向 -->
+                        <button onclick="openLoginModal()" class="bg-slate-900 hover:bg-amber-600 text-white font-bold px-3.5 py-1.5 rounded-lg active:scale-95 transition-all cursor-pointer text-[11px] tracking-wide shadow-xs flex items-center space-x-1">
                             <span>🔑</span>
-                            <span>Get Started / 登录注册</span>
+                            <span>Sign In / 登录账号</span>
                         </button>
                     </div>
                     <div id="auth-logged-in" class="hidden flex items-center space-x-3">
@@ -1564,30 +1565,33 @@ function checkAnswer() {
     <div id="login-modal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-xs flex items-center justify-center z-50 p-4">
         <form onsubmit="event.preventDefault();" class="bg-[#FAF9F5] border border-[#EAE6D9] p-6 rounded-2xl w-full max-w-sm shadow-2xl text-slate-800 relative">
             <h3 class="text-base font-bold mb-1 text-center text-slate-900 flex items-center justify-center gap-1.5">
-                🔑 <span id="auth-modal-title">Create Account (注册新账号)</span>
+                🔑 <span id="auth-modal-title">Sign In (登录已有账号)</span>
             </h3>
             <p id="auth-modal-desc" class="text-[11px] text-slate-500 text-center mb-4 leading-normal">
-                Sign up first to activate your cloud sync space and protect your local training data.<br>
-                <span class="text-amber-700 font-medium">请先注册以激活云端同步，防止刷题进度丢失。</span>
+                Sign in to activate your cloud sync space and protect your training data.<br>
+                <span class="text-amber-700 font-medium">请先登录以激活云端同步，防止刷题进度丢失。</span>
             </p>
             
             <input type="email" id="modal-email" placeholder="Email Address (邮箱地址)" class="w-full p-2.5 bg-white border border-[#E1DBC9] rounded-xl mb-2 text-xs focus:outline-none focus:border-amber-500 text-slate-800 font-medium">
             
             <div class="w-full relative mb-4">
-                <input type="password" id="modal-password" placeholder="Password (常用密码 8-18位字母+数字)" class="w-full p-2.5 bg-white border border-[#E1DBC9] rounded-xl text-xs focus:outline-none focus:border-amber-500 text-slate-800 font-medium">
-                <button id="auth-forgot-btn" onclick="switchToForgotMode()" class="hidden absolute right-3 top-2.5 text-[10px] text-slate-400 hover:text-amber-700 font-semibold tracking-tight transition-colors cursor-pointer">
+                <input type="password" id="modal-password" placeholder="Password (请输入密码)" class="w-full p-2.5 bg-white border border-[#E1DBC9] rounded-xl text-xs focus:outline-none focus:border-amber-500 text-slate-800 font-medium">
+                <!-- 登录模式下展示忘记密码按钮 -->
+                <button id="auth-forgot-btn" onclick="switchToForgotMode()" class="absolute right-3 top-2.5 text-[10px] text-slate-400 hover:text-amber-700 font-semibold tracking-tight transition-colors cursor-pointer">
                     Forgot? / 忘记密码
                 </button>
             </div>
             
-            <button id="auth-submit-btn" onclick="submitAuth('register')" class="w-full bg-slate-900 text-white py-2.5 rounded-xl font-bold hover:bg-amber-600 transition text-xs cursor-pointer shadow-sm text-center block">
-                Get Started & Sign Up (立即注册并开始)
+            <!-- 核心：默认提交动作改为 'login' -->
+            <button id="auth-submit-btn" onclick="submitAuth('login')" class="w-full bg-slate-900 text-white py-2.5 rounded-xl font-bold hover:bg-amber-600 transition text-xs cursor-pointer shadow-sm text-center block">
+                Sign In & Sync (立即登录并同步)
             </button>
             
             <div class="mt-4 pt-3 border-t border-slate-200/60 flex flex-col items-center gap-2">
                 <p class="text-[11px] text-slate-500 text-center">
-                    <span id="auth-switch-text">Already have an account? (已有账号？)</span>
-                    <button id="auth-switch-btn" onclick="toggleAuthMode()" class="text-amber-700 font-bold hover:underline ml-1 cursor-pointer">Sign In (去登录)</button>
+                    <span id="auth-switch-text">Don't have an account? (还没有账号？)</span>
+                    <!-- 这里的切换按钮依然保留，方便用户随时切去注册 -->
+                    <button id="auth-switch-btn" onclick="toggleAuthMode()" class="text-amber-700 font-bold hover:underline ml-1 cursor-pointer">Sign Up (去注册)</button>
                 </p>
                 <button type="button" onclick="closeLoginModal()" class="text-slate-400 text-[10px] mt-1 hover:text-slate-600 transition cursor-pointer">Keep Local & Close (暂不登录)</button>
             </div>

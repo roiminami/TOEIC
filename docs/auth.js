@@ -332,13 +332,21 @@ function resetAuthModalDOM() {
     if (switchText && switchText.parentElement) switchText.parentElement.classList.remove('hidden');
 }
 
-// 全局弹窗开关控制
-window.openLoginModal = function() { 
-    resetAuthModalDOM();
-    currentAuthMode = 'register'; 
-    window.toggleAuthMode();
+
+// 确保 openLoginModal 正常工作且无缝呼出弹窗
+window.openLoginModal = function() {
     const modal = document.getElementById('login-modal');
-    if (modal) modal.classList.remove('hidden');
+    if (modal) {
+        modal.classList.remove('hidden');
+        
+        // 保留逻辑：检查当前弹窗内的文字，如果因为上次切换卡在了“注册”状态，自动帮用户重置回“登录”界面
+        const submitBtn = document.getElementById('auth-submit-btn');
+        if (submitBtn && submitBtn.getAttribute('onclick') && submitBtn.getAttribute('onclick').includes('register')) {
+            if (typeof window.toggleAuthMode === 'function') {
+                window.toggleAuthMode();
+            }
+        }
+    }
 };
 
 window.openRegisterModal = function() { 
