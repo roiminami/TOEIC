@@ -53,6 +53,19 @@ const toeicModulesConfig = [
     { id: 103, title: "600-补①：21 - 30 词 和 1 - 6词", unit: "g-600-supp1-21-24-1-6", book: "gold", section: "score600", type: "supplement1" },
     { id: 104, title: "600-补②：1 - 10 词", unit: "g-600-supp2-1-10", book: "gold", section: "score600", type: "supplement1" },
     { id: 105, title: "600-补②：11 - 20 词", unit: "g-600-supp2-11-20", book: "gold", section: "score600", type: "supplement1" },
+    { id: 106, title: "600-补②：21 - 30 词", unit: "g-600-supp2-21-30", book: "gold", section: "score600", type: "supplement1" },
+    { id: 107, title: "600-补②：31 - 40 词", unit: "g-600-supp2-31-40", book: "gold", section: "score600", type: "supplement1" },
+    { id: 108, title: "600-补②：41 - 50 词", unit: "g-600-supp2-41-50", book: "gold", section: "score600", type: "supplement1" },
+    { id: 109, title: "600-补②：51 - 60 词", unit: "g-600-supp2-51-60", book: "gold", section: "score600", type: "supplement1" },
+    { id: 110, title: "600-补②：61 - 70 词", unit: "g-600-supp2-61-70", book: "gold", section: "score600", type: "supplement1" },
+    { id: 111, title: "600-补②：71 - 80 词", unit: "g-600-supp2-71-80", book: "gold", section: "score600", type: "supplement1" },
+
+
+
+
+
+
+
 
     // ========================================================================
     // 🚀 SCORE 730 分段家族（主线 401 - 700 词 + 专属支线）
