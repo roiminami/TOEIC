@@ -392,9 +392,7 @@
                     if (mod.type === 'standard') {
                         stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide ${scoreBg} px-1.5 py-0.5 rounded border">${scoreText}</span>`;
                     } else if (mod.type && mod.type.startsWith('supplement')) {
-                        let suppNum = mod.type.replace('supplement', '');
-                        let cnNum = suppNum === '1' ? '①' : suppNum === '2' ? '②' : suppNum === '3' ? '③' : suppNum === '4' ? '④' : suppNum;
-                        stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide bg-rose-50 text-rose-600 px-1.5 py-0.5 rounded border border-rose-200/60">${scoreText}·补${cnNum}</span>`;
+                        stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide bg-rose-50 text-rose-600 px-1.5 py-0.5 rounded border border-rose-200/60">${scoreText}·补</span>`;
                     }
                 } else if (isPerfect) {
                     stateBadgeHtml = `<span class="text-[9px] font-black tracking-wide bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded border border-amber-400 shadow-sm flex items-center space-x-0.5"><span>🏆</span> <span>已通过${reviewText}</span></span>`;
