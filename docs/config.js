@@ -59,7 +59,13 @@ const toeicModulesConfig = [
     { id: 109, title: "600-补②：51 - 60 词", unit: "g-600-supp2-51-60", book: "gold", section: "score600", type: "supplement1" },
     { id: 110, title: "600-补②：61 - 70 词", unit: "g-600-supp2-61-70", book: "gold", section: "score600", type: "supplement1" },
     { id: 111, title: "600-补②：71 - 80 词", unit: "g-600-supp2-71-80", book: "gold", section: "score600", type: "supplement1" },
-
+    { id: 112, title: "600-补②：81 - 90 词", unit: "g-600-supp2-81-90", book: "gold", section: "score600", type: "supplement1" },
+    { id: 113, title: "600-补②：91 - 100 词", unit: "g-600-supp2-91-100", book: "gold", section: "score600", type: "supplement1" },
+    { id: 114, title: "600-补②：101 - 110 词", unit: "g-600-supp2-101-110", book: "gold", section: "score600", type: "supplement1" },
+    { id: 115, title: "600-补②：111 - 120 词", unit: "g-600-supp2-111-120", book: "gold", section: "score600", type: "supplement1" },
+    { id: 116, title: "600-补②：121 - 130 词", unit: "g-600-supp2-121-130", book: "gold", section: "score600", type: "supplement1" },
+    { id: 117, title: "600-补②：131 - 140 词", unit: "g-600-supp2-131-140", book: "gold", section: "score600", type: "supplement1" },
+    { id: 118, title: "600-补②：141 - 150 词", unit: "g-600-supp2-141-150", book: "gold", section: "score600", type: "supplement1" },
 
 
 
