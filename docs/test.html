@@ -632,6 +632,10 @@
             // 1. 先行读取历史持久化通关存档
             const hTotal = parseInt(localStorage.getItem(`toeic_total_${window.unitParam}`) || '0', 10);
             const hCorrect = parseInt(localStorage.getItem(`toeic_correct_${window.unitParam}`) || '0', 10);
+            // 🌟 【关键修复】只要历史有答题记录（或者已通关），本次刷题即认定为复习模式
+            if (hTotal > 0) {
+                isReviewSession = true;
+            }
             
             // 🌟【重新考试策略】如果检测到历史已经是完美通过状态，进入时强制抹去过往临时答题状态，进入纯净的考试模式
             if (hTotal > 0 && hCorrect >= hTotal) {
