@@ -69,7 +69,9 @@
                     <div id="auth-logged-in" class="hidden flex items-center space-x-2 bg-slate-900 text-white p-1 pr-2.5 rounded-xl shadow-sm">
                         <div class="flex items-center space-x-2">
                             <div class="w-6 h-6 rounded-lg bg-amber-500 text-slate-900 flex items-center justify-center font-black text-[11px] shadow-inner" id="user-avatar">U</div>
-                            <span class="text-[11px] font-mono tracking-tight max-w-[110px] truncate text-slate-200" id="user-email-display">user@example.com</span>
+                            <!-- 🔒 把原本装邮箱的 id 隐藏，旁边放个“已登录” -->
+                            <span id="user-email-display" class="hidden"></span>
+                            <span class="text-[11px] font-mono tracking-tight text-amber-300 font-bold">已登录</span>
                         </div>
                         <span class="text-slate-700 text-[10px] mx-0.5">|</span>
                         <button onclick="handleLogout()" class="text-slate-400 hover:text-rose-400 text-[10px] font-medium transition-colors cursor-pointer pl-0.5">
