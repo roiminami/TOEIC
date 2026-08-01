@@ -1,382 +1,381 @@
 // ============================================================================
-// [DATABASE] SOUTHERN GHOST TOEIC CORE DATA BUNDLE (data161-170.js)
+// [DATABASE] SOUTHERN GHOST TOEIC CORE DATA BUNDLE (datag11-20.js Expansion)
 // ============================================================================
 
 // 1. 核心考点词表 (Core Target Vocabulary)
 const vocabBank = [
     {
-        word: "forum",
-        pos: "名",
-        ipa: "/ˈfɔːrəm/",
-        cn: "论坛，研讨会",
-        jp: "フォーラム、討論会",
-        family: "forums / fora",
-        tips: "商务研讨与交流考点。常考：public forum（公开论坛）、online forum（在线论坛）、business forum（商务论坛）。",
-        desc: "He attended an online business forum."
-    },
-    {
-        word: "domestic",
-        pos: "形",
-        ipa: "/dəˈmestɪk/",
-        cn: "国内的，本国的；家庭的",
-        jp: "国内の、家庭の",
-        family: "domestically / domesticity",
-        tips: "航空差旅与经济贸易高频词。常考：domestic flight（国内航班）、domestic market（国内市场）、domestic sales（国内销量）。反义词：international / overseas。",
-        desc: "They booked a domestic flight to Chicago."
-    },
-    {
-        word: "round-trip",
-        pos: "形/名",
-        ipa: "/ˈraʊnd trɪp/",
-        cn: "往返的，双程的；往返航程",
-        jp: "往復の、往復旅行",
-        family: "one-way / trip / ticket",
-        tips: "差旅预订核心词！常考：round-trip ticket（往返机票/车票）、round-trip flight（往返航班）。反义词：one-way ticket（单程票）。",
-        desc: "I bought a round-trip ticket to Tokyo."
-    },
-    {
-        word: "calculate",
+        word: "prohibit",
         pos: "動",
-        ipa: "/ˈkælkjuleɪt/",
-        cn: "计算，核算，估算",
-        jp: "計算する、算出する",
-        family: "calculation / calculator / calculated",
-        tips: "财务与成本核算核心动词。常考：calculate total costs（计算总成本）、calculate interest（计算利息）。名词 calculation 极高频。",
-        desc: "Please calculate the total cost for us."
+        ipa: "/prəˈhɪbɪt/",
+        cn: "禁止，阻止",
+        jp: "禁止する、妨げる",
+        family: "prohibition / prohibitive / prohibitively",
+        tips: "托业高频动词。常用于规章制度，考点包含 be prohibited from -ing（被禁止做某事）。派生词 prohibitive / prohibitively 常修饰 cost/expensive（价格高得令人望而却步）。",
+        desc: "Smoking is prohibited here."
     },
     {
-        word: "popularity",
-        pos: "名",
-        ipa: "/ˌpɑːpjuˈlærəti/",
-        cn: "流行，普及，受欢迎程度",
-        jp: "人気、普及",
-        family: "popular / popularize / popularly",
-        tips: "市场分析与产品推广高频词。常考搭配：gain/grow in popularity（越来越受欢迎）、increase in popularity（普及度提高）。",
-        desc: "The app gained rapid popularity worldwide."
+        word: "assess",
+        pos: "動",
+        ipa: "/əˈses/",
+        cn: "评估，估算，核定",
+        jp: "評価する、査定する",
+        family: "assessment / assessor / assessable",
+        tips: "商务评估核心动词。常见搭配有 assess the damage（评估损失）、assess performance（评估绩效）、assess risks（评估风险）。名词形式 assessment 在托业中极高频。",
+        desc: "We must assess the risks."
     },
     {
-        word: "remote",
+        word: "clarify",
+        pos: "動",
+        ipa: "/ˈklærəfaɪ/",
+        cn: "澄清，阐明",
+        jp: "明确にする、解明する",
+        family: "clarification / clarity / clarifying",
+        tips: "职场沟通与邮件高频动词。常考 clarify a policy/procedure（澄清政策/流程）。派生名词 clarification 组合为 seek clarification（寻求澄清）。",
+        desc: "Please clarify your statement."
+    },
+    {
+        word: "independent",
         pos: "形",
-        ipa: "/rɪˈmoʊt/",
-        cn: "远程的，偏远的；微乎其微的",
-        jp: "リモートの、遠隔の、偏遠な",
-        family: "remotely / remoteness / remote control",
-        tips: "办公模式与 IT 核心词！常考：remote work/working（远程办公）、remote location（偏远地区）、remote control（遥控器）。",
-        desc: "Many staff members prefer remote work."
+        ipa: "/ˌɪndɪˈpendənt/",
+        cn: "独立的，自主的",
+        jp: "独立した、自主的な",
+        family: "independence / independently / depend",
+        tips: "常修饰机构或人员，如 independent auditor（独立审计员）、independent contractor（独立承包商）。介词搭配为 be independent of（独立于……）。",
+        desc: "He works as an independent contractor."
     },
     {
-        word: "encounter",
+        word: "urgent",
+        pos: "形",
+        ipa: "/ˈɜːrdʒənt/",
+        cn: "紧急的，紧迫的",
+        jp: "紧急の、急を要する",
+        family: "urgency / urgently",
+        tips: "商务沟通常用形容词。修饰名词如 urgent request（紧急请求）、urgent matter（紧急事项）。派生名词 urgency 与副词 urgently 同为托业考点。",
+        desc: "I have an urgent message."
+    },
+    {
+        word: "skilled",
+        pos: "形",
+        ipa: "/skɪld/",
+        cn: "熟练的，有技能的",
+        jp: "熟练した、技能を持つ",
+        family: "skill / skillful / skillfully",
+        tips: "招聘与人力资源场景核心词。常修饰 worker/technician（熟练技术人员）。注意搭配 be skilled at/in doing sth（擅长于做某事）。",
+        desc: "She is a skilled manager."
+    },
+    {
+        word: "remark",
         pos: "動/名",
-        ipa: "/ɪnˈkaʊntər/",
-        cn: "遭遇，遇到（困难/问题）；偶遇",
-        jp: "（問題などに）直面する、遭遇する；遭遇",
-        family: "encountered / encountering",
-        tips: "项目推进与问题解决高频词！等同于 run into / experience。常考：encounter unexpected delays/problems（遇到意外延误/问题）。",
-        desc: "We may encounter unexpected problems tomorrow."
+        ipa: "/rɪˈmɑːrk/",
+        cn: "评论，谈到；话语，评论",
+        jp: "述べる、コメントする；意见、発言",
+        family: "remarkable / remarkably / remarker",
+        tips: "作动词常搭配 remark on/that（谈及/评论）。作名词常指发言或评论（opening remarks 开场白）。派生形容词 remarkable（卓越的，显著的）是高频形容词。",
+        desc: "He made a brief remark."
     },
     {
-        word: "convert",
-        pos: "動",
-        ipa: "/kənˈvɜːrt/",
-        cn: "转换，转变，兑换",
-        jp: "変換する、換金する、改造する",
-        family: "conversion / converter / convertible",
-        tips: "IT 格式转换、汇率兑换与建筑改造高频词。常考：convert currency（兑换外币）、convert file formats（转换文件格式）、convert A into B。",
-        desc: "You can convert currency at the bank."
+        word: "weekday",
+        pos: "名",
+        ipa: "/ˈwiːkdeɪ/",
+        cn: "工作日（周一至周五）",
+        jp: "平日（月曜日から金曜日）",
+        family: "weekdays / weekend",
+        tips: "商务营业时间与物流日程高频词。常考介词搭配 on weekdays（在工作日）、weekday delivery（工作日派送）。与 weekend（周末）形成对比。",
+        desc: "The office is open on weekdays."
     },
     {
-        word: "videoconference",
-        pos: "名/動",
-        ipa: "/ˈvɪdioʊkɑːnfərəns/",
-        cn: "视频会议；召开视频会议",
-        jp: "テレビ会議、ビデオ会議",
-        family: "videoconferencing / video call",
-        tips: "远程协作核心词。常考：hold/arrange a videoconference（举办视频会议）、via videoconference（通过视频会议）。",
-        desc: "We scheduled a videoconference for Monday."
-    },
-    {
-        word: "postal",
+        word: "personalized",
         pos: "形",
-        ipa: "/ˈpoʊstl/",
-        cn: "邮政的，邮寄的",
-        jp: "郵便の、郵便に関する",
-        family: "post / postage / postal code / post office",
-        tips: "物流与信函场景高频词。常考搭配：postal service（邮政服务）、postal code/zip code（邮政编码）、postal rate（邮资标准）。",
-        desc: "Please enter your valid postal code."
+        ipa: "/ˈpɜːrsənəlaɪzd/",
+        cn: "个性化的，定制的",
+        jp: "パーソナライズされた、特注の",
+        family: "personalize / personality / personal",
+        tips: "市场营销与客户服务核心词。常见搭配有 personalized service（个性化服务）、personalized experience（定制化体验）。由动词 personalize 过去分词转化而来。",
+        desc: "We offer personalized service."
+    },
+    {
+        word: "stain",
+        pos: "名/動",
+        ipa: "/steɪn/",
+        cn: "污渍，玷污；染色，弄脏",
+        jp: "シミ、汚れ；汚す、着色する",
+        family: "stainless / stained / staining",
+        tips: "酒店服务、产品质量争议或清洁维护场景考点。作名词常考 remove a stain（去除污渍）；派生形容词 stainless 常考 stainless steel（不锈钢）。",
+        desc: "There is a stain on the carpet."
     }
 ];
-
 
 // 2. 核心真题库 (Questions Database)
 const questionsDatabase = [
     {
         id: 1,
-        target: "remote",
+        target: "prohibit",
         category: "简单",
-        stem: "The IT department recommends installing secure software to support employees who work from ________ locations.",
-        options: ["remote", "remotely", "postal", "forum"],
-        correct: "remote",
+        stem: "Safety regulations strictly ________ employees from entering the construction site without a hard hat.",
+        options: ["prohibit", "prohibition", "urgent", "assess"],
+        correct: "prohibit",
         explanations: {
-            guide: "形容词作前置定语修饰名词。________ locations 结构中需要形容词修饰复数名词 locations，表达“远程的/偏远的”地点，选 remote。",
-            family: "remote (adj.远程的) | remotely (adv.远程地) | postal (adj.邮政的) | forum (n.论坛)。",
-            details: "remote locations（远程地点/异地）是 IT 与远程办公场景的标准搭配。remotely 是副词，不能直接作前置定语修饰名词 locations。",
-            cn: "IT 部门建议安装安全软件，以支持在远程地点工作的员工。",
-            jp: "IT部門は、遠隔地（remote locations）で働く従業員を支援するためにセキュリティソフトウェアをインストールすることを推奨しています。"
+            guide: "句子主语为 Safety regulations（复数），空格处需要填入谓语动词原形，表达“禁止”员工无安全帽进入工地，选 prohibit。",
+            family: "prohibit (v.禁止) | prohibition (n.禁止) | urgent (adj.紧急的) | assess (v.评估)。",
+            details: "prohibit sb from doing sth 是固定句型，表示“禁止某人做某事”。prohibition 是名词，在此处会导致句子缺少动词谓语。",
+            cn: "安全规章严格禁止员工在未佩戴安全帽的情况下进入施工现场。",
+            jp: "安全规制により、作业员が安全ヘルメットを着用せずに工事现场に入ることは厳しく禁止（prohibit）されています。"
         }
     },
     {
         id: 2,
-        target: "round-trip",
+        target: "assess",
         category: "简单",
-        stem: "When booking travel online, selecting a ________ ticket is often cheaper than purchasing two single passes.",
-        options: ["round-trip", "convert", "calculate", "videoconference"],
-        correct: "round-trip",
+        stem: "The inspector will visit the facility tomorrow to ________ the condition of the manufacturing equipment.",
+        options: ["assess", "assessment", "skilled", "clarify"],
+        correct: "assess",
         explanations: {
-            guide: "差旅与交通乘车场景。a ________ ticket 表达“往返机票/车票”，与 purchasing two single passes（买两张单程票）对比，选 round-trip。",
-            family: "round-trip (adj.往返的) | convert (v.转换) | calculate (v.计算) | videoconference (n.视频会议)。",
-            details: "round-trip ticket（往返票）是托业出行预订场景的核心表达。其他选项词性或语义均不符。",
-            cn: "在在线预订行程时，选择往返票通常比购买两张单程票更便宜。",
-            jp: "オンラインで旅行を予約する際、往復（round-trip）チケットを選択する方が、片道券を2枚購入するよりも安くなることがよくあります。"
+            guide: "不定式动词原形考点。will visit... to 后面需要接动词原形构成目的状语，表达“评估”设备状况，选 assess。",
+            family: "assess (v.评估) | assessment (n.评估) | skilled (adj.熟练的) | clarify (v.澄清)。",
+            details: "to 不定式符号后需接动词原形 assess。assessment 为名词，不能直接紧跟在不定式符号 to 后面。",
+            cn: "检查员将于明天访问该设施，以评估制造设备状况。",
+            jp: "检验员は制造设备の状态を物理的に评价（assess）するために、明日施设を访问します。"
         }
     },
     {
         id: 3,
-        target: "domestic",
+        target: "urgent",
         category: "简单",
-        stem: "Travelers flying on ________ flights should arrive at the airport at least two hours before departure.",
-        options: ["domestic", "encounter", "popularity", "postal"],
-        correct: "domestic",
+        stem: "Please respond to this ________ message as soon as possible regarding the client's order.",
+        options: ["urgent", "urgently", "weekday", "stain"],
+        correct: "urgent",
         explanations: {
-            guide: "形容词作前置定语。 flying on ________ flights 结构中需要形容词修饰复数名词 flights，表达“国内航班”，选 domestic。",
-            family: "domestic (adj.国内的) | encounter (v.遭遇) | popularity (n.普及/流行) | postal (adj.邮政的)。",
-            details: "domestic flight（国内航班）与 international flight（国际航班）构成托业差旅阅读的高频对比组。",
-            cn: "乘坐国内航班的旅客应在起飞前至少两小时到达机场。",
-            jp: "国内線（domestic flights）を利用する旅行者は、出発の少なくとも2時間前に空港に到着する必要があります。"
+            guide: "形容词修饰名词考点。空格在指示代词 this 与名词 message 之间，需要填入形容词修饰 message，表示“紧急的”消息，选 urgent。",
+            family: "urgent (adj.紧急的) | urgently (adv.紧急地) | weekday (n.工作日) | stain (n.污渍)。",
+            details: "urgent message 是商务沟通中的高频搭配。urgently 是副词，不能直接修饰名词 message。",
+            cn: "请尽快回复这条关于客户订单的紧急消息。",
+            jp: "顾客の注文に関するこの紧急（urgent）メッセージにできるだけ早く相答してください。"
         }
     },
     {
         id: 4,
-        target: "calculate",
+        target: "skilled",
         category: "简单",
-        stem: "The accountant will ________ the tax deduction for all eligible corporate business expenses.",
-        options: ["calculate", "calculation", "remote", "forum"],
-        correct: "calculate",
+        stem: "The company needs to hire more ________ workers to operate the newly acquired machinery.",
+        options: ["skilled", "skillfully", "prohibit", "remark"],
+        correct: "skilled",
         explanations: {
-            guide: "情态动词后的动词原形。will 后面需要接动词原形，表达会计将“计算/核算”扣税额，选 calculate。",
-            family: "calculate (v.计算) | calculation (n.计算) | remote (adj.远程的) | forum (n.论坛)。",
-            details: "will calculate 构成谓语结构。calculation 是名词，不能跟在情态动词 will 之后充当谓语动词。",
-            cn: "会计将计算所有符合条件的公司营业费用的税收扣除额。",
-            jp: "会計士は、対象となるすべての企業経費の所得控除額を計算（calculate）します。"
+            guide: "形容词修饰名词考点。空格在限定词 more 与名词 workers 之间，需要填入形容词作定语修饰 workers，选 skilled。",
+            family: "skilled (adj.熟练的) | skillfully (adv.熟练地) | prohibit (v.禁止) | remark (v./n.评论)。",
+            details: "skilled workers 指“熟练工人/技术工人”，属于招聘场景的标准表达。skillfully 是副词，不能修饰名词 workers。",
+            cn: "公司需要雇用更多熟练工人来操作新购置的机械设备。",
+            jp: "会社は新しく购入した机械を操作するために、より多くの熟练した（skilled）作业员を雇う必要があります。"
         }
     },
     {
         id: 5,
-        target: "videoconference",
+        target: "weekday",
         category: "简单",
-        stem: "The overseas team joined the urgent weekly meeting via a high-definition ________ system.",
-        options: ["videoconference", "convert", "encounter", "round-trip"],
-        correct: "videoconference",
+        stem: "Deliveries are normally scheduled on any ________ between 9:00 A.M. and 5:00 P.M.",
+        options: ["weekday", "personalized", "assess", "clarify"],
+        correct: "weekday",
         explanations: {
-            guide: "名词作前置定语修饰名词。a high-definition ________ system 表达高清“视频会议”系统，选 videoconference。",
-            family: "videoconference (n.视频会议) | convert (v.转换) | encounter (v.遭遇) | round-trip (adj.往返的)。",
-            details: "videoconference system 意为视频会议系统。其他选项词性或语义均不符合办公设施系统描述。",
-            cn: "海外团队通过高清视频会议系统参加了紧急周会。",
-            jp: "海外チームは、高画質テレビ会議（videoconference）システムを通じて緊急週例会議に参加しました。"
+            guide: "介词与限定词后的名词考点。on any 后面需要接单数可数名词，结合时间段 9:00 A.M. to 5:00 P.M.，表达在“工作日”，选 weekday。",
+            family: "weekday (n.工作日) | personalized (adj.个性化的) | assess (v.评估) | clarify (v.澄清)。",
+            details: "on any weekday 意为“在任何工作日”。personalized 是形容词，assess 和 clarify 是动词，均不符合语法要求。",
+            cn: "派送通常安排在上午 9:00 至下午 5:00 之间的任何工作日进行。",
+            jp: "配达は通常、午前9時から下午5时までの平日（weekday）に等しく计画されています。"
         }
     },
     {
         id: 6,
-        target: "postal",
+        target: "stain",
         category: "简单",
-        stem: "Customers must write down their full address along with a correct ________ code on the delivery form.",
-        options: ["postal", "popularity", "domestic", "remote"],
-        correct: "postal",
+        stem: "The housekeeping staff used a special cleaning agent to remove the dark ________ from the rug.",
+        options: ["stain", "stainless", "urgent", "prohibit"],
+        correct: "stain",
         explanations: {
-            guide: "物流与邮寄场景固定短语。________ code 构成固定表述 postal code（邮政编码），选 postal。",
-            family: "postal (adj.邮政的) | popularity (n.流行) | domestic (adj.国内的) | remote (adj.远程的)。",
-            details: "postal code（邮政编码）是托业物流与个人信息填写场景的标准用语。popularity 是名词，不能修饰 code。",
-            cn: "顾客必须在送货单上写下其完整地址以及正确的邮政编码。",
-            jp: "お客様は、配達用紙に正確な郵便番号（postal code）とともに完全な住所を記入しなければなりません。"
+            guide: "限定词与形容词后的名词考点。the dark 后面需要接名词充当宾语，表达去除深色“污渍”，选 stain。",
+            family: "stain (n.污渍/v.弄脏) | stainless (adj.无瑕的/不锈钢的) | urgent (adj.紧急的) | prohibit (v.禁止)。",
+            details: "remove a stain 是酒店与保洁场景固定词组，意为“去除污渍”。stainless 是形容词，不能作 remove 的宾语。",
+            cn: "客房清洁人员使用一种特殊的清洁剂去除了毯子上的深色污渍。",
+            jp: "客室清扫员は特別な洗剤を使用して、ラグから暗いシミ（stain）を取り除きました。"
         }
     },
     {
         id: 7,
-        target: "encounter",
+        target: "clarify",
         category: "中等",
-        stem: "If field technicians ________ any unexpected equipment failure, they must notify the manager immediately.",
-        options: ["encounter", "encountered", "videoconference", "forum"],
-        correct: "encounter",
+        stem: "The director scheduled a meeting with the team to ________ several ambiguous points in the project proposal.",
+        options: ["clarify", "clarification", "independent", "skilled"],
+        correct: "clarify",
         explanations: {
-            guide: "条件状语从句的主谓一致。If 从句中，主语是复数名词 field technicians，空格处需要动词原形作谓语，表达“遭遇/遇到”设备故障，选 encounter。",
-            family: "encounter (v.遭遇) | encountered (v-ed形式) | videoconference (n.视频会议) | forum (n.论坛)。",
-            details: "If 从句表达一般将来可能发生的事，用一般现在时表将来（technicians encounter...）。encountered 是过去式，不符合真实条件句的时态规则。",
-            cn: "如果现场技术人员遇到任何意外的设备故障，他们必须立即通知经理。",
-            jp: "現場の技術者が予期せぬ機器の故障に遭遇した場合（encounter）、直ちにマネージャーに通知しなければなりません。"
+            guide: "不定式动词原形与商务语义。to 后面需要接动词原形，带宾语 several ambiguous points，表示“澄清/阐明”模糊之处，选 clarify。",
+            family: "clarify (v.阐明) | clarification (n.澄清) | independent (adj.独立的) | skilled (adj.熟练的)。",
+            details: "clarify points/issues 意为“澄清要点/问题”，是商务会议高频表达。clarification 为名词，放在 to 后面语法不成立。",
+            cn: "主管与团队安排了一次会议，以澄清项目建议书中几处模糊不清的要点。",
+            jp: "ディレクターは、プロジェクト提案书のいくつかの不明确な点を明确（clarify）にするために、チームとの会议を设定しました。"
         }
     },
     {
         id: 8,
-        target: "forum",
+        target: "independent",
         category: "中等",
-        stem: "Leading industry executives gathered at the annual business ________ to discuss market innovation strategies.",
-        options: ["forum", "round-trip", "calculate", "convert"],
-        correct: "forum",
+        stem: "An ________ auditing firm was hired to review the company's financial statements for accuracy.",
+        options: ["independent", "independently", "remark", "stain"],
+        correct: "independent",
         explanations: {
-            guide: "商务会议场所名词。gathered at the annual business ________ 表达高管们聚集在年度商业“论坛/研讨会”，选 forum。",
-            family: "forum (n.论坛) | round-trip (adj.往返的) | calculate (v.计算) | convert (v.转换)。",
-            details: "annual business forum（年度商业论坛）属于托业商务会议场景的标准表达。其他选项词性或语义均不符。",
-            cn: "领先的行业高管聚集在年度商业论坛上，讨论市场创新策略。",
-            jp: "業界のトップエグゼクティブが年次ビジネスフォーラム（forum）に集まり、市場の革新戦略について議論しました。"
+            guide: "不定冠词与名词前的形容词考点。An 提示后面需接以元音音素开头的形容词修饰 auditing firm（审计事务所），选 independent。",
+            family: "independent (adj.独立的) | independently (adv.独立地) | remark (n./v.评论) | stain (n.污渍)。",
+            details: "independent auditing firm（第三方/独立审计事务所）是托业财务审计场景专属高频复合名词短语。independently 为副词，不可修饰名词。",
+            cn: "公司雇用了一家独立的审计事务所，以审查财务报表的准确性。",
+            jp: "财务诸表の准确性を确认するために、独立した（independent）监査法人名が雇われました。"
         }
     },
     {
         id: 9,
-        target: "popularity",
+        target: "remark",
         category: "中等",
-        stem: "Due to its growing ________ among young consumers, the eco-friendly product line was expanded.",
-        options: ["popularity", "popular", "postal", "domestic"],
-        correct: "popularity",
+        stem: "During the opening ceremony, the chief executive officer made a brief ________ about the company's future goals.",
+        options: ["remark", "remarkable", "assess", "urgent"],
+        correct: "remark",
         explanations: {
-            guide: "物主代词与形容词后的名词。its growing ________ 结构中，形容词 growing 后面需要接名词，表达其不断增长的“受欢迎程度/普及度”，选 popularity。",
-            family: "popularity (n.流行/普及) | popular (adj.受欢迎的) | postal (adj.邮政的) | domestic (adj.国内的)。",
-            details: "growing popularity（日益增长的普及度）是市场营销与消费趋势分析的高频搭配。popular 是形容词，不能直接放在形容词 growing 之后作宾语。",
-            cn: "由于其在年轻消费者中日益普及，环保产品线得到了扩大。",
-            jp: "若年消費者の間で人気（popularity）が高まっているため、環境に優しい製品ラインナップが拡大されました。"
+            guide: "不定冠词与形容词后的名词考点。a brief 后面需要接单数可数名词作 made 的宾语，表达做出简短“致辞/评论”，选 remark。",
+            family: "remark (n.评论/话语) | remarkable (adj.非凡的) | assess (v.评估) | urgent (adj.紧急的)。",
+            details: "make a remark（发表评论/讲话）是固定搭配。remarkable 是形容词，不能直接作为动词 make 的宾语。",
+            cn: "开幕式期间，首席执行官就公司的未来目标发表了简短的致辞。",
+            jp: "开会式の中で、最高经营责任者は会社の将来の目标について短い短评（remark）を述べました。"
         }
     },
     {
         id: 10,
-        target: "convert",
+        target: "personalized",
         category: "中等",
-        stem: "The new software allows users to easily ________ PDF documents into editable spreadsheet files.",
-        options: ["convert", "conversion", "encounter", "remote"],
-        correct: "convert",
+        stem: "The hotel offers ________ recommendation services to help guests plan their sightseeing itineraries.",
+        options: ["personalized", "personalize", "weekday", "prohibit"],
+        correct: "personalized",
         explanations: {
-            guide: "动词不定式与固定搭配。allows users to easily ________ A into B 结构中，to 后面需要接动词原形，表达将文件格式“转换”为另一个格式，选 convert。",
-            family: "convert (v.转换) | conversion (n.转换) | encounter (v.遭遇) | remote (adj.远程的)。",
-            details: "convert A into B 是格式转换与外币兑换的标准搭配。conversion 是名词，不能跟在不定式符号 to 之后。",
-            cn: "新软件允许用户轻松地将 PDF 文档转换为可编辑的电子表格文件。",
-            jp: "新しいソフトウェアを使用すると、ユーザーはPDFドキュメントを編集可能なスプレッドシートファイルに簡単に変換（convert）できます。"
+            guide: "分词作形容词修饰名词。空格处需要形容词修饰 recommendation services（推荐服务），表达“个性化的/定制的”，选 personalized。",
+            family: "personalized (adj.个性化的) | personalize (v.个性化) | weekday (n.工作日) | prohibit (v.禁止)。",
+            details: "personalized service 是客户服务与旅游酒店行业的标配高频表达。personalize 是动词，不能直接作定语修饰名词服务。",
+            cn: "该酒店提供个性化的推荐服务，帮助客人规划他们的观光行程。",
+            jp: "ホテルは、ゲストが观光日程を计画するのを支援するために、パーソナライズされた（personalized）推荐サービスを提供しています。"
         }
     },
     {
         id: 11,
-        target: "calculate",
+        target: "prohibit",
         category: "中等",
-        stem: "A careful ________ of total shipping fees must be conducted before submitting the final procurement order.",
-        options: ["calculation", "calculate", "popularity", "videoconference"],
-        correct: "calculation",
+        stem: "The high budget requirement proved to be ________ expensive, leading management to cancel the expansion project.",
+        options: ["prohibitively", "prohibitive", "clarify", "skilled"],
+        correct: "prohibitively",
         explanations: {
-            guide: "冠词与形容词后的名词主语。A careful ________ of... 位于句首作主语，形容词 careful 后面必须接名词形式 calculation（计算/核算）。",
-            family: "calculation (n.计算) | calculate (v.计算) | popularity (n.流行) | videoconference (n.视频会议)。",
-            details: "A careful calculation of fees 意为对费用的仔细核算。calculate 是动词原形，不能作句子的主语中心词。",
-            cn: "在提交最终采购订单之前，必须对总运费进行仔细核算。",
-            jp: "最終的な調達注文を提出する前に、配送料総額の注意深い計算（calculation）を行わなければなりません。"
+            guide: "副词修饰形容词。空格位于系动词 to be 之后、形容词 expensive 之前，需要填入副词修饰 expensive，选 prohibitively。",
+            family: "prohibitively (adv.极高地/让人望而生畏地) | prohibitive (adj.过高的) | clarify (v.澄清) | skilled (adj.熟练的)。",
+            details: "prohibitively expensive 是托业极具标志性的高阶搭配，意为“价格过于高昂以至于让人放弃”。prohibitive 是形容词，无法修饰形容词 expensive。",
+            cn: "高昂的预算要求被证明是过于昂贵的，导致管理层取消了扩建项目。",
+            jp: "高い预算要件は高価すぎて禁止的（prohibitively）であると判明し、经营阵は扩张プロジェクトを中止しました。"
         }
     },
     {
         id: 12,
-        target: "domestic",
+        target: "assess",
         category: "中等",
-        stem: "While international exports dropped slightly, ________ sales increased significantly over the past year.",
-        options: ["domestic", "domestically", "round-trip", "postal"],
-        correct: "domestic",
+        stem: "After a thorough ________ of the market conditions, the board decided to postpone the product launch.",
+        options: ["assessment", "assess", "independent", "stain"],
+        correct: "assessment",
         explanations: {
-            guide: "形容词作前置定语与对比语境。与 international exports（国际出口）对比，________ sales 表达“国内”销售额，选 domestic。",
-            family: "domestic (adj.国内的) | domestically (adv.在国内) | round-trip (adj.往返的) | postal (adj.邮政的)。",
-            details: "domestic sales（国内销售额）属于商务业绩报告的典型核心表达。domestically 是副词，不能充当 sales 的前置定语。",
-            cn: "虽然国际出口微幅下降，但过去一年国内销售额增长显著。",
-            jp: "国際的な輸出がわずかに減少した一方で、国内（domestic）の売上は過去1年間で大幅に増加しました。"
+            guide: "介词与形容词后的名词考点。After a thorough 后面必须接单数名词充当介词宾语，表达对市场状况进行彻底“评估”，选 assessment。",
+            family: "assessment (n.评估) | assess (v.评估) | independent (adj.独立的) | stain (n.污渍)。",
+            details: "a thorough assessment 属于托业商业决策场景的高频搭配。assess 是动词，不能接在冠词+形容词结构之后。",
+            cn: "在对市场状况进行了彻底评估之后，董事会决定推迟新产品发布。",
+            jp: "市场状况の彻底的な评价（assessment）の後、取缔役会は制品の発売を延期することを决定しました。"
         }
     },
     {
         id: 13,
-        target: "convert",
+        target: "clarify",
         category: "困难",
-        stem: "The seamless ________ of the historical warehouse into modern loft office space was praised by urban planners.",
-        options: ["conversion", "convert", "encounter", "forum"],
-        correct: "conversion",
+        stem: "If you require further ________ concerning the terms of the lease agreement, please do not hesitate to contact our legal department.",
+        options: ["clarification", "clarify", "personalized", "weekday"],
+        correct: "clarification",
         explanations: {
-            guide: "冠词与形容词后的名词主语。The seamless ________ of... 结构中，形容词 seamless 后面需要接名词形式 conversion（改造/转换）。",
-            family: "conversion (n.改造/转换) | convert (v.转换) | encounter (v.遭遇) | forum (n.论坛)。",
-            details: "conversion of A into B 意为“把 A 改造/转换为 B”。convert 是动词，不能直接接受定冠词 the 和形容词 seamless 的修饰作主语。",
-            cn: "将历史仓库无缝改造为现代阁楼办公空间的做法得到了城市规划师的赞扬。",
-            jp: "歴史ある倉庫から現代的なロフトオフィススペースへのスムーズな転換（conversion）は、都市計画家から称賛されました。"
+            guide: "形容词后的名词与商务固定表达。further 为形容词，后接不可数名词，结合 require 可知表达“寻求进一步澄清”，选 clarification。",
+            family: "clarification (n.澄清/说明) | clarify (v.澄清) | personalized (adj.个性化的) | weekday (n.工作日)。",
+            details: "require further clarification 是托业商务信函与合同条款中的经典句型。clarify 是动词原形，不能作 require 的宾语。",
+            cn: "如果您对租赁协议的条款需要进一步澄清，请随时联系我们的法务部门。",
+            jp: "借家契约の条件に関して更なる明确化（clarification）が必要な場合は、犹豫なく当社の法务部门にご连络ください。"
         }
     },
     {
         id: 14,
-        target: "remote",
+        target: "independent",
         category: "困难",
-        stem: "Due to the high efficiency of digital collaboration tools, many IT engineers now work ________ from home.",
-        options: ["remotely", "remote", "postal", "round-trip"],
-        correct: "remotely",
+        stem: "The research division has been operating ________ from the main headquarters to foster innovative product development.",
+        options: ["independently", "independent", "urgently", "skilled"],
+        correct: "independently",
         explanations: {
-            guide: "副词修饰不及物动词。work ________ 结构中，需要副词修饰不及物动词 work，work remotely 意为“远程工作/异地办公”，选 remotely。",
-            family: "remotely (adv.远程地) | remote (adj.远程的) | postal (adj.邮政的) | round-trip (adj.往返的)。",
-            details: "work remotely 属于现代办公场景极高频的动副短语。remote 是形容词，不能直接充当修饰不及物动词 work 的状语。",
-            cn: "得益于数字协作工具的高效率，许多 IT 工程师现在在家远程办公。",
-            jp: "デジタルコラボレーションツールの高い効率性により、多くのITエンジニアが現在在宅でリモートで（remotely）働いています。"
+            guide: "副词修饰不及物动词。has been operating 是完整谓语结构（operating 为不及物动词），需要副词修饰其运作方式，选 independently。",
+            family: "independently (adv.独立地) | independent (adj.独立的) | urgently (adv.紧急地) | skilled (adj.熟练的)。",
+            details: "operate independently from... 意为“独立于……进行运营”。independent 是形容词，不能修饰动词 operate。",
+            cn: "研发部门一直在独立于总部的状态下运营，以促进创新产品的开发。",
+            jp: "研究部门は革新的な制品开発を促进するために、本社から独立して（independently）运营されています。"
         }
     },
     {
         id: 15,
-        target: "encounter",
+        target: "urgent",
         category: "困难",
-        stem: "During the initial testing phase of the newly developed software, engineers ________ multiple unexpected system bugs.",
-        options: ["encountered", "encounter", "videoconference", "calculate"],
-        correct: "encountered",
+        stem: "Because of the extreme ________ of the situation, the board of directors convened an extraordinary emergency meeting.",
+        options: ["urgency", "urgent", "prohibition", "remark"],
+        correct: "urgency",
         explanations: {
-            guide: "过去时态的谓语动词。时间状语表示“在初始测试阶段”，句子谓语需要使用一般过去时，表达工程师们“遭遇了/遇到了”多个 Bug，选 encountered。",
-            family: "encountered (v-ed/过去式) | encounter (v.原形) | videoconference (n.视频会议) | calculate (v.计算)。",
-            details: "encountered 表示过去发生的动作。encounter 是动词原形，在过去发生的测试阶段语境下主谓时态不匹配。",
-            cn: "在新开发软件的初始测试阶段，工程师们遇到了多个意外的系统漏洞。",
-            jp: "新しく開発されたソフトウェアの初期テスト段階で、エンジニアは複数の予期せぬシステムバグに遭遇しました（encountered）。"
+            guide: "介词短语中的名词考点。Because of the extreme 后面需要接名词，语义表示局势的极其“紧迫性”，选 urgency。",
+            family: "urgency (n.紧迫/紧急) | urgent (adj.紧急的) | prohibition (n.禁止) | remark (n.评论)。",
+            details: "the extreme urgency of the situation 意为“局势的极度紧迫”。urgent 是形容词，不能在冠词和形容词 extreme 后直接作名词使用。",
+            cn: "由于局势极其紧迫，董事会召开了一次特别紧急会议。",
+            jp: "事态の极度の紧急性（urgency）のため、取缔役会は特别紧急会议を招集しました。"
         }
     },
     {
         id: 16,
-        target: "postal",
+        target: "skilled",
         category: "困难",
-        stem: "The national ________ service announced an increase in international express mailing rates starting next month.",
-        options: ["postal", "postage", "domestic", "popularity"],
-        correct: "postal",
+        stem: "The IT technician solved the network problem so ________ that system operations resumed within ten minutes.",
+        options: ["skillfully", "skilled", "assessment", "clarify"],
+        correct: "skillfully",
         explanations: {
-            guide: "机构专有名词修饰。The national ________ service 表达“国家邮政服务/国家邮局”，选用形容词 postal 作前置定语。",
-            family: "postal (adj.邮政的) | postage (n.邮资) | domestic (adj.国内的) | popularity (n.流行)。",
-            details: "national postal service（国家邮政局/国家邮政服务）是固定词组。postage 是名词（邮资），不能充当 service 的修饰语。",
-            cn: "国家邮政局宣布从下个月开始提高国际快递邮寄费率。",
-            jp: "国家郵便（postal）サービスは、来月から国際速達郵便料金を引き上げると発表しました。"
+            guide: "so...that 结构中修饰动词的副词考点。so 修饰修饰动作 solved 的副词，表达解决问题解决得非常“熟练地/高明地”，选 skillfully。",
+            family: "skillfully (adv.熟练地) | skilled (adj.熟练的) | assessment (n.评估) | clarify (v.澄清)。",
+            details: "solve a problem skillfully 构成动词与副词的有效修饰。skilled 是形容词，在此处不能修饰动词 solved。",
+            cn: "IT 技术人员非常熟练地解决了网络问题，以至于系统操作在十分钟内就恢复了。",
+            jp: "IT技术者はネットワークの问题を非常に巧みに（skillfully）解决したため、システム运用は10分以内に再开されました。"
         }
     },
     {
         id: 17,
-        target: "popularity",
+        target: "remark",
         category: "困难",
-        stem: "The mobile application has gained widespread ________ throughout Asia as a result of an aggressive marketing campaign.",
-        options: ["popularity", "popularly", "forum", "remote"],
-        correct: "popularity",
+        stem: "The sales division achieved a ________ increase in quarterly revenue despite overall economic uncertainty.",
+        options: ["remarkable", "remarkably", "personalized", "weekday"],
+        correct: "remarkable",
         explanations: {
-            guide: "形容词后的名词宾语。gained widespread ________ 结构中，形容词 widespread 后面需要接名词，gain widespread popularity 意为“获得广泛的普及/欢迎”。",
-            family: "popularity (n.普及/知名度) | popularly (adv.广泛地) | forum (n.论坛) | remote (adj.远程的)。",
-            details: "gain widespread popularity（获得广泛欢迎/普及）属于商业阅读高阶动宾表达。popularly 是副词，不能作动词 gained 的宾语中心词。",
-            cn: "由于积极的营销活动，该移动应用程序在整个亚洲获得了广泛的普及。",
-            jp: "積極的なマーケティングキャンペーンの結果、そのモバイルアプリケーションはアジア全域で広範な人気（popularity）を獲得しました。"
+            guide: "形容词修饰名词。a 与 increase（增长，名词）之间需要形容词作定语，表示“显著的/非凡的”增长，选 remarkable。",
+            family: "remarkable (adj.显著的/非凡的) | remarkably (adv.显著地) | personalized (adj.个性化的) | weekday (n.工作日)。",
+            details: "a remarkable increase 意为“显著的增长”，是阅读与听力图表分析的高频形容词。remarkably 是副词，不能修饰名词 increase。",
+            cn: "尽管整体经济存在不确定性，销售部门的季度收入仍取得了显著的增长。",
+            jp: "全体的な经济の不透明感にもかかわらず、营业部门は四半期売上高で著しい（remarkable）増加を达成しました。"
         }
     },
     {
         id: 18,
-        target: "videoconference",
+        target: "personalized",
         category: "困难",
-        stem: "Conducting international negotiations via ________ has saved the multinational corporation millions in annual travel budgets.",
-        options: ["videoconferencing", "videoconference", "round-trip", "convert"],
-        correct: "videoconferencing",
+        stem: "Through advanced analytics, the platform allows marketers to ________ promotional offers based on customer browsing history.",
+        options: ["personalize", "personalized", "prohibit", "urgent"],
+        correct: "personalize",
         explanations: {
-            guide: "介词后的动名词/抽象名词。via ________ 结构中，表达“通过视频会议（这一方式/过程）”，选用抽象动名词形式 videoconferencing。",
-            family: "videoconferencing (n.视频会议技术/过程) | videoconference (n.单次视频会议) | round-trip (adj.往返的) | convert (v.转换)。",
-            details: "via videoconferencing 指“通过视频会议交流（这一抽象通信方式）”，作介词 via 的宾语。videoconference 指具体的某一场会议，缺乏冠词（a/the）时语法不完备。",
-            cn: "通过视频会议方式进行国际谈判，为这家跨国公司每年节省了数百万美元的差旅预算。",
-            jp: "テレビ会議（videoconferencing）を通じて国際交渉を行うことで、その多国籍企業は年間の出張予算を数百万ドル節約しました。"
+            guide: "allow sb to do sth 结构中的动词原形。to 后面需要接动词原形，表达“个性化定制”促销优惠，选 personalize。",
+            family: "personalize (v.个性化) | personalized (adj.个性化的) | prohibit (v.禁止) | urgent (adj.紧急的)。",
+            details: "allow marketers to personalize... 意为“允许营销人员个性化定制……”。personalized 是形容词/过去分词，不符合不定式结构。",
+            cn: "通过高级分析，该平台允许营销人员根据客户的浏览历史记录来定制促销优惠。",
+            jp: "高度な分析を通じて、プラットフォームはマーケターが顾客の阅覧能力の履历に基づいてプロモーションオファーをカスタマイズ（personalize）することを可能にします。"
         }
     }
 ];
