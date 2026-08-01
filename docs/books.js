@@ -59,6 +59,35 @@ const my3DBooksDataset = [
         lockBadgeStyle: "bg-neutral-800/20 text-neutral-800 border border-neutral-800/30",
         cardTheme: "border-neutral-800/30 hover:border-neutral-800 hover:bg-neutral-800/10",
         dotColor: "bg-neutral-800 shadow-neutral-800/50"
+    },
+    {
+        bookId: "xueda-cocreate",
+        title: "学搭共创",
+        typeTag: "学习社区",
+        author: "FocusLink",
+        slogan: "连接学习，共创成长。",
+        sloganColor: "text-cyan-200",
+
+        // 封面颜色
+        coverBg: "#0F766E",      // 青绿色
+        coverBorder: "#14B8A6",
+        backBg: "#115E59",
+        spineBg: "#134E4A",
+
+        initLeft: "20%",
+        initTop: "22%",
+
+        // Front UI
+        scopeCode: "COCREATE",
+
+        lockBadgeStyle:
+            "bg-cyan-500/20 text-cyan-300 border border-cyan-400/30",
+
+        cardTheme:
+            "border-cyan-400/30 hover:border-cyan-300 hover:bg-cyan-500/10",
+
+        dotColor:
+            "bg-cyan-400 shadow-cyan-400/50"
     }
 ];
 

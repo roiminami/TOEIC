@@ -161,5 +161,16 @@ const toeicModulesConfig = [
     { id: 113, title: "990-补①：1 - 100 词", unit: "g-990-supp1-1-100", book: "gold", section: "score990", type: "supplement1" },
     { id: 114, title: "990-补②：1 - 100 词", unit: "g-990-supp2-1-100", book: "gold", section: "score990", type: "supplement2" },
     { id: 115, title: "990-补③：1 - 100 词", unit: "g-990-supp3-1-100", book: "gold", section: "score990", type: "supplement3" },
-    { id: 116, title: "990-补④：1 - 100 词", unit: "g-990-supp4-1-100", book: "gold", section: "score990", type: "supplement4" }
+    { id: 116, title: "990-补④：1 - 100 词", unit: "g-990-supp4-1-100", book: "gold", section: "score990", type: "supplement4" },
+
+
+
+
+    { id: 501, title: "第 1 - 10 词", unit: "x1-10", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 502, title: "第 11 - 20 词", unit: "x11-20", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 503, title: "第 21 - 30 词", unit: "x21-30", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 504, title: "第 31 - 40 词", unit: "x31-40", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 505, title: "第 41 - 50 词", unit: "x41-50", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 506, title: "第 51 - 60 词", unit: "x51-60", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 507, title: "第 61 - 70 词", unit: "x61-70", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
 ];
