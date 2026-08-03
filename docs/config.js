@@ -99,7 +99,7 @@ const toeicModulesConfig = [
     { id: 61,  title: "第 601 - 610 词",  unit: "g601-610",    book: "gold", section: "score730", type: "standard" },
     { id: 62,  title: "第 611 - 620 词",  unit: "g611-620",    book: "gold", section: "score730", type: "standard" },
     { id: 63,  title: "第 621 - 630 词",  unit: "g621-630",    book: "gold", section: "score730", type: "standard" },
-    { id: 64,  title: "第 611 - 620 词",  unit: "g611-620",    book: "gold", section: "score730", type: "standard" }, // 注：原稿中此处单元名重复，保留原貌
+    { id: 64,  title: "第 631 - 640 词",  unit: "g631-640",    book: "gold", section: "score730", type: "standard" }, 
     { id: 65,  title: "第 641 - 650 词",  unit: "g641-650",    book: "gold", section: "score730", type: "standard" },
     { id: 66,  title: "第 651 - 660 词",  unit: "g651-660",    book: "gold", section: "score730", type: "standard" },
     { id: 67,  title: "第 661 - 670 词",  unit: "g661-670",    book: "gold", section: "score730", type: "standard" },
