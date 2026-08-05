@@ -108,10 +108,10 @@ const toeicModulesConfig = [
     { id: 70,  title: "第 691 - 700 词",  unit: "g691-700",    book: "gold", section: "score730", type: "standard" },
     
     // 🧩 730分专属支线
-    { id: 105, title: "730-补①：1 - 100 词", unit: "g-730-supp1-1-100", book: "gold", section: "score730", type: "supplement1" },
-    { id: 106, title: "730-补②：1 - 100 词", unit: "g-730-supp2-1-100", book: "gold", section: "score730", type: "supplement2" },
-    { id: 107, title: "730-补③：1 - 100 词", unit: "g-730-supp3-1-100", book: "gold", section: "score730", type: "supplement3" },
-    { id: 108, title: "730-补④：1 - 100 词", unit: "g-730-supp4-1-100", book: "gold", section: "score730", type: "supplement4" },
+    { id: 108, title: "730-补④：似た前置詞と接続詞　1 - 3 词", unit: "g-730-supp4-1-14", book: "gold", section: "score730", type: "supplement4" },
+    { id: 108, title: "730-补④：11 - 20 词", unit: "g-730-supp4-11-20", book: "gold", section: "score730", type: "supplement4" },
+    { id: 108, title: "730-补④：21 - 30 词", unit: "g-730-supp4-21-30", book: "gold", section: "score730", type: "supplement4" },
+
 
     // ========================================================================
     // ⚡ SCORE 860 顶峰突击段（主线 701 - 900 词）
