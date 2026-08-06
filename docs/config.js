@@ -51,21 +51,21 @@ const toeicModulesConfig = [
     { id: 101, title: "600-补①：1 - 10 词", unit: "g-600-supp1-1-10", book: "gold", section: "score600", type: "supplement1" },
     { id: 102, title: "600-补①：11 - 20 词", unit: "g-600-supp1-11-20", book: "gold", section: "score600", type: "supplement1" },
     { id: 103, title: "600-补①：21 - 30 词 和 1 - 6词", unit: "g-600-supp1-21-24-1-6", book: "gold", section: "score600", type: "supplement1" },
-    { id: 104, title: "600-补②：1 - 10 词", unit: "g-600-supp2-1-10", book: "gold", section: "score600", type: "supplement1" },
-    { id: 105, title: "600-补②：11 - 20 词", unit: "g-600-supp2-11-20", book: "gold", section: "score600", type: "supplement1" },
-    { id: 106, title: "600-补②：21 - 30 词", unit: "g-600-supp2-21-30", book: "gold", section: "score600", type: "supplement1" },
-    { id: 107, title: "600-补②：31 - 40 词", unit: "g-600-supp2-31-40", book: "gold", section: "score600", type: "supplement1" },
-    { id: 108, title: "600-补②：41 - 50 词", unit: "g-600-supp2-41-50", book: "gold", section: "score600", type: "supplement1" },
-    { id: 109, title: "600-补②：51 - 60 词", unit: "g-600-supp2-51-60", book: "gold", section: "score600", type: "supplement1" },
-    { id: 110, title: "600-补②：61 - 70 词", unit: "g-600-supp2-61-70", book: "gold", section: "score600", type: "supplement1" },
-    { id: 111, title: "600-补②：71 - 80 词", unit: "g-600-supp2-71-80", book: "gold", section: "score600", type: "supplement1" },
-    { id: 112, title: "600-补②：81 - 90 词", unit: "g-600-supp2-81-90", book: "gold", section: "score600", type: "supplement1" },
-    { id: 113, title: "600-补②：91 - 100 词", unit: "g-600-supp2-91-100", book: "gold", section: "score600", type: "supplement1" },
-    { id: 114, title: "600-补②：101 - 110 词", unit: "g-600-supp2-101-110", book: "gold", section: "score600", type: "supplement1" },
-    { id: 115, title: "600-补②：111 - 120 词", unit: "g-600-supp2-111-120", book: "gold", section: "score600", type: "supplement1" },
-    { id: 116, title: "600-补②：121 - 130 词", unit: "g-600-supp2-121-130", book: "gold", section: "score600", type: "supplement1" },
-    { id: 117, title: "600-补②：131 - 140 词", unit: "g-600-supp2-131-140", book: "gold", section: "score600", type: "supplement1" },
-    { id: 118, title: "600-补②：141 - 150 词", unit: "g-600-supp2-141-150", book: "gold", section: "score600", type: "supplement1" },
+    { id: 104, title: "600-补②：1 - 10 词", unit: "g-600-supp2-1-10", book: "gold", section: "score600", type: "supplement2" },
+    { id: 105, title: "600-补②：11 - 20 词", unit: "g-600-supp2-11-20", book: "gold", section: "score600", type: "supplement2" },
+    { id: 106, title: "600-补②：21 - 30 词", unit: "g-600-supp2-21-30", book: "gold", section: "score600", type: "supplement2" },
+    { id: 107, title: "600-补②：31 - 40 词", unit: "g-600-supp2-31-40", book: "gold", section: "score600", type: "supplement2" },
+    { id: 108, title: "600-补②：41 - 50 词", unit: "g-600-supp2-41-50", book: "gold", section: "score600", type: "supplement2" },
+    { id: 109, title: "600-补②：51 - 60 词", unit: "g-600-supp2-51-60", book: "gold", section: "score600", type: "supplement2" },
+    { id: 110, title: "600-补②：61 - 70 词", unit: "g-600-supp2-61-70", book: "gold", section: "score600", type: "supplement2" },
+    { id: 111, title: "600-补②：71 - 80 词", unit: "g-600-supp2-71-80", book: "gold", section: "score600", type: "supplement2" },
+    { id: 112, title: "600-补②：81 - 90 词", unit: "g-600-supp2-81-90", book: "gold", section: "score600", type: "supplement2" },
+    { id: 113, title: "600-补②：91 - 100 词", unit: "g-600-supp2-91-100", book: "gold", section: "score600", type: "supplement2" },
+    { id: 114, title: "600-补②：101 - 110 词", unit: "g-600-supp2-101-110", book: "gold", section: "score600", type: "supplement2" },
+    { id: 115, title: "600-补②：111 - 120 词", unit: "g-600-supp2-111-120", book: "gold", section: "score600", type: "supplement2" },
+    { id: 116, title: "600-补②：121 - 130 词", unit: "g-600-supp2-121-130", book: "gold", section: "score600", type: "supplement2" },
+    { id: 117, title: "600-补②：131 - 140 词", unit: "g-600-supp2-131-140", book: "gold", section: "score600", type: "supplement2" },
+    { id: 118, title: "600-补②：141 - 150 词", unit: "g-600-supp2-141-150", book: "gold", section: "score600", type: "supplement2" },
 
 
 
@@ -108,9 +108,9 @@ const toeicModulesConfig = [
     { id: 70,  title: "第 691 - 700 词",  unit: "g691-700",    book: "gold", section: "score730", type: "standard" },
     
     // 🧩 730分专属支线
-    { id: 108, title: "730-补④：似た前置詞と接続詞　1 - 3 词", unit: "g-730-supp4-1-14", book: "gold", section: "score730", type: "supplement4" },
-    { id: 108, title: "730-补④：11 - 20 词", unit: "g-730-supp4-11-20", book: "gold", section: "score730", type: "supplement4" },
-    { id: 108, title: "730-补④：21 - 30 词", unit: "g-730-supp4-21-30", book: "gold", section: "score730", type: "supplement4" },
+    { id: 119, title: "730-补④：似た前置詞と接続詞　1 - 3 词", unit: "g-730-supp4-1-14", book: "gold", section: "score730", type: "supplement4" },
+    { id: 120, title: "730-补④：前置詞と接続詞両方と前置詞　1 - 8 词", unit: "g-730-supp4-15-27", book: "gold", section: "score730", type: "supplement4" },
+
 
 
     // ========================================================================
