@@ -111,7 +111,7 @@ const toeicModulesConfig = [
     { id: 119, title: "730-补④：似た前置詞と接続詞　1 - 3 词", unit: "g-730-supp4-1-14", book: "gold", section: "score730", type: "supplement4" },
     { id: 120, title: "730-补④：前置詞と接続詞両方と前置詞　1 - 8 词", unit: "g-730-supp4-15-27", book: "gold", section: "score730", type: "supplement4" },
     { id: 121, title: "730-补④：押さえておきたい主な接続詞　1 - 11 词", unit: "g-730-supp4-28-39", book: "gold", section: "score730", type: "supplement4" },
-    { id: 121, title: "730-补④：押さえておきたい主な接続詞　12 - 22 词", unit: "g-730-supp4-40-50", book: "gold", section: "score730", type: "supplement4" },
+    { id: 122, title: "730-补④：押さえておきたい主な接続詞　12 - 22 词", unit: "g-730-supp4-40-50", book: "gold", section: "score730", type: "supplement4" },
 
 
 
