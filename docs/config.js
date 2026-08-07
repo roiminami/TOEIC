@@ -110,6 +110,8 @@ const toeicModulesConfig = [
     // 🧩 730分专属支线
     { id: 119, title: "730-补④：似た前置詞と接続詞　1 - 3 词", unit: "g-730-supp4-1-14", book: "gold", section: "score730", type: "supplement4" },
     { id: 120, title: "730-补④：前置詞と接続詞両方と前置詞　1 - 8 词", unit: "g-730-supp4-15-27", book: "gold", section: "score730", type: "supplement4" },
+    { id: 121, title: "730-补④：押さえておきたい主な接続詞　1 - 11 词", unit: "g-730-supp4-28-39", book: "gold", section: "score730", type: "supplement4" },
+
 
 
 
@@ -172,5 +174,5 @@ const toeicModulesConfig = [
     { id: 504, title: "第 31 - 40 词", unit: "x31-40", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
     { id: 505, title: "第 41 - 50 词", unit: "x41-50", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
     { id: 506, title: "第 51 - 60 词", unit: "x51-60", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
-    { id: 507, title: "第 61 - 70 词", unit: "x61-70", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    
 ];

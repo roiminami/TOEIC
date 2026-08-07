@@ -1,108 +1,108 @@
 // ============================================================================
-// [DATABASE] SOUTHERN GHOST TOEIC CORE DATA BUNDLE (datag91-100 Expansion)
+// [DATABASE] SOUTHERN GHOST TOEIC CORE DATA BUNDLE (datag111-120 Expansion)
 // ============================================================================
 
 // 1. 核心考点词表 (Core Target Vocabulary)
 const vocabBank = [
     {
-        word: "choreographer",
+        word: "urban planning",
         pos: "名",
-        ipa: "/ˌkɔːriˈɑːɡrəfər/",
-        cn: "编舞家，舞蹈指导",
-        jp: "振付師、コレオグラファー",
-        family: "choreograph / choreography / choreographic",
-        tips: "演艺娱乐、大型活动策划及公司周年庆演出高频名词。由动词 choreograph（编舞）衍生。常见短语：famed choreographer（著名编舞家）、hire a choreographer（聘请编舞指导）。",
-        desc: "She is a famous choreographer."
+        ipa: "/ˈɜːrbən ˈplænɪŋ/",
+        cn: "城市规划",
+        jp: "都市計画",
+        family: "urban / planner",
+        tips: "市政工程、土地开发与公共建设高频复合名词。指对城市土地利用、交通系统及公共设施的整体设计。核心搭配：urban planning department（城市规划部门）、degree in urban planning（城市规划学位）。",
+        desc: "She studied urban planning."
     },
     {
-        word: "stapler",
+        word: "contractor",
         pos: "名",
-        ipa: "/ˈsteɪplər/",
-        cn: "订书机",
-        jp: "ホチキス、ステープラー",
-        family: "staple / staples",
-        tips: "办公用品（Office Supplies）采购与听力 Part 1（图片题）高频词。注意 staple 作名词时指“订书针”或“日常必需品”，作动词指“用订书机钉住”。",
-        desc: "The stapler is on the desk."
+        ipa: "/ˈkɑːntræktər/",
+        cn: "承包商，承包人",
+        jp: "請負業者、建設業者",
+        family: "contract / contractual",
+        tips: "建筑工程、项目外包及设施维修核心人称名词。由动词/名词 contract 派生。核心搭配：independent contractor（独立承包商）、hire a contractor（聘请承包商）、general contractor（总承包商）。",
+        desc: "The contractor finished the job."
     },
     {
-        word: "boast",
-        pos: "動/名",
-        ipa: "/boʊst/",
-        cn: "拥有（引以为傲的特色）；吹嘘，自夸",
-        jp: "（誇るべきものを）所有する、自慢する",
-        family: "boastful / boastfully",
-        tips: "酒店宣传、园区介绍及企业实力展示极高频动词。托业中常考及物动词用法“拥有（极好的设施/景观）”，如 boast modern amenities（拥有现代便利设施）、boast state-of-the-art facilities（拥有最先进的设施）。",
-        desc: "The hotel boasts a great view."
-    },
-    {
-        word: "relocate",
-        pos: "動",
-        ipa: "/ˌriːˈloʊkeɪt/",
-        cn: "迁移，搬迁，重新安置",
-        jp: "移転する、引っ越す、配置転換する",
-        family: "relocation / relocated",
-        tips: "公司搬迁、部门调整与员工调岗高频动词。核心搭配：relocate to a new city（搬迁至新城市）、relocation package（搬迁福利包）。",
-        desc: "They decided to relocate the office."
-    },
-    {
-        word: "a compelling story",
+        word: "paleontologist",
         pos: "名",
-        ipa: "/ə kəmˈpelɪŋ ˈstɔːri/",
-        cn: "一个引人入胜的故事，一个极具说服力的内容",
-        jp: "説得力のあるストーリー、惹きつけられる話",
-        family: "compel / compelling / compellingly",
-        tips: "品牌营销、广告文案及公共关系高频短语。compelling 表示“极具说服力的/引人入胜的”。常用搭配：tell a compelling story（讲述一个引人入胜的故事）、compelling argument（令人信服的论据）。",
-        desc: "He told a compelling story."
+        ipa: "/ˌpeɪliənˈtɑːlədʒɪst/",
+        cn: "古生物学家",
+        jp: "古生物学者",
+        family: "paleontology / paleontological",
+        tips: "科普文章、博物馆展览及学术发现高频人称名词。指研究古生物化石的专家。核心搭配：lead paleontologist（首席古生物学家）、a team of paleontologists（古生物专家团队）。",
+        desc: "The paleontologist found a fossil."
     },
     {
-        word: "hazardous",
+        word: "bricks",
+        pos: "名",
+        ipa: "/brɪks/",
+        cn: "砖，砖块",
+        jp: "レンガ",
+        family: "brick / brickwork",
+        tips: "建筑材料与听力 Part 1（图片题）高频名词。单数形式为 brick。常见搭配：red bricks（红砖）、stacking bricks（堆放砖头）、brick wall（砖墙）。",
+        desc: "The house is built of bricks."
+    },
+    {
+        word: "obstructions",
+        pos: "名",
+        ipa: "/əbˈstrʌkʃnz/",
+        cn: "障碍物，阻碍，堵塞",
+        jp: "障碍物、妨害、閉塞",
+        family: "obstruct / obstructive",
+        tips: "道路安全、航道通告及设施维保高频复数名词。指阻碍交通或视线的物体。核心搭配：remove obstructions（清除障碍物）、road obstructions（道路障碍物）。来动词 obstruct。",
+        desc: "Clear any obstructions from the aisle."
+    },
+    {
+        word: "consecutive",
         pos: "形",
-        ipa: "/ˈhæzərdəs/",
-        cn: "危险的，有害的",
-        jp: "危険な、有害な",
-        family: "hazard / hazardously",
-        tips: "职业安全、工场合规与危险废弃物处理高频形容词。核心搭配：hazardous waste（危险废弃物）、hazardous chemical（危险化学品）、hazardous work conditions（危险的工作环境）。",
-        desc: "Wear gloves for hazardous materials."
+        ipa: "/kənˈsekjətɪv/",
+        cn: "连续的，连贯的",
+        jp: "連続した、引き続いての",
+        family: "consecutively / consecutiveness",
+        tips: "财报分析、销售业绩及连胜纪录高频形容词。强调时间或顺序上的毫无间断。核心搭配：consecutive quarters（连续几个季度）、for three consecutive years（连续三年）。",
+        desc: "Sales grew for five consecutive months."
     },
     {
-        word: "evacuation",
+        word: "preliminary",
+        pos: "形/名",
+        ipa: "/prɪˈlɪmɪneri/",
+        cn: "初步的，预备的；预备动作",
+        jp: "予備の、初歩の；準備",
+        family: "preliminaries / preliminarily",
+        tips: "项目规划、财务评估及初步调查极高频形容词。核心搭配：preliminary report（初步报告）、preliminary findings（初步调查结果）、preliminary budget（初步预算）。",
+        desc: "Here is the preliminary report."
+    },
+    {
+        word: "methodical",
+        pos: "形",
+        ipa: "/məˈθɑːdɪkl/",
+        cn: "有条理的，井井有条的，有系统的",
+        jp: "整然とした、体系的な、幾帳面な",
+        family: "method / methodically",
+        tips: "工作态度、质量把控及研究方法高频形容词。强调做事有方法、按部就班。核心搭配：methodical approach（有条不紊的方法）、methodical worker（做事有条理的员工）。",
+        desc: "He took a methodical approach."
+    },
+    {
+        word: "closure",
         pos: "名",
-        ipa: "/ɪˌvækjuˈeɪʃn/",
-        cn: "撤离，疏散",
-        jp: "避難、立ち退き",
-        family: "evacuate / evacuee",
-        tips: "办公室安全演练与紧急预案高频名词。来自动词 evacuate（撤离/疏散）。常见表达：emergency evacuation drill（紧急疏散演练）、evacuation route（疏散路线）。",
-        desc: "Follow the evacuation plan."
+        ipa: "/ˈkloʊʒər/",
+        cn: "关闭，停业，封闭",
+        jp: "閉鎖、休止、通行止め",
+        family: "close / closed",
+        tips: "道路封闭、工厂停业及维修通知高频名词。核心搭配：road closure（道路封闭）、temporary closure（临时关闭）、factory closure（工厂关停）。",
+        desc: "Expect delays due to road closure."
     },
     {
-        word: "dispute",
-        pos: "名/動",
-        ipa: "/dɪˈspjuːt/",
-        cn: "争端，纠纷；对……提出异议",
-        jp: "紛争、議論；〜に異議を唱える",
-        family: "disputed / disputable / disputant",
-        tips: "商业合同、劳资谈判及账单争议高频词。核心搭配：resolve a dispute（解决纠纷）、labor dispute（劳资纠纷）、dispute a charge（对扣费提出异议）。",
-        desc: "They resolved the dispute quickly."
-    },
-    {
-        word: "diligently",
-        pos: "副",
-        ipa: "/ˈdɪlɪdʒəntli/",
-        cn: "勤奋地，兢兢业业地",
-        jp: "勤勉に、入念に、真面目に",
-        family: "diligence / diligent",
-        tips: "员工绩效评估与推荐信高频副词。修饰动词 work、study、prepare。常见搭配：work diligently（勤奋工作）、diligently prepare for...（兢兢业业地筹备……）。",
-        desc: "She works diligently every day."
-    },
-    {
-        word: "sought",
-        pos: "動",
-        ipa: "/sɔːt/",
-        cn: "寻找，寻求，争取（seek的过去式/过去分词）",
-        jp: "探した、求めた（seekの過去・過去分詞形）",
-        family: "seek / seeking / sought-after",
-        tips: "商务咨询、法律建议与寻求合作高频动词形式。核心搭配：sought legal advice（寻求法律建议）、highly sought-after position（炙手可热的职位）。",
-        desc: "He sought approval from management."
+        word: "complexity",
+        pos: "名",
+        ipa: "/kəmˈpleksəti/",
+        cn: "复杂性，错综复杂",
+        jp: "複雑さ、複雑性",
+        family: "complex / complexities",
+        tips: "项目管理、软件系统及法律条文高频名词。来形容词 complex。核心搭配：complexity of the project（项目的复杂性）、add to the complexity（增加了复杂性）。",
+        desc: "We must reduce system complexity."
     }
 ];
 
@@ -110,272 +110,272 @@ const vocabBank = [
 const questionsDatabase = [
     {
         id: 1,
-        target: "stapler",
+        target: "urban planning",
         category: "简单",
-        stem: "Please make sure to put the office ________ back in the supply closet after binding the documents.",
-        options: ["stapler", "evacuation", "dispute", "choreographer"],
-        correct: "stapler",
+        stem: "The municipal government hired a specialist in ________ to redesign the downtown transportation network.",
+        options: ["urban planning", "contractor", "paleontologist", "obstructions"],
+        correct: "urban planning",
         explanations: {
-            guide: "名词词义辨析。由名词 office 修饰，结合后文“在装订完文件之后”，此处应填入表示“订书机”的名词 stapler。",
-            family: "stapler (n.订书机) | evacuation (n.疏散) | dispute (n.纠纷) | choreographer (n.编舞家)。",
-            details: "binding the documents（装订文件）是办公场景中与 stapler 紧密挂钩的动作。",
-            cn: "装订完文件后，请务必将办公订书机放回供应柜中。",
-            jp: "書類をホチキスで留めた後は、オフィスのホチキス（stapler）を必ず備品戸棚に戻してください。"
+            guide: "名词短语辨析。作为介词 in 的宾语，结合后文“重新设计市中心交通网络”，选 urban planning（城市规划）。",
+            family: "urban planning (n.城市规划) | contractor (n.承包商) | paleontologist (n.古生物学家) | obstructions (n.障碍物)。",
+            details: "specialist in urban planning 意为“城市规划专家”，属于市政建设与公共管理高频短语。",
+            cn: "市政当局聘请了一位城市规划专家来重新设计市中心交通网络。",
+            jp: "地方政府は都心の交通ネットワークを再設計するため、都市計画（urban planning）の専門家を雇いました。"
         }
     },
     {
         id: 2,
-        target: "relocate",
+        target: "closure",
         category: "简单",
-        stem: "Due to the expansion, the company decided to ________ its head office to a larger downtown building.",
-        options: ["relocate", "boast", "dispute", "evacuation"],
-        correct: "relocate",
+        stem: "Drivers should expect significant delays today due to the temporary ________ of Main Street for repairs.",
+        options: ["closure", "complexity", "preliminary", "consecutive"],
+        correct: "closure",
         explanations: {
-            guide: "动词词义辨析。位于不定式符号 to 之后，结合句意“由于扩张，公司决定将总部……至市中心更大的大楼”，选 relocate（搬迁）。",
-            family: "relocate (v.搬迁) | boast (v.拥有/吹嘘) | dispute (n./v.争议) | evacuation (n.疏散)。",
-            details: "relocate its head office to... 意为“将总部搬迁至……”，是企业场地变更的标准表达。",
-            cn: "由于业务扩张，公司决定将总部搬迁至市中心一座更大的大楼。",
-            jp: "事業拡大に伴い、同社は本社を都心のより大きなビルに移転する（relocate）ことを決定しました。"
+            guide: "名词词义辨析。由介词 due to（由于）和形容词 temporary（临时的）引导，结合道路施工和车辆延误的语境，选 closure（封闭）。",
+            family: "closure (n.封闭/关闭) | complexity (n.复杂性) | preliminary (adj.初步的) | consecutive (adj.连续的)。",
+            details: "temporary closure of a street 意为“街道的临时封闭”，属于交通告示与公共广播的标准用语。",
+            cn: "由于主街因维修临时封闭，司机们今天预计会出现严重延误。",
+            jp: "修理によるメインストリートの一時通行止め（closure）のため、ドライバーは本日大幅な遅延を予想してください。"
         }
     },
     {
         id: 3,
-        target: "hazardous",
+        target: "contractor",
         category: "简单",
-        stem: "Workers must wear protective masks when handling ________ chemicals in the processing plant.",
-        options: ["hazardous", "diligently", "sought", "compelling"],
-        correct: "hazardous",
+        stem: "The building owner selected an independent ________ to oversee the renovation of the lobby.",
+        options: ["contractor", "paleontologist", "urban planning", "bricks"],
+        correct: "contractor",
         explanations: {
-            guide: "形容词词义辨析。修饰名词 chemicals（化学品），结合前半句“工人必须佩戴防护面罩”，此处应选择表示“危险的/有害的”形容词 hazardous。",
-            family: "hazardous (adj.危险的) | diligently (adv.勤奋地) | sought (v.寻求) | compelling (adj.引人入胜的)。",
-            details: "hazardous chemicals 意为“危险化学品”，属于工厂安全生产的标准短语。",
-            cn: "工人在加工厂处理危险化学品时必须佩戴防护面罩。",
-            jp: "作業員は処理工場で有害な（hazardous）化学物質を取り扱う際、防護マスクを着用しなければなりません。"
+            guide: "名词词义辨析。作 selected 的宾语，由形容词 independent 修饰，结合后文“监督大堂翻修工程”，选指代建筑施工方的 contractor（承包商）。",
+            family: "contractor (n.承包商) | paleontologist (n.古生物学家) | urban planning (n.城市规划) | bricks (n.砖块)。",
+            details: "independent contractor（独立承包商）属于工程外包与建筑施工场景的高频人称名词。",
+            cn: "业主选择了一家独立的承包商来监督大堂的翻修工程。",
+            jp: "ビルの所有者は、ロビーの改修工事を監督するために独立した請負業者（contractor）を選定しました。"
         }
     },
     {
         id: 4,
-        target: "evacuation",
+        target: "preliminary",
         category: "简单",
-        stem: "All employees participated in the annual safety fire ________ drill yesterday morning.",
-        options: ["evacuation", "stapler", "choreographer", "relocate"],
-        correct: "evacuation",
+        stem: "The finance committee released its ________ budget proposal for public review before the final vote.",
+        options: ["preliminary", "methodical", "consecutive", "obstructions"],
+        correct: "preliminary",
         explanations: {
-            guide: "复合名词修饰与词义辨析。空格与 fire 和 drill 组合，表达“消防疏散演练”，选 evacuation。",
-            family: "evacuation (n.疏散) | stapler (n.订书机) | choreographer (n.编舞家) | relocate (v.搬迁)。",
-            details: "fire evacuation drill 是行政安全管理中的固定短语，意为“消防疏散演练”。",
-            cn: "昨天上午，所有员工都参加了一年一度的消防疏散演练。",
-            jp: "昨日の午前、全従業員が年に一度の火災避難（evacuation）訓練に参加しました。"
+            guide: "形容词词义辨析。修饰预算提案（budget proposal），结合后半句“在最终投票前供公众审议”，选 preliminary（初步的/预备的）。",
+            family: "preliminary (adj.初步的) | methodical (adj.有条理的) | consecutive (adj.连续的) | obstructions (n.障碍物)。",
+            details: "preliminary budget proposal 意为“初步预算提案”，属于财务审查与行政公示的标准搭配。",
+            cn: "财务委员会在最终投票前公布了其初步预算提案，供公众审议。",
+            jp: "財務委員会は、最終投票の前に一般公開のための予備（preliminary）予算案を発表しました。"
         }
     },
     {
         id: 5,
-        target: "diligently",
+        target: "obstructions",
         category: "简单",
-        stem: "The research team worked ________ to finish the quarterly market report before the deadline.",
-        options: ["diligently", "hazardous", "sought", "boast"],
-        correct: "diligently",
+        stem: "Safety inspectors requested the immediate removal of all ________ blocking the emergency exit doors.",
+        options: ["obstructions", "bricks", "complexity", "urban planning"],
+        correct: "obstructions",
         explanations: {
-            guide: "副词修饰不及物动词。空格位于动词 worked 之后，作状语修饰工作态度，表达“勤奋地/兢兢业业地”，选副词 diligently。",
-            family: "diligently (adv.勤奋地) | hazardous (adj.危险的) | sought (v.寻求) | boast (v.拥有/吹嘘)。",
-            details: "work diligently 意为“勤奋地工作/兢兢业业地工作”，常出现在员工考核与团队评价中。",
-            cn: "研究团队兢兢业业地工作，以便在截止日期前完成季度市场报告。",
-            jp: "研究チームは、締め切りまでに四半期市場報告書を完成させるため、勤勉に（diligently）働きました。"
+            guide: "名词词义辨析。作 removal of 的宾语，结合后文“阻挡紧急出口通道”，选 obstructions（障碍物）。",
+            family: "obstructions (n.障碍物) | bricks (n.砖块) | complexity (n.复杂性) | urban planning (n.城市规划)。",
+            details: "remove obstructions 意为“清除障碍物”，是消防安全演习与合规检查中的核心短语。",
+            cn: "安全检查员要求立即清除阻挡紧急出口门的所有障碍物。",
+            jp: "安全検査官は、非常出口のドアを塞いでいるすべての障害物（obstructions）を直ちに撤去するよう要求しました。"
         }
     },
     {
         id: 6,
-        target: "a compelling story",
+        target: "bricks",
         category: "简单",
-        stem: "The brand's new advertisement crafted ________ that deeply resonated with prospective customers.",
-        options: ["a compelling story", "evacuation", "stapler", "dispute"],
-        correct: "a compelling story",
+        stem: "Construction workers spent the afternoon stacking red ________ near the foundation of the new facility.",
+        options: ["bricks", "contractor", "paleontologist", "closure"],
+        correct: "bricks",
         explanations: {
-            guide: "名词短语辨析。作及物动词 crafted（精心打磨/制作）的宾语，结合后半句“在潜在客户中引发深刻共鸣”，选 a compelling story（一个引人入胜的故事）。",
-            family: "a compelling story (短语) | evacuation (n.疏散) | stapler (n.订书机) | dispute (n.争议)。",
-            details: "craft a compelling story（打造一个引人入胜的故事）是品牌叙事与营销广告的高频短语。",
-            cn: "该品牌的新广告打造了一个引人入胜的故事，在潜在客户中引发了强烈共鸣。",
-            jp: "そのブランドの新しい広告は、見込み客の心深くに響く説得力のあるストーリー（a compelling story）を作り上げました。"
+            guide: "名词词义辨析。作 stacking（堆放）的宾语，由形容词 red 修饰，结合建筑工地基建语境，选 bricks（砖块）。",
+            family: "bricks (n.砖块) | contractor (n.承包商) | paleontologist (n.古生物学家) | closure (n.关闭)。",
+            details: "stacking red bricks 意为“堆放红砖”，属于建筑施工及听力 Part 1 图片描绘高频短语。",
+            cn: "建筑工人们整个下午都在新设施的地基附近堆放红砖。",
+            jp: "建設作業員たちは午後、新しい施設の基礎の近くに赤いレンガ（bricks）を積み上げて過ごしました。"
         }
     },
     {
         id: 7,
-        target: "boast",
+        target: "consecutive",
         category: "中等",
-        stem: "The new conference center can ________ state-of-the-art audiovisual technology and seating for thousands.",
-        options: ["boast", "relocate", "dispute", "evacuate"],
-        correct: "boast",
+        stem: "The retail corporation reported profit growth for four ________ quarters despite tough market conditions.",
+        options: ["consecutive", "preliminary", "methodical", "complexity"],
+        correct: "consecutive",
         explanations: {
-            guide: "动词词义辨析。位于情态动词 can 之后，结合宾语“最先进的视听技术和容纳千人的座位”，表达“拥有（令人骄傲的特色）”，选 boast。",
-            family: "boast (v.拥有/引以为豪) | relocate (v.搬迁) | dispute (v.争执) | evacuate (v.疏散)。",
-            details: "boast state-of-the-art facilities（拥有最先进的设施）是场馆与酒店宣传文案的标准搭配。",
-            cn: "新建的会议中心拥有最先进的视听技术和可容纳数千人的座位。",
-            jp: "新しいコンベンションセンターは、最先端の音響映像技術と数千人分の座席を誇って（boast）います。"
+            guide: "形容词修饰名词。修饰复数名词 quarters（季度），表达“连续四个季度”，选 consecutive（连续的）。",
+            family: "consecutive (adj.连续的) | preliminary (adj.初步的) | methodical (adj.有条理的) | complexity (n.复杂性)。",
+            details: "consecutive quarters 意为“连续几季度”，是财报业绩汇报中的核心固定用法。",
+            cn: "尽管市场环境艰难，该零售公司仍报告连续四个季度实现利润增长。",
+            jp: "厳しい市場条件にもかかわらず、その小売り大手は4四半期連続（consecutive）の利益成長を報告しました。"
         }
     },
     {
         id: 8,
-        target: "choreographer",
+        target: "methodical",
         category: "中等",
-        stem: "The production team hired an experienced ________ to coordinate the dance sequences for the commercial.",
-        options: ["choreographer", "evacuation", "stapler", "dispute"],
-        correct: "choreographer",
+        stem: "Thanks to her ________ approach to auditing, every financial error was identified and corrected.",
+        options: ["methodical", "consecutive", "preliminary", "obstructions"],
+        correct: "methodical",
         explanations: {
-            guide: "名词词义辨析。作 hired 的宾语，由 experienced（经验丰富的）修饰，结合后文“协调广告的舞蹈动作”，选 choreographer（编舞家/舞蹈指导）。",
-            family: "choreographer (n.编舞家) | evacuation (n.疏散) | stapler (n.订书机) | dispute (n.纠纷)。",
-            details: "hire a choreographer to coordinate dance sequences 逻辑高度顺畅，指聘请专业舞蹈指导。",
-            cn: "制作团队聘请了一位经验丰富的编舞家来协调电视广告的舞蹈动作。",
-            jp: "制作チームは、CMのダンスシーンをコーディネートするために経験豊富な振付師（choreographer）を雇いました。"
+            guide: "形容词修饰名词。修饰名词 approach（方法），结合后半句“所有财务错误均被识别并纠正”，表达其审计工作“有条不紊的”，选 methodical。",
+            family: "methodical (adj.有条理的/严谨的) | consecutive (adj.连续的) | preliminary (adj.初步的) | obstructions (n.障碍物)。",
+            details: "a methodical approach 意为“条理分明/井然有序的方法”，常用于评价员工严谨的工作风格。",
+            cn: "多亏了她有条不紊的审计方法，每一个财务错误都被识别并纠正了。",
+            jp: "彼女の整然とした（methodical）監査アプローチのおかげで、すべての財務上のエラーが特定され修正されました。"
         }
     },
     {
         id: 9,
-        target: "dispute",
+        target: "complexity",
         category: "中等",
-        stem: "Legal advisors were called in to help the two firms settle a contract ________ amicably.",
-        options: ["dispute", "relocation", "hazardous", "diligently"],
-        correct: "dispute",
+        stem: "The software installation took longer than expected due to the extreme ________ of the network system.",
+        options: ["complexity", "closure", "contractor", "urban planning"],
+        correct: "complexity",
         explanations: {
-            guide: "复合名词与固定表达。作 settle 的宾语，与 contract 组合构成 contract dispute（合同纠纷），选 dispute。",
-            family: "dispute (n.纠纷) | relocation (n.搬迁) | hazardous (adj.危险的) | diligently (adv.勤奋地)。",
-            details: "settle a contract dispute amicably 意为“友好地解决合同纠纷”，是商务法律事务中的标准表达。",
-            cn: "法律顾问被请来协助两家公司友好地解决合同纠纷。",
-            jp: "両社が契約紛争（dispute）を和解により解決できるよう、法律アドバイザーが呼ばれました。"
+            guide: "名词词义辨析。位于形容词 extreme（极度的）之后，作介词 due to 的宾语，结合后文网络系统的特性，选 complexity（复杂性）。",
+            family: "complexity (n.复杂性) | closure (n.关闭) | contractor (n.承包商) | urban planning (n.城市规划)。",
+            details: "the complexity of the system 意为“系统的复杂性”，常出现在 IT 系统部署与维护报告中。",
+            cn: "由于网络系统极度复杂，软件安装耗费的时间比预期更长。",
+            jp: "ネットワークシステムの極度の複雑さ（complexity）のため、ソフトウェアのインストールに予想以上の時間がかかりました。"
         }
     },
     {
         id: 10,
-        target: "sought",
+        target: "paleontologist",
         category: "中等",
-        stem: "Before making the final decision on the merger, executive board members ________ professional advice from financial consultants.",
-        options: ["sought", "boast", "dispute", "relocated"],
-        correct: "sought",
+        stem: "The museum invited a renowned ________ to deliver a guest lecture on prehistoric fossil discoveries.",
+        options: ["paleontologist", "contractor", "urban planning", "obstructions"],
+        correct: "paleontologist",
         explanations: {
-            guide: "动词时态与词义辨析。主句谓语动词，结合宾语 professional advice（专业建议）及介词 from，表达“寻求了”建议，选 sought（seek 的过去式）。",
-            family: "sought (v.寻求/过去式) | boast (v.拥有) | dispute (v.争论) | relocated (v.已搬迁)。",
-            details: "sought advice from... 意为“向……寻求建议”。seek advice 是商务决策中的极高频搭配。",
-            cn: "在对合并做出最终决定之前，执行董事会成员向财务顾问寻求了专业建议。",
-            jp: "合併に関する最終決定を下す前に、執行役員会は財務コンサルタントに専門的な助言を求めました（sought）。"
+            guide: "名词词义辨析。作 invited 的宾语，由形容词 renowned（著名的）修饰，结合后文“史前化石发现的讲座”，选 paleontologist（古生物学家）。",
+            family: "paleontologist (n.古生物学家) | contractor (n.承包商) | urban planning (n.城市规划) | obstructions (n.障碍物)。",
+            details: "deliver a lecture on fossil discoveries 逻辑呼应 paleontologist 的专业领域。",
+            cn: "博物馆邀请了一位著名的古生物学家就史前化石发现举办客座讲座。",
+            jp: "博物館は、先史時代の化石の発見に関する特別講義を行うため、著名な古生物学者（paleontologist）を招きました。"
         }
     },
     {
         id: 11,
-        target: "relocate",
+        target: "contractor",
         category: "中等",
-        stem: "The HR department prepared a comprehensive ________ package for employees transferring to the overseas branch.",
-        options: ["relocation", "relocate", "relocated", "dispute"],
-        correct: "relocation",
+        stem: "The firm signed a ________ agreement with the supplier to ensure fixed prices for all raw materials.",
+        options: ["contractual", "contractor", "contract", "consecutive"],
+        correct: "contractual",
         explanations: {
-            guide: "名词修饰名词。空格修饰 package，构成复合名词短语。结合“调往海外分公司”，选 relocation（搬迁/安置）。",
-            family: "relocation (n.搬迁/安置) | relocate (v.搬迁) | relocated (adj.已搬迁的) | dispute (n.纠纷)。",
-            details: "relocation package 指公司为调岗搬迁员工提供的“搬迁福利/补贴包”。",
-            cn: "人力资源部为调往海外分公司的员工准备了详尽的搬迁福利包。",
-            jp: "人事部は、海外支社に転勤する従業員のために包括的な引っ越し手当（relocation package）を用意しました。"
+            guide: "形容词派生与名词修饰。修饰名词 agreement（协议），需要填入派生形容词 contractual（合同上的/契约上的）。",
+            family: "contractual (adj.合同的) | contractor (n.承包商) | contract (n./v.合同) | consecutive (adj.连续的)。",
+            details: "contractual agreement 意为“具有法律效力的合同协议”。contractor 是人称名词，不能修饰 agreement。",
+            cn: "该公司与供应商签署了一份具有合同约束力的协议，以确保所有原材料的价格固定。",
+            jp: "同社は、すべての原材料の価格を固定するために、供給業者と契約上の（contractual）合意に署名しました。"
         }
     },
     {
         id: 12,
-        target: "hazardous",
+        target: "consecutive",
         category: "中等",
-        stem: "Proper storage of toxic waste is necessary to eliminate environmental ________ in industrial zones.",
-        options: ["hazards", "hazardous", "diligently", "evacuation"],
-        correct: "hazards",
+        stem: "The team worked ________ for twelve hours to restore power to the affected district after the storm.",
+        options: ["consecutively", "consecutive", "preliminary", "methodical"],
+        correct: "consecutively",
         explanations: {
-            guide: "名词派生词辨析。作 eliminate 的宾语，由形容词 environmental 修饰，选名词复数 hazards（危险隐患）。",
-            family: "hazards (n.危险/隐患/复数) | hazardous (adj.危险的) | diligently (adv.勤奋地) | evacuation (n.疏散)。",
-            details: "environmental hazards 指“环境隐患/危险”。hazardous 是形容词，不能直接作 eliminate 的宾语。",
-            cn: "妥善存储有毒废弃物对于消除工业园区的环境隐患至关重要。",
-            jp: "工業地帯における環境上の危険要因（hazards）を排除するには、有毒廃棄物の適切な保管が必要です。"
+            guide: "副词修饰动词。位于动词 worked 之后，作状语修饰动词，表达“连续不断地”工作了12小时，选副词 consecutively。",
+            family: "consecutively (adv.连续地) | consecutive (adj.连续的) | preliminary (adj.初步的) | methodical (adj.有条理的)。",
+            details: "worked consecutively for 12 hours 表示“连续不间断地工作了12个小时”，用于修饰动作持续的时间状态。",
+            cn: "风暴过后，团队连续工作了十二个小时，为受影响的地区恢复了供电。",
+            jp: "嵐の後、チームは被災地区の電力を復旧させるため、12時間連続で（consecutively）働きました。"
         }
     },
     {
         id: 13,
-        target: "evacuation",
+        target: "preliminary",
         category: "困难",
-        stem: "Security personnel instructed all office staff to ________ the building immediately after the alarm sounded.",
-        options: ["evacuate", "evacuation", "hazardous", "diligently"],
-        correct: "evacuate",
+        stem: "After completing the initial tests, the laboratory staff will publish their ________ in next month's journal.",
+        options: ["preliminaries", "preliminary", "preliminarily", "complexity"],
+        correct: "preliminaries",
         explanations: {
-            guide: "动词派生与不定式结构。空格跟在 instruct sb to 之后，需要填入动词原形 evacuate（撤离/疏散）。",
-            family: "evacuate (v.撤离) | evacuation (n.撤离/疏散) | hazardous (adj.危险的) | diligently (adv.勤奋地)。",
-            details: "evacuate the building 意为“撤离大楼”。evacuation 为名词形式，不能直接在 to 后作动词原形。",
-            cn: "警报响起后，安保人员指示所有办公人员立即撤离大楼。",
-            jp: "警報が鳴った後、警備員はすべてのオフィススタッフにすぐにビルから避難する（evacuate）よう指示しました。"
+            guide: "名词派生复数考点。位于物主代词 their 之后，作 publish 的宾语，需要填入复数名词形式 preliminaries（预备步骤/初步结果/预备事项）。",
+            family: "preliminaries (n.初步事项/预备阶段/复数) | preliminary (adj.初步的) | preliminarily (adv.预备地) | complexity (n.复杂性)。",
+            details: "their preliminaries 在学术出版语境中指代“初步研究事项/预备阶段成果”。preliminary 为形容词，不能直接作 publish 的宾语。",
+            cn: "在完成初始测试后，实验室工作人员将在下个月的期刊上发表他们的初步成果。",
+            jp: "初期テストを完了した後、研究室のスタッフは来月の雑誌に予備的成果（preliminaries）を掲載する予定です。"
         }
     },
     {
         id: 14,
-        target: "diligently",
+        target: "methodical",
         category: "困难",
-        stem: "The project manager praised the technician for her exceptional ________ and attention to detail.",
-        options: ["diligence", "diligently", "diligent", "sought"],
-        correct: "diligence",
+        stem: "The quality control manager checked every single component ________ to guarantee zero defects.",
+        options: ["methodically", "methodical", "method", "preliminary"],
+        correct: "methodically",
         explanations: {
-            guide: "名词派生词辨析。位于形容词 exceptional 之后，作介词 for 的宾语，并与 attention 并列，选不可数名词 diligence（勤勉/敬业）。",
-            family: "diligence (n.勤勉/敬业) | diligently (adv.勤奋地) | diligent (adj.勤奋的) | sought (v.寻求)。",
-            details: "exceptional diligence 意为“卓越的敬业精神/勤勉”。diligently 是副词，不能被形容词 exceptional 修饰。",
-            cn: "项目经理称赞了该技术人员卓越的敬业精神和对细节的关注。",
-            jp: "プロジェクトマネージャーは、その技術者の卓越した勤勉さ（diligence）と細部へのこだわりを称賛しました。"
+            guide: "副词修饰动词考点。位于句末，修饰动词短语 checked every single component，表达“有条不紊地/严谨地”检查，选副词 methodically。",
+            family: "methodically (adv.有条不紊地) | methodical (adj.有条理的) | method (n.方法) | preliminary (adj.初步的)。",
+            details: "check methodically 表示“井井有条地/有系统地检查”，用于强调品质检测的严谨度。",
+            cn: "质量控制经理井井有条地检查了每一个部件，以确保零缺陷。",
+            jp: "品質管理マネージャーは、欠陥ゼロを保証するためにすべての部品を整然と（methodically）点検しました。"
         }
     },
     {
         id: 15,
-        target: "a compelling story",
+        target: "obstructions",
         category: "困难",
-        stem: "The keynote speaker presented a ________ case for investing in renewable energy infrastructure.",
-        options: ["compelling", "compel", "compulsion", "dispute"],
-        correct: "compelling",
+        stem: "The fallen trees continue to ________ the main railway track, causing significant delays for commuters.",
+        options: ["obstruct", "obstructions", "obstructive", "closure"],
+        correct: "obstruct",
         explanations: {
-            guide: "分词作形容词辨析。空格位于不定冠词 a 之后，名词 case（论据/理由）之前，选形容词 compelling（令人信服的/强有力的）。",
-            family: "compelling (adj.令人信服的) | compel (v.强迫) | compulsion (n.强迫) | dispute (n.争议)。",
-            details: "a compelling case 意为“令人信服的论据/强有力的理由”，属于高阶商务演讲与企划案高频搭配。",
-            cn: "主讲人就投资可再生能源基础设施提出了令人信服的强有力论据。",
-            jp: "基調講演者は、再生可能エネルギーインフラへの投資に対して、説得力のある（compelling）根拠を提示しました。"
+            guide: "动词派生与不定式结构。位于情态/助动词 continue to 之后，需要填入动词原形 obstruct（阻碍/堵塞）。",
+            family: "obstruct (v.阻碍/堵塞) | obstructions (n.障碍物) | obstructive (adj.阻碍的) | closure (n.关闭)。",
+            details: "continue to obstruct... 意为“继续堵塞……”。obstructions 是名词，不能在 to 后作动词原形。",
+            cn: "倒下的树木继续堵塞主铁路线，给通勤者造成了严重延误。",
+            jp: "倒木が主要な線路を塞ぎ（obstruct）続けており、通勤者に大幅な遅れを引き起こしています。"
         }
     },
     {
         id: 16,
-        target: "dispute",
+        target: "complexity",
         category: "困难",
-        stem: "The ownership of the land remains highly ________ among local developers and municipal authorities.",
-        options: ["disputed", "dispute", "disputing", "evacuation"],
-        correct: "disputed",
+        stem: "Consultants were hired to simplify the highly ________ tax structure facing cross-border enterprises.",
+        options: ["complex", "complexity", "complexities", "methodical"],
+        correct: "complex",
         explanations: {
-            guide: "过去分词作表语/形容词考点。位于连系动词 remains 和副词 highly 之后，表达该土地所有权仍“存有争议的”，选 disputed。",
-            family: "disputed (adj.存有争议的) | dispute (n./v.争议) | disputing (v.正在争论) | evacuation (n.疏散)。",
-            details: "remains highly disputed 表示“仍然存在极大争议”。disputed 在此充当形容词表语。",
-            cn: "当地开发商与市政当局之间对该土地的所有权仍存在极大争议。",
-            jp: "その土地の所有権をめぐっては、地元の開発業者と地方自治体の間で依然として議論が分かれて（disputed）います。"
+            guide: "形容词派生与修饰考点。位于副词 highly 之后，修饰名词短语 tax structure，需要填入形容词 complex（复杂的）。",
+            family: "complex (adj.复杂的) | complexity (n.复杂性) | complexities (n.复杂之处/复数) | methodical (adj.有条理的)。",
+            details: "highly complex tax structure 意为“高度复杂的税务结构”。complexity 是名词，不能在此直接被副词 highly 修饰。",
+            cn: "顾问被聘用来简化跨国企业所面临的高度复杂的税务结构。",
+            jp: "クロスボーダー企業が直面する非常に複雑な（complex）税務構造を簡素化するために、コンサルタントが雇用されました。"
         }
     },
     {
         id: 17,
-        target: "sought",
+        target: "closure",
         category: "困难",
-        stem: "Ms. Patel is a highly ________ management consultant known for restructuring troubled corporations.",
-        options: ["sought-after", "seeking", "sought", "boastful"],
-        correct: "sought-after",
+        stem: "Management announced that the plant will ________ down operations by the end of the current fiscal year.",
+        options: ["close", "closure", "closed", "consecutive"],
+        correct: "close",
         explanations: {
-            guide: "复合形容词考点。位于副词 highly 之后，修饰名词短语 management consultant，表达“炙手可热的/深受推崇的”，选 sought-after。",
-            family: "sought-after (adj.炙手可热的/受欢迎的) | seeking (v.寻求中) | sought (v.寻求) | boastful (adj.自夸的)。",
-            details: "a highly sought-after consultant 意为“一位非常受欢迎/炙手可热的管理顾问”。",
-            cn: "帕特尔女士是一位非常炙手可热的管理顾问，以重组陷入困境的企业而闻名。",
-            jp: "パテル氏は、困窮している企業の再建で知られる、非常に引っ張りだこの（sought-after）経営コンサルタントです。"
+            guide: "动词与名词派生辨析。位于助动词 will 之后，与 down 搭配构成短语动词 close down（关闭/停业），选动词原形 close。",
+            family: "close (v.关闭/原形) | closure (n.关闭) | closed (adj.已关闭的) | consecutive (adj.连续的)。",
+            details: "will close down operations 意为“将关停业务”。closure 为名词，不能直接接在情态助动词 will 之后。",
+            cn: "管理层宣布该工厂将在本财政年度结束前关停业务。",
+            jp: "経営陣は、本年度末までに工場が操業を停止（close）すると発表しました。"
         }
     },
     {
         id: 18,
-        target: "choreographer",
+        target: "paleontologist",
         category: "困难",
-        stem: "The intricate ________ of the opening ceremony required months of intensive rehearsals.",
-        options: ["choreography", "choreographer", "choreograph", "evacuation"],
-        correct: "choreography",
+        stem: "The university's department of ________ announced a major breakthrough in classifying ancient marine organisms.",
+        options: ["paleontology", "paleontologist", "preliminary", "urban planning"],
+        correct: "paleontology",
         explanations: {
-            guide: "名词派生抽象词辨析。位于定冠词 The 和形容词 intricate（复杂的）之后，作句子的主语，表达开幕式的“舞蹈编排”，选 choreography。",
-            family: "choreography (n.舞蹈编排) | choreographer (n.编舞家) | choreograph (v.编舞) | evacuation (n.疏散)。",
-            details: "the choreography of the ceremony 指“仪式的舞蹈编排”。choreographer 指编舞者个人，无法充当需要“数月排练”的对象。",
-            cn: "开幕式复杂的舞蹈编排需要经过数月的高强度排练。",
-            jp: "開会式の複雑な振付（choreography）は、数ヶ月にわたる猛練習を必要としました。"
+            guide: "学科名词与人称名词辨析。作为介词 of 的宾语，位于 department 之后，指代大学的“古生物学系”，选学科名词 paleontology。",
+            family: "paleontology (n.古生物学) | paleontologist (n.古生物学家) | preliminary (adj.初步的) | urban planning (n.城市规划)。",
+            details: "department of paleontology 意为“古生物学系”。paleontologist 指学者个人，不能用作系/学科部门名称。",
+            cn: "该大学的古生物学系宣布在古代海洋生物分类方面取得重大突破。",
+            jp: "同大学の古生物学（paleontology）学科は、古代海洋生物の分類における大きな飛躍を発表しました。"
         }
     }
 ];
