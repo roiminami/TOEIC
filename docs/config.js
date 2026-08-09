@@ -168,11 +168,26 @@ const toeicModulesConfig = [
 
 
 
-    { id: 501, title: "第 1 - 10 词", unit: "x1-10", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+{ id: 501, title: "第 1 - 10 词", unit: "x1-10", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
     { id: 502, title: "第 11 - 20 词", unit: "x11-20", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
     { id: 503, title: "第 21 - 30 词", unit: "x21-30", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
     { id: 504, title: "第 31 - 40 词", unit: "x31-40", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
     { id: 505, title: "第 41 - 50 词", unit: "x41-50", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
     { id: 506, title: "第 51 - 60 词", unit: "x51-60", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 507, title: "第 61 - 70 词", unit: "x61-70", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 508, title: "第 71 - 80 词", unit: "x71-80", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 509, title: "第 81 - 90 词", unit: "x81-90", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 510, title: "第 91 - 100 词", unit: "x91-100", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 511, title: "第 101 - 110 词", unit: "x101-110", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 512, title: "第 111 - 120 词", unit: "x111-120", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 513, title: "第 121 - 130 词", unit: "x121-130", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 514, title: "第 131 - 140 词", unit: "x131-140", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 515, title: "第 141 - 150 词", unit: "x141-150", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 516, title: "第 151 - 160 词", unit: "x151-160", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 517, title: "第 161 - 170 词", unit: "x161-170", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 518, title: "第 171 - 180 词", unit: "x171-180", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 519, title: "第 181 - 190 词", unit: "x181-190", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 520, title: "第 191 - 200 词", unit: "x191-200", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+
     
 ];
