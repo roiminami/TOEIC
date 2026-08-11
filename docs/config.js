@@ -113,6 +113,7 @@ const toeicModulesConfig = [
     { id: 121, title: "730-补④：押さえておきたい主な接続詞　1 - 11 词", unit: "g-730-supp4-28-39", book: "gold", section: "score730", type: "supplement4" },
     { id: 122, title: "730-补④：押さえておきたい主な接続詞　12 - 22 词", unit: "g-730-supp4-40-50", book: "gold", section: "score730", type: "supplement4" },
     { id: 123, title: "730-补④：押さえておきたい主な接続副詞　1 - 10 词", unit: "g-730-supp4-51-60", book: "gold", section: "score730", type: "supplement4" },
+    { id: 124, title: "730-补④：押さえておきたい主な接続副詞　11 - 19 词", unit: "g-730-supp4-61-69", book: "gold", section: "score730", type: "supplement4" },
 
 
     // ========================================================================
