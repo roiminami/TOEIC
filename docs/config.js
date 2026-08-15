@@ -195,6 +195,7 @@ const toeicModulesConfig = [
     { id: 518, title: "第 171 - 180 词", unit: "x171-180", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
     { id: 519, title: "第 181 - 190 词", unit: "x181-190", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
     { id: 520, title: "第 191 - 200 词", unit: "x191-200", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
+    { id: 521, title: "第 201 - 210 词", unit: "x201-210", book: "xueda-cocreate", section: "难词巩固", type: "standard" },
 
     
 ];
