@@ -119,8 +119,6 @@ const toeicModulesConfig = [
     { id: 127, title: "730-补⑤：カタカナ英語　21 - 30 词", unit: "g-730-supp5-21-30", book: "gold", section: "score730", type: "supplement6" },
     { id: 128, title: "730-补⑤：カタカナ英語　31 - 40 词", unit: "g-730-supp5-31-40", book: "gold", section: "score730", type: "supplement6" },
     { id: 129, title: "730-补⑤：カタカナ英語　41 - 50 词", unit: "g-730-supp5-41-50", book: "gold", section: "score730", type: "supplement6" },
-    { id: 130, title: "730-补⑤：カタカナ英語　51 - 60 词", unit: "g-730-supp5-51-60", book: "gold", section: "score730", type: "supplement6" },
-    { id: 131, title: "730-补⑤：カタカナ英語　61 - 70 词", unit: "g-730-supp5-61-70", book: "gold", section: "score730", type: "supplement6" },
 
     // ========================================================================
     // ⚡ SCORE 860 顶峰突击段（主线 701 - 900 词）
