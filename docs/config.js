@@ -145,10 +145,18 @@ const toeicModulesConfig = [
     { id: 90,  title: "第 891 - 900 词",  unit: "g891-900",    book: "gold", section: "score860", type: "standard" },
 
     // 🧩 860分专属支线
-    { id: 109, title: "860-补①：1 - 100 词", unit: "g-860-supp1-1-100", book: "gold", section: "score860", type: "supplement1" },
-    { id: 110, title: "860-补②：1 - 100 词", unit: "g-860-supp2-1-100", book: "gold", section: "score860", type: "supplement2" },
-    { id: 111, title: "860-补③：1 - 100 词", unit: "g-860-supp3-1-100", book: "gold", section: "score860", type: "supplement3" },
-    { id: 112, title: "860-补④：1 - 100 词", unit: "g-860-supp4-1-100", book: "gold", section: "score860", type: "supplement4" },
+    { id: 130, title: "860-补⑥：1 - 10 词", unit: "g-860-supp6-1-10", book: "gold", section: "score860", type: "supplement6" },
+    { id: 131, title: "860-补⑥：11 - 20 词", unit: "g-860-supp6-11-20", book: "gold", section: "score860", type: "supplement6" },
+    { id: 132, title: "860-补⑥：21 - 30 词", unit: "g-860-supp6-21-30", book: "gold", section: "score860", type: "supplement6" },
+    { id: 133, title: "860-补⑥：31 - 40 词", unit: "g-860-supp6-31-40", book: "gold", section: "score860", type: "supplement6" },
+    { id: 134, title: "860-补⑥：41 - 50 词", unit: "g-860-supp6-41-50", book: "gold", section: "score860", type: "supplement6" },
+    { id: 135, title: "860-补⑥：51 - 60 词", unit: "g-860-supp6-51-60", book: "gold", section: "score860", type: "supplement6" },
+    { id: 136, title: "860-补⑥：61 - 70 词", unit: "g-860-supp6-61-70", book: "gold", section: "score860", type: "supplement6" },
+    { id: 137, title: "860-补⑥：71 - 80 词", unit: "g-860-supp6-71-80", book: "gold", section: "score860", type: "supplement6" },
+    { id: 138, title: "860-补⑥：81 - 90 词", unit: "g-860-supp6-81-90", book: "gold", section: "score860", type: "supplement6" },
+    { id: 139, title: "860-补⑥：91 - 100 词", unit: "g-860-supp6-91-100", book: "gold", section: "score860", type: "supplement6" },
+    { id: 140, title: "860-补⑥：101 - 110 词", unit: "g-860-supp6-101-110", book: "gold", section: "score860", type: "supplement6" },
+
 
     // ========================================================================
     // 👑 SCORE 990 满分通关段（主线 901 - 1000 词）
