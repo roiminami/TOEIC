@@ -155,7 +155,7 @@ const toeicModulesConfig = [
     { id: 137, title: "860-补⑥：71 - 80 词", unit: "g-860-supp6-71-80", book: "gold", section: "score860", type: "supplement6" },
     { id: 138, title: "860-补⑥：81 - 90 词", unit: "g-860-supp6-81-90", book: "gold", section: "score860", type: "supplement6" },
     { id: 139, title: "860-补⑥：91 - 100 词", unit: "g-860-supp6-91-100", book: "gold", section: "score860", type: "supplement6" },
-    { id: 140, title: "860-补⑥：101 - 110 词", unit: "g-860-supp6-101-110", book: "gold", section: "score860", type: "supplement6" },
+    { id: 140, title: "860-补⑥：101 - 110 词", unit: "g-860-supp6-101-109", book: "gold", section: "score860", type: "supplement6" },
 
 
     // ========================================================================
