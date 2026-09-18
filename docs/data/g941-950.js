@@ -1,108 +1,108 @@
 // ============================================================================
-// [DATABASE] SOUTHERN GHOST TOEIC CORE DATA BUNDLE (data221-230.js)
+// [DATABASE] SOUTHERN GHOST TOEIC CORE DATA BUNDLE (data231-240.js)
 // ============================================================================
 
 // 1. 核心考点词表 (Core Target Vocabulary)
 const vocabBank = [
     {
-        word: "centerpiece",
+        word: "anecdote",
         pos: "名",
-        ipa: "/ˈsentərpiːs/",
-        cn: "最重要（引人注目）的部分；中心装饰品",
-        jp: "最重要項目、中心的存在；テーブル中央の装飾物",
-        family: "center / piece",
-        tips: "商务战略与新闻报道高频词：the centerpiece of the strategy/reform（战略/改革的核心与重中之重）；亦指宴会中央装饰花艺。",
-        desc: "The strategy is the centerpiece of our plan."
+        ipa: "/ˈænɪkdoʊt/",
+        cn: "趣闻，轶事",
+        jp: "逸話、短い実話",
+        family: "anecdotal / anecdotes",
+        tips: "常用于商务演讲与培训破冰：讲者通过分享简短趣闻来吸引听众（share an amusing anecdote）；形容词 anecdotal 意为“轶事的/非正式经验的”（anecdotal evidence 传闻证据）。",
+        desc: "The speaker shared a personal anecdote."
     },
     {
-        word: "endorsement",
-        pos: "名",
-        ipa: "/ɪnˈdɔːrsmənt/",
-        cn: "代言，背书；认可，赞同",
-        jp: "（著名人の）推薦、支持、エンドースメント；承認",
-        family: "endorse / endorser / endorsed / endorsing",
-        tips: "市场营销与商业公关核心词：celebrity endorsement deal（名人代言协议），formal endorsement of the proposal（对提案的正式支持）。",
-        desc: "The athlete signed an endorsement deal."
-    },
-    {
-        word: "credentials",
-        pos: "名",
-        ipa: "/krəˈdenʃlz/",
-        cn: "资质，证书，履历资格（常用复数）",
-        jp: "資格、資格証明書、経歴",
-        family: "credential / credentialing / credentialed",
-        tips: "人事招聘核心词汇，几乎固定以复数形式出现：verify applicant credentials（核实求职者资质证书），academic/professional credentials。",
-        desc: "Please submit your professional credentials."
-    },
-    {
-        word: "debris",
-        pos: "名",
-        ipa: "/dəˈbriː/",
-        cn: "残骸，碎片，瓦砾（不可数，s不发音）",
-        jp: "（破壊物の）破片、がれき、残骸",
-        family: "clear debris",
-        tips: "物业管理与恶劣天气灾后恢复高频不可数名词：clear storm debris from the road（清理路面的暴风雨残骸）；注意末尾 s 不发音。",
-        desc: "Crews worked hard to clear the debris."
-    },
-    {
-        word: "overdue",
-        pos: "形",
-        ipa: "/ˌoʊvərˈduː/",
-        cn: "逾期的，过期的；迟到的",
-        jp: "支払期日を過ぎた、延滞の；期限の遅れた",
-        family: "due",
-        tips: "财务发票与图书借阅必考词：overdue payment / invoice（逾期未付款项/账单）；短语 a long overdue change（早就该推行的改革）。",
-        desc: "The invoice is two weeks overdue."
-    },
-    {
-        word: "reunion",
-        pos: "名",
-        ipa: "/ˌriːˈjuːniən/",
-        cn: "聚会，重聚；校友会，联谊会",
-        jp: "同窓会、再会、親睦会",
-        family: "reunite / reunited",
-        tips: "酒店宴会预订高频场景词：alumni reunion（校友联谊会），family reunion（家庭聚会），host a class reunion（主办班级聚会）。",
-        desc: "They will host an alumni reunion."
-    },
-    {
-        word: "feasible",
-        pos: "形",
-        ipa: "/ˈfiːzəbl/",
-        cn: "可行的，行得通的",
-        jp: "実現可能な、実行できる",
-        family: "feasibility / feasibly / unfeasible",
-        tips: "项目策划与商务投资核心词：a financially/economically feasible plan（经济上可行的方案）；名词搭配 feasibility study（可行性研究）。",
-        desc: "The proposed budget seems feasible."
-    },
-    {
-        word: "kiosk",
-        pos: "名",
-        ipa: "/ˈkiːɑːsk/",
-        cn: "自助服务终端机；售货亭，报摊",
-        jp: "自動端末機、キオスク、売店",
-        family: "kiosks",
-        tips: "机场出行与零售商场高频考点：self-service check-in kiosk（自助值机终端机），interactive information kiosk（互动信息查询亭）。",
-        desc: "Print your ticket at the self-service kiosk."
-    },
-    {
-        word: "tow",
-        pos: "動/名",
-        ipa: "/toʊ/",
-        cn: "拖走，牵引；拖车",
-        jp: "（車などを）牽引する、レッカー移動する；牽引",
-        family: "towed / towing / tow truck",
-        tips: "停车管理与物业告示必考词：vehicles parked illegally will be towed at the owner's expense（违章停放车辆将被拖走，费用由车主承担）；tow truck（拖车）。",
-        desc: "Illegally parked cars will be towed."
-    },
-    {
-        word: "streamline",
+        word: "attest",
         pos: "動",
-        ipa: "/ˈstriːmlaɪn/",
-        cn: "精简，简化（流程/操作）；使成流线型",
-        jp: "（業務などを）合理化する、簡素化する",
-        family: "streamlined / streamlining",
-        tips: "企业降本增效与数字化转型第一核心动词：streamline operations / procedures / workflow（精简业务流程/提高工作效率）。",
-        desc: "We need to streamline our workflow."
+        ipa: "/əˈtest/",
+        cn: "证实，证明；作证",
+        jp: "証明する、証言する",
+        family: "attestation / attested / attests",
+        tips: "托业高频动介搭配：attest to sth（证实/作为……的明证），后常接客户满意度、品质或项目成效（attest to the reliability/success of the program）。",
+        desc: "Clients can attest to our reliable service."
+    },
+    {
+        word: "intermission",
+        pos: "名",
+        ipa: "/ˌɪntərˈmɪʃn/",
+        cn: "中场休息，幕间休息",
+        jp: "（芝居・演奏会などの）休憩時間",
+        family: "intermissions",
+        tips: "演出活动、音乐会或全天学术研讨会核心词汇：during the intermission（在中场休息期间），a fifteen-minute intermission（十五分钟的中场休息）。",
+        desc: "Refreshments are served during the intermission."
+    },
+    {
+        word: "obstruction",
+        pos: "名",
+        ipa: "/əbˈstrʌkʃn/",
+        cn: "障碍物，妨碍，阻碍",
+        jp: "妨害、障害物、遮断",
+        family: "obstruct / obstructive / obstructed",
+        tips: "办公环境与仓储安全规程高频考点：keep hallways clear of any obstruction（保持走廊通畅无阻碍物）；动词形式 obstruct 意为阻塞通道或遮挡视线。",
+        desc: "Keep the hallway clear of any obstruction."
+    },
+    {
+        word: "footage",
+        pos: "名",
+        ipa: "/ˈfʊtɪdʒ/",
+        cn: "（录制好的）视频片段，录像画面（不可数）",
+        jp: "映像、録画場面、フッテージ（不可算）",
+        family: "security footage / video footage / archival footage",
+        tips: "不可数名词专属考点：security footage（安防监控录像），raw footage（原始录制素材），archival footage（历史档案影像）。",
+        desc: "Security reviewed the video footage."
+    },
+    {
+        word: "refurbish",
+        pos: "動",
+        ipa: "/ˌriːˈfɜːrbɪʃ/",
+        cn: "翻新，整修，重新装修",
+        jp: "改装する、改修する、一新する",
+        family: "refurbishment / refurbished",
+        tips: "酒店设施、办公楼装潢与二手电子产品核心词：refurbish the hotel lobby/facility（翻修大堂）；分词形容词 refurbished units（官方翻新设备）。",
+        desc: "The company plans to refurbish the office."
+    },
+    {
+        word: "sanitize",
+        pos: "動",
+        ipa: "/ˈsænɪtaɪz/",
+        cn: "消毒，使卫生清洁",
+        jp: "消毒する、衛生的にする",
+        family: "sanitizer / sanitation / sanitary",
+        tips: "食品加工、医疗环境与办公卫生高频动词：sanitize food preparation surfaces（对备餐台消毒）；派生名词 hand sanitizer 指免洗洗手液。",
+        desc: "Staff sanitize all tables after each shift."
+    },
+    {
+        word: "testimonial",
+        pos: "名",
+        ipa: "/ˌtestɪˈmoʊniəl/",
+        cn: "客户评价，推荐信，证明信",
+        jp: "推薦文、（利用者の）感想、感謝の印",
+        family: "testimonials / testify / testimony",
+        tips: "市场营销与网站文案极高频考点：customer testimonials（客户真实好评与推荐证言）；注意与法庭证词 testimony 区分。",
+        desc: "Read the customer testimonials on our website."
+    },
+    {
+        word: "turnout",
+        pos: "名",
+        ipa: "/ˈtɜːrnaʊt/",
+        cn: "到场人数，出席人数；产量",
+        jp: "来場者数、参加者数、人出",
+        family: "turn out / high turnout / voter turnout",
+        tips: "展会博览会、开幕式及投票活动核心考点：a large / record turnout（创纪录的出席人数/极高到场率），draw a massive turnout。",
+        desc: "The festival had a record turnout this year."
+    },
+    {
+        word: "drape",
+        pos: "動/名",
+        ipa: "/dreɪp/",
+        cn: "悬挂，覆盖；窗帘（复数）",
+        jp: "掛ける、覆う；カーテン（復数）",
+        family: "drapes / drapery / draped",
+        tips: "会展搭建与酒店设施核心词：drape cloths over tables（用桌布铺盖桌子）；复数 drapes 专指厚重的遮光窗帘（pull the window drapes closed）。",
+        desc: "Workers draped cloths over the tables."
     }
 ];
 
@@ -111,272 +111,272 @@ const vocabBank = [
 const questionsDatabase = [
     {
         id: 1,
-        target: "streamline",
+        target: "refurbish",
         category: "简单",
-        stem: "The management team decided to adopt cloud-based software to ________ the customer onboarding process.",
-        options: ["streamline", "streamlining", "feasible", "debris"],
-        correct: "streamline",
+        stem: "The historic boutique hotel will temporarily close its dining hall next week to ________ the interior seating area.",
+        options: ["refurbish", "refurbishment", "anecdote", "drape"],
+        correct: "refurbish",
         explanations: {
-            guide: "动词不定式结构。decided to 后面需要接动词原形，后接宾语 the customer onboarding process，表达“精简/简化”入职流程，选 streamline。",
-            family: "streamline (v.精简/优化) | streamlining (动名词) | feasible (adj.可行的) | debris (n.残骸)。",
-            details: "to 为不定式符号，后接动词原形。streamlining 是分词或动名词，不能直接在不定式符号后充当谓语动词原形。",
-            cn: "管理团队决定采用基于云端的软件，以精简新客户导入流程。",
-            jp: "管理チームは、顧客のオンボーディングプロセスを合理化する（streamline）ために、クラウドベースのソフトウェアを採用することを決定しました。"
+            guide: "动词不定式结构。close the hall to 后面需要接动词原形表达目的，后接宾语 the interior seating area，表达“翻新/重新装修”就餐区，选 refurbish。",
+            family: "refurbish (v.翻新/整修) | refurbishment (n.翻新) | anecdote (n.轶事) | drape (v.悬挂/铺设)。",
+            details: "to 为不定式符号，后面必须接动词原形。refurbishment 是名词，无法充当不定式中带宾语的核心谓语动词。",
+            cn: "这家历史悠久的精品酒店将于下周暂时关闭其餐厅，以翻新内部就座区域。",
+            jp: "歴史あるブティックホテルは、内部の座席エリアを改装する（refurbish）ため、来週ダイニングホールを一時的に閉鎖します。"
         }
     },
     {
         id: 2,
-        target: "kiosk",
+        target: "testimonial",
         category: "简单",
-        stem: "Passengers traveling without checked baggage may check in quickly at any automated airport ________.",
-        options: ["kiosk", "kiosks", "reunion", "endorsement"],
-        correct: "kiosk",
+        stem: "Prospective buyers can visit the company's official homepage to read genuine customer ________ before placing an order.",
+        options: ["testimonials", "testimonial", "turnout", "footage"],
+        correct: "testimonials",
         explanations: {
-            guide: "限定词后的单数名词。any automated airport ________ 结构中，限定词 any 修饰单数可数名词，check-in kiosk 意为“自助值机终端机”，选 kiosk。",
-            family: "kiosk (n.自助终端机/单数) | kiosks (n.复数) | reunion (n.聚会) | endorsement (n.代言)。",
-            details: "airport kiosk 属于机场差旅场景的固定专有名词。kiosks 为复数，在此特定单数搭配语境下不及单数 kiosk 精准规范。",
-            cn: "未携带托运行李的旅客可以在任何一台机场自动化自助服务终端机上快速办理乘机手续。",
-            jp: "受託手荷物のない乗客は、空港の自動端末機（kiosk）で素早くチェックイン手続きを行うことができます。"
+            guide: "形容词后的名词复数。genuine customer 后面需要接可数名词复数作 read 的宾语，customer testimonials 意为“客户好评/真实评价”，选 testimonials。",
+            family: "testimonials (n.客户评价/复数) | testimonial (n.单数) | turnout (n.出席人数) | footage (n.录像画面)。",
+            details: "customer testimonials 属于电商营销核心专属短语，习惯用复数指代多条用户体验好评。单数 testimonial 前需有冠词修饰。",
+            cn: "意向买家在下单之前，可以访问公司官方网站阅读真实的客户好评。",
+            jp: "見込み客は、注文を出す前に会社の公式ホームページにアクセスして、本物の顧客の声・推薦文（testimonials）を読むことができます。"
         }
     },
     {
         id: 3,
-        target: "overdue",
+        target: "intermission",
         category: "简单",
-        stem: "The accounting department issued an urgent reminder because the client's invoice was more than thirty days ________.",
-        options: ["overdue", "feasibility", "towed", "credentials"],
-        correct: "overdue",
+        stem: "Complimentary coffee and light refreshments will be served in the grand lobby during the fifteen-minute ________.",
+        options: ["intermission", "intermissions", "obstruction", "sanitize"],
+        correct: "intermission",
         explanations: {
-            guide: "系表结构与商业催款考点。was 后面接形容词作表语，表达账单已经“逾期/超期”三十余天，选 overdue。",
-            family: "overdue (adj.逾期的) | feasibility (n.可行性) | towed (v-ed拖走) | credentials (n.资质)。",
-            details: "invoice is overdue 属于财务发票账务处理标准用语。feasibility 是名词，towed 是过去分词，均无法作此处表示款项逾期的表语形容词。",
-            cn: "由于客户的发票已经逾期超过三十天，财务部门发出了紧急催缴通知。",
-            jp: "クライアントへの請求書が30日以上延滞して（overdue）いたため、経理部は緊急の督促状を発行しました。"
+            guide: "复合形容词后的单数名词。the fifteen-minute 复合形容词后面需要接单数可数名词，a fifteen-minute intermission 意为“十五分钟的中场休息”，选 intermission。",
+            family: "intermission (n.中场休息/幕间休息) | intermissions (n.复数) | obstruction (n.障碍物) | sanitize (v.消毒)。",
+            details: "during the fifteen-minute intermission 指在15分钟的幕间休息期间。intermissions 复数与前面的数词连字符定语十五分钟单数搭配不符。",
+            cn: "在十五分钟的中场休息期间，大厅将供应免费咖啡和精美茶点。",
+            jp: "15分間の休憩時間（intermission）の間、大ロビーで無料のコーヒーと軽食が提供されます。"
         }
     },
     {
         id: 4,
-        target: "tow",
+        target: "sanitize",
         category: "简单",
-        stem: "Vehicles parked in designated emergency fire lanes without official authorization will be ________ immediately.",
-        options: ["towed", "towing", "streamline", "debris"],
-        correct: "towed",
+        stem: "Kitchen staff members must thoroughly ________ all food preparation surfaces before and after each culinary shift.",
+        options: ["sanitize", "sanitation", "attest", "turnout"],
+        correct: "sanitize",
         explanations: {
-            guide: "被动语态谓语动词。will be 后面需要接及物动词的过去分词构成被动语态，车辆与拖拽之间为被动关系，be towed 意为“被拖走”，选 towed。",
-            family: "towed (v-ed被拖走的) | towing (动名词) | streamline (v.精简) | debris (n.残骸)。",
-            details: "vehicles will be towed 是物业与交通警示标识的核心高频表达。towing 是现在分词，不能与 will be 组合表达被动含义。",
-            cn: "未经官方授权擅自停放在指定紧急消防通道内的车辆将被立即拖走。",
-            jp: "正式な許可なく指定された緊急消防車専用レーンに駐車された車両は、直ちにレッカー移動（towed）されます。"
+            guide: "情态动词与副词后的动词原形。must thoroughly 之后需要接动词原形，后接宾语 preparation surfaces，表达对台面进行“消毒/清洁”，选 sanitize。",
+            family: "sanitize (v.消毒/卫生清洁) | sanitation (n.环境卫生) | attest (v.证实) | turnout (n.到场人数)。",
+            details: "must thoroughly sanitize 构成情态动词与谓语动词的修饰搭配。sanitation 是名词，不能跟在副词 thoroughly 后面充当谓语动词原形。",
+            cn: "厨房工作人员必须在每班次工作前后彻底对所有备餐台面进行消毒。",
+            jp: "調理場のスタッフは、各シフトの前後にすべての食品調理台を徹底的に消毒（sanitize）しなければなりません。"
         }
     },
     {
         id: 5,
-        target: "credentials",
+        target: "turnout",
         category: "简单",
-        stem: "Candidates applying for the senior research chemist position must submit verified academic ________ along with their resumes.",
-        options: ["credentials", "credential", "centerpiece", "reunion"],
-        correct: "credentials",
+        stem: "Event organizers were delighted that the annual technology job expo attracted an unprecedentedly large ________.",
+        options: ["turnout", "turning out", "anecdote", "refurbish"],
+        correct: "turnout",
         explanations: {
-            guide: "名词复数与招聘专属搭配。submit academic ________ 结构中，指提交学术学历“证书/资历文件”，固定使用复数形式 credentials，选 credentials。",
-            family: "credentials (n.资历/证书/复数) | credential (n.单数/较少单独使用) | centerpiece (n.核心) | reunion (n.重聚)。",
-            details: "academic credentials 是人事招聘审查的固定搭配，习惯用复数形式代表一系列文凭与资格证明。",
-            cn: "应聘高级研究化学家职位的候选人必须在提交简历的同时附上经过认证的学历资质证书。",
-            jp: "主任研究化学者の役職に応募する候補者は、履歴書とともに確認済みの学歴資格証明書（credentials）を提出しなければなりません。"
+            guide: "形容词后的名词中心语。an unprecedentedly large ________ 结构中需要接名词，attract a large turnout 意为“吸引了庞大的到场人数”，选 turnout。",
+            family: "turnout (n.到场人数/出席者) | turning out (动名词短语) | anecdote (n.轶事) | refurbish (v.翻新)。",
+            details: "a large turnout 属于活动出席率标准表述。turning out 是动词短语的进行时态或分词，不能作为不定冠词 an 与形容词后的名词中心词。",
+            cn: "活动组织方感到非常欣喜，因为年度科技招聘博览会吸引了空前庞大的到场人数。",
+            jp: "イベントの主催者は、年次技術就職博覧会が前例のないほど多くの来場者数（turnout）を集めたことに大いに喜びました。"
         }
     },
     {
         id: 6,
-        target: "reunion",
+        target: "drape",
         category: "简单",
-        stem: "The downtown luxury hotel reserved its grand ballroom to host an annual university alumni ________ next Saturday.",
-        options: ["reunion", "reunite", "kiosk", "endorsement"],
-        correct: "reunion",
+        stem: "Hotel banquet staff will ________ clean white tablecloths over each table prior to the evening dinner reception.",
+        options: ["drape", "drapery", "footage", "testimonial"],
+        correct: "drape",
         explanations: {
-            guide: "复合名词定语修饰。an annual university alumni ________ 结构中需要名词中心语，alumni reunion 意为“校友联谊会/校友重聚活动”，选 reunion。",
-            family: "reunion (n.聚会/重聚) | reunite (v.重聚) | kiosk (n.自助亭) | endorsement (n.背书)。",
-            details: "an alumni reunion 指校友聚会。reunite 是动词，不能直接放在冠词 an 与名词定语 alumni 后面作宾语中心词。",
-            cn: "市中心豪华酒店预留了其大宴会厅，用于在下周六举办一年一度的大学校友联谊会。",
-            jp: "ダウンタウンの高級ホテルは、来週の土曜日に年次大学同窓会（reunion）を開催するために大宴会場を予約しました。"
+            guide: "情态动词后的动词原形。will 后面接动词原形，drape A over B 意为“将A铺设/覆盖在B上”，选动词原形 drape。",
+            family: "drape (v.悬挂/铺设/覆盖) | drapery (n.布料/褶绢) | footage (n.录像) | testimonial (n.评价)。",
+            details: "will drape tablecloths over the tables 指在桌上铺桌布。drapery 是名词，无法充当情态动词 will 之后的谓语动词。",
+            cn: "在晚间晚宴招待会之前，酒店宴会工作人员将在每张桌子上铺上干净的白色桌布。",
+            jp: "ホテルの宴会スタッフは、夜のディナーレセプションの前に、各テーブルに清潔な白いテーブルクロスを掛け（drape）ます。"
         }
     },
     {
         id: 7,
-        target: "feasible",
+        target: "attest",
         category: "中等",
-        stem: "Due to high installation costs, converting the entire delivery fleet to electric vehicles does not seem financially ________ at this time.",
-        options: ["feasible", "feasibility", "overdue", "streamlining"],
-        correct: "feasible",
+        stem: "Hundreds of satisfied corporate clients can ________ to the exceptional reliability of our enterprise cloud storage software.",
+        options: ["attest", "attestation", "intermission", "obstruction"],
+        correct: "attest",
         explanations: {
-            guide: "系表结构与副词修饰形容词。seem 后面接形容词作表语，副词 financially 修饰该形容词，financially feasible 意为“在经济上切实可行的”，选 feasible。",
-            family: "feasible (adj.可行的) | feasibility (n.可行性) | overdue (adj.逾期的) | streamlining (动名词)。",
-            details: "financially feasible 属于商务投资论证专属搭配。feasibility 是名词，不能作系动词 seem 的形容词表语。",
-            cn: "由于高昂的改装成本，目前将整个配送车队全部更换为电动汽车在财务上似乎并不可行。",
-            jp: "導入コストが高いため、配送フリート全体を電気自動車に転換することは、現時点では財政的に実現可能（feasible）とは思われません。"
+            guide: "动介固定搭配与情态动词原形。can 后面接动词原形，与后面的介词 to 连用构成 attest to sth（证实/作为……的明证），选 attest。",
+            family: "attest (v.证实/证明) | attestation (n.证明/鉴证) | intermission (n.中场休息) | obstruction (n.障碍)。",
+            details: "attest to the reliability 意为证明可靠性。attestation 是名词，不能在情态动词 can 后面直接担任谓语动词原形。",
+            cn: "数百家满意的企业客户可以证实我们企业级云存储软件卓越的可靠性。",
+            jp: "何百もの満足している企業クライアントが、当社のエンタープライズクラウドストレージソフトウェアの並外れた信頼性を証明（attest to）できます。"
         }
     },
     {
         id: 8,
-        target: "endorsement",
+        target: "obstruction",
         category: "中等",
-        stem: "The athletic apparel manufacturer saw an immediate surge in quarterly sales after securing an ________ deal with a tennis champion.",
-        options: ["endorsement", "endorsed", "credentials", "centerpiece"],
-        correct: "endorsement",
+        stem: "According to municipal fire safety codes, emergency exit corridors must remain completely free of any ________ at all times.",
+        options: ["obstruction", "obstruct", "sanitizer", "footage"],
+        correct: "obstruction",
         explanations: {
-            guide: "复合名词定语搭配。an ________ deal 结构中，endorsement deal 是品牌营销与公关赞助的核心专属名词，意为“代言协议/代言合同”，选 endorsement。",
-            family: "endorsement (n.代言/认可) | endorsed (v-ed形式) | credentials (n.资质) | centerpiece (n.核心)。",
-            details: "a celebrity endorsement deal 属于营销专有词汇。endorsed 是分词，在此处不如名词 endorsement 构成复合名词 deal 的固定搭配规范自然。",
-            cn: "这家运动服装制造商在与一位网球冠军签下代言协议后，季度销售额立即迎来了激增。",
-            jp: "そのスポーツウェアメーカーは、テニスのチャンピオンと推薦広告・スポンサー契約（endorsement deal）を結んだ後、四半期の売上高が即座に急増しました。"
+            guide: "介词短语与安全规程名词。free of any ________ 结构中，限定词 any 后接名词，free of obstruction 意为“没有任何障碍物/通畅无阻”，选 obstruction。",
+            family: "obstruction (n.障碍物/阻碍) | obstruct (v.妨碍/阻塞) | sanitizer (n.消毒液) | footage (n.录像)。",
+            details: "free of any obstruction 是消防安全条款标准用语。obstruct 是动词，不能作介词 of 的宾语。",
+            cn: "根据市政消防安全法规，紧急出口走廊在任何时候都必须完全保持通畅，不得有任何障碍物。",
+            jp: "市の消防安全法規に基づき、非常口の通路は常にいかなる障害物（obstruction）もない状態にしておかなければなりません。"
         }
     },
     {
         id: 9,
-        target: "centerpiece",
+        target: "footage",
         category: "中等",
-        stem: "The proposed high-speed rail network is considered the ________ of the government's ten-year economic modernization plan.",
-        options: ["centerpiece", "debris", "reunion", "feasible"],
-        correct: "centerpiece",
+        stem: "The security director thoroughly reviewed surveillance camera ________ to investigate the unauthorized access into the server room.",
+        options: ["footage", "footing", "drapes", "anecdotes"],
+        correct: "footage",
         explanations: {
-            guide: "定冠词后的名词中心语与熟词生义。the ________ of the plan 结构中，centerpiece 考查比喻义，指政策或规划中的“核心内容/重中之重”，选 centerpiece。",
-            family: "centerpiece (n.核心部分/中心装饰) | debris (n.残骸) | reunion (n.聚会) | feasible (adj.可行的)。",
-            details: "the centerpiece of the plan 意为规划方案中最核心、最引人瞩目的关键支柱。debris、reunion 在语义上与政府宏观经济现代化规划完全不合。",
-            cn: "拟建的高速铁路网被视为政府十年经济现代化规划的核心举措。",
-            jp: "提案された高速鉄道網は、政府の10カ年経済近代化計画の目玉・中心的存在（centerpiece）と見なされています。"
+            guide: "安防监控复合名词专属搭配。surveillance camera 与 footage 组合构成 surveillance camera footage，意为“监控摄像头录像画面”，选不可数名词 footage。",
+            family: "footage (n.录像画面/影片素材/不可数) | footing (n.立足点/基础) | drapes (n.窗帘) | anecdotes (n.轶事)。",
+            details: "security / camera footage 指拍摄到的录像片段。footing 指物理立足点或合作基础（如 on equal footing），语义完全不符。",
+            cn: "安保总监仔细审查了监控摄像头的录像画面，以调查未经授权擅自进入服务器机房的事件。",
+            jp: "セキュリティディレクターは、サーバー室への不正侵入を調査するために、監視カメラの映像（footage）を徹底的に確認しました。"
         }
     },
     {
         id: 10,
-        target: "debris",
+        target: "anecdote",
         category: "中等",
-        stem: "Municipal maintenance crews worked throughout the night to clear fallen tree branches and other storm ________ from the highway.",
-        options: ["debris", "kiosks", "towed", "endorser"],
-        correct: "debris",
+        stem: "The keynote speaker enlivened the presentation by sharing an amusing personal ________ about his early struggles in business.",
+        options: ["anecdote", "anecdotal", "refurbishment", "attest"],
+        correct: "anecdote",
         explanations: {
-            guide: "不可数名词中心语与市政清理考点。storm ________ 结构中，storm debris 是托业听力与阅读极高频气象灾害搭配，意为“风暴残骸/瓦砾垃圾”，选 debris。",
-            family: "debris (n.残骸/瓦砾/不可数) | kiosks (n.自助终端) | towed (v-ed拖走) | endorser (n.代言人)。",
-            details: "storm debris 指狂风暴雨后散落的断枝瓦砾等杂物。debris 为不可数名词；kiosks 和 endorser 词义与路面清障场景无关。",
-            cn: "市政维修工作人员彻夜工作，以清理公路上折断的树枝和其他风暴残留碎片。",
-            jp: "市の保守クルーは、高速道路から倒れた木の枝やその他の暴風雨のがれき（debris）を取り除くために一晩中作業しました。"
+            guide: "不定冠词与形容词后的单数名词。an amusing personal ________ 结构中，形容词 personal 后接单数名词，personal anecdote 意为“个人亲身趣闻/轶事”，选 anecdote。",
+            family: "anecdote (n.趣闻/轶事/单数) | anecdotal (adj.传闻的/轶事的) | refurbishment (n.翻修) | attest (v.证实)。",
+            details: "share an anecdote 属于公众演讲与培训高频表达。anecdotal 是形容词，不能直接放在 personal 之后作介词短语的名词中心语。",
+            cn: "主讲嘉宾通过分享一段关于自己早年商业打拼的有趣亲身轶事，活跃了演讲的气氛。",
+            jp: "基調講演者は、初期のビジネスでの苦闘に関する面白い個人的な逸話（anecdote）を共有することで、プレゼンテーションを盛り上げました。"
         }
     },
     {
         id: 11,
-        target: "streamline",
+        target: "refurbish",
         category: "中等",
-        stem: "By consolidating multiple regional warehouses into a central logistics hub, the distributor successfully ________ its supply chain operations.",
-        options: ["streamlined", "streamlining", "feasible", "overdue"],
-        correct: "streamlined",
+        stem: "The consumer electronics warranty covers repairs as well as the certified delivery of ________ replacement units.",
+        options: ["refurbished", "refurbishing", "intermission", "turnout"],
+        correct: "refurbished",
         explanations: {
-            guide: "一般过去时谓语动词。句子主句缺少核心谓语动词，副词 successfully 修饰该动词，streamlined operations 意为“成功精简了运营环节”，选用过去式 streamlined。",
-            family: "streamlined (v-ed过去式/精简) | streamlining (现在分词) | feasible (adj.可行的) | overdue (adj.逾期的)。",
-            details: "streamlined its operations 构成完整的动宾谓语。streamlining 是分词，缺少助动词无法单独充当句子的谓语动词。",
-            cn: "通过将多个区域仓库合并为一个中央物流枢纽，该分销商成功精简了其供应链运营。",
-            jp: "複数の地域倉庫を中央物流ハブに統合することにより、その販売代理店はサプライチェーン業務の合理化に成功し（streamlined）ました。"
+            guide: "过去分词作定语修饰名词。空格修饰名词 units（设备/机器），refurbished replacement units 属于质保与售后条款专有名词，意为“翻新的备用机/翻新换货单元”，选 refurbished。",
+            family: "refurbished (adj.翻新的/整修过的) | refurbishing (动名词) | intermission (n.中场休息) | turnout (n.出席人数)。",
+            details: "refurbished units / devices 专指经官方检验合格的翻新设备。refurbishing 是现在分词动作，不能修饰被翻新完成的产品状态。",
+            cn: "消费电子产品保修不仅涵盖维修，还包括经过官方认证的翻新更换设备的交付。",
+            jp: "家電製品の保証には、修理だけでなく、認定された再生品・改修済み（refurbished）の交換ユニットの配送も含まれています。"
         }
     },
     {
         id: 12,
-        target: "tow",
+        target: "sanitize",
         category: "中等",
-        stem: "Following the delivery van's engine breakdown on Highway 10, the logistics coordinator promptly dispatched a commercial ________ truck.",
-        options: ["tow", "towed", "reunion", "credentials"],
-        correct: "tow",
+        stem: "To maintain hygienic standards across all treatment rooms, the medical clinic installed automated hand ________ dispensers.",
+        options: ["sanitizer", "sanitize", "obstruction", "testimonial"],
+        correct: "sanitizer",
         explanations: {
-            guide: "名词作前置定语修饰名词。a commercial ________ truck 结构中，tow 与 truck 组合构成托业高频专有名词 tow truck，意为“清障拖车”，选名词 tow。",
-            family: "tow (n.拖拽/v.牵引) | towed (adj.被拖的) | reunion (n.聚会) | credentials (n.资历)。",
-            details: "tow truck 是救援拖车的固定专有名称。towed 是过去分词，修饰 truck 意为“被拖拽的卡车”，与调度救援拖车前去施救的语境不符。",
-            cn: "送货货车在 10 号公路上发生发动机故障后，物流协调员迅速调度了一辆商用清障拖车。",
-            jp: "10号線での配達バンのエンジン故障を受けて、物流コーディネーターは直ちに民間のレッカー車（tow truck）を手配しました。"
+            guide: "复合名词定语修饰。hand 与 sanitizer 组合构成 hand sanitizer（免洗洗手液/手部消毒剂），修饰 dispensers（分配器），选名词 sanitizer。",
+            family: "sanitizer (n.消毒剂/洗手液) | sanitize (v.消毒) | obstruction (n.障碍) | testimonial (n.推荐信)。",
+            details: "hand sanitizer dispensers 指自动感应洗手消毒喷雾机。sanitize 是动词，不能直接在复合名词结构中作前置定语修饰物品。",
+            cn: "为了在所有诊室维持卫生标准，该医疗诊所安装了自动感应手部消毒液分配器。",
+            jp: "すべての治療室で衛生基準を維持するため、その診療所は自動手指消毒剤（sanitizer）ディスペンサーを設置しました。"
         }
     },
     {
         id: 13,
-        target: "feasible",
+        target: "drape",
         category: "困难",
-        stem: "Before committing venture capital to the wind farm expansion, corporate directors commissioned an independent study to evaluate its economic ________.",
-        options: ["feasibility", "feasible", "endorsement", "centerpiece"],
-        correct: "feasibility",
+        stem: "Conference center attendants pulled the motorized window ________ closed to eliminate glare on the projection screen.",
+        options: ["drapes", "draped", "anecdotes", "attestations"],
+        correct: "drapes",
         explanations: {
-            guide: "形容词修饰名词中心语与商务投资考点。evaluate its economic ________ 结构中，形容词 economic 后面需要名词作 evaluate 的宾语，economic feasibility 意为“经济可行性”，选派生名词 feasibility。",
-            family: "feasibility (n.可行性) | feasible (adj.可行的) | endorsement (n.代言) | centerpiece (n.核心)。",
-            details: "economic feasibility 指项目在经济层面的可行程度。feasible 是形容词，不能直接放在形容词 economic 之后充当宾语中心词。",
-            cn: "在对风电场扩建项目投入风险投资之前，公司董事们委托进行了一项独立研究，以评估其经济可行性。",
-            jp: "風力発電所の拡張にベンチャーキャピタルを投入する前に、企業の取締役は経済的実現可能性（feasibility）を評価するための独立した調査を依頼しました。"
+            guide: "名词熟词生义复数考点。pulled the window ________ closed 结构中，drapes 考查“厚窗帘/遮光帘”，与 closed 构成复合宾语，选复数名词 drapes。",
+            family: "drapes (n.厚窗帘/复数) | draped (v-ed铺盖) | anecdotes (n.趣闻) | attestations (n.证明)。",
+            details: "window drapes 指会议室遮光大窗帘，固定多用复数形式。draped 为过去分词，不能在定冠词 the 和定语 window 后充当及物动词 pulled 的宾语。",
+            cn: "会议中心服务人员拉合了电动车窗遮光窗帘，以消除投影幕布上的眩光。",
+            jp: "会議センターの係員は、プロジェクションスクリーンの反射光をなくすために、電動の窓用カーテン（drapes）を閉めました。"
         }
     },
     {
         id: 14,
-        target: "endorsement",
+        target: "attest",
         category: "困难",
-        stem: "The executive steering committee unanimously ________ the proposed environmental guidelines during yesterday's board meeting.",
-        options: ["endorsed", "endorsement", "streamlined", "overdue"],
-        correct: "endorsed",
+        stem: "The remarkable surge in overseas enterprise subscriptions ________ to the exceptional performance of the new cloud platform.",
+        options: ["attests", "attest", "sanitizes", "refurbishes"],
+        correct: "attests",
         explanations: {
-            guide: "一般过去时谓语动词与商务熟词生义。句子缺少谓语动词，副词 unanimously（一致地）修饰动词，endorse 表决支持/认可方案，选用过去式 endorsed。",
-            family: "endorsed (v-ed正式支持/认可) | endorsement (n.背书/认可) | streamlined (v-ed精简) | overdue (adj.逾期的)。",
-            details: "unanimously endorsed the guidelines 意为一致批准通过环保准则。endorsement 是名词，不能充当句子的谓语中心动词。",
-            cn: "执行指导委员会在昨天的董事会会议上一致通过并支持了拟议的环境准则。",
-            jp: "執行運営委員会は、昨日の役員会において、提案された環境ガイドラインを満場一致で承認・支持し（endorsed）ました。"
+            guide: "主谓一致与动介短语搭配。主语是单数可数名词 surge（激增），缺少核心谓语动词，attests to 意为“证实了/证明了……”，选用第三人称单数形式 attests。",
+            family: "attests (第三人称单数/证明) | attest (动词原形) | sanitizes (v.消毒) | refurbishes (v.翻新)。",
+            details: "attest to 指有力证明了某优势。主语中心词为 The surge，谓语必须采用单三形式 attests；sanitizes 与 refurbishes 词义完全不通。",
+            cn: "海外企业订阅量的显著激增，有力证实了该新云平台卓越的性能表现。",
+            jp: "海外企業によるサブスクリプションの著しい急増は、新しいクラウドプラットフォームの並外れた性能を如実に証明して（attests to）います。"
         }
     },
     {
         id: 15,
-        target: "overdue",
+        target: "anecdote",
         category: "困难",
-        stem: "After months of persistent scheduling delays, management introduced a long ________ overhaul of the internal communication protocol.",
-        options: ["overdue", "feasible", "towing", "debris"],
-        correct: "overdue",
+        stem: "The research committee cautioned against drawing broad market conclusions based purely on ________ customer feedback.",
+        options: ["anecdotal", "anecdote", "unobstructed", "refurbished"],
+        correct: "anecdotal",
         explanations: {
-            guide: "固定复合修饰语与熟词生义。a long ________ overhaul 结构中，long overdue 属于托业高阶固定习语短语，作前置定语修饰 overhaul，意为“早就该进行的/姗姗来迟的全面改革”，选 overdue。",
-            family: "overdue (adj.早该发生的/逾期的) | feasible (adj.可行的) | towing (动名词) | debris (n.残骸)。",
-            details: "long overdue overhaul 意为早就应该实施的彻底整改。feasible、towing 与 long 组合无法构成修饰改革举措的合法习语短语。",
-            cn: "经过数月持续的进度延误后，管理层对内部沟通流程进行了一次早就该实施的彻底整顿。",
-            jp: "数か月にわたる度重なるスケジュールの遅延を経て、経営陣は内部コミュニケーション手順の長年待ち望まれていた・とっくに実施されるべきだった（long overdue）見直しを導入しました。"
+            guide: "派生形容词作定语修饰名词。purely on ________ customer feedback 结构中，副词 purely 修饰形容词，anecdotal feedback 意为“传闻的/个例经验式的非系统反馈”，选 anecdotal。",
+            family: "anecdotal (adj.传闻的/轶事个例的) | anecdote (n.轶事) | unobstructed (adj.通畅无阻的) | refurbished (adj.翻新的)。",
+            details: "anecdotal evidence / feedback 属于商业分析高阶术语，指缺乏统计严谨性的个别口头反馈。anecdote 是名词，无法充当定语形容词修饰 feedback。",
+            cn: "研究委员会告诫大家，切勿仅仅依据零散个例式的客户反馈得出广泛的市场结论。",
+            jp: "調査委員会は、単なる伝聞・個別の事例による（anecdotal）顧客のフィードバックのみに基づいて広範な市場の結論を導き出さないよう警告しました。"
         }
     },
     {
         id: 16,
-        target: "debris",
+        target: "obstruction",
         category: "困难",
-        stem: "The municipal environmental safety inspector reported that industrial ________ from the demolition site had not been disposed of in accordance with hazardous waste regulations.",
-        options: ["debris", "credentialing", "reunion", "kiosks"],
-        correct: "debris",
+        stem: "Cargo truck drivers must verify that oversized freight loads do not ________ the driver's direct line of sight or side mirrors.",
+        options: ["obstruct", "obstruction", "drape", "attest"],
+        correct: "obstruct",
         explanations: {
-            guide: "不可数名词主语与主谓一致。空格作从句主语，与后方单数谓语 had not been disposed of 呼应，industrial debris 意为“工业拆迁废料/残骸瓦砾”，选不可数名词 debris。",
-            family: "debris (n.建筑垃圾/残骸/不可数) | credentialing (n.资质核准) | reunion (n.聚会) | kiosks (n.售货亭)。",
-            details: "industrial debris 专指工业拆除施工留下的残料废墟。credentialing（资质审查认证）与拆迁危险废弃物处理逻辑完全不符。",
-            cn: "市政环境安全督察员报告称，拆除施工现场的工业废料瓦砾未按照危险废物管理规程进行妥善处置。",
-            jp: "市の環境安全検査官は、解体現場からの産業用がれき・廃棄物（debris）が有害廃棄物規制に従って処分されていなかったと報告しました。"
+            guide: "助动词后的及物动词原形。do not 后面必须接动词原形，后接宾语 line of sight（视线），obstruct 意为“阻碍/遮挡视线”，选 obstruct。",
+            family: "obstruct (v.阻挡/阻塞/遮挡) | obstruction (n.障碍物) | drape (v.铺设) | attest (v.证实)。",
+            details: "obstruct line of sight 是交通安全核心术语（遮挡视线）。obstruction 是名词，不能在助动词 do not 后面担任谓语动词原形。",
+            cn: "货运卡车司机必须确认超宽超大货物不会遮挡驾驶员的直接视线或后视镜。",
+            jp: "貨物トラックの運転手は、特大の貨物積載物が運転手の直接の視界やサイドミラーを遮ら（obstruct）ないことを確認しなければなりません。"
         }
     },
     {
         id: 17,
-        target: "centerpiece",
+        target: "turnout",
         category: "困难",
-        stem: "An exquisite glass fountain designed by a renowned Italian sculptor will serve as the artistic ________ of the hotel's central atrium.",
-        options: ["centerpiece", "endorsement", "streamline", "feasibility"],
-        correct: "centerpiece",
+        stem: "Despite unfavorable transit schedules, the weekend community festival drew a record ________ of over ten thousand visitors.",
+        options: ["turnout", "turning out", "intermission", "testimonial"],
+        correct: "turnout",
         explanations: {
-            guide: "形容词修饰名词中心语。the artistic ________ of the central atrium 结构中，形容词 artistic 修饰名词，centerpiece 考查具体景观的“视觉中心/核心焦点”，选 centerpiece。",
-            family: "centerpiece (n.焦点/中心装饰品) | endorsement (n.代言) | streamline (v.精简) | feasibility (n.可行性)。",
-            details: "the artistic centerpiece 意为大堂中庭的艺术视觉核心焦点。endorsement（背书）与 feasibility（可行性）不能被艺术雕塑喷泉所体现担当。",
-            cn: "一座由著名意大利雕塑家设计的精美玻璃喷泉将作为酒店中央中庭的艺术视觉核心焦点。",
-            jp: "有名なイタリアの彫刻家によって設計された見事なガラスの噴水が、ホテルの中央アトリウムの芸術的な目玉・中心的存在（centerpiece）として機能します。"
+            guide: "动宾高阶专有搭配。drew a record ________ 结构中，draw a record turnout 是托业阅读公关报道最高频表达，意为“创下了创纪录的到场人数”，选名词 turnout。",
+            family: "turnout (n.到场人数/入场人次) | turning out (动名词) | intermission (n.中场休息) | testimonial (n.用户评价)。",
+            details: "a record turnout of visitors 专指出席规模创历史新高。turning out 为分词短语，不能被不定冠词 a 和修饰语 record 直接修饰为量化名词中心词。",
+            cn: "尽管公共交通班次不便，但周末社区文化节依然吸引了超过一万名游客这一创纪录的到场人数。",
+            jp: "公共交通機関の運行スケジュールが不便だったにもかかわらず、週末の地域フェスティバルには1万人以上の記録的な来場者数（turnout）が集まりました。"
         }
     },
     {
         id: 18,
-        target: "credentials",
+        target: "footage",
         category: "困难",
-        stem: "The hospital's human resources division implemented a rigorous new protocol for the formal ________ of all incoming medical specialists.",
-        options: ["credentialing", "credentials", "reunion", "overdue"],
-        correct: "credentialing",
+        stem: "The multimedia production firm obtained exclusive archival ________ of the historical bridge construction from city records.",
+        options: ["footage", "footing", "sanitizers", "drapes"],
+        correct: "footage",
         explanations: {
-            guide: "专业人事术语与动名词/抽象名词辨析。for the formal ________ of all incoming medical specialists 结构中，表达对入职专家资历证书进行审核认证的“资质认定/证书审核流程”，需使用抽象名词 credentialing，选 credentialing。",
-            family: "credentialing (n.资质认定/执业资格审核) | credentials (n.具体资质文件/复数) | reunion (n.聚会) | overdue (adj.逾期的)。",
-            details: "the credentialing of doctors 是医疗机构与跨国公司核实执业资格的规范专业术语。credentials 指求职者持有的具体实体证书证件，不能在此与介词 of 构成审核动作的客体流程定义。",
-            cn: "医院人力资源部门实施了一项严格的新规程，用于对所有新入职医学专家进行正式的执业资质审核认证。",
-            jp: "病院の人事部は、新しく着任するすべての医療専門家の正式な資格認定・審査手続き（credentialing）のための厳格な新プロトコルを導入しました。"
+            guide: "传媒专属复合名词与不可数用法。archival ________ 结构中，archival footage 属于媒体影视制作高阶固定表达，意为“历史档案影像资料/纪录片胶片镜头”，选 footage。",
+            family: "footage (n.影像资料/胶片片段/不可数) | footing (n.立足点) | sanitizers (n.消毒液) | drapes (n.窗帘)。",
+            details: "archival footage 指保存在档案馆中的历史视频素材。footing 指物理立足点或基础关系，与音视频多媒体纪录片完全不符。",
+            cn: "该多媒体制作公司从市档案馆获得了关于这座历史大桥建造过程的独家历史档案影像资料。",
+            jp: "そのマルチメディア制作会社は、市の記録保管所から歴史的な橋の建設に関する独占的な記録映像（archival footage）を入手しました。"
         }
     }
 ];
